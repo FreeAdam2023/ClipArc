@@ -98,6 +98,10 @@
 "settings.benefit_membership" = "Verify Pro membership";
 "settings.benefit_restore" = "Restore purchases easily";
 "settings.benefit_multi_device" = "Same account across devices";
+"settings.login_required" = "Sign In Required";
+"settings.login_required_message" = "Please sign in with your Apple ID first to subscribe. Go to the Account tab to sign in.";
+"settings.go_to_account" = "OK";
+"settings.accessibility_guide" = "System Settings → Privacy & Security → Accessibility → Enable ClipArc";
 
 "settings.pro_badge" = "ClipArc Pro";
 "settings.lifetime_license" = "Lifetime License";

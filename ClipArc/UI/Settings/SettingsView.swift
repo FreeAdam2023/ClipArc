@@ -35,7 +35,7 @@ struct SettingsView: View {
                     Label(L10n.Settings.about, systemImage: "info.circle")
                 }
         }
-        .frame(width: 500, height: 400)
+        .frame(width: 500, height: 520)
     }
 }
 
@@ -45,9 +45,7 @@ struct GeneralSettingsView: View {
     @State private var permissionsManager = PermissionsManager.shared
     @State private var localizationManager = LocalizationManager.shared
     @State private var showRestartAlert = false
-    @State private var showClearCacheAlert = false
     @State private var showClearHistoryAlert = false
-    @State private var cacheSize: String = "Calculating..."
     @State private var historyCount: Int = 0
 
     var body: some View {
@@ -100,7 +98,7 @@ struct GeneralSettingsView: View {
 
             Section(L10n.Settings.permissions) {
                 HStack {
-                    Text(L10n.Onboarding.accessibilityTitle)
+                    Label(L10n.Onboarding.accessibilityTitle, systemImage: "hand.point.up.braille")
                     Spacer()
                     if permissionsManager.hasAccessibilityPermission {
                         Image(systemName: "checkmark.circle.fill")
@@ -114,18 +112,15 @@ struct GeneralSettingsView: View {
                         .buttonStyle(.bordered)
                     }
                 }
-                .help(L10n.Onboarding.accessibilityDesc)
+
+                if !permissionsManager.hasAccessibilityPermission {
+                    Text(L10n.Settings.accessibilityGuide)
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
             }
 
             Section(L10n.Settings.storage) {
-                // Cache size
-                HStack {
-                    Label(L10n.Settings.cacheSize, systemImage: "internaldrive")
-                    Spacer()
-                    Text(cacheSize)
-                        .foregroundStyle(.secondary)
-                }
-
                 // History count
                 HStack {
                     Label(L10n.Settings.historyItems, systemImage: "clock.arrow.circlepath")
@@ -134,30 +129,12 @@ struct GeneralSettingsView: View {
                         .foregroundStyle(.secondary)
                 }
 
-                // Clear cache button
-                Button(action: {
-                    showClearCacheAlert = true
-                }) {
-                    HStack {
-                        Label(L10n.Settings.clearCache, systemImage: "trash")
-                        Spacer()
-                    }
-                }
-                .alert(L10n.Settings.clearCache, isPresented: $showClearCacheAlert) {
-                    Button(L10n.cancel, role: .cancel) { }
-                    Button(L10n.Settings.clear, role: .destructive) {
-                        clearCache()
-                    }
-                } message: {
-                    Text(L10n.Settings.clearCacheMessage)
-                }
-
                 // Clear all history button
                 Button(action: {
                     showClearHistoryAlert = true
                 }) {
                     HStack {
-                        Label(L10n.Settings.clearAllHistory, systemImage: "trash.fill")
+                        Label(L10n.Settings.clearAllHistory, systemImage: "trash")
                             .foregroundStyle(.red)
                         Spacer()
                     }
@@ -175,61 +152,13 @@ struct GeneralSettingsView: View {
         .formStyle(.grouped)
         .padding()
         .onAppear {
-            calculateCacheSize()
-            updateHistoryCount()
-        }
-    }
-
-    private func calculateCacheSize() {
-        Task {
-            var totalSize: Int64 = 0
-
-            // Calculate image and thumbnail data size from clipboard items
-            if let items = appState?.items {
-                for item in items {
-                    if let imageData = item.imageData {
-                        totalSize += Int64(imageData.count)
-                    }
-                    if let thumbnailData = item.fileThumbnailData {
-                        totalSize += Int64(thumbnailData.count)
-                    }
-                }
-            }
-
-            // Format size
-            let formatter = ByteCountFormatter()
-            formatter.countStyle = .file
-            let sizeString = formatter.string(fromByteCount: totalSize)
-
-            await MainActor.run {
-                cacheSize = sizeString
-            }
-        }
-    }
-
-    private func updateHistoryCount() {
-        historyCount = appState?.items.count ?? 0
-    }
-
-    private func clearCache() {
-        Task {
-            // Clear image data and thumbnails from items
-            if let items = appState?.items {
-                for item in items {
-                    item.imageData = nil
-                    item.fileThumbnailData = nil
-                }
-            }
-            await MainActor.run {
-                calculateCacheSize()
-            }
+            historyCount = appState?.items.count ?? 0
         }
     }
 
     private func clearAllHistory() {
         appState?.clearAll()
         historyCount = 0
-        cacheSize = "0 bytes"
     }
 }
 
@@ -406,22 +335,21 @@ struct AccountBenefitRow: View {
 
 struct SubscriptionSettingsView: View {
     @State private var subscriptionManager = SubscriptionManager.shared
+    @State private var authManager = AuthManager.shared
     @State private var selectedPlan: String = "yearly"
+    @State private var showLoginAlert = false
 
     var body: some View {
-        ScrollView {
-            VStack(spacing: 0) {
-                if subscriptionManager.isPro {
-                    // Pro user view
-                    proUserView
-                } else {
-                    // Upgrade view
-                    upgradeView
-                }
+        VStack(spacing: 0) {
+            if subscriptionManager.isPro {
+                // Pro user view
+                proUserView
+            } else {
+                // Upgrade view
+                upgradeView
             }
-            .padding(24)
         }
-        .scrollIndicators(.hidden)
+        .padding(24)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 
@@ -566,6 +494,33 @@ struct SubscriptionSettingsView: View {
                         isSelected: selectedPlan == "lifetime"
                     ) {
                         selectedPlan = "lifetime"
+                    }
+
+                    // Subscribe button for placeholder mode
+                    Button(action: {
+                        if !authManager.isAuthenticated {
+                            showLoginAlert = true
+                        } else {
+                            // Will connect to StoreKit when products are available
+                        }
+                    }) {
+                        Text(L10n.Onboarding.subscribe)
+                            .fontWeight(.semibold)
+                            .foregroundStyle(.white)
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical, 12)
+                            .background(Color.accentColor)
+                            .cornerRadius(10)
+                    }
+                    .buttonStyle(.plain)
+                    .padding(.top, 8)
+                    .alert(L10n.Settings.loginRequired, isPresented: $showLoginAlert) {
+                        Button(L10n.cancel, role: .cancel) { }
+                        Button(L10n.Settings.goToAccount) {
+                            // User needs to manually switch to Account tab
+                        }
+                    } message: {
+                        Text(L10n.Settings.loginRequiredMessage)
                     }
                 } else {
                     ForEach(subscriptionManager.products, id: \.id) { product in

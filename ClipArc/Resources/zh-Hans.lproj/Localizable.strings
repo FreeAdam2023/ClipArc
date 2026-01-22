@@ -98,6 +98,10 @@
 "settings.benefit_membership" = "验证专业版会员";
 "settings.benefit_restore" = "轻松恢复购买";
 "settings.benefit_multi_device" = "多设备使用同一账户";
+"settings.login_required" = "请先登录";
+"settings.login_required_message" = "请先使用 Apple ID 登录后再订阅。请前往「账户」页面登录。";
+"settings.go_to_account" = "好的";
+"settings.accessibility_guide" = "系统设置 → 隐私与安全性 → 辅助功能 → 启用 ClipArc";
 
 "settings.pro_badge" = "ClipArc 专业版";
 "settings.lifetime_license" = "终身授权";

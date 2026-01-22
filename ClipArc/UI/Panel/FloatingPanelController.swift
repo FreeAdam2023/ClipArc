@@ -1062,26 +1062,8 @@ struct UpgradePromptCard: View {
 
 @MainActor
 func openSubscriptionWindow(appState: AppState) {
-    let subscriptionView = SubscriptionView(subscriptionManager: appState.subscriptionManager)
-
-    let hostingView = NSHostingView(rootView: subscriptionView)
-    hostingView.frame = NSRect(x: 0, y: 0, width: 400, height: 500)
-
-    let window = NSWindow(
-        contentRect: NSRect(x: 0, y: 0, width: 400, height: 500),
-        styleMask: [.titled, .closable, .fullSizeContentView],
-        backing: .buffered,
-        defer: false
-    )
-
-    window.contentView = hostingView
-    window.titlebarAppearsTransparent = true
-    window.titleVisibility = .hidden
-    window.isMovableByWindowBackground = true
-    window.center()
-    window.makeKeyAndOrderFront(nil)
-
-    // Keep a reference to prevent deallocation
+    // Open Settings window (Subscription tab is in Settings)
+    NSApp.sendAction(Selector(("showSettingsWindow:")), to: nil, from: nil)
     NSApp.activate(ignoringOtherApps: true)
 }
 

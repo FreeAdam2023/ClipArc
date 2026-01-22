@@ -47,6 +47,10 @@ struct ClipArcApp: App {
         }
         .windowStyle(.hiddenTitleBar)
         .windowResizability(.contentSize)
+        .commands {
+            // Remove the default About menu item
+            CommandGroup(replacing: .appInfo) { }
+        }
     }
 }
 
@@ -97,8 +101,8 @@ struct MenuBarContentView: View {
 
                 if !appState.isProUser && appState.items.count > 5 {
                     Divider()
-                    Button(L10n.Settings.upgradeToPro) {
-                        openSubscription()
+                    SettingsLink {
+                        Text(L10n.Settings.upgradeToPro)
                     }
                     .foregroundStyle(.secondary)
                 }
@@ -124,8 +128,8 @@ struct MenuBarContentView: View {
             }
 
             if !appState.isProUser {
-                Button(L10n.Settings.upgradeToPro) {
-                    openSubscription()
+                SettingsLink {
+                    Text(L10n.Settings.upgradeToPro)
                 }
             }
 
@@ -135,10 +139,6 @@ struct MenuBarContentView: View {
             .keyboardShortcut(",", modifiers: .command)
 
             Divider()
-
-            Button(L10n.MenuBar.about) {
-                openAbout()
-            }
 
             Button(L10n.MenuBar.help) {
                 if let url = URL(string: "https://cliparc.app/help") {
@@ -155,32 +155,6 @@ struct MenuBarContentView: View {
         }
     }
 
-    private func openAbout() {
-        NSApp.orderFrontStandardAboutPanel(options: [
-            NSApplication.AboutPanelOptionKey.applicationName: "ClipArc",
-            NSApplication.AboutPanelOptionKey.applicationVersion: Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0",
-            NSApplication.AboutPanelOptionKey.version: Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "1",
-            NSApplication.AboutPanelOptionKey.credits: NSAttributedString(
-                string: "Your intelligent clipboard manager",
-                attributes: [.font: NSFont.systemFont(ofSize: 11)]
-            )
-        ])
-    }
-
-    private func openSubscription() {
-        if let window = NSApp.windows.first(where: { $0.identifier?.rawValue == "subscription" }) {
-            window.makeKeyAndOrderFront(nil)
-        } else {
-            let subscriptionView = SubscriptionView(subscriptionManager: appState.subscriptionManager)
-            let hostingController = NSHostingController(rootView: subscriptionView)
-            let window = NSWindow(contentViewController: hostingController)
-            window.identifier = NSUserInterfaceItemIdentifier("subscription")
-            window.title = L10n.Settings.upgradeToPro
-            window.styleMask = [.titled, .closable]
-            window.center()
-            window.makeKeyAndOrderFront(nil)
-        }
-    }
 }
 
 extension Notification.Name {
