@@ -707,13 +707,13 @@ struct SettingsPricingCard: View {
 struct AboutView: View {
     var body: some View {
         VStack(spacing: 20) {
-            // App Icon
-            Image(nsImage: NSApp.applicationIconImage)
+            // App Icon from Assets
+            Image("AppIconImage")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 128, height: 128)
-                .cornerRadius(24)
-                .shadow(color: .black.opacity(0.1), radius: 8, y: 4)
+                .clipShape(RoundedRectangle(cornerRadius: 28))
+                .shadow(color: .black.opacity(0.15), radius: 10, y: 5)
 
             VStack(spacing: 8) {
                 Text(L10n.appName)
