@@ -1,0 +1,138 @@
+/*
+  Localizable.strings (日本語)
+  ClipArc
+
+  Created by Adam Lyu on 2026-01-22.
+*/
+
+// MARK: - Common
+"app.name" = "ClipArc";
+"common.enable" = "有効にする";
+"common.disable" = "無効にする";
+"common.cancel" = "キャンセル";
+"common.done" = "完了";
+"common.save" = "保存";
+"common.delete" = "削除";
+"common.copy" = "コピー";
+"common.paste" = "ペースト";
+"common.search" = "検索";
+"common.settings" = "設定";
+"common.continue" = "続ける";
+"common.skip" = "スキップ";
+"common.skip_for_now" = "今はスキップ";
+
+// MARK: - Language
+"language.system" = "システム設定に従う";
+
+// MARK: - Onboarding Welcome
+"onboarding.welcome.title" = "ClipArc へようこそ";
+"onboarding.welcome.subtitle" = "macOS 用スマートクリップボードマネージャー";
+"onboarding.welcome.get_started" = "始める";
+
+// MARK: - Onboarding Features
+"onboarding.feature.history.title" = "クリップボード履歴";
+"onboarding.feature.history.description" = "コピーしたすべてにアクセス";
+"onboarding.feature.search.title" = "即座に検索";
+"onboarding.feature.search.description" = "数秒でクリップを見つける";
+"onboarding.feature.hotkey.title" = "グローバルホットキー";
+"onboarding.feature.hotkey.description" = "どこでも ⇧⌘V";
+
+// MARK: - Onboarding Permissions
+"onboarding.permissions.title" = "アクセス許可";
+"onboarding.permissions.subtitle" = "ClipArc が正常に動作するにはいくつかのアクセス許可が必要です";
+"onboarding.permissions.accessibility.title" = "アクセシビリティ";
+"onboarding.permissions.accessibility.description" = "自動ペーストに必要";
+"onboarding.permissions.launch_at_login.title" = "ログイン時に起動";
+"onboarding.permissions.launch_at_login.description" = "ClipArc を自動的に起動";
+
+// MARK: - Onboarding Sign In
+"onboarding.signin.title" = "サインイン";
+"onboarding.signin.subtitle" = "Apple でサインインしてデバイス間で同期";
+"onboarding.signin.signed_in_as" = "サインイン中";
+"onboarding.signin.sign_in_later" = "設定から後でサインインできます";
+
+// MARK: - Onboarding Subscription
+"onboarding.subscription.title" = "Pro にアップグレード";
+"onboarding.subscription.subtitle" = "無制限のクリップボード履歴をアンロック";
+"onboarding.subscription.subscribe" = "購読する";
+"onboarding.subscription.start_free_trial" = "無料トライアルを開始";
+"onboarding.subscription.free_vs_pro" = "無料: 5 件 · Pro: 無制限";
+"onboarding.subscription.you_are_pro" = "あなたは Pro です！";
+"onboarding.subscription.save_44" = "44% お得";
+
+// MARK: - Onboarding Complete
+"onboarding.complete.title" = "準備完了！";
+"onboarding.complete.subtitle" = "ClipArc を使用する準備ができました";
+"onboarding.complete.start_using" = "ClipArc を使い始める";
+"onboarding.complete.tip.open" = "クリップボード履歴を開く";
+"onboarding.complete.tip.navigate" = "アイテムを移動";
+"onboarding.complete.tip.paste" = "選択したアイテムをペースト";
+"onboarding.complete.tip.close" = "パネルを閉じる";
+
+// MARK: - Settings
+"settings.title" = "設定";
+"settings.general" = "一般";
+"settings.account" = "アカウント";
+"settings.subscription" = "サブスクリプション";
+"settings.about" = "情報";
+
+"settings.history_limit" = "履歴の上限";
+"settings.items" = "件";
+"settings.startup" = "起動";
+"settings.launch_at_login" = "ログイン時に起動";
+"settings.show_in_dock" = "Dock に表示";
+"settings.hotkey" = "ホットキー";
+"settings.global_hotkey" = "グローバルホットキー";
+"settings.permissions" = "アクセス許可";
+"settings.granted" = "許可済み";
+"settings.language" = "言語";
+"settings.restart_required" = "言語を変更するにはアプリを再起動してください";
+
+"settings.sign_out" = "サインアウト";
+"settings.sync_description" = "サインインしてデバイス間でデータを同期";
+
+"settings.pro_badge" = "ClipArc Pro";
+"settings.lifetime_license" = "永久ライセンス";
+"settings.renews_on" = "%@ に更新";
+"settings.manage_subscription" = "サブスクリプションを管理";
+"settings.upgrade_to_pro" = "Pro にアップグレード";
+"settings.upgrade_description" = "無制限のクリップボード履歴などを取得";
+"settings.restore_purchases" = "購入を復元";
+
+"settings.version" = "バージョン";
+"settings.about_description" = "macOS 用の高速でシンプルなクリップボードマネージャー";
+"settings.website" = "ウェブサイト";
+"settings.privacy" = "プライバシー";
+"settings.terms" = "利用規約";
+
+// MARK: - Clipboard
+"clipboard.empty.title" = "クリップがありません";
+"clipboard.empty.subtitle" = "何かをコピーして始めましょう";
+"clipboard.search.placeholder" = "クリップを検索...";
+"clipboard.search.no_results" = "結果が見つかりません";
+"clipboard.copied" = "コピーしました";
+"clipboard.pasted" = "ペーストしました";
+
+"clipboard.type.text" = "テキスト";
+"clipboard.type.image" = "画像";
+"clipboard.type.file" = "ファイル";
+"clipboard.type.link" = "リンク";
+
+// MARK: - Menu Bar
+"menu.show_panel" = "ClipArc を表示";
+"menu.preferences" = "環境設定...";
+"menu.clear_history" = "履歴を消去";
+"menu.quit" = "ClipArc を終了";
+
+// MARK: - Errors
+"error.generic" = "エラーが発生しました。もう一度お試しください。";
+"error.auth_failed" = "認証に失敗しました。もう一度お試しください。";
+"error.purchase_failed" = "購入に失敗しました。もう一度お試しください。";
+"error.network" = "ネットワークエラー。接続を確認してください。";
+
+// MARK: - Time
+"time.just_now" = "たった今";
+"time.minutes_ago" = "%d 分前";
+"time.hours_ago" = "%d 時間前";
+"time.yesterday" = "昨日";
+"time.days_ago" = "%d 日前";

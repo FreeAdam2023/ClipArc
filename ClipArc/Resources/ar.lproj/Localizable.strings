@@ -1,0 +1,138 @@
+/*
+  Localizable.strings (العربية)
+  ClipArc
+
+  Created by Adam Lyu on 2026-01-22.
+*/
+
+// MARK: - Common
+"app.name" = "ClipArc";
+"common.enable" = "تفعيل";
+"common.disable" = "تعطيل";
+"common.cancel" = "إلغاء";
+"common.done" = "تم";
+"common.save" = "حفظ";
+"common.delete" = "حذف";
+"common.copy" = "نسخ";
+"common.paste" = "لصق";
+"common.search" = "بحث";
+"common.settings" = "الإعدادات";
+"common.continue" = "متابعة";
+"common.skip" = "تخطي";
+"common.skip_for_now" = "تخطي الآن";
+
+// MARK: - Language
+"language.system" = "افتراضي النظام";
+
+// MARK: - Onboarding Welcome
+"onboarding.welcome.title" = "مرحباً بك في ClipArc";
+"onboarding.welcome.subtitle" = "مدير الحافظة الذكي لنظام macOS";
+"onboarding.welcome.get_started" = "ابدأ";
+
+// MARK: - Onboarding Features
+"onboarding.feature.history.title" = "سجل الحافظة";
+"onboarding.feature.history.description" = "الوصول إلى كل ما نسخته";
+"onboarding.feature.search.title" = "بحث فوري";
+"onboarding.feature.search.description" = "ابحث عن أي قصاصة في ثوانٍ";
+"onboarding.feature.hotkey.title" = "اختصار عام";
+"onboarding.feature.hotkey.description" = "⇧⌘V من أي مكان";
+
+// MARK: - Onboarding Permissions
+"onboarding.permissions.title" = "الأذونات";
+"onboarding.permissions.subtitle" = "يحتاج ClipArc إلى بعض الأذونات ليعمل بشكل صحيح";
+"onboarding.permissions.accessibility.title" = "إمكانية الوصول";
+"onboarding.permissions.accessibility.description" = "مطلوب للصق التلقائي";
+"onboarding.permissions.launch_at_login.title" = "التشغيل عند تسجيل الدخول";
+"onboarding.permissions.launch_at_login.description" = "تشغيل ClipArc تلقائياً";
+
+// MARK: - Onboarding Sign In
+"onboarding.signin.title" = "تسجيل الدخول";
+"onboarding.signin.subtitle" = "سجّل الدخول باستخدام Apple للمزامنة عبر الأجهزة";
+"onboarding.signin.signed_in_as" = "مسجّل الدخول كـ";
+"onboarding.signin.sign_in_later" = "يمكنك تسجيل الدخول لاحقاً في الإعدادات";
+
+// MARK: - Onboarding Subscription
+"onboarding.subscription.title" = "الترقية إلى Pro";
+"onboarding.subscription.subtitle" = "افتح سجل حافظة غير محدود";
+"onboarding.subscription.subscribe" = "اشتراك";
+"onboarding.subscription.start_free_trial" = "ابدأ التجربة المجانية";
+"onboarding.subscription.free_vs_pro" = "مجاني: 5 عناصر · Pro: غير محدود";
+"onboarding.subscription.you_are_pro" = "أنت Pro!";
+"onboarding.subscription.save_44" = "وفّر 44%";
+
+// MARK: - Onboarding Complete
+"onboarding.complete.title" = "كل شيء جاهز!";
+"onboarding.complete.subtitle" = "ClipArc جاهز للاستخدام";
+"onboarding.complete.start_using" = "ابدأ استخدام ClipArc";
+"onboarding.complete.tip.open" = "فتح سجل الحافظة";
+"onboarding.complete.tip.navigate" = "التنقل بين العناصر";
+"onboarding.complete.tip.paste" = "لصق العنصر المحدد";
+"onboarding.complete.tip.close" = "إغلاق اللوحة";
+
+// MARK: - Settings
+"settings.title" = "الإعدادات";
+"settings.general" = "عام";
+"settings.account" = "الحساب";
+"settings.subscription" = "الاشتراك";
+"settings.about" = "حول";
+
+"settings.history_limit" = "حد السجل";
+"settings.items" = "عناصر";
+"settings.startup" = "بدء التشغيل";
+"settings.launch_at_login" = "التشغيل عند تسجيل الدخول";
+"settings.show_in_dock" = "إظهار في Dock";
+"settings.hotkey" = "اختصار";
+"settings.global_hotkey" = "اختصار عام";
+"settings.permissions" = "الأذونات";
+"settings.granted" = "ممنوح";
+"settings.language" = "اللغة";
+"settings.restart_required" = "أعد تشغيل التطبيق لتطبيق تغيير اللغة";
+
+"settings.sign_out" = "تسجيل الخروج";
+"settings.sync_description" = "سجّل الدخول لمزامنة بياناتك عبر الأجهزة";
+
+"settings.pro_badge" = "ClipArc Pro";
+"settings.lifetime_license" = "ترخيص مدى الحياة";
+"settings.renews_on" = "يتجدد في %@";
+"settings.manage_subscription" = "إدارة الاشتراك";
+"settings.upgrade_to_pro" = "الترقية إلى Pro";
+"settings.upgrade_description" = "احصل على سجل حافظة غير محدود والمزيد";
+"settings.restore_purchases" = "استعادة المشتريات";
+
+"settings.version" = "الإصدار";
+"settings.about_description" = "مدير حافظة سريع وبسيط لنظام macOS";
+"settings.website" = "الموقع";
+"settings.privacy" = "الخصوصية";
+"settings.terms" = "الشروط";
+
+// MARK: - Clipboard
+"clipboard.empty.title" = "لا توجد قصاصات بعد";
+"clipboard.empty.subtitle" = "انسخ شيئاً للبدء";
+"clipboard.search.placeholder" = "البحث في القصاصات...";
+"clipboard.search.no_results" = "لم يتم العثور على نتائج";
+"clipboard.copied" = "تم النسخ";
+"clipboard.pasted" = "تم اللصق";
+
+"clipboard.type.text" = "نص";
+"clipboard.type.image" = "صورة";
+"clipboard.type.file" = "ملف";
+"clipboard.type.link" = "رابط";
+
+// MARK: - Menu Bar
+"menu.show_panel" = "إظهار ClipArc";
+"menu.preferences" = "التفضيلات...";
+"menu.clear_history" = "مسح السجل";
+"menu.quit" = "إنهاء ClipArc";
+
+// MARK: - Errors
+"error.generic" = "حدث خطأ. يرجى المحاولة مرة أخرى.";
+"error.auth_failed" = "فشل المصادقة. يرجى المحاولة مرة أخرى.";
+"error.purchase_failed" = "فشل الشراء. يرجى المحاولة مرة أخرى.";
+"error.network" = "خطأ في الشبكة. يرجى التحقق من اتصالك.";
+
+// MARK: - Time
+"time.just_now" = "الآن";
+"time.minutes_ago" = "منذ %d د";
+"time.hours_ago" = "منذ %d س";
+"time.yesterday" = "أمس";
+"time.days_ago" = "منذ %d أيام";

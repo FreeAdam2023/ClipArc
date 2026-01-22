@@ -1,0 +1,138 @@
+/*
+  Localizable.strings (简体中文)
+  ClipArc
+
+  Created by Adam Lyu on 2026-01-22.
+*/
+
+// MARK: - Common
+"app.name" = "ClipArc";
+"common.enable" = "启用";
+"common.disable" = "禁用";
+"common.cancel" = "取消";
+"common.done" = "完成";
+"common.save" = "保存";
+"common.delete" = "删除";
+"common.copy" = "复制";
+"common.paste" = "粘贴";
+"common.search" = "搜索";
+"common.settings" = "设置";
+"common.continue" = "继续";
+"common.skip" = "跳过";
+"common.skip_for_now" = "暂时跳过";
+
+// MARK: - Language
+"language.system" = "跟随系统";
+
+// MARK: - Onboarding Welcome
+"onboarding.welcome.title" = "欢迎使用 ClipArc";
+"onboarding.welcome.subtitle" = "您的 macOS 智能剪贴板管理器";
+"onboarding.welcome.get_started" = "开始使用";
+
+// MARK: - Onboarding Features
+"onboarding.feature.history.title" = "剪贴板历史";
+"onboarding.feature.history.description" = "访问您复制过的所有内容";
+"onboarding.feature.search.title" = "即时搜索";
+"onboarding.feature.search.description" = "秒速查找任何剪贴内容";
+"onboarding.feature.hotkey.title" = "全局快捷键";
+"onboarding.feature.hotkey.description" = "随时随地按 ⇧⌘V";
+
+// MARK: - Onboarding Permissions
+"onboarding.permissions.title" = "权限设置";
+"onboarding.permissions.subtitle" = "ClipArc 需要一些权限才能正常工作";
+"onboarding.permissions.accessibility.title" = "辅助功能";
+"onboarding.permissions.accessibility.description" = "自动粘贴内容所需";
+"onboarding.permissions.launch_at_login.title" = "登录时启动";
+"onboarding.permissions.launch_at_login.description" = "自动启动 ClipArc";
+
+// MARK: - Onboarding Sign In
+"onboarding.signin.title" = "登录";
+"onboarding.signin.subtitle" = "使用 Apple 账号登录以跨设备同步";
+"onboarding.signin.signed_in_as" = "已登录为";
+"onboarding.signin.sign_in_later" = "您可以稍后在设置中登录";
+
+// MARK: - Onboarding Subscription
+"onboarding.subscription.title" = "升级到专业版";
+"onboarding.subscription.subtitle" = "解锁无限剪贴板历史记录";
+"onboarding.subscription.subscribe" = "订阅";
+"onboarding.subscription.start_free_trial" = "开始免费试用";
+"onboarding.subscription.free_vs_pro" = "免费版: 5 条记录 · 专业版: 无限";
+"onboarding.subscription.you_are_pro" = "您已是专业版用户！";
+"onboarding.subscription.save_44" = "节省 44%";
+
+// MARK: - Onboarding Complete
+"onboarding.complete.title" = "设置完成！";
+"onboarding.complete.subtitle" = "ClipArc 已准备就绪";
+"onboarding.complete.start_using" = "开始使用 ClipArc";
+"onboarding.complete.tip.open" = "打开剪贴板历史";
+"onboarding.complete.tip.navigate" = "浏览项目";
+"onboarding.complete.tip.paste" = "粘贴选中项目";
+"onboarding.complete.tip.close" = "关闭面板";
+
+// MARK: - Settings
+"settings.title" = "设置";
+"settings.general" = "通用";
+"settings.account" = "账户";
+"settings.subscription" = "订阅";
+"settings.about" = "关于";
+
+"settings.history_limit" = "历史记录上限";
+"settings.items" = "条记录";
+"settings.startup" = "启动";
+"settings.launch_at_login" = "登录时启动";
+"settings.show_in_dock" = "在程序坞中显示";
+"settings.hotkey" = "快捷键";
+"settings.global_hotkey" = "全局快捷键";
+"settings.permissions" = "权限";
+"settings.granted" = "已授权";
+"settings.language" = "语言";
+"settings.restart_required" = "重启应用以应用语言更改";
+
+"settings.sign_out" = "退出登录";
+"settings.sync_description" = "登录以跨设备同步数据";
+
+"settings.pro_badge" = "ClipArc 专业版";
+"settings.lifetime_license" = "终身授权";
+"settings.renews_on" = "续订日期 %@";
+"settings.manage_subscription" = "管理订阅";
+"settings.upgrade_to_pro" = "升级到专业版";
+"settings.upgrade_description" = "获取无限剪贴板历史记录等更多功能";
+"settings.restore_purchases" = "恢复购买";
+
+"settings.version" = "版本";
+"settings.about_description" = "一款快速简洁的 macOS 剪贴板管理器";
+"settings.website" = "官网";
+"settings.privacy" = "隐私";
+"settings.terms" = "条款";
+
+// MARK: - Clipboard
+"clipboard.empty.title" = "暂无剪贴内容";
+"clipboard.empty.subtitle" = "复制内容即可开始";
+"clipboard.search.placeholder" = "搜索剪贴内容...";
+"clipboard.search.no_results" = "未找到结果";
+"clipboard.copied" = "已复制";
+"clipboard.pasted" = "已粘贴";
+
+"clipboard.type.text" = "文本";
+"clipboard.type.image" = "图片";
+"clipboard.type.file" = "文件";
+"clipboard.type.link" = "链接";
+
+// MARK: - Menu Bar
+"menu.show_panel" = "显示 ClipArc";
+"menu.preferences" = "偏好设置...";
+"menu.clear_history" = "清除历史";
+"menu.quit" = "退出 ClipArc";
+
+// MARK: - Errors
+"error.generic" = "发生错误，请重试。";
+"error.auth_failed" = "认证失败，请重试。";
+"error.purchase_failed" = "购买失败，请重试。";
+"error.network" = "网络错误，请检查您的连接。";
+
+// MARK: - Time
+"time.just_now" = "刚刚";
+"time.minutes_ago" = "%d 分钟前";
+"time.hours_ago" = "%d 小时前";
+"time.yesterday" = "昨天";
+"time.days_ago" = "%d 天前";

@@ -1,0 +1,138 @@
+/*
+  Localizable.strings (繁體中文)
+  ClipArc
+
+  Created by Adam Lyu on 2026-01-22.
+*/
+
+// MARK: - Common
+"app.name" = "ClipArc";
+"common.enable" = "啟用";
+"common.disable" = "停用";
+"common.cancel" = "取消";
+"common.done" = "完成";
+"common.save" = "儲存";
+"common.delete" = "刪除";
+"common.copy" = "複製";
+"common.paste" = "貼上";
+"common.search" = "搜尋";
+"common.settings" = "設定";
+"common.continue" = "繼續";
+"common.skip" = "略過";
+"common.skip_for_now" = "暫時略過";
+
+// MARK: - Language
+"language.system" = "跟隨系統";
+
+// MARK: - Onboarding Welcome
+"onboarding.welcome.title" = "歡迎使用 ClipArc";
+"onboarding.welcome.subtitle" = "您的 macOS 智慧剪貼簿管理器";
+"onboarding.welcome.get_started" = "開始使用";
+
+// MARK: - Onboarding Features
+"onboarding.feature.history.title" = "剪貼簿歷史";
+"onboarding.feature.history.description" = "存取您複製過的所有內容";
+"onboarding.feature.search.title" = "即時搜尋";
+"onboarding.feature.search.description" = "秒速查找任何剪貼內容";
+"onboarding.feature.hotkey.title" = "全域快捷鍵";
+"onboarding.feature.hotkey.description" = "隨時隨地按 ⇧⌘V";
+
+// MARK: - Onboarding Permissions
+"onboarding.permissions.title" = "權限設定";
+"onboarding.permissions.subtitle" = "ClipArc 需要一些權限才能正常運作";
+"onboarding.permissions.accessibility.title" = "輔助使用";
+"onboarding.permissions.accessibility.description" = "自動貼上內容所需";
+"onboarding.permissions.launch_at_login.title" = "登入時啟動";
+"onboarding.permissions.launch_at_login.description" = "自動啟動 ClipArc";
+
+// MARK: - Onboarding Sign In
+"onboarding.signin.title" = "登入";
+"onboarding.signin.subtitle" = "使用 Apple 帳號登入以跨裝置同步";
+"onboarding.signin.signed_in_as" = "已登入為";
+"onboarding.signin.sign_in_later" = "您可以稍後在設定中登入";
+
+// MARK: - Onboarding Subscription
+"onboarding.subscription.title" = "升級至專業版";
+"onboarding.subscription.subtitle" = "解鎖無限剪貼簿歷史紀錄";
+"onboarding.subscription.subscribe" = "訂閱";
+"onboarding.subscription.start_free_trial" = "開始免費試用";
+"onboarding.subscription.free_vs_pro" = "免費版: 5 筆紀錄 · 專業版: 無限";
+"onboarding.subscription.you_are_pro" = "您已是專業版用戶！";
+"onboarding.subscription.save_44" = "節省 44%";
+
+// MARK: - Onboarding Complete
+"onboarding.complete.title" = "設定完成！";
+"onboarding.complete.subtitle" = "ClipArc 已準備就緒";
+"onboarding.complete.start_using" = "開始使用 ClipArc";
+"onboarding.complete.tip.open" = "開啟剪貼簿歷史";
+"onboarding.complete.tip.navigate" = "瀏覽項目";
+"onboarding.complete.tip.paste" = "貼上選取項目";
+"onboarding.complete.tip.close" = "關閉面板";
+
+// MARK: - Settings
+"settings.title" = "設定";
+"settings.general" = "一般";
+"settings.account" = "帳戶";
+"settings.subscription" = "訂閱";
+"settings.about" = "關於";
+
+"settings.history_limit" = "歷史紀錄上限";
+"settings.items" = "筆紀錄";
+"settings.startup" = "啟動";
+"settings.launch_at_login" = "登入時啟動";
+"settings.show_in_dock" = "在 Dock 中顯示";
+"settings.hotkey" = "快捷鍵";
+"settings.global_hotkey" = "全域快捷鍵";
+"settings.permissions" = "權限";
+"settings.granted" = "已授權";
+"settings.language" = "語言";
+"settings.restart_required" = "重新啟動應用程式以套用語言變更";
+
+"settings.sign_out" = "登出";
+"settings.sync_description" = "登入以跨裝置同步資料";
+
+"settings.pro_badge" = "ClipArc 專業版";
+"settings.lifetime_license" = "終身授權";
+"settings.renews_on" = "續訂日期 %@";
+"settings.manage_subscription" = "管理訂閱";
+"settings.upgrade_to_pro" = "升級至專業版";
+"settings.upgrade_description" = "取得無限剪貼簿歷史紀錄等更多功能";
+"settings.restore_purchases" = "恢復購買";
+
+"settings.version" = "版本";
+"settings.about_description" = "一款快速簡潔的 macOS 剪貼簿管理器";
+"settings.website" = "官網";
+"settings.privacy" = "隱私";
+"settings.terms" = "條款";
+
+// MARK: - Clipboard
+"clipboard.empty.title" = "尚無剪貼內容";
+"clipboard.empty.subtitle" = "複製內容即可開始";
+"clipboard.search.placeholder" = "搜尋剪貼內容...";
+"clipboard.search.no_results" = "找不到結果";
+"clipboard.copied" = "已複製";
+"clipboard.pasted" = "已貼上";
+
+"clipboard.type.text" = "文字";
+"clipboard.type.image" = "圖片";
+"clipboard.type.file" = "檔案";
+"clipboard.type.link" = "連結";
+
+// MARK: - Menu Bar
+"menu.show_panel" = "顯示 ClipArc";
+"menu.preferences" = "偏好設定...";
+"menu.clear_history" = "清除歷史";
+"menu.quit" = "結束 ClipArc";
+
+// MARK: - Errors
+"error.generic" = "發生錯誤，請重試。";
+"error.auth_failed" = "認證失敗，請重試。";
+"error.purchase_failed" = "購買失敗，請重試。";
+"error.network" = "網路錯誤，請檢查您的連線。";
+
+// MARK: - Time
+"time.just_now" = "剛剛";
+"time.minutes_ago" = "%d 分鐘前";
+"time.hours_ago" = "%d 小時前";
+"time.yesterday" = "昨天";
+"time.days_ago" = "%d 天前";

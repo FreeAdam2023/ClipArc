@@ -1,0 +1,138 @@
+/*
+  Localizable.strings (Deutsch)
+  ClipArc
+
+  Created by Adam Lyu on 2026-01-22.
+*/
+
+// MARK: - Common
+"app.name" = "ClipArc";
+"common.enable" = "Aktivieren";
+"common.disable" = "Deaktivieren";
+"common.cancel" = "Abbrechen";
+"common.done" = "Fertig";
+"common.save" = "Speichern";
+"common.delete" = "Löschen";
+"common.copy" = "Kopieren";
+"common.paste" = "Einfügen";
+"common.search" = "Suchen";
+"common.settings" = "Einstellungen";
+"common.continue" = "Weiter";
+"common.skip" = "Überspringen";
+"common.skip_for_now" = "Vorerst überspringen";
+
+// MARK: - Language
+"language.system" = "Systemstandard";
+
+// MARK: - Onboarding Welcome
+"onboarding.welcome.title" = "Willkommen bei ClipArc";
+"onboarding.welcome.subtitle" = "Ihr intelligenter Zwischenablage-Manager für macOS";
+"onboarding.welcome.get_started" = "Los geht's";
+
+// MARK: - Onboarding Features
+"onboarding.feature.history.title" = "Zwischenablage-Verlauf";
+"onboarding.feature.history.description" = "Zugriff auf alles, was Sie kopiert haben";
+"onboarding.feature.search.title" = "Sofortsuche";
+"onboarding.feature.search.description" = "Finden Sie jeden Clip in Sekunden";
+"onboarding.feature.hotkey.title" = "Globaler Hotkey";
+"onboarding.feature.hotkey.description" = "⇧⌘V von überall";
+
+// MARK: - Onboarding Permissions
+"onboarding.permissions.title" = "Berechtigungen";
+"onboarding.permissions.subtitle" = "ClipArc benötigt einige Berechtigungen, um richtig zu funktionieren";
+"onboarding.permissions.accessibility.title" = "Bedienungshilfen";
+"onboarding.permissions.accessibility.description" = "Erforderlich für automatisches Einfügen";
+"onboarding.permissions.launch_at_login.title" = "Bei Anmeldung starten";
+"onboarding.permissions.launch_at_login.description" = "ClipArc automatisch starten";
+
+// MARK: - Onboarding Sign In
+"onboarding.signin.title" = "Anmelden";
+"onboarding.signin.subtitle" = "Mit Apple anmelden, um geräteübergreifend zu synchronisieren";
+"onboarding.signin.signed_in_as" = "Angemeldet als";
+"onboarding.signin.sign_in_later" = "Sie können sich später in den Einstellungen anmelden";
+
+// MARK: - Onboarding Subscription
+"onboarding.subscription.title" = "Auf Pro upgraden";
+"onboarding.subscription.subtitle" = "Unbegrenzten Zwischenablage-Verlauf freischalten";
+"onboarding.subscription.subscribe" = "Abonnieren";
+"onboarding.subscription.start_free_trial" = "Kostenlose Testversion starten";
+"onboarding.subscription.free_vs_pro" = "Kostenlos: 5 Einträge · Pro: Unbegrenzt";
+"onboarding.subscription.you_are_pro" = "Sie sind Pro!";
+"onboarding.subscription.save_44" = "44% SPAREN";
+
+// MARK: - Onboarding Complete
+"onboarding.complete.title" = "Alles bereit!";
+"onboarding.complete.subtitle" = "ClipArc ist einsatzbereit";
+"onboarding.complete.start_using" = "ClipArc verwenden";
+"onboarding.complete.tip.open" = "Zwischenablage-Verlauf öffnen";
+"onboarding.complete.tip.navigate" = "Einträge durchsuchen";
+"onboarding.complete.tip.paste" = "Ausgewählten Eintrag einfügen";
+"onboarding.complete.tip.close" = "Panel schließen";
+
+// MARK: - Settings
+"settings.title" = "Einstellungen";
+"settings.general" = "Allgemein";
+"settings.account" = "Konto";
+"settings.subscription" = "Abonnement";
+"settings.about" = "Über";
+
+"settings.history_limit" = "Verlaufslimit";
+"settings.items" = "Einträge";
+"settings.startup" = "Start";
+"settings.launch_at_login" = "Bei Anmeldung starten";
+"settings.show_in_dock" = "Im Dock anzeigen";
+"settings.hotkey" = "Tastenkürzel";
+"settings.global_hotkey" = "Globales Tastenkürzel";
+"settings.permissions" = "Berechtigungen";
+"settings.granted" = "Gewährt";
+"settings.language" = "Sprache";
+"settings.restart_required" = "App neu starten, um die Sprachänderung anzuwenden";
+
+"settings.sign_out" = "Abmelden";
+"settings.sync_description" = "Anmelden, um Daten geräteübergreifend zu synchronisieren";
+
+"settings.pro_badge" = "ClipArc Pro";
+"settings.lifetime_license" = "Lebenslange Lizenz";
+"settings.renews_on" = "Verlängerung am %@";
+"settings.manage_subscription" = "Abonnement verwalten";
+"settings.upgrade_to_pro" = "Auf Pro upgraden";
+"settings.upgrade_description" = "Unbegrenzten Zwischenablage-Verlauf und mehr erhalten";
+"settings.restore_purchases" = "Käufe wiederherstellen";
+
+"settings.version" = "Version";
+"settings.about_description" = "Ein schneller und einfacher Zwischenablage-Manager für macOS";
+"settings.website" = "Webseite";
+"settings.privacy" = "Datenschutz";
+"settings.terms" = "Nutzungsbedingungen";
+
+// MARK: - Clipboard
+"clipboard.empty.title" = "Noch keine Clips";
+"clipboard.empty.subtitle" = "Kopieren Sie etwas, um zu beginnen";
+"clipboard.search.placeholder" = "Clips suchen...";
+"clipboard.search.no_results" = "Keine Ergebnisse gefunden";
+"clipboard.copied" = "Kopiert";
+"clipboard.pasted" = "Eingefügt";
+
+"clipboard.type.text" = "Text";
+"clipboard.type.image" = "Bild";
+"clipboard.type.file" = "Datei";
+"clipboard.type.link" = "Link";
+
+// MARK: - Menu Bar
+"menu.show_panel" = "ClipArc anzeigen";
+"menu.preferences" = "Einstellungen...";
+"menu.clear_history" = "Verlauf löschen";
+"menu.quit" = "ClipArc beenden";
+
+// MARK: - Errors
+"error.generic" = "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.";
+"error.auth_failed" = "Authentifizierung fehlgeschlagen. Bitte versuchen Sie es erneut.";
+"error.purchase_failed" = "Kauf fehlgeschlagen. Bitte versuchen Sie es erneut.";
+"error.network" = "Netzwerkfehler. Bitte überprüfen Sie Ihre Verbindung.";
+
+// MARK: - Time
+"time.just_now" = "Gerade eben";
+"time.minutes_ago" = "Vor %d Min.";
+"time.hours_ago" = "Vor %d Std.";
+"time.yesterday" = "Gestern";
+"time.days_ago" = "Vor %d Tagen";

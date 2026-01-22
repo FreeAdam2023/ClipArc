@@ -1,0 +1,138 @@
+/*
+  Localizable.strings (한국어)
+  ClipArc
+
+  Created by Adam Lyu on 2026-01-22.
+*/
+
+// MARK: - Common
+"app.name" = "ClipArc";
+"common.enable" = "활성화";
+"common.disable" = "비활성화";
+"common.cancel" = "취소";
+"common.done" = "완료";
+"common.save" = "저장";
+"common.delete" = "삭제";
+"common.copy" = "복사";
+"common.paste" = "붙여넣기";
+"common.search" = "검색";
+"common.settings" = "설정";
+"common.continue" = "계속";
+"common.skip" = "건너뛰기";
+"common.skip_for_now" = "지금은 건너뛰기";
+
+// MARK: - Language
+"language.system" = "시스템 기본값";
+
+// MARK: - Onboarding Welcome
+"onboarding.welcome.title" = "ClipArc에 오신 것을 환영합니다";
+"onboarding.welcome.subtitle" = "macOS용 스마트 클립보드 관리자";
+"onboarding.welcome.get_started" = "시작하기";
+
+// MARK: - Onboarding Features
+"onboarding.feature.history.title" = "클립보드 기록";
+"onboarding.feature.history.description" = "복사한 모든 항목에 접근";
+"onboarding.feature.search.title" = "즉시 검색";
+"onboarding.feature.search.description" = "몇 초 만에 클립 찾기";
+"onboarding.feature.hotkey.title" = "전역 단축키";
+"onboarding.feature.hotkey.description" = "어디서나 ⇧⌘V";
+
+// MARK: - Onboarding Permissions
+"onboarding.permissions.title" = "권한";
+"onboarding.permissions.subtitle" = "ClipArc가 제대로 작동하려면 몇 가지 권한이 필요합니다";
+"onboarding.permissions.accessibility.title" = "손쉬운 사용";
+"onboarding.permissions.accessibility.description" = "자동 붙여넣기에 필요";
+"onboarding.permissions.launch_at_login.title" = "로그인 시 실행";
+"onboarding.permissions.launch_at_login.description" = "ClipArc 자동 시작";
+
+// MARK: - Onboarding Sign In
+"onboarding.signin.title" = "로그인";
+"onboarding.signin.subtitle" = "Apple로 로그인하여 기기 간 동기화";
+"onboarding.signin.signed_in_as" = "로그인됨";
+"onboarding.signin.sign_in_later" = "설정에서 나중에 로그인할 수 있습니다";
+
+// MARK: - Onboarding Subscription
+"onboarding.subscription.title" = "Pro로 업그레이드";
+"onboarding.subscription.subtitle" = "무제한 클립보드 기록 잠금 해제";
+"onboarding.subscription.subscribe" = "구독하기";
+"onboarding.subscription.start_free_trial" = "무료 체험 시작";
+"onboarding.subscription.free_vs_pro" = "무료: 5개 · Pro: 무제한";
+"onboarding.subscription.you_are_pro" = "Pro 사용자입니다!";
+"onboarding.subscription.save_44" = "44% 절약";
+
+// MARK: - Onboarding Complete
+"onboarding.complete.title" = "모든 준비 완료!";
+"onboarding.complete.subtitle" = "ClipArc를 사용할 준비가 되었습니다";
+"onboarding.complete.start_using" = "ClipArc 사용 시작";
+"onboarding.complete.tip.open" = "클립보드 기록 열기";
+"onboarding.complete.tip.navigate" = "항목 탐색";
+"onboarding.complete.tip.paste" = "선택한 항목 붙여넣기";
+"onboarding.complete.tip.close" = "패널 닫기";
+
+// MARK: - Settings
+"settings.title" = "설정";
+"settings.general" = "일반";
+"settings.account" = "계정";
+"settings.subscription" = "구독";
+"settings.about" = "정보";
+
+"settings.history_limit" = "기록 제한";
+"settings.items" = "개 항목";
+"settings.startup" = "시작";
+"settings.launch_at_login" = "로그인 시 실행";
+"settings.show_in_dock" = "Dock에 표시";
+"settings.hotkey" = "단축키";
+"settings.global_hotkey" = "전역 단축키";
+"settings.permissions" = "권한";
+"settings.granted" = "허용됨";
+"settings.language" = "언어";
+"settings.restart_required" = "언어 변경을 적용하려면 앱을 재시작하세요";
+
+"settings.sign_out" = "로그아웃";
+"settings.sync_description" = "로그인하여 기기 간 데이터 동기화";
+
+"settings.pro_badge" = "ClipArc Pro";
+"settings.lifetime_license" = "평생 라이선스";
+"settings.renews_on" = "%@ 갱신";
+"settings.manage_subscription" = "구독 관리";
+"settings.upgrade_to_pro" = "Pro로 업그레이드";
+"settings.upgrade_description" = "무제한 클립보드 기록 등 더 많은 기능";
+"settings.restore_purchases" = "구매 복원";
+
+"settings.version" = "버전";
+"settings.about_description" = "macOS용 빠르고 간단한 클립보드 관리자";
+"settings.website" = "웹사이트";
+"settings.privacy" = "개인정보";
+"settings.terms" = "약관";
+
+// MARK: - Clipboard
+"clipboard.empty.title" = "클립 없음";
+"clipboard.empty.subtitle" = "무언가를 복사하여 시작하세요";
+"clipboard.search.placeholder" = "클립 검색...";
+"clipboard.search.no_results" = "결과 없음";
+"clipboard.copied" = "복사됨";
+"clipboard.pasted" = "붙여넣기됨";
+
+"clipboard.type.text" = "텍스트";
+"clipboard.type.image" = "이미지";
+"clipboard.type.file" = "파일";
+"clipboard.type.link" = "링크";
+
+// MARK: - Menu Bar
+"menu.show_panel" = "ClipArc 표시";
+"menu.preferences" = "환경설정...";
+"menu.clear_history" = "기록 지우기";
+"menu.quit" = "ClipArc 종료";
+
+// MARK: - Errors
+"error.generic" = "오류가 발생했습니다. 다시 시도해 주세요.";
+"error.auth_failed" = "인증에 실패했습니다. 다시 시도해 주세요.";
+"error.purchase_failed" = "구매에 실패했습니다. 다시 시도해 주세요.";
+"error.network" = "네트워크 오류. 연결을 확인해 주세요.";
+
+// MARK: - Time
+"time.just_now" = "방금";
+"time.minutes_ago" = "%d분 전";
+"time.hours_ago" = "%d시간 전";
+"time.yesterday" = "어제";
+"time.days_ago" = "%d일 전";

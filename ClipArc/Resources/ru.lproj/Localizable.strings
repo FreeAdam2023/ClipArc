@@ -1,0 +1,138 @@
+/*
+  Localizable.strings (Русский)
+  ClipArc
+
+  Created by Adam Lyu on 2026-01-22.
+*/
+
+// MARK: - Common
+"app.name" = "ClipArc";
+"common.enable" = "Включить";
+"common.disable" = "Выключить";
+"common.cancel" = "Отмена";
+"common.done" = "Готово";
+"common.save" = "Сохранить";
+"common.delete" = "Удалить";
+"common.copy" = "Копировать";
+"common.paste" = "Вставить";
+"common.search" = "Поиск";
+"common.settings" = "Настройки";
+"common.continue" = "Продолжить";
+"common.skip" = "Пропустить";
+"common.skip_for_now" = "Пропустить пока";
+
+// MARK: - Language
+"language.system" = "Системный по умолчанию";
+
+// MARK: - Onboarding Welcome
+"onboarding.welcome.title" = "Добро пожаловать в ClipArc";
+"onboarding.welcome.subtitle" = "Ваш умный менеджер буфера обмена для macOS";
+"onboarding.welcome.get_started" = "Начать";
+
+// MARK: - Onboarding Features
+"onboarding.feature.history.title" = "История буфера обмена";
+"onboarding.feature.history.description" = "Доступ ко всему, что вы скопировали";
+"onboarding.feature.search.title" = "Мгновенный поиск";
+"onboarding.feature.search.description" = "Найдите любой клип за секунды";
+"onboarding.feature.hotkey.title" = "Глобальная горячая клавиша";
+"onboarding.feature.hotkey.description" = "⇧⌘V из любого места";
+
+// MARK: - Onboarding Permissions
+"onboarding.permissions.title" = "Разрешения";
+"onboarding.permissions.subtitle" = "ClipArc нужны некоторые разрешения для правильной работы";
+"onboarding.permissions.accessibility.title" = "Универсальный доступ";
+"onboarding.permissions.accessibility.description" = "Требуется для автовставки";
+"onboarding.permissions.launch_at_login.title" = "Запуск при входе";
+"onboarding.permissions.launch_at_login.description" = "Автоматический запуск ClipArc";
+
+// MARK: - Onboarding Sign In
+"onboarding.signin.title" = "Вход";
+"onboarding.signin.subtitle" = "Войдите с Apple для синхронизации между устройствами";
+"onboarding.signin.signed_in_as" = "Вы вошли как";
+"onboarding.signin.sign_in_later" = "Вы можете войти позже в Настройках";
+
+// MARK: - Onboarding Subscription
+"onboarding.subscription.title" = "Обновить до Pro";
+"onboarding.subscription.subtitle" = "Разблокируйте безлимитную историю буфера обмена";
+"onboarding.subscription.subscribe" = "Подписаться";
+"onboarding.subscription.start_free_trial" = "Начать бесплатный период";
+"onboarding.subscription.free_vs_pro" = "Бесплатно: 5 элементов · Pro: Безлимитно";
+"onboarding.subscription.you_are_pro" = "Вы Pro!";
+"onboarding.subscription.save_44" = "СКИДКА 44%";
+
+// MARK: - Onboarding Complete
+"onboarding.complete.title" = "Всё готово!";
+"onboarding.complete.subtitle" = "ClipArc готов к использованию";
+"onboarding.complete.start_using" = "Начать использовать ClipArc";
+"onboarding.complete.tip.open" = "Открыть историю буфера обмена";
+"onboarding.complete.tip.navigate" = "Навигация по элементам";
+"onboarding.complete.tip.paste" = "Вставить выбранный элемент";
+"onboarding.complete.tip.close" = "Закрыть панель";
+
+// MARK: - Settings
+"settings.title" = "Настройки";
+"settings.general" = "Основные";
+"settings.account" = "Учётная запись";
+"settings.subscription" = "Подписка";
+"settings.about" = "О программе";
+
+"settings.history_limit" = "Лимит истории";
+"settings.items" = "элементов";
+"settings.startup" = "Запуск";
+"settings.launch_at_login" = "Запуск при входе";
+"settings.show_in_dock" = "Показывать в Dock";
+"settings.hotkey" = "Горячая клавиша";
+"settings.global_hotkey" = "Глобальная горячая клавиша";
+"settings.permissions" = "Разрешения";
+"settings.granted" = "Разрешено";
+"settings.language" = "Язык";
+"settings.restart_required" = "Перезапустите приложение для применения языка";
+
+"settings.sign_out" = "Выйти";
+"settings.sync_description" = "Войдите для синхронизации данных между устройствами";
+
+"settings.pro_badge" = "ClipArc Pro";
+"settings.lifetime_license" = "Пожизненная лицензия";
+"settings.renews_on" = "Продление %@";
+"settings.manage_subscription" = "Управление подпиской";
+"settings.upgrade_to_pro" = "Обновить до Pro";
+"settings.upgrade_description" = "Получите безлимитную историю буфера обмена и многое другое";
+"settings.restore_purchases" = "Восстановить покупки";
+
+"settings.version" = "Версия";
+"settings.about_description" = "Быстрый и простой менеджер буфера обмена для macOS";
+"settings.website" = "Сайт";
+"settings.privacy" = "Конфиденциальность";
+"settings.terms" = "Условия";
+
+// MARK: - Clipboard
+"clipboard.empty.title" = "Пока нет клипов";
+"clipboard.empty.subtitle" = "Скопируйте что-нибудь, чтобы начать";
+"clipboard.search.placeholder" = "Поиск клипов...";
+"clipboard.search.no_results" = "Результаты не найдены";
+"clipboard.copied" = "Скопировано";
+"clipboard.pasted" = "Вставлено";
+
+"clipboard.type.text" = "Текст";
+"clipboard.type.image" = "Изображение";
+"clipboard.type.file" = "Файл";
+"clipboard.type.link" = "Ссылка";
+
+// MARK: - Menu Bar
+"menu.show_panel" = "Показать ClipArc";
+"menu.preferences" = "Настройки...";
+"menu.clear_history" = "Очистить историю";
+"menu.quit" = "Завершить ClipArc";
+
+// MARK: - Errors
+"error.generic" = "Произошла ошибка. Пожалуйста, попробуйте снова.";
+"error.auth_failed" = "Ошибка аутентификации. Пожалуйста, попробуйте снова.";
+"error.purchase_failed" = "Ошибка покупки. Пожалуйста, попробуйте снова.";
+"error.network" = "Ошибка сети. Пожалуйста, проверьте подключение.";
+
+// MARK: - Time
+"time.just_now" = "Только что";
+"time.minutes_ago" = "%d мин назад";
+"time.hours_ago" = "%d ч назад";
+"time.yesterday" = "Вчера";
+"time.days_ago" = "%d дн назад";

@@ -1,0 +1,138 @@
+/*
+  Localizable.strings (Español)
+  ClipArc
+
+  Created by Adam Lyu on 2026-01-22.
+*/
+
+// MARK: - Common
+"app.name" = "ClipArc";
+"common.enable" = "Activar";
+"common.disable" = "Desactivar";
+"common.cancel" = "Cancelar";
+"common.done" = "Listo";
+"common.save" = "Guardar";
+"common.delete" = "Eliminar";
+"common.copy" = "Copiar";
+"common.paste" = "Pegar";
+"common.search" = "Buscar";
+"common.settings" = "Ajustes";
+"common.continue" = "Continuar";
+"common.skip" = "Omitir";
+"common.skip_for_now" = "Omitir por ahora";
+
+// MARK: - Language
+"language.system" = "Predeterminado del sistema";
+
+// MARK: - Onboarding Welcome
+"onboarding.welcome.title" = "Bienvenido a ClipArc";
+"onboarding.welcome.subtitle" = "Tu gestor de portapapeles inteligente para macOS";
+"onboarding.welcome.get_started" = "Comenzar";
+
+// MARK: - Onboarding Features
+"onboarding.feature.history.title" = "Historial del portapapeles";
+"onboarding.feature.history.description" = "Accede a todo lo que has copiado";
+"onboarding.feature.search.title" = "Búsqueda instantánea";
+"onboarding.feature.search.description" = "Encuentra cualquier clip en segundos";
+"onboarding.feature.hotkey.title" = "Atajo global";
+"onboarding.feature.hotkey.description" = "⇧⌘V desde cualquier lugar";
+
+// MARK: - Onboarding Permissions
+"onboarding.permissions.title" = "Permisos";
+"onboarding.permissions.subtitle" = "ClipArc necesita algunos permisos para funcionar correctamente";
+"onboarding.permissions.accessibility.title" = "Accesibilidad";
+"onboarding.permissions.accessibility.description" = "Necesario para pegar automáticamente";
+"onboarding.permissions.launch_at_login.title" = "Abrir al iniciar sesión";
+"onboarding.permissions.launch_at_login.description" = "Iniciar ClipArc automáticamente";
+
+// MARK: - Onboarding Sign In
+"onboarding.signin.title" = "Iniciar sesión";
+"onboarding.signin.subtitle" = "Inicia sesión con Apple para sincronizar entre dispositivos";
+"onboarding.signin.signed_in_as" = "Conectado como";
+"onboarding.signin.sign_in_later" = "Puedes iniciar sesión más tarde en Ajustes";
+
+// MARK: - Onboarding Subscription
+"onboarding.subscription.title" = "Actualizar a Pro";
+"onboarding.subscription.subtitle" = "Desbloquea historial ilimitado del portapapeles";
+"onboarding.subscription.subscribe" = "Suscribirse";
+"onboarding.subscription.start_free_trial" = "Iniciar prueba gratuita";
+"onboarding.subscription.free_vs_pro" = "Gratis: 5 elementos · Pro: Ilimitado";
+"onboarding.subscription.you_are_pro" = "¡Eres Pro!";
+"onboarding.subscription.save_44" = "AHORRA 44%";
+
+// MARK: - Onboarding Complete
+"onboarding.complete.title" = "¡Todo listo!";
+"onboarding.complete.subtitle" = "ClipArc está listo para usar";
+"onboarding.complete.start_using" = "Comenzar a usar ClipArc";
+"onboarding.complete.tip.open" = "Abrir historial del portapapeles";
+"onboarding.complete.tip.navigate" = "Navegar entre elementos";
+"onboarding.complete.tip.paste" = "Pegar elemento seleccionado";
+"onboarding.complete.tip.close" = "Cerrar panel";
+
+// MARK: - Settings
+"settings.title" = "Ajustes";
+"settings.general" = "General";
+"settings.account" = "Cuenta";
+"settings.subscription" = "Suscripción";
+"settings.about" = "Acerca de";
+
+"settings.history_limit" = "Límite del historial";
+"settings.items" = "elementos";
+"settings.startup" = "Inicio";
+"settings.launch_at_login" = "Abrir al iniciar sesión";
+"settings.show_in_dock" = "Mostrar en el Dock";
+"settings.hotkey" = "Atajo";
+"settings.global_hotkey" = "Atajo global";
+"settings.permissions" = "Permisos";
+"settings.granted" = "Concedido";
+"settings.language" = "Idioma";
+"settings.restart_required" = "Reinicia la app para aplicar el cambio de idioma";
+
+"settings.sign_out" = "Cerrar sesión";
+"settings.sync_description" = "Inicia sesión para sincronizar tus datos entre dispositivos";
+
+"settings.pro_badge" = "ClipArc Pro";
+"settings.lifetime_license" = "Licencia de por vida";
+"settings.renews_on" = "Se renueva el %@";
+"settings.manage_subscription" = "Gestionar suscripción";
+"settings.upgrade_to_pro" = "Actualizar a Pro";
+"settings.upgrade_description" = "Obtén historial ilimitado del portapapeles y más";
+"settings.restore_purchases" = "Restaurar compras";
+
+"settings.version" = "Versión";
+"settings.about_description" = "Un gestor de portapapeles rápido y sencillo para macOS";
+"settings.website" = "Sitio web";
+"settings.privacy" = "Privacidad";
+"settings.terms" = "Términos";
+
+// MARK: - Clipboard
+"clipboard.empty.title" = "Sin clips aún";
+"clipboard.empty.subtitle" = "Copia algo para comenzar";
+"clipboard.search.placeholder" = "Buscar clips...";
+"clipboard.search.no_results" = "No se encontraron resultados";
+"clipboard.copied" = "Copiado";
+"clipboard.pasted" = "Pegado";
+
+"clipboard.type.text" = "Texto";
+"clipboard.type.image" = "Imagen";
+"clipboard.type.file" = "Archivo";
+"clipboard.type.link" = "Enlace";
+
+// MARK: - Menu Bar
+"menu.show_panel" = "Mostrar ClipArc";
+"menu.preferences" = "Preferencias...";
+"menu.clear_history" = "Borrar historial";
+"menu.quit" = "Salir de ClipArc";
+
+// MARK: - Errors
+"error.generic" = "Ocurrió un error. Por favor, inténtalo de nuevo.";
+"error.auth_failed" = "Falló la autenticación. Por favor, inténtalo de nuevo.";
+"error.purchase_failed" = "Falló la compra. Por favor, inténtalo de nuevo.";
+"error.network" = "Error de red. Por favor, verifica tu conexión.";
+
+// MARK: - Time
+"time.just_now" = "Ahora mismo";
+"time.minutes_ago" = "Hace %d min";
+"time.hours_ago" = "Hace %d h";
+"time.yesterday" = "Ayer";
+"time.days_ago" = "Hace %d días";

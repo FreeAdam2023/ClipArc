@@ -1,0 +1,138 @@
+/*
+  Localizable.strings (English)
+  ClipArc
+
+  Created by Adam Lyu on 2026-01-22.
+*/
+
+// MARK: - Common
+"app.name" = "ClipArc";
+"common.enable" = "Enable";
+"common.disable" = "Disable";
+"common.cancel" = "Cancel";
+"common.done" = "Done";
+"common.save" = "Save";
+"common.delete" = "Delete";
+"common.copy" = "Copy";
+"common.paste" = "Paste";
+"common.search" = "Search";
+"common.settings" = "Settings";
+"common.continue" = "Continue";
+"common.skip" = "Skip";
+"common.skip_for_now" = "Skip for now";
+
+// MARK: - Language
+"language.system" = "System Default";
+
+// MARK: - Onboarding Welcome
+"onboarding.welcome.title" = "Welcome to ClipArc";
+"onboarding.welcome.subtitle" = "Your smart clipboard manager for macOS";
+"onboarding.welcome.get_started" = "Get Started";
+
+// MARK: - Onboarding Features
+"onboarding.feature.history.title" = "Clipboard History";
+"onboarding.feature.history.description" = "Access everything you've copied";
+"onboarding.feature.search.title" = "Instant Search";
+"onboarding.feature.search.description" = "Find any clip in seconds";
+"onboarding.feature.hotkey.title" = "Global Hotkey";
+"onboarding.feature.hotkey.description" = "⇧⌘V from anywhere";
+
+// MARK: - Onboarding Permissions
+"onboarding.permissions.title" = "Permissions";
+"onboarding.permissions.subtitle" = "ClipArc needs a few permissions to work its magic";
+"onboarding.permissions.accessibility.title" = "Accessibility";
+"onboarding.permissions.accessibility.description" = "Required to auto-paste content";
+"onboarding.permissions.launch_at_login.title" = "Launch at Login";
+"onboarding.permissions.launch_at_login.description" = "Start ClipArc automatically";
+
+// MARK: - Onboarding Sign In
+"onboarding.signin.title" = "Sign In";
+"onboarding.signin.subtitle" = "Sign in with Apple to sync across devices";
+"onboarding.signin.signed_in_as" = "Signed in as";
+"onboarding.signin.sign_in_later" = "You can sign in later in Settings";
+
+// MARK: - Onboarding Subscription
+"onboarding.subscription.title" = "Upgrade to Pro";
+"onboarding.subscription.subtitle" = "Unlock unlimited clipboard history";
+"onboarding.subscription.subscribe" = "Subscribe";
+"onboarding.subscription.start_free_trial" = "Start Free Trial";
+"onboarding.subscription.free_vs_pro" = "Free: 5 items · Pro: Unlimited";
+"onboarding.subscription.you_are_pro" = "You're a Pro!";
+"onboarding.subscription.save_44" = "SAVE 44%";
+
+// MARK: - Onboarding Complete
+"onboarding.complete.title" = "You're All Set!";
+"onboarding.complete.subtitle" = "ClipArc is ready to use";
+"onboarding.complete.start_using" = "Start Using ClipArc";
+"onboarding.complete.tip.open" = "Open clipboard history";
+"onboarding.complete.tip.navigate" = "Navigate items";
+"onboarding.complete.tip.paste" = "Paste selected item";
+"onboarding.complete.tip.close" = "Close panel";
+
+// MARK: - Settings
+"settings.title" = "Settings";
+"settings.general" = "General";
+"settings.account" = "Account";
+"settings.subscription" = "Subscription";
+"settings.about" = "About";
+
+"settings.history_limit" = "History Limit";
+"settings.items" = "items";
+"settings.startup" = "Startup";
+"settings.launch_at_login" = "Launch at Login";
+"settings.show_in_dock" = "Show in Dock";
+"settings.hotkey" = "Hotkey";
+"settings.global_hotkey" = "Global Hotkey";
+"settings.permissions" = "Permissions";
+"settings.granted" = "Granted";
+"settings.language" = "Language";
+"settings.restart_required" = "Restart app to apply language change";
+
+"settings.sign_out" = "Sign Out";
+"settings.sync_description" = "Sign in to sync your data across devices";
+
+"settings.pro_badge" = "ClipArc Pro";
+"settings.lifetime_license" = "Lifetime License";
+"settings.renews_on" = "Renews %@";
+"settings.manage_subscription" = "Manage Subscription";
+"settings.upgrade_to_pro" = "Upgrade to Pro";
+"settings.upgrade_description" = "Get unlimited clipboard history and more";
+"settings.restore_purchases" = "Restore Purchases";
+
+"settings.version" = "Version";
+"settings.about_description" = "A fast and simple clipboard manager for macOS";
+"settings.website" = "Website";
+"settings.privacy" = "Privacy";
+"settings.terms" = "Terms";
+
+// MARK: - Clipboard
+"clipboard.empty.title" = "No Clips Yet";
+"clipboard.empty.subtitle" = "Copy something to get started";
+"clipboard.search.placeholder" = "Search clips...";
+"clipboard.search.no_results" = "No results found";
+"clipboard.copied" = "Copied";
+"clipboard.pasted" = "Pasted";
+
+"clipboard.type.text" = "Text";
+"clipboard.type.image" = "Image";
+"clipboard.type.file" = "File";
+"clipboard.type.link" = "Link";
+
+// MARK: - Menu Bar
+"menu.show_panel" = "Show ClipArc";
+"menu.preferences" = "Preferences...";
+"menu.clear_history" = "Clear History";
+"menu.quit" = "Quit ClipArc";
+
+// MARK: - Errors
+"error.generic" = "An error occurred. Please try again.";
+"error.auth_failed" = "Authentication failed. Please try again.";
+"error.purchase_failed" = "Purchase failed. Please try again.";
+"error.network" = "Network error. Please check your connection.";
+
+// MARK: - Time
+"time.just_now" = "Just now";
+"time.minutes_ago" = "%d min ago";
+"time.hours_ago" = "%d hr ago";
+"time.yesterday" = "Yesterday";
+"time.days_ago" = "%d days ago";

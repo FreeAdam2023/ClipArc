@@ -1,0 +1,138 @@
+/*
+  Localizable.strings (Italiano)
+  ClipArc
+
+  Created by Adam Lyu on 2026-01-22.
+*/
+
+// MARK: - Common
+"app.name" = "ClipArc";
+"common.enable" = "Attiva";
+"common.disable" = "Disattiva";
+"common.cancel" = "Annulla";
+"common.done" = "Fatto";
+"common.save" = "Salva";
+"common.delete" = "Elimina";
+"common.copy" = "Copia";
+"common.paste" = "Incolla";
+"common.search" = "Cerca";
+"common.settings" = "Impostazioni";
+"common.continue" = "Continua";
+"common.skip" = "Salta";
+"common.skip_for_now" = "Salta per ora";
+
+// MARK: - Language
+"language.system" = "Predefinito di sistema";
+
+// MARK: - Onboarding Welcome
+"onboarding.welcome.title" = "Benvenuto in ClipArc";
+"onboarding.welcome.subtitle" = "Il tuo gestore intelligente degli appunti per macOS";
+"onboarding.welcome.get_started" = "Inizia";
+
+// MARK: - Onboarding Features
+"onboarding.feature.history.title" = "Cronologia appunti";
+"onboarding.feature.history.description" = "Accedi a tutto ciò che hai copiato";
+"onboarding.feature.search.title" = "Ricerca istantanea";
+"onboarding.feature.search.description" = "Trova qualsiasi clip in pochi secondi";
+"onboarding.feature.hotkey.title" = "Tasto di scelta rapida globale";
+"onboarding.feature.hotkey.description" = "⇧⌘V da qualsiasi luogo";
+
+// MARK: - Onboarding Permissions
+"onboarding.permissions.title" = "Permessi";
+"onboarding.permissions.subtitle" = "ClipArc ha bisogno di alcuni permessi per funzionare correttamente";
+"onboarding.permissions.accessibility.title" = "Accessibilità";
+"onboarding.permissions.accessibility.description" = "Necessario per incollare automaticamente";
+"onboarding.permissions.launch_at_login.title" = "Avvia al login";
+"onboarding.permissions.launch_at_login.description" = "Avvia ClipArc automaticamente";
+
+// MARK: - Onboarding Sign In
+"onboarding.signin.title" = "Accedi";
+"onboarding.signin.subtitle" = "Accedi con Apple per sincronizzare tra dispositivi";
+"onboarding.signin.signed_in_as" = "Connesso come";
+"onboarding.signin.sign_in_later" = "Puoi accedere più tardi nelle Impostazioni";
+
+// MARK: - Onboarding Subscription
+"onboarding.subscription.title" = "Passa a Pro";
+"onboarding.subscription.subtitle" = "Sblocca cronologia appunti illimitata";
+"onboarding.subscription.subscribe" = "Abbonati";
+"onboarding.subscription.start_free_trial" = "Inizia la prova gratuita";
+"onboarding.subscription.free_vs_pro" = "Gratis: 5 elementi · Pro: Illimitato";
+"onboarding.subscription.you_are_pro" = "Sei Pro!";
+"onboarding.subscription.save_44" = "RISPARMIA 44%";
+
+// MARK: - Onboarding Complete
+"onboarding.complete.title" = "Tutto pronto!";
+"onboarding.complete.subtitle" = "ClipArc è pronto all'uso";
+"onboarding.complete.start_using" = "Inizia a usare ClipArc";
+"onboarding.complete.tip.open" = "Apri cronologia appunti";
+"onboarding.complete.tip.navigate" = "Naviga tra gli elementi";
+"onboarding.complete.tip.paste" = "Incolla elemento selezionato";
+"onboarding.complete.tip.close" = "Chiudi pannello";
+
+// MARK: - Settings
+"settings.title" = "Impostazioni";
+"settings.general" = "Generale";
+"settings.account" = "Account";
+"settings.subscription" = "Abbonamento";
+"settings.about" = "Info";
+
+"settings.history_limit" = "Limite cronologia";
+"settings.items" = "elementi";
+"settings.startup" = "Avvio";
+"settings.launch_at_login" = "Avvia al login";
+"settings.show_in_dock" = "Mostra nel Dock";
+"settings.hotkey" = "Scorciatoia";
+"settings.global_hotkey" = "Scorciatoia globale";
+"settings.permissions" = "Permessi";
+"settings.granted" = "Concesso";
+"settings.language" = "Lingua";
+"settings.restart_required" = "Riavvia l'app per applicare il cambio di lingua";
+
+"settings.sign_out" = "Esci";
+"settings.sync_description" = "Accedi per sincronizzare i tuoi dati tra dispositivi";
+
+"settings.pro_badge" = "ClipArc Pro";
+"settings.lifetime_license" = "Licenza a vita";
+"settings.renews_on" = "Rinnovo il %@";
+"settings.manage_subscription" = "Gestisci abbonamento";
+"settings.upgrade_to_pro" = "Passa a Pro";
+"settings.upgrade_description" = "Ottieni cronologia appunti illimitata e altro";
+"settings.restore_purchases" = "Ripristina acquisti";
+
+"settings.version" = "Versione";
+"settings.about_description" = "Un gestore degli appunti veloce e semplice per macOS";
+"settings.website" = "Sito web";
+"settings.privacy" = "Privacy";
+"settings.terms" = "Termini";
+
+// MARK: - Clipboard
+"clipboard.empty.title" = "Nessun clip ancora";
+"clipboard.empty.subtitle" = "Copia qualcosa per iniziare";
+"clipboard.search.placeholder" = "Cerca clip...";
+"clipboard.search.no_results" = "Nessun risultato trovato";
+"clipboard.copied" = "Copiato";
+"clipboard.pasted" = "Incollato";
+
+"clipboard.type.text" = "Testo";
+"clipboard.type.image" = "Immagine";
+"clipboard.type.file" = "File";
+"clipboard.type.link" = "Link";
+
+// MARK: - Menu Bar
+"menu.show_panel" = "Mostra ClipArc";
+"menu.preferences" = "Preferenze...";
+"menu.clear_history" = "Cancella cronologia";
+"menu.quit" = "Esci da ClipArc";
+
+// MARK: - Errors
+"error.generic" = "Si è verificato un errore. Riprova.";
+"error.auth_failed" = "Autenticazione fallita. Riprova.";
+"error.purchase_failed" = "Acquisto fallito. Riprova.";
+"error.network" = "Errore di rete. Controlla la tua connessione.";
+
+// MARK: - Time
+"time.just_now" = "Proprio ora";
+"time.minutes_ago" = "%d min fa";
+"time.hours_ago" = "%d ore fa";
+"time.yesterday" = "Ieri";
+"time.days_ago" = "%d giorni fa";

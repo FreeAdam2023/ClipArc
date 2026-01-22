@@ -1,0 +1,138 @@
+/*
+  Localizable.strings (हिन्दी)
+  ClipArc
+
+  Created by Adam Lyu on 2026-01-22.
+*/
+
+// MARK: - Common
+"app.name" = "ClipArc";
+"common.enable" = "सक्षम करें";
+"common.disable" = "अक्षम करें";
+"common.cancel" = "रद्द करें";
+"common.done" = "हो गया";
+"common.save" = "सहेजें";
+"common.delete" = "हटाएं";
+"common.copy" = "कॉपी";
+"common.paste" = "पेस्ट";
+"common.search" = "खोजें";
+"common.settings" = "सेटिंग्स";
+"common.continue" = "जारी रखें";
+"common.skip" = "छोड़ें";
+"common.skip_for_now" = "अभी के लिए छोड़ें";
+
+// MARK: - Language
+"language.system" = "सिस्टम डिफ़ॉल्ट";
+
+// MARK: - Onboarding Welcome
+"onboarding.welcome.title" = "ClipArc में आपका स्वागत है";
+"onboarding.welcome.subtitle" = "macOS के लिए आपका स्मार्ट क्लिपबोर्ड मैनेजर";
+"onboarding.welcome.get_started" = "शुरू करें";
+
+// MARK: - Onboarding Features
+"onboarding.feature.history.title" = "क्लिपबोर्ड इतिहास";
+"onboarding.feature.history.description" = "आपने जो भी कॉपी किया है उसे एक्सेस करें";
+"onboarding.feature.search.title" = "तुरंत खोज";
+"onboarding.feature.search.description" = "किसी भी क्लिप को सेकंडों में खोजें";
+"onboarding.feature.hotkey.title" = "ग्लोबल हॉटकी";
+"onboarding.feature.hotkey.description" = "कहीं से भी ⇧⌘V";
+
+// MARK: - Onboarding Permissions
+"onboarding.permissions.title" = "अनुमतियां";
+"onboarding.permissions.subtitle" = "ClipArc को सही से काम करने के लिए कुछ अनुमतियों की आवश्यकता है";
+"onboarding.permissions.accessibility.title" = "एक्सेसिबिलिटी";
+"onboarding.permissions.accessibility.description" = "ऑटो-पेस्ट के लिए आवश्यक";
+"onboarding.permissions.launch_at_login.title" = "लॉगिन पर लॉन्च करें";
+"onboarding.permissions.launch_at_login.description" = "ClipArc को स्वचालित रूप से शुरू करें";
+
+// MARK: - Onboarding Sign In
+"onboarding.signin.title" = "साइन इन करें";
+"onboarding.signin.subtitle" = "डिवाइसों में सिंक करने के लिए Apple से साइन इन करें";
+"onboarding.signin.signed_in_as" = "के रूप में साइन इन किया";
+"onboarding.signin.sign_in_later" = "आप बाद में सेटिंग्स में साइन इन कर सकते हैं";
+
+// MARK: - Onboarding Subscription
+"onboarding.subscription.title" = "Pro में अपग्रेड करें";
+"onboarding.subscription.subtitle" = "असीमित क्लिपबोर्ड इतिहास अनलॉक करें";
+"onboarding.subscription.subscribe" = "सब्सक्राइब करें";
+"onboarding.subscription.start_free_trial" = "निःशुल्क परीक्षण शुरू करें";
+"onboarding.subscription.free_vs_pro" = "फ्री: 5 आइटम · Pro: असीमित";
+"onboarding.subscription.you_are_pro" = "आप Pro हैं!";
+"onboarding.subscription.save_44" = "44% बचाएं";
+
+// MARK: - Onboarding Complete
+"onboarding.complete.title" = "सब तैयार है!";
+"onboarding.complete.subtitle" = "ClipArc उपयोग के लिए तैयार है";
+"onboarding.complete.start_using" = "ClipArc का उपयोग शुरू करें";
+"onboarding.complete.tip.open" = "क्लिपबोर्ड इतिहास खोलें";
+"onboarding.complete.tip.navigate" = "आइटम नेविगेट करें";
+"onboarding.complete.tip.paste" = "चयनित आइटम पेस्ट करें";
+"onboarding.complete.tip.close" = "पैनल बंद करें";
+
+// MARK: - Settings
+"settings.title" = "सेटिंग्स";
+"settings.general" = "सामान्य";
+"settings.account" = "खाता";
+"settings.subscription" = "सदस्यता";
+"settings.about" = "के बारे में";
+
+"settings.history_limit" = "इतिहास सीमा";
+"settings.items" = "आइटम";
+"settings.startup" = "स्टार्टअप";
+"settings.launch_at_login" = "लॉगिन पर लॉन्च करें";
+"settings.show_in_dock" = "Dock में दिखाएं";
+"settings.hotkey" = "शॉर्टकट";
+"settings.global_hotkey" = "ग्लोबल शॉर्टकट";
+"settings.permissions" = "अनुमतियां";
+"settings.granted" = "अनुमति दी गई";
+"settings.language" = "भाषा";
+"settings.restart_required" = "भाषा परिवर्तन लागू करने के लिए ऐप को पुनः आरंभ करें";
+
+"settings.sign_out" = "साइन आउट";
+"settings.sync_description" = "डिवाइसों में अपना डेटा सिंक करने के लिए साइन इन करें";
+
+"settings.pro_badge" = "ClipArc Pro";
+"settings.lifetime_license" = "आजीवन लाइसेंस";
+"settings.renews_on" = "%@ को नवीनीकरण";
+"settings.manage_subscription" = "सदस्यता प्रबंधित करें";
+"settings.upgrade_to_pro" = "Pro में अपग्रेड करें";
+"settings.upgrade_description" = "असीमित क्लिपबोर्ड इतिहास और अधिक प्राप्त करें";
+"settings.restore_purchases" = "खरीदारी पुनर्स्थापित करें";
+
+"settings.version" = "संस्करण";
+"settings.about_description" = "macOS के लिए एक तेज़ और सरल क्लिपबोर्ड मैनेजर";
+"settings.website" = "वेबसाइट";
+"settings.privacy" = "गोपनीयता";
+"settings.terms" = "शर्तें";
+
+// MARK: - Clipboard
+"clipboard.empty.title" = "अभी कोई क्लिप नहीं";
+"clipboard.empty.subtitle" = "शुरू करने के लिए कुछ कॉपी करें";
+"clipboard.search.placeholder" = "क्लिप खोजें...";
+"clipboard.search.no_results" = "कोई परिणाम नहीं मिला";
+"clipboard.copied" = "कॉपी किया गया";
+"clipboard.pasted" = "पेस्ट किया गया";
+
+"clipboard.type.text" = "टेक्स्ट";
+"clipboard.type.image" = "छवि";
+"clipboard.type.file" = "फ़ाइल";
+"clipboard.type.link" = "लिंक";
+
+// MARK: - Menu Bar
+"menu.show_panel" = "ClipArc दिखाएं";
+"menu.preferences" = "प्राथमिकताएं...";
+"menu.clear_history" = "इतिहास साफ़ करें";
+"menu.quit" = "ClipArc छोड़ें";
+
+// MARK: - Errors
+"error.generic" = "एक त्रुटि हुई। कृपया पुनः प्रयास करें।";
+"error.auth_failed" = "प्रमाणीकरण विफल। कृपया पुनः प्रयास करें।";
+"error.purchase_failed" = "खरीदारी विफल। कृपया पुनः प्रयास करें।";
+"error.network" = "नेटवर्क त्रुटि। कृपया अपना कनेक्शन जांचें।";
+
+// MARK: - Time
+"time.just_now" = "अभी";
+"time.minutes_ago" = "%d मिनट पहले";
+"time.hours_ago" = "%d घंटे पहले";
+"time.yesterday" = "कल";
+"time.days_ago" = "%d दिन पहले";
