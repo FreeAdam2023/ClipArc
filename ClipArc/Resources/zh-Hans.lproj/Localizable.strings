@@ -92,6 +92,12 @@
 
 "settings.sign_out" = "退出登录";
 "settings.sync_description" = "登录以跨设备同步数据";
+"settings.member_account" = "会员账户";
+"settings.sign_in_description" = "登录以验证会员身份";
+"settings.account_linked" = "账户已关联";
+"settings.benefit_membership" = "验证专业版会员";
+"settings.benefit_restore" = "轻松恢复购买";
+"settings.benefit_multi_device" = "多设备使用同一账户";
 
 "settings.pro_badge" = "ClipArc 专业版";
 "settings.lifetime_license" = "终身授权";

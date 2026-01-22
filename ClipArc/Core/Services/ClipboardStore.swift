@@ -15,22 +15,12 @@ final class ClipboardStore: ObservableObject {
     private let proHistoryLimit: Int
     static let freeHistoryLimit = 9
 
-    // Content size limits (in bytes)
-    static let freeMaxContentSize = 50 * 1024      // 50 KB for free users
-    static let proMaxContentSize = 500 * 1024     // 500 KB for pro users
-
-    // Image size limits (in bytes)
-    static let freeMaxImageSize = 500 * 1024       // 500 KB for free users
-    static let proMaxImageSize = 5 * 1024 * 1024   // 5 MB for pro users
+    // Content size limit for text (in bytes)
+    static let maxContentSize = 1 * 1024 * 1024    // 1 MB for text content
 
     /// Returns the effective history limit based on subscription status
     private var effectiveLimit: Int {
         SubscriptionManager.shared.isPro ? proHistoryLimit : Self.freeHistoryLimit
-    }
-
-    /// Returns the effective max content size based on subscription status
-    private var effectiveMaxContentSize: Int {
-        SubscriptionManager.shared.isPro ? Self.proMaxContentSize : Self.freeMaxContentSize
     }
 
     init(modelContext: ModelContext, historyLimit: Int = 100) {
@@ -43,8 +33,8 @@ final class ClipboardStore: ObservableObject {
     func add(content: String, type: ClipboardItemType, sourceAppBundleID: String? = nil, sourceAppName: String? = nil) -> ClipboardItem? {
         // Check content size - skip if too large
         let contentSize = content.utf8.count
-        guard contentSize <= effectiveMaxContentSize else {
-            print("[ClipboardStore] Content too large (\(contentSize) bytes), skipping. Limit: \(effectiveMaxContentSize) bytes")
+        guard contentSize <= Self.maxContentSize else {
+            print("[ClipboardStore] Content too large (\(contentSize) bytes), skipping. Limit: \(Self.maxContentSize) bytes")
             return nil
         }
 
@@ -73,13 +63,6 @@ final class ClipboardStore: ObservableObject {
 
     /// Add image content to the store
     func addImage(data: Data, width: Int, height: Int, sourceAppBundleID: String? = nil, sourceAppName: String? = nil) {
-        // Check image size limit
-        let maxImageSize = SubscriptionManager.shared.isPro ? Self.proMaxImageSize : Self.freeMaxImageSize
-        guard data.count <= maxImageSize else {
-            print("[ClipboardStore] Image too large (\(data.count) bytes), skipping. Limit: \(maxImageSize) bytes")
-            return
-        }
-
         let hash = ClipboardItem.computeHashFromData(data)
 
         if let existing = findByHash(hash) {

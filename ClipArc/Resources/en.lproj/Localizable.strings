@@ -92,6 +92,12 @@
 
 "settings.sign_out" = "Sign Out";
 "settings.sync_description" = "Sign in to sync your data across devices";
+"settings.member_account" = "Member Account";
+"settings.sign_in_description" = "Sign in to verify your membership";
+"settings.account_linked" = "Account Linked";
+"settings.benefit_membership" = "Verify Pro membership";
+"settings.benefit_restore" = "Restore purchases easily";
+"settings.benefit_multi_device" = "Same account across devices";
 
 "settings.pro_badge" = "ClipArc Pro";
 "settings.lifetime_license" = "Lifetime License";

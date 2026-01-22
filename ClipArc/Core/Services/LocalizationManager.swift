@@ -209,6 +209,12 @@ enum L10n {
 
         static var signOut: String { "settings.sign_out".localized }
         static var syncDescription: String { "settings.sync_description".localized }
+        static var memberAccount: String { "settings.member_account".localized }
+        static var signInDescription: String { "settings.sign_in_description".localized }
+        static var accountLinked: String { "settings.account_linked".localized }
+        static var benefitMembership: String { "settings.benefit_membership".localized }
+        static var benefitRestore: String { "settings.benefit_restore".localized }
+        static var benefitMultiDevice: String { "settings.benefit_multi_device".localized }
 
         static var proBadge: String { "settings.pro_badge".localized }
         static var lifetimeLicense: String { "settings.lifetime_license".localized }

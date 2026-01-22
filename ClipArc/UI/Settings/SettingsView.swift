@@ -268,11 +268,11 @@ struct AccountSettingsView: View {
                         }
                     }
 
-                    // Sync status
+                    // Account status
                     HStack(spacing: 6) {
-                        Image(systemName: "checkmark.icloud.fill")
+                        Image(systemName: "checkmark.circle.fill")
                             .foregroundStyle(.green)
-                        Text("Synced")
+                        Text(L10n.Settings.accountLinked)
                             .font(.caption)
                             .foregroundStyle(.secondary)
                     }
@@ -307,18 +307,18 @@ struct AccountSettingsView: View {
                             .fill(Color.accentColor.opacity(0.1))
                             .frame(width: 80, height: 80)
 
-                        Image(systemName: "icloud.and.arrow.up")
+                        Image(systemName: "person.crop.circle.badge.checkmark")
                             .font(.system(size: 36))
                             .foregroundStyle(Color.accentColor)
                     }
 
                     // Title and description
                     VStack(spacing: 8) {
-                        Text("iCloud Sync")
+                        Text(L10n.Settings.memberAccount)
                             .font(.title2)
                             .fontWeight(.semibold)
 
-                        Text(L10n.Settings.syncDescription)
+                        Text(L10n.Settings.signInDescription)
                             .font(.subheadline)
                             .foregroundStyle(.secondary)
                             .multilineTextAlignment(.center)
@@ -326,9 +326,9 @@ struct AccountSettingsView: View {
 
                     // Benefits list
                     VStack(alignment: .leading, spacing: 12) {
-                        AccountBenefitRow(icon: "arrow.triangle.2.circlepath", text: "Sync clipboard across all devices")
-                        AccountBenefitRow(icon: "lock.shield", text: "End-to-end encryption")
-                        AccountBenefitRow(icon: "arrow.clockwise.icloud", text: "Automatic backup")
+                        AccountBenefitRow(icon: "crown", text: L10n.Settings.benefitMembership)
+                        AccountBenefitRow(icon: "arrow.down.circle", text: L10n.Settings.benefitRestore)
+                        AccountBenefitRow(icon: "apps.iphone", text: L10n.Settings.benefitMultiDevice)
                     }
                     .padding(.vertical, 8)
 
@@ -421,6 +421,7 @@ struct SubscriptionSettingsView: View {
             }
             .padding(24)
         }
+        .scrollIndicators(.hidden)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 
