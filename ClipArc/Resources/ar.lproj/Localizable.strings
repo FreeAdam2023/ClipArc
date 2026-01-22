@@ -20,6 +20,8 @@
 "common.continue" = "متابعة";
 "common.skip" = "تخطي";
 "common.skip_for_now" = "تخطي الآن";
+"common.edit" = "تعديل";
+"common.select_all" = "تحديد الكل";
 
 // MARK: - Language
 "language.system" = "افتراضي النظام";
@@ -56,7 +58,7 @@
 "onboarding.subscription.subtitle" = "افتح سجل حافظة غير محدود";
 "onboarding.subscription.subscribe" = "اشتراك";
 "onboarding.subscription.start_free_trial" = "ابدأ التجربة المجانية";
-"onboarding.subscription.free_vs_pro" = "مجاني: 5 عناصر · Pro: غير محدود";
+"onboarding.subscription.free_vs_pro" = "مجاني: 9 عناصر · Pro: غير محدود";
 "onboarding.subscription.you_are_pro" = "أنت Pro!";
 "onboarding.subscription.save_44" = "وفّر 44%";
 
@@ -113,10 +115,13 @@
 "clipboard.copied" = "تم النسخ";
 "clipboard.pasted" = "تم اللصق";
 
+"clipboard.type.all" = "الكل";
+"clipboard.type.frequent" = "متكرر";
 "clipboard.type.text" = "نص";
 "clipboard.type.image" = "صورة";
 "clipboard.type.file" = "ملف";
 "clipboard.type.link" = "رابط";
+"clipboard.delete_selected" = "حذف المحدد";
 
 // MARK: - Menu Bar
 "menu.show_panel" = "إظهار ClipArc";
@@ -136,3 +141,6 @@
 "time.hours_ago" = "منذ %d س";
 "time.yesterday" = "أمس";
 "time.days_ago" = "منذ %d أيام";
+
+// MARK: - Toast
+"toast.running" = "يعمل في الخلفية";

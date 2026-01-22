@@ -13,6 +13,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     private var panelController: FloatingPanelController?
     private var hotkeyManager: HotkeyManager?
     private var onboardingWindow: NSWindow?
+    private var startupToast: StartupToastController?
 
     let appState = AppState()
     var modelContainer: ModelContainer?
@@ -25,10 +26,17 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
         NSApp.setActivationPolicy(.accessory)
 
-        // Show onboarding if first launch
+        // Show onboarding if first launch, otherwise show startup toast
         if !appState.hasCompletedOnboarding {
             showOnboarding()
+        } else {
+            showStartupToast()
         }
+    }
+
+    private func showStartupToast() {
+        startupToast = StartupToastController()
+        startupToast?.show()
     }
 
     func applicationWillTerminate(_ notification: Notification) {
@@ -74,10 +82,23 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             name: .showClipboardPanel,
             object: nil
         )
+
+        // Re-check hotkey when app becomes active (user might have granted accessibility)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(applicationDidBecomeActive),
+            name: NSApplication.didBecomeActiveNotification,
+            object: nil
+        )
     }
 
     @objc private func showPanelNotification() {
         showPanel()
+    }
+
+    @objc private func applicationDidBecomeActive() {
+        // Refresh hotkey registration in case accessibility permission was just granted
+        hotkeyManager?.refreshAfterPermissionChange()
     }
 
     private func togglePanel() {

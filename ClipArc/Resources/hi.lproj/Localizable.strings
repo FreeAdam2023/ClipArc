@@ -20,6 +20,8 @@
 "common.continue" = "जारी रखें";
 "common.skip" = "छोड़ें";
 "common.skip_for_now" = "अभी के लिए छोड़ें";
+"common.edit" = "संपादित करें";
+"common.select_all" = "सभी चुनें";
 
 // MARK: - Language
 "language.system" = "सिस्टम डिफ़ॉल्ट";
@@ -56,7 +58,7 @@
 "onboarding.subscription.subtitle" = "असीमित क्लिपबोर्ड इतिहास अनलॉक करें";
 "onboarding.subscription.subscribe" = "सब्सक्राइब करें";
 "onboarding.subscription.start_free_trial" = "निःशुल्क परीक्षण शुरू करें";
-"onboarding.subscription.free_vs_pro" = "फ्री: 5 आइटम · Pro: असीमित";
+"onboarding.subscription.free_vs_pro" = "फ्री: 9 आइटम · Pro: असीमित";
 "onboarding.subscription.you_are_pro" = "आप Pro हैं!";
 "onboarding.subscription.save_44" = "44% बचाएं";
 
@@ -113,10 +115,13 @@
 "clipboard.copied" = "कॉपी किया गया";
 "clipboard.pasted" = "पेस्ट किया गया";
 
+"clipboard.type.all" = "सभी";
+"clipboard.type.frequent" = "बारंबार";
 "clipboard.type.text" = "टेक्स्ट";
 "clipboard.type.image" = "छवि";
 "clipboard.type.file" = "फ़ाइल";
 "clipboard.type.link" = "लिंक";
+"clipboard.delete_selected" = "चयनित हटाएं";
 
 // MARK: - Menu Bar
 "menu.show_panel" = "ClipArc दिखाएं";
@@ -136,3 +141,6 @@
 "time.hours_ago" = "%d घंटे पहले";
 "time.yesterday" = "कल";
 "time.days_ago" = "%d दिन पहले";
+
+// MARK: - Toast
+"toast.running" = "बैकग्राउंड में चल रहा है";

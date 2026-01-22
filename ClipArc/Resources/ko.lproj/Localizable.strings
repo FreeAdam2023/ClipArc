@@ -20,6 +20,8 @@
 "common.continue" = "계속";
 "common.skip" = "건너뛰기";
 "common.skip_for_now" = "지금은 건너뛰기";
+"common.edit" = "편집";
+"common.select_all" = "모두 선택";
 
 // MARK: - Language
 "language.system" = "시스템 기본값";
@@ -56,7 +58,7 @@
 "onboarding.subscription.subtitle" = "무제한 클립보드 기록 잠금 해제";
 "onboarding.subscription.subscribe" = "구독하기";
 "onboarding.subscription.start_free_trial" = "무료 체험 시작";
-"onboarding.subscription.free_vs_pro" = "무료: 5개 · Pro: 무제한";
+"onboarding.subscription.free_vs_pro" = "무료: 9개 · Pro: 무제한";
 "onboarding.subscription.you_are_pro" = "Pro 사용자입니다!";
 "onboarding.subscription.save_44" = "44% 절약";
 
@@ -113,10 +115,13 @@
 "clipboard.copied" = "복사됨";
 "clipboard.pasted" = "붙여넣기됨";
 
+"clipboard.type.all" = "전체";
+"clipboard.type.frequent" = "자주 사용";
 "clipboard.type.text" = "텍스트";
 "clipboard.type.image" = "이미지";
 "clipboard.type.file" = "파일";
 "clipboard.type.link" = "링크";
+"clipboard.delete_selected" = "선택 항목 삭제";
 
 // MARK: - Menu Bar
 "menu.show_panel" = "ClipArc 표시";
@@ -136,3 +141,6 @@
 "time.hours_ago" = "%d시간 전";
 "time.yesterday" = "어제";
 "time.days_ago" = "%d일 전";
+
+// MARK: - Toast
+"toast.running" = "백그라운드에서 실행 중";

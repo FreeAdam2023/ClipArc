@@ -20,6 +20,8 @@
 "common.continue" = "Продолжить";
 "common.skip" = "Пропустить";
 "common.skip_for_now" = "Пропустить пока";
+"common.edit" = "Изменить";
+"common.select_all" = "Выбрать всё";
 
 // MARK: - Language
 "language.system" = "Системный по умолчанию";
@@ -56,7 +58,7 @@
 "onboarding.subscription.subtitle" = "Разблокируйте безлимитную историю буфера обмена";
 "onboarding.subscription.subscribe" = "Подписаться";
 "onboarding.subscription.start_free_trial" = "Начать бесплатный период";
-"onboarding.subscription.free_vs_pro" = "Бесплатно: 5 элементов · Pro: Безлимитно";
+"onboarding.subscription.free_vs_pro" = "Бесплатно: 9 элементов · Pro: Безлимитно";
 "onboarding.subscription.you_are_pro" = "Вы Pro!";
 "onboarding.subscription.save_44" = "СКИДКА 44%";
 
@@ -113,10 +115,13 @@
 "clipboard.copied" = "Скопировано";
 "clipboard.pasted" = "Вставлено";
 
+"clipboard.type.all" = "Все";
+"clipboard.type.frequent" = "Частые";
 "clipboard.type.text" = "Текст";
 "clipboard.type.image" = "Изображение";
 "clipboard.type.file" = "Файл";
 "clipboard.type.link" = "Ссылка";
+"clipboard.delete_selected" = "Удалить выбранное";
 
 // MARK: - Menu Bar
 "menu.show_panel" = "Показать ClipArc";
@@ -136,3 +141,6 @@
 "time.hours_ago" = "%d ч назад";
 "time.yesterday" = "Вчера";
 "time.days_ago" = "%d дн назад";
+
+// MARK: - Toast
+"toast.running" = "Работает в фоне";

@@ -20,6 +20,8 @@
 "common.continue" = "Continue";
 "common.skip" = "Skip";
 "common.skip_for_now" = "Skip for now";
+"common.edit" = "Edit";
+"common.select_all" = "Select All";
 
 // MARK: - Language
 "language.system" = "System Default";
@@ -56,7 +58,7 @@
 "onboarding.subscription.subtitle" = "Unlock unlimited clipboard history";
 "onboarding.subscription.subscribe" = "Subscribe";
 "onboarding.subscription.start_free_trial" = "Start Free Trial";
-"onboarding.subscription.free_vs_pro" = "Free: 5 items · Pro: Unlimited";
+"onboarding.subscription.free_vs_pro" = "Free: 9 items · Pro: Unlimited";
 "onboarding.subscription.you_are_pro" = "You're a Pro!";
 "onboarding.subscription.save_44" = "SAVE 44%";
 
@@ -113,10 +115,13 @@
 "clipboard.copied" = "Copied";
 "clipboard.pasted" = "Pasted";
 
+"clipboard.type.all" = "All";
+"clipboard.type.frequent" = "Frequent";
 "clipboard.type.text" = "Text";
 "clipboard.type.image" = "Image";
 "clipboard.type.file" = "File";
 "clipboard.type.link" = "Link";
+"clipboard.delete_selected" = "Delete Selected";
 
 // MARK: - Menu Bar
 "menu.show_panel" = "Show ClipArc";
@@ -136,3 +141,6 @@
 "time.hours_ago" = "%d hr ago";
 "time.yesterday" = "Yesterday";
 "time.days_ago" = "%d days ago";
+
+// MARK: - Toast
+"toast.running" = "Running in background";

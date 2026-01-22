@@ -115,13 +115,11 @@ final class LocalizationManager {
 // MARK: - String Extension for Localization
 
 extension String {
-    @MainActor
-    var localized: String {
-        LocalizationManager.shared.localizedString(self)
+    nonisolated var localized: String {
+        Bundle.main.localizedString(forKey: self, value: nil, table: nil)
     }
 
-    @MainActor
-    func localized(with arguments: CVarArg...) -> String {
+    nonisolated func localized(with arguments: CVarArg...) -> String {
         String(format: localized, arguments: arguments)
     }
 }
@@ -144,6 +142,8 @@ enum L10n {
     static var continue_: String { "common.continue".localized }
     static var skip: String { "common.skip".localized }
     static var skipForNow: String { "common.skip_for_now".localized }
+    static var edit: String { "common.edit".localized }
+    static var selectAll: String { "common.select_all".localized }
 
     // MARK: - Onboarding
     enum Onboarding {
@@ -234,10 +234,13 @@ enum L10n {
         static var copied: String { "clipboard.copied".localized }
         static var pasted: String { "clipboard.pasted".localized }
 
+        static var typeAll: String { "clipboard.type.all".localized }
+        static var typeFrequent: String { "clipboard.type.frequent".localized }
         static var typeText: String { "clipboard.type.text".localized }
         static var typeImage: String { "clipboard.type.image".localized }
         static var typeFile: String { "clipboard.type.file".localized }
         static var typeLink: String { "clipboard.type.link".localized }
+        static var deleteSelected: String { "clipboard.delete_selected".localized }
     }
 
     // MARK: - Menu Bar
@@ -263,5 +266,10 @@ enum L10n {
         static var hoursAgo: String { "time.hours_ago".localized }
         static var yesterday: String { "time.yesterday".localized }
         static var daysAgo: String { "time.days_ago".localized }
+    }
+
+    // MARK: - Toast
+    enum Toast {
+        static var running: String { "toast.running".localized }
     }
 }

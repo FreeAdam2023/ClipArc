@@ -20,6 +20,8 @@
 "common.continue" = "Continuer";
 "common.skip" = "Ignorer";
 "common.skip_for_now" = "Ignorer pour le moment";
+"common.edit" = "Modifier";
+"common.select_all" = "Tout sélectionner";
 
 // MARK: - Language
 "language.system" = "Par défaut du système";
@@ -56,7 +58,7 @@
 "onboarding.subscription.subtitle" = "Débloquez un historique illimité du presse-papiers";
 "onboarding.subscription.subscribe" = "S'abonner";
 "onboarding.subscription.start_free_trial" = "Commencer l'essai gratuit";
-"onboarding.subscription.free_vs_pro" = "Gratuit : 5 éléments · Pro : Illimité";
+"onboarding.subscription.free_vs_pro" = "Gratuit : 9 éléments · Pro : Illimité";
 "onboarding.subscription.you_are_pro" = "Vous êtes Pro !";
 "onboarding.subscription.save_44" = "ÉCONOMISEZ 44%";
 
@@ -113,10 +115,13 @@
 "clipboard.copied" = "Copié";
 "clipboard.pasted" = "Collé";
 
+"clipboard.type.all" = "Tout";
+"clipboard.type.frequent" = "Fréquent";
 "clipboard.type.text" = "Texte";
 "clipboard.type.image" = "Image";
 "clipboard.type.file" = "Fichier";
 "clipboard.type.link" = "Lien";
+"clipboard.delete_selected" = "Supprimer la sélection";
 
 // MARK: - Menu Bar
 "menu.show_panel" = "Afficher ClipArc";
@@ -136,3 +141,6 @@
 "time.hours_ago" = "Il y a %d h";
 "time.yesterday" = "Hier";
 "time.days_ago" = "Il y a %d jours";
+
+// MARK: - Toast
+"toast.running" = "Fonctionne en arrière-plan";

@@ -20,6 +20,8 @@
 "common.continue" = "继续";
 "common.skip" = "跳过";
 "common.skip_for_now" = "暂时跳过";
+"common.edit" = "编辑";
+"common.select_all" = "全选";
 
 // MARK: - Language
 "language.system" = "跟随系统";
@@ -56,7 +58,7 @@
 "onboarding.subscription.subtitle" = "解锁无限剪贴板历史记录";
 "onboarding.subscription.subscribe" = "订阅";
 "onboarding.subscription.start_free_trial" = "开始免费试用";
-"onboarding.subscription.free_vs_pro" = "免费版: 5 条记录 · 专业版: 无限";
+"onboarding.subscription.free_vs_pro" = "免费版: 9 条记录 · 专业版: 无限";
 "onboarding.subscription.you_are_pro" = "您已是专业版用户！";
 "onboarding.subscription.save_44" = "节省 44%";
 
@@ -113,10 +115,13 @@
 "clipboard.copied" = "已复制";
 "clipboard.pasted" = "已粘贴";
 
+"clipboard.type.all" = "全部";
+"clipboard.type.frequent" = "常用";
 "clipboard.type.text" = "文本";
 "clipboard.type.image" = "图片";
 "clipboard.type.file" = "文件";
 "clipboard.type.link" = "链接";
+"clipboard.delete_selected" = "删除所选";
 
 // MARK: - Menu Bar
 "menu.show_panel" = "显示 ClipArc";
@@ -136,3 +141,6 @@
 "time.hours_ago" = "%d 小时前";
 "time.yesterday" = "昨天";
 "time.days_ago" = "%d 天前";
+
+// MARK: - Toast
+"toast.running" = "正在后台运行";

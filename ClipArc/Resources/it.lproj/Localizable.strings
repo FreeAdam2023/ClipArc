@@ -20,6 +20,8 @@
 "common.continue" = "Continua";
 "common.skip" = "Salta";
 "common.skip_for_now" = "Salta per ora";
+"common.edit" = "Modifica";
+"common.select_all" = "Seleziona tutto";
 
 // MARK: - Language
 "language.system" = "Predefinito di sistema";
@@ -56,7 +58,7 @@
 "onboarding.subscription.subtitle" = "Sblocca cronologia appunti illimitata";
 "onboarding.subscription.subscribe" = "Abbonati";
 "onboarding.subscription.start_free_trial" = "Inizia la prova gratuita";
-"onboarding.subscription.free_vs_pro" = "Gratis: 5 elementi · Pro: Illimitato";
+"onboarding.subscription.free_vs_pro" = "Gratis: 9 elementi · Pro: Illimitato";
 "onboarding.subscription.you_are_pro" = "Sei Pro!";
 "onboarding.subscription.save_44" = "RISPARMIA 44%";
 
@@ -113,10 +115,13 @@
 "clipboard.copied" = "Copiato";
 "clipboard.pasted" = "Incollato";
 
+"clipboard.type.all" = "Tutti";
+"clipboard.type.frequent" = "Frequente";
 "clipboard.type.text" = "Testo";
 "clipboard.type.image" = "Immagine";
 "clipboard.type.file" = "File";
 "clipboard.type.link" = "Link";
+"clipboard.delete_selected" = "Elimina selezionati";
 
 // MARK: - Menu Bar
 "menu.show_panel" = "Mostra ClipArc";
@@ -136,3 +141,6 @@
 "time.hours_ago" = "%d ore fa";
 "time.yesterday" = "Ieri";
 "time.days_ago" = "%d giorni fa";
+
+// MARK: - Toast
+"toast.running" = "In esecuzione in background";

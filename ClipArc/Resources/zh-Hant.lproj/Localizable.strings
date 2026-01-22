@@ -20,6 +20,8 @@
 "common.continue" = "繼續";
 "common.skip" = "略過";
 "common.skip_for_now" = "暫時略過";
+"common.edit" = "編輯";
+"common.select_all" = "全選";
 
 // MARK: - Language
 "language.system" = "跟隨系統";
@@ -56,7 +58,7 @@
 "onboarding.subscription.subtitle" = "解鎖無限剪貼簿歷史紀錄";
 "onboarding.subscription.subscribe" = "訂閱";
 "onboarding.subscription.start_free_trial" = "開始免費試用";
-"onboarding.subscription.free_vs_pro" = "免費版: 5 筆紀錄 · 專業版: 無限";
+"onboarding.subscription.free_vs_pro" = "免費版: 9 筆紀錄 · 專業版: 無限";
 "onboarding.subscription.you_are_pro" = "您已是專業版用戶！";
 "onboarding.subscription.save_44" = "節省 44%";
 
@@ -113,10 +115,13 @@
 "clipboard.copied" = "已複製";
 "clipboard.pasted" = "已貼上";
 
+"clipboard.type.all" = "全部";
+"clipboard.type.frequent" = "常用";
 "clipboard.type.text" = "文字";
 "clipboard.type.image" = "圖片";
 "clipboard.type.file" = "檔案";
 "clipboard.type.link" = "連結";
+"clipboard.delete_selected" = "刪除所選";
 
 // MARK: - Menu Bar
 "menu.show_panel" = "顯示 ClipArc";
@@ -136,3 +141,6 @@
 "time.hours_ago" = "%d 小時前";
 "time.yesterday" = "昨天";
 "time.days_ago" = "%d 天前";
+
+// MARK: - Toast
+"toast.running" = "正在背景執行";
