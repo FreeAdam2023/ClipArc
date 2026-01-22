@@ -591,30 +591,64 @@ struct SettingsPricingCard: View {
 struct AboutView: View {
     var body: some View {
         VStack(spacing: 20) {
-            Image(systemName: "clipboard")
-                .font(.system(size: 64))
-                .foregroundStyle(.secondary)
+            // App Icon
+            Image(nsImage: NSApp.applicationIconImage)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 128, height: 128)
+                .cornerRadius(24)
+                .shadow(color: .black.opacity(0.1), radius: 8, y: 4)
 
-            Text(L10n.appName)
-                .font(.title)
-                .fontWeight(.semibold)
+            VStack(spacing: 8) {
+                Text(L10n.appName)
+                    .font(.title)
+                    .fontWeight(.bold)
 
-            Text("\(L10n.Settings.version) 1.0.0")
-                .foregroundStyle(.secondary)
+                Text("\(L10n.Settings.version) \(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0.0")")
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+            }
 
             Text(L10n.Settings.aboutDescription)
+                .font(.subheadline)
                 .foregroundStyle(.tertiary)
                 .multilineTextAlignment(.center)
+                .frame(maxWidth: 300)
 
-            HStack(spacing: 20) {
-                Link(L10n.Settings.website, destination: URL(string: "https://example.com")!)
-                Link(L10n.Settings.privacy, destination: URL(string: "https://example.com/privacy")!)
-                Link(L10n.Settings.terms, destination: URL(string: "https://example.com/terms")!)
+            Spacer()
+
+            // Links
+            HStack(spacing: 24) {
+                Link(destination: URL(string: "https://cliparc.app")!) {
+                    HStack(spacing: 4) {
+                        Image(systemName: "globe")
+                        Text(L10n.Settings.website)
+                    }
+                }
+
+                Link(destination: URL(string: "https://cliparc.app/privacy")!) {
+                    HStack(spacing: 4) {
+                        Image(systemName: "hand.raised")
+                        Text(L10n.Settings.privacy)
+                    }
+                }
+
+                Link(destination: URL(string: "https://cliparc.app/terms")!) {
+                    HStack(spacing: 4) {
+                        Image(systemName: "doc.text")
+                        Text(L10n.Settings.terms)
+                    }
+                }
             }
-            .font(.footnote)
+            .font(.caption)
+            .foregroundStyle(.secondary)
+
+            Text("© 2026 VerseGates. All rights reserved.")
+                .font(.caption2)
+                .foregroundStyle(.quaternary)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .padding()
+        .padding(24)
     }
 }
 
