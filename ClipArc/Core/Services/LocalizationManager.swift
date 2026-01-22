@@ -248,6 +248,8 @@ enum L10n {
         static var showPanel: String { "menu.show_panel".localized }
         static var preferences: String { "menu.preferences".localized }
         static var clearHistory: String { "menu.clear_history".localized }
+        static var about: String { "menu.about".localized }
+        static var help: String { "menu.help".localized }
         static var quit: String { "menu.quit".localized }
     }
 

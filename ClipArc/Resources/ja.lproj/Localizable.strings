@@ -127,6 +127,8 @@
 "menu.show_panel" = "ClipArc を表示";
 "menu.preferences" = "環境設定...";
 "menu.clear_history" = "履歴を消去";
+"menu.about" = "ClipArc について";
+"menu.help" = "ヘルプ";
 "menu.quit" = "ClipArc を終了";
 
 // MARK: - Errors

@@ -127,6 +127,8 @@
 "menu.show_panel" = "ClipArc दिखाएं";
 "menu.preferences" = "प्राथमिकताएं...";
 "menu.clear_history" = "इतिहास साफ़ करें";
+"menu.about" = "ClipArc के बारे में";
+"menu.help" = "सहायता";
 "menu.quit" = "ClipArc छोड़ें";
 
 // MARK: - Errors

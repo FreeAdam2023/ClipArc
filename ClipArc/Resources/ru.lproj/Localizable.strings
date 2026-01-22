@@ -127,6 +127,8 @@
 "menu.show_panel" = "Показать ClipArc";
 "menu.preferences" = "Настройки...";
 "menu.clear_history" = "Очистить историю";
+"menu.about" = "О ClipArc";
+"menu.help" = "Справка";
 "menu.quit" = "Завершить ClipArc";
 
 // MARK: - Errors

@@ -127,6 +127,8 @@
 "menu.show_panel" = "Mostra ClipArc";
 "menu.preferences" = "Preferenze...";
 "menu.clear_history" = "Cancella cronologia";
+"menu.about" = "Informazioni su ClipArc";
+"menu.help" = "Aiuto";
 "menu.quit" = "Esci da ClipArc";
 
 // MARK: - Errors

@@ -127,6 +127,8 @@
 "menu.show_panel" = "显示 ClipArc";
 "menu.preferences" = "偏好设置...";
 "menu.clear_history" = "清除历史";
+"menu.about" = "关于 ClipArc";
+"menu.help" = "帮助";
 "menu.quit" = "退出 ClipArc";
 
 // MARK: - Errors

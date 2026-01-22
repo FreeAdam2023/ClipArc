@@ -127,6 +127,8 @@
 "menu.show_panel" = "ClipArc 표시";
 "menu.preferences" = "환경설정...";
 "menu.clear_history" = "기록 지우기";
+"menu.about" = "ClipArc에 관하여";
+"menu.help" = "도움말";
 "menu.quit" = "ClipArc 종료";
 
 // MARK: - Errors

@@ -134,11 +134,37 @@ struct MenuBarContentView: View {
             }
             .keyboardShortcut(",", modifiers: .command)
 
+            Divider()
+
+            Button(L10n.MenuBar.about) {
+                openAbout()
+            }
+
+            Button(L10n.MenuBar.help) {
+                if let url = URL(string: "https://cliparc.app/help") {
+                    NSWorkspace.shared.open(url)
+                }
+            }
+
+            Divider()
+
             Button(L10n.MenuBar.quit) {
                 NSApplication.shared.terminate(nil)
             }
             .keyboardShortcut("q", modifiers: .command)
         }
+    }
+
+    private func openAbout() {
+        NSApp.orderFrontStandardAboutPanel(options: [
+            NSApplication.AboutPanelOptionKey.applicationName: "ClipArc",
+            NSApplication.AboutPanelOptionKey.applicationVersion: Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0",
+            NSApplication.AboutPanelOptionKey.version: Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "1",
+            NSApplication.AboutPanelOptionKey.credits: NSAttributedString(
+                string: "Your intelligent clipboard manager",
+                attributes: [.font: NSFont.systemFont(ofSize: 11)]
+            )
+        ])
     }
 
     private func openSubscription() {
