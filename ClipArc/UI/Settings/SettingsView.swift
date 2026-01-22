@@ -290,99 +290,301 @@ struct AccountBenefitRow: View {
 
 struct SubscriptionSettingsView: View {
     @State private var subscriptionManager = SubscriptionManager.shared
+    @State private var selectedPlan: String = "yearly"
 
     var body: some View {
-        Form {
-            Section {
+        ScrollView {
+            VStack(spacing: 0) {
                 if subscriptionManager.isPro {
-                    VStack(alignment: .leading, spacing: 12) {
-                        HStack {
-                            Image(systemName: "crown.fill")
-                                .font(.title)
-                                .foregroundStyle(.yellow)
-
-                            VStack(alignment: .leading, spacing: 4) {
-                                Text(L10n.Settings.proBadge)
-                                    .font(.headline)
-
-                                if subscriptionManager.hasLifetimePurchase {
-                                    Text(L10n.Settings.lifetimeLicense)
-                                        .font(.subheadline)
-                                        .foregroundStyle(.green)
-                                } else if let expDate = subscriptionManager.subscriptionExpirationDate {
-                                    Text(L10n.Settings.renewsOn.localized(with: expDate.formatted(date: .abbreviated, time: .omitted)))
-                                        .font(.subheadline)
-                                        .foregroundStyle(.secondary)
-                                }
-                            }
-                        }
-
-                        Divider()
-
-                        if !subscriptionManager.hasLifetimePurchase {
-                            Button(L10n.Settings.manageSubscription) {
-                                if let url = URL(string: "https://apps.apple.com/account/subscriptions") {
-                                    NSWorkspace.shared.open(url)
-                                }
-                            }
-                        }
-                    }
-                    .padding(.vertical, 8)
+                    // Pro user view
+                    proUserView
                 } else {
-                    VStack(spacing: 16) {
-                        Image(systemName: "crown")
-                            .font(.system(size: 48))
-                            .foregroundStyle(.secondary)
-
-                        Text(L10n.Settings.upgradeToPro)
-                            .font(.headline)
-
-                        Text(L10n.Settings.upgradeDescription)
-                            .font(.subheadline)
-                            .foregroundStyle(.secondary)
-
-                        VStack(spacing: 8) {
-                            ForEach(subscriptionManager.products, id: \.id) { product in
-                                Button(action: {
-                                    Task {
-                                        await subscriptionManager.purchase(product)
-                                    }
-                                }) {
-                                    HStack {
-                                        Text(product.displayName)
-                                        Spacer()
-                                        Text(product.displayPrice)
-                                            .fontWeight(.semibold)
-                                    }
-                                    .padding(.horizontal, 16)
-                                    .padding(.vertical, 10)
-                                }
-                                .buttonStyle(.bordered)
-                            }
-                        }
-                        .frame(maxWidth: 280)
-
-                        Button(L10n.Settings.restorePurchases) {
-                            Task {
-                                await subscriptionManager.restorePurchases()
-                            }
-                        }
-                        .buttonStyle(.plain)
-                        .foregroundStyle(.secondary)
-                        .font(.footnote)
-
-                        if let error = subscriptionManager.errorMessage {
-                            Text(error)
-                                .font(.caption)
-                                .foregroundStyle(.red)
-                        }
-                    }
-                    .padding(.vertical, 16)
+                    // Upgrade view
+                    upgradeView
                 }
             }
+            .padding(24)
         }
-        .formStyle(.grouped)
-        .padding()
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+
+    private var proUserView: some View {
+        VStack(spacing: 24) {
+            // Pro badge
+            ZStack {
+                Circle()
+                    .fill(LinearGradient(
+                        colors: [.yellow.opacity(0.3), .orange.opacity(0.3)],
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    ))
+                    .frame(width: 80, height: 80)
+
+                Image(systemName: "crown.fill")
+                    .font(.system(size: 40))
+                    .foregroundStyle(.yellow)
+            }
+
+            VStack(spacing: 8) {
+                Text(L10n.Settings.proBadge)
+                    .font(.title2)
+                    .fontWeight(.bold)
+
+                if subscriptionManager.hasLifetimePurchase {
+                    HStack(spacing: 4) {
+                        Image(systemName: "infinity")
+                        Text(L10n.Settings.lifetimeLicense)
+                    }
+                    .font(.subheadline)
+                    .foregroundStyle(.green)
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 6)
+                    .background(Color.green.opacity(0.1))
+                    .cornerRadius(16)
+                } else if let expDate = subscriptionManager.subscriptionExpirationDate {
+                    Text(L10n.Settings.renewsOn.localized(with: expDate.formatted(date: .abbreviated, time: .omitted)))
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                }
+            }
+
+            // Features unlocked
+            VStack(alignment: .leading, spacing: 10) {
+                Text("Features Unlocked")
+                    .font(.headline)
+                    .padding(.bottom, 4)
+
+                ProFeatureRow(icon: "infinity", text: "Unlimited clipboard history", isUnlocked: true)
+                ProFeatureRow(icon: "magnifyingglass", text: "Advanced search", isUnlocked: true)
+                ProFeatureRow(icon: "keyboard", text: "Global hotkey", isUnlocked: true)
+                ProFeatureRow(icon: "bolt.fill", text: "Instant paste", isUnlocked: true)
+            }
+            .padding(16)
+            .background(Color.primary.opacity(0.03))
+            .cornerRadius(12)
+
+            Spacer()
+
+            // Manage subscription
+            if !subscriptionManager.hasLifetimePurchase {
+                Button(action: {
+                    if let url = URL(string: "https://apps.apple.com/account/subscriptions") {
+                        NSWorkspace.shared.open(url)
+                    }
+                }) {
+                    Text(L10n.Settings.manageSubscription)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 10)
+                }
+                .buttonStyle(.bordered)
+                .frame(maxWidth: 220)
+            }
+        }
+    }
+
+    private var upgradeView: some View {
+        VStack(spacing: 20) {
+            // Header
+            VStack(spacing: 12) {
+                ZStack {
+                    Circle()
+                        .fill(LinearGradient(
+                            colors: [.yellow.opacity(0.2), .orange.opacity(0.2)],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        ))
+                        .frame(width: 70, height: 70)
+
+                    Image(systemName: "crown.fill")
+                        .font(.system(size: 32))
+                        .foregroundStyle(.yellow)
+                }
+
+                Text(L10n.Settings.upgradeToPro)
+                    .font(.title2)
+                    .fontWeight(.bold)
+
+                Text(L10n.Settings.upgradeDescription)
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+            }
+
+            // Features
+            HStack(spacing: 16) {
+                SubscriptionFeatureItem(icon: "infinity", title: "Unlimited")
+                SubscriptionFeatureItem(icon: "magnifyingglass", title: "Search")
+                SubscriptionFeatureItem(icon: "bolt.fill", title: "Fast")
+            }
+            .padding(.vertical, 8)
+
+            // Pricing cards
+            VStack(spacing: 10) {
+                if subscriptionManager.products.isEmpty {
+                    // Placeholder pricing
+                    SettingsPricingCard(
+                        title: "Monthly",
+                        price: "$2.99",
+                        period: "/month",
+                        badge: nil,
+                        isSelected: selectedPlan == "monthly"
+                    ) {
+                        selectedPlan = "monthly"
+                    }
+
+                    SettingsPricingCard(
+                        title: "Yearly",
+                        price: "$19.99",
+                        period: "/year",
+                        badge: "Save 44%",
+                        isSelected: selectedPlan == "yearly"
+                    ) {
+                        selectedPlan = "yearly"
+                    }
+
+                    SettingsPricingCard(
+                        title: "Lifetime",
+                        price: "$49.99",
+                        period: "one-time",
+                        badge: "Best Value",
+                        isSelected: selectedPlan == "lifetime"
+                    ) {
+                        selectedPlan = "lifetime"
+                    }
+                } else {
+                    ForEach(subscriptionManager.products, id: \.id) { product in
+                        SettingsPricingCard(
+                            title: product.displayName,
+                            price: product.displayPrice,
+                            period: product.subscription != nil ? "/\(product.subscription!.subscriptionPeriod.unit)" : "one-time",
+                            badge: product.id.contains("yearly") ? "Save 44%" : (product.id.contains("lifetime") ? "Best Value" : nil),
+                            isSelected: selectedPlan == product.id
+                        ) {
+                            selectedPlan = product.id
+                            Task {
+                                await subscriptionManager.purchase(product)
+                            }
+                        }
+                    }
+                }
+            }
+            .frame(maxWidth: 300)
+
+            // Restore purchases
+            Button(L10n.Settings.restorePurchases) {
+                Task {
+                    await subscriptionManager.restorePurchases()
+                }
+            }
+            .buttonStyle(.plain)
+            .foregroundStyle(.secondary)
+            .font(.caption)
+
+            if let error = subscriptionManager.errorMessage {
+                Text(error)
+                    .font(.caption)
+                    .foregroundStyle(.red)
+                    .multilineTextAlignment(.center)
+            }
+        }
+    }
+}
+
+struct ProFeatureRow: View {
+    let icon: String
+    let text: String
+    let isUnlocked: Bool
+
+    var body: some View {
+        HStack(spacing: 12) {
+            Image(systemName: icon)
+                .font(.system(size: 14))
+                .foregroundStyle(.yellow)
+                .frame(width: 20)
+
+            Text(text)
+                .font(.subheadline)
+
+            Spacer()
+
+            Image(systemName: "checkmark.circle.fill")
+                .foregroundStyle(.green)
+                .font(.system(size: 14))
+        }
+    }
+}
+
+struct SubscriptionFeatureItem: View {
+    let icon: String
+    let title: String
+
+    var body: some View {
+        VStack(spacing: 6) {
+            Image(systemName: icon)
+                .font(.system(size: 20))
+                .foregroundStyle(.yellow)
+
+            Text(title)
+                .font(.caption)
+                .foregroundStyle(.secondary)
+        }
+        .frame(width: 70)
+    }
+}
+
+struct SettingsPricingCard: View {
+    let title: String
+    let price: String
+    let period: String
+    let badge: String?
+    let isSelected: Bool
+    let onSelect: () -> Void
+
+    var body: some View {
+        Button(action: onSelect) {
+            HStack {
+                VStack(alignment: .leading, spacing: 2) {
+                    HStack(spacing: 6) {
+                        Text(title)
+                            .font(.subheadline)
+                            .fontWeight(.medium)
+
+                        if let badge = badge {
+                            Text(badge)
+                                .font(.caption2)
+                                .fontWeight(.semibold)
+                                .foregroundStyle(.white)
+                                .padding(.horizontal, 6)
+                                .padding(.vertical, 2)
+                                .background(badge.contains("Save") ? Color.green : Color.orange)
+                                .cornerRadius(4)
+                        }
+                    }
+                }
+
+                Spacer()
+
+                HStack(alignment: .firstTextBaseline, spacing: 2) {
+                    Text(price)
+                        .font(.headline)
+                        .fontWeight(.semibold)
+
+                    Text(period)
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
+            }
+            .padding(.horizontal, 16)
+            .padding(.vertical, 12)
+            .background(
+                RoundedRectangle(cornerRadius: 10)
+                    .fill(isSelected ? Color.accentColor.opacity(0.1) : Color.primary.opacity(0.03))
+            )
+            .overlay(
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(isSelected ? Color.accentColor : Color.clear, lineWidth: 2)
+            )
+        }
+        .buttonStyle(.plain)
     }
 }
 
