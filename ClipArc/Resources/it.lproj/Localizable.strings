@@ -146,3 +146,12 @@
 
 // MARK: - Toast
 "toast.running" = "In esecuzione in background";
+
+"settings.storage" = "Storage";
+"settings.cache_size" = "Cache Size";
+"settings.history_items" = "History Items";
+"settings.clear_cache" = "Clear Cache";
+"settings.clear_cache_message" = "This will remove all cached images and thumbnails. Your clipboard history will be preserved.";
+"settings.clear_all_history" = "Clear All History";
+"settings.clear_history_message" = "This will permanently delete all clipboard history. This action cannot be undone.";
+"settings.clear" = "Clear";

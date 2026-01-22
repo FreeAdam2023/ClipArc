@@ -107,6 +107,15 @@
 "settings.privacy" = "隐私";
 "settings.terms" = "条款";
 
+"settings.storage" = "存储";
+"settings.cache_size" = "缓存大小";
+"settings.history_items" = "历史记录数";
+"settings.clear_cache" = "清除缓存";
+"settings.clear_cache_message" = "这将删除所有缓存的图片和缩略图。您的剪贴板历史记录将被保留。";
+"settings.clear_all_history" = "清除所有历史";
+"settings.clear_history_message" = "这将永久删除所有剪贴板历史记录。此操作无法撤销。";
+"settings.clear" = "清除";
+
 // MARK: - Clipboard
 "clipboard.empty.title" = "暂无剪贴内容";
 "clipboard.empty.subtitle" = "复制内容即可开始";

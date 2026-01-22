@@ -223,6 +223,15 @@ enum L10n {
         static var website: String { "settings.website".localized }
         static var privacy: String { "settings.privacy".localized }
         static var terms: String { "settings.terms".localized }
+
+        static var storage: String { "settings.storage".localized }
+        static var cacheSize: String { "settings.cache_size".localized }
+        static var historyItems: String { "settings.history_items".localized }
+        static var clearCache: String { "settings.clear_cache".localized }
+        static var clearCacheMessage: String { "settings.clear_cache_message".localized }
+        static var clearAllHistory: String { "settings.clear_all_history".localized }
+        static var clearHistoryMessage: String { "settings.clear_history_message".localized }
+        static var clear: String { "settings.clear".localized }
     }
 
     // MARK: - Clipboard

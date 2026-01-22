@@ -41,9 +41,14 @@ struct SettingsView: View {
 
 struct GeneralSettingsView: View {
     @ObservedObject var settings: AppSettings
+    @Environment(AppState.self) private var appState: AppState?
     @State private var permissionsManager = PermissionsManager.shared
     @State private var localizationManager = LocalizationManager.shared
     @State private var showRestartAlert = false
+    @State private var showClearCacheAlert = false
+    @State private var showClearHistoryAlert = false
+    @State private var cacheSize: String = "Calculating..."
+    @State private var historyCount: Int = 0
 
     var body: some View {
         Form {
@@ -111,9 +116,120 @@ struct GeneralSettingsView: View {
                 }
                 .help(L10n.Onboarding.accessibilityDesc)
             }
+
+            Section(L10n.Settings.storage) {
+                // Cache size
+                HStack {
+                    Label(L10n.Settings.cacheSize, systemImage: "internaldrive")
+                    Spacer()
+                    Text(cacheSize)
+                        .foregroundStyle(.secondary)
+                }
+
+                // History count
+                HStack {
+                    Label(L10n.Settings.historyItems, systemImage: "clock.arrow.circlepath")
+                    Spacer()
+                    Text("\(historyCount) \(L10n.Settings.items)")
+                        .foregroundStyle(.secondary)
+                }
+
+                // Clear cache button
+                Button(action: {
+                    showClearCacheAlert = true
+                }) {
+                    HStack {
+                        Label(L10n.Settings.clearCache, systemImage: "trash")
+                        Spacer()
+                    }
+                }
+                .alert(L10n.Settings.clearCache, isPresented: $showClearCacheAlert) {
+                    Button(L10n.cancel, role: .cancel) { }
+                    Button(L10n.Settings.clear, role: .destructive) {
+                        clearCache()
+                    }
+                } message: {
+                    Text(L10n.Settings.clearCacheMessage)
+                }
+
+                // Clear all history button
+                Button(action: {
+                    showClearHistoryAlert = true
+                }) {
+                    HStack {
+                        Label(L10n.Settings.clearAllHistory, systemImage: "trash.fill")
+                            .foregroundStyle(.red)
+                        Spacer()
+                    }
+                }
+                .alert(L10n.Settings.clearAllHistory, isPresented: $showClearHistoryAlert) {
+                    Button(L10n.cancel, role: .cancel) { }
+                    Button(L10n.delete, role: .destructive) {
+                        clearAllHistory()
+                    }
+                } message: {
+                    Text(L10n.Settings.clearHistoryMessage)
+                }
+            }
         }
         .formStyle(.grouped)
         .padding()
+        .onAppear {
+            calculateCacheSize()
+            updateHistoryCount()
+        }
+    }
+
+    private func calculateCacheSize() {
+        Task {
+            var totalSize: Int64 = 0
+
+            // Calculate image and thumbnail data size from clipboard items
+            if let items = appState?.items {
+                for item in items {
+                    if let imageData = item.imageData {
+                        totalSize += Int64(imageData.count)
+                    }
+                    if let thumbnailData = item.fileThumbnailData {
+                        totalSize += Int64(thumbnailData.count)
+                    }
+                }
+            }
+
+            // Format size
+            let formatter = ByteCountFormatter()
+            formatter.countStyle = .file
+            let sizeString = formatter.string(fromByteCount: totalSize)
+
+            await MainActor.run {
+                cacheSize = sizeString
+            }
+        }
+    }
+
+    private func updateHistoryCount() {
+        historyCount = appState?.items.count ?? 0
+    }
+
+    private func clearCache() {
+        Task {
+            // Clear image data and thumbnails from items
+            if let items = appState?.items {
+                for item in items {
+                    item.imageData = nil
+                    item.fileThumbnailData = nil
+                }
+            }
+            await MainActor.run {
+                calculateCacheSize()
+            }
+        }
+    }
+
+    private func clearAllHistory() {
+        appState?.clearAll()
+        historyCount = 0
+        cacheSize = "0 bytes"
     }
 }
 
