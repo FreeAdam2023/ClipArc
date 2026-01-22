@@ -121,62 +121,123 @@ struct AccountSettingsView: View {
     @State private var authManager = AuthManager.shared
 
     var body: some View {
-        Form {
-            Section {
-                if authManager.isAuthenticated {
-                    VStack(alignment: .leading, spacing: 12) {
-                        HStack {
-                            Image(systemName: "person.circle.fill")
-                                .font(.system(size: 48))
+        VStack(spacing: 0) {
+            if authManager.isAuthenticated {
+                // Signed in state
+                VStack(spacing: 20) {
+                    // Avatar
+                    ZStack {
+                        Circle()
+                            .fill(LinearGradient(
+                                colors: [.blue.opacity(0.6), .purple.opacity(0.6)],
+                                startPoint: .topLeading,
+                                endPoint: .bottomTrailing
+                            ))
+                            .frame(width: 80, height: 80)
+
+                        Text(authManager.userName?.prefix(1).uppercased() ?? "U")
+                            .font(.system(size: 36, weight: .medium))
+                            .foregroundStyle(.white)
+                    }
+
+                    VStack(spacing: 4) {
+                        Text(authManager.userName ?? "Apple User")
+                            .font(.title2)
+                            .fontWeight(.semibold)
+
+                        if let email = authManager.userEmail {
+                            Text(email)
+                                .font(.subheadline)
                                 .foregroundStyle(.secondary)
-
-                            VStack(alignment: .leading, spacing: 4) {
-                                Text(authManager.userName ?? "Apple User")
-                                    .font(.headline)
-
-                                if let email = authManager.userEmail {
-                                    Text(email)
-                                        .font(.subheadline)
-                                        .foregroundStyle(.secondary)
-                                }
-                            }
                         }
+                    }
 
-                        Divider()
+                    // Sync status
+                    HStack(spacing: 6) {
+                        Image(systemName: "checkmark.icloud.fill")
+                            .foregroundStyle(.green)
+                        Text("Synced")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                    }
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 6)
+                    .background(Color.green.opacity(0.1))
+                    .cornerRadius(16)
 
-                        Button(L10n.Settings.signOut) {
-                            authManager.signOut()
-                        }
-                        .foregroundStyle(.red)
+                    Spacer()
+
+                    // Sign out button
+                    Button(action: {
+                        authManager.signOut()
+                    }) {
+                        Text(L10n.Settings.signOut)
+                            .foregroundStyle(.red)
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical, 10)
+                    }
+                    .buttonStyle(.plain)
+                    .background(Color.red.opacity(0.1))
+                    .cornerRadius(8)
+                    .frame(maxWidth: 200)
+                }
+                .padding(32)
+            } else {
+                // Not signed in state
+                VStack(spacing: 24) {
+                    // Icon
+                    ZStack {
+                        Circle()
+                            .fill(Color.accentColor.opacity(0.1))
+                            .frame(width: 80, height: 80)
+
+                        Image(systemName: "icloud.and.arrow.up")
+                            .font(.system(size: 36))
+                            .foregroundStyle(Color.accentColor)
+                    }
+
+                    // Title and description
+                    VStack(spacing: 8) {
+                        Text("iCloud Sync")
+                            .font(.title2)
+                            .fontWeight(.semibold)
+
+                        Text(L10n.Settings.syncDescription)
+                            .font(.subheadline)
+                            .foregroundStyle(.secondary)
+                            .multilineTextAlignment(.center)
+                    }
+
+                    // Benefits list
+                    VStack(alignment: .leading, spacing: 12) {
+                        AccountBenefitRow(icon: "arrow.triangle.2.circlepath", text: "Sync clipboard across all devices")
+                        AccountBenefitRow(icon: "lock.shield", text: "End-to-end encryption")
+                        AccountBenefitRow(icon: "arrow.clockwise.icloud", text: "Automatic backup")
                     }
                     .padding(.vertical, 8)
-                } else {
-                    VStack(spacing: 16) {
-                        Text(L10n.Settings.syncDescription)
-                            .foregroundStyle(.secondary)
 
-                        SignInWithAppleButton(.signIn, onRequest: { request in
-                            request.requestedScopes = [.fullName, .email]
-                        }, onCompletion: { result in
-                            handleSignIn(result)
-                        })
-                        .signInWithAppleButtonStyle(.black)
-                        .frame(height: 44)
-                        .frame(maxWidth: 240)
-                        .cornerRadius(8)
+                    // Sign in button
+                    SignInWithAppleButton(.signIn, onRequest: { request in
+                        request.requestedScopes = [.fullName, .email]
+                    }, onCompletion: { result in
+                        handleSignIn(result)
+                    })
+                    .signInWithAppleButtonStyle(.black)
+                    .frame(height: 50)
+                    .frame(maxWidth: 280)
+                    .cornerRadius(10)
 
-                        if let error = authManager.errorMessage {
-                            Text(error)
-                                .font(.caption)
-                                .foregroundStyle(.red)
-                        }
+                    if let error = authManager.errorMessage {
+                        Text(error)
+                            .font(.caption)
+                            .foregroundStyle(.red)
+                            .multilineTextAlignment(.center)
                     }
-                    .padding(.vertical, 16)
                 }
+                .padding(32)
             }
         }
-        .formStyle(.grouped)
-        .padding()
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 
     private func handleSignIn(_ result: Result<ASAuthorization, Error>) {
@@ -205,6 +266,24 @@ struct AccountSettingsView: View {
             }
         case .failure(let error):
             authManager.errorMessage = error.localizedDescription
+        }
+    }
+}
+
+struct AccountBenefitRow: View {
+    let icon: String
+    let text: String
+
+    var body: some View {
+        HStack(spacing: 12) {
+            Image(systemName: icon)
+                .font(.system(size: 16))
+                .foregroundStyle(Color.accentColor)
+                .frame(width: 24)
+
+            Text(text)
+                .font(.subheadline)
+                .foregroundStyle(.secondary)
         }
     }
 }
