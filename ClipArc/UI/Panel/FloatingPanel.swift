@@ -9,7 +9,7 @@ import AppKit
 import SwiftUI
 
 final class FloatingPanel: NSPanel {
-    static let panelHeight: CGFloat = 280
+    static let panelHeight: CGFloat = 360
 
     init(contentRect: NSRect) {
         super.init(

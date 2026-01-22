@@ -8,6 +8,7 @@
 import AppKit
 import SwiftUI
 import SwiftData
+import QuickLookThumbnailing
 
 @MainActor
 final class FloatingPanelController {
@@ -465,7 +466,7 @@ struct ClipboardCardView: View {
                 .padding(.bottom, 10)
                 .padding(.top, 6)
             }
-            .frame(width: 200, height: 180)
+            .frame(width: 260, height: 240)
             .background(
                 ZStack {
                     // Base background
@@ -600,51 +601,14 @@ struct ClipboardCardView: View {
         case .file:
             let urls = item.fileURLs
             if urls.count == 1 {
-                // Single file - check if it's an image for thumbnail
+                // Single file - try to show thumbnail
                 let fileURL = urls[0]
-                if isImageFile(fileURL), let thumbnail = loadThumbnail(for: fileURL) {
-                    // Image file with thumbnail
-                    VStack(spacing: 4) {
-                        Image(nsImage: thumbnail)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(maxWidth: 180, maxHeight: 90)
-                            .clipShape(RoundedRectangle(cornerRadius: 6))
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 6)
-                                    .stroke(Color.primary.opacity(0.1), lineWidth: 1)
-                            )
-
-                        Text(fileURL.lastPathComponent)
-                            .font(.system(size: 10, weight: .medium))
-                            .foregroundStyle(.primary)
-                            .lineLimit(1)
-
-                        Text(fileURL.deletingLastPathComponent().path)
-                            .font(.system(size: 9))
-                            .foregroundStyle(.tertiary)
-                            .lineLimit(1)
-                    }
-                } else {
-                    // Non-image file or failed to load thumbnail
-                    HStack(spacing: 8) {
-                        Image(systemName: fileIcon(for: fileURL.path))
-                            .font(.system(size: 24))
-                            .foregroundStyle(item.type.accentColor)
-
-                        VStack(alignment: .leading, spacing: 2) {
-                            Text(fileURL.lastPathComponent)
-                                .font(.system(size: 12, weight: .medium))
-                                .foregroundStyle(.primary)
-                                .lineLimit(2)
-
-                            Text(fileURL.deletingLastPathComponent().path)
-                                .font(.system(size: 10))
-                                .foregroundStyle(.secondary)
-                                .lineLimit(1)
-                        }
-                    }
-                }
+                FileThumbnailView(
+                    item: item,
+                    fileURL: fileURL,
+                    accentColor: item.type.accentColor,
+                    fileIconName: fileIcon(for: fileURL.path)
+                )
             } else if urls.count > 1 {
                 // Multiple files
                 VStack(alignment: .leading, spacing: 6) {
@@ -692,19 +656,22 @@ struct ClipboardCardView: View {
             }
 
         case .image:
-            // Image preview
+            // Image preview - preserve aspect ratio
             if let imageData = item.imageData,
                let nsImage = NSImage(data: imageData) {
-                VStack(spacing: 4) {
+                let aspectRatio = CGFloat(item.imageWidth) / max(CGFloat(item.imageHeight), 1)
+
+                VStack(spacing: 6) {
                     Image(nsImage: nsImage)
                         .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(maxWidth: 180, maxHeight: 100)
-                        .clipShape(RoundedRectangle(cornerRadius: 6))
+                        .aspectRatio(aspectRatio, contentMode: .fit)
+                        .frame(maxWidth: 220, maxHeight: 150)
+                        .clipShape(RoundedRectangle(cornerRadius: 8))
                         .overlay(
-                            RoundedRectangle(cornerRadius: 6)
+                            RoundedRectangle(cornerRadius: 8)
                                 .stroke(Color.primary.opacity(0.1), lineWidth: 1)
                         )
+                        .shadow(color: .black.opacity(0.1), radius: 2, y: 1)
 
                     // Image dimensions
                     Text("\(item.imageWidth) × \(item.imageHeight)")
@@ -715,7 +682,7 @@ struct ClipboardCardView: View {
                 // Fallback if image data is not available
                 VStack(spacing: 8) {
                     Image(systemName: "photo.fill")
-                        .font(.system(size: 32))
+                        .font(.system(size: 40))
                         .foregroundStyle(.purple.opacity(0.6))
                     Text(item.previewText)
                         .font(.system(size: 11))
@@ -782,7 +749,7 @@ struct ClipboardCardView: View {
         guard let image = NSImage(contentsOf: url) else { return nil }
 
         // Create a thumbnail (max 180x90 for card display)
-        let maxSize = CGSize(width: 180, height: 90)
+        let maxSize = CGSize(width: 220, height: 130)
         let originalSize = image.size
 
         // Calculate scaled size maintaining aspect ratio
@@ -804,6 +771,166 @@ struct ClipboardCardView: View {
                    fraction: 1.0)
         thumbnail.unlockFocus()
 
+        return thumbnail
+    }
+}
+
+// MARK: - File Thumbnail View
+
+struct FileThumbnailView: View {
+    let item: ClipboardItem  // Need item to cache thumbnail
+    let fileURL: URL
+    let accentColor: Color
+    let fileIconName: String
+
+    @State private var thumbnail: NSImage?
+    @State private var isLoading = true
+
+    var body: some View {
+        VStack(spacing: 6) {
+            if let thumbnail = thumbnail {
+                // Show thumbnail - preserve aspect ratio
+                let imageSize = thumbnail.size
+                let aspectRatio = imageSize.width / max(imageSize.height, 1)
+
+                Image(nsImage: thumbnail)
+                    .resizable()
+                    .aspectRatio(aspectRatio, contentMode: .fit)
+                    .frame(maxWidth: 220, maxHeight: 140)
+                    .clipShape(RoundedRectangle(cornerRadius: 8))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 8)
+                            .stroke(Color.primary.opacity(0.1), lineWidth: 1)
+                    )
+                    .shadow(color: .black.opacity(0.1), radius: 2, y: 1)
+            } else if isLoading {
+                // Loading placeholder
+                RoundedRectangle(cornerRadius: 8)
+                    .fill(Color.primary.opacity(0.05))
+                    .frame(width: 100, height: 80)
+                    .overlay(
+                        ProgressView()
+                            .scaleEffect(0.7)
+                    )
+            } else {
+                // Fallback to icon
+                Image(systemName: fileIconName)
+                    .font(.system(size: 40))
+                    .foregroundStyle(accentColor)
+                    .frame(height: 80)
+            }
+
+            Text(fileURL.lastPathComponent)
+                .font(.system(size: 11, weight: .medium))
+                .foregroundStyle(.primary)
+                .lineLimit(2)
+                .multilineTextAlignment(.center)
+
+            Text(fileURL.deletingLastPathComponent().path)
+                .font(.system(size: 9))
+                .foregroundStyle(.tertiary)
+                .lineLimit(1)
+        }
+        .task {
+            await loadThumbnail()
+        }
+    }
+
+    private func loadThumbnail() async {
+        // First check for cached thumbnail
+        if let cachedData = item.fileThumbnailData,
+           let cachedImage = NSImage(data: cachedData) {
+            await MainActor.run {
+                self.thumbnail = cachedImage
+                self.isLoading = false
+            }
+            return
+        }
+
+        // Try to generate thumbnail (only works if we have file access)
+        guard FileManager.default.isReadableFile(atPath: fileURL.path) else {
+            await MainActor.run {
+                self.isLoading = false
+            }
+            return
+        }
+
+        // Use Quick Look to generate thumbnail
+        let size = CGSize(width: 220, height: 130)
+        let scale = NSScreen.main?.backingScaleFactor ?? 2.0
+        let request = QLThumbnailGenerator.Request(
+            fileAt: fileURL,
+            size: size,
+            scale: scale,
+            representationTypes: .thumbnail
+        )
+
+        do {
+            let representation = try await QLThumbnailGenerator.shared.generateBestRepresentation(for: request)
+            let image = representation.nsImage
+
+            // Cache the thumbnail
+            if let tiffData = image.tiffRepresentation,
+               let bitmap = NSBitmapImageRep(data: tiffData),
+               let pngData = bitmap.representation(using: .png, properties: [:]) {
+                await MainActor.run {
+                    item.fileThumbnailData = pngData
+                }
+            }
+
+            await MainActor.run {
+                self.thumbnail = image
+                self.isLoading = false
+            }
+        } catch {
+            // Quick Look failed, try direct image loading for image files
+            if isImageFile(fileURL), let image = NSImage(contentsOf: fileURL) {
+                let scaledImage = createScaledThumbnail(from: image, maxSize: size)
+
+                // Cache the thumbnail
+                if let tiffData = scaledImage.tiffRepresentation,
+                   let bitmap = NSBitmapImageRep(data: tiffData),
+                   let pngData = bitmap.representation(using: .png, properties: [:]) {
+                    await MainActor.run {
+                        item.fileThumbnailData = pngData
+                    }
+                }
+
+                await MainActor.run {
+                    self.thumbnail = scaledImage
+                    self.isLoading = false
+                }
+            } else {
+                await MainActor.run {
+                    self.isLoading = false
+                }
+            }
+        }
+    }
+
+    private func isImageFile(_ url: URL) -> Bool {
+        let imageExtensions = ["jpg", "jpeg", "png", "gif", "webp", "heic", "heif", "tiff", "tif", "bmp", "ico", "icns"]
+        return imageExtensions.contains(url.pathExtension.lowercased())
+    }
+
+    private func createScaledThumbnail(from image: NSImage, maxSize: CGSize) -> NSImage {
+        let originalSize = image.size
+        let widthRatio = maxSize.width / originalSize.width
+        let heightRatio = maxSize.height / originalSize.height
+        let scale = min(widthRatio, heightRatio, 1.0)
+
+        let newSize = CGSize(
+            width: originalSize.width * scale,
+            height: originalSize.height * scale
+        )
+
+        let thumbnail = NSImage(size: newSize)
+        thumbnail.lockFocus()
+        image.draw(in: NSRect(origin: .zero, size: newSize),
+                   from: NSRect(origin: .zero, size: originalSize),
+                   operation: .copy,
+                   fraction: 1.0)
+        thumbnail.unlockFocus()
         return thumbnail
     }
 }
@@ -891,7 +1018,7 @@ struct UpgradePromptCard: View {
                             )
                     )
             }
-            .frame(width: 200, height: 180)
+            .frame(width: 260, height: 240)
             .background(
                 ZStack {
                     RoundedRectangle(cornerRadius: 12)

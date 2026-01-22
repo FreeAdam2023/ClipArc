@@ -25,6 +25,7 @@ final class ClipboardItem {
     var imageHeight: Int = 0
     var filePathsJSON: String?  // Store file paths as JSON array
     var urlTitle: String?  // Page title for URL items (fetched asynchronously)
+    @Attribute(.externalStorage) var fileThumbnailData: Data?  // Cached thumbnail for file items
 
     /// Get file URLs from stored JSON
     var fileURLs: [URL] {
@@ -66,6 +67,7 @@ final class ClipboardItem {
         self.imageHeight = 0
         self.filePathsJSON = nil
         self.urlTitle = nil
+        self.fileThumbnailData = nil
     }
 
     /// Initialize with image data
@@ -90,6 +92,7 @@ final class ClipboardItem {
         self.imageHeight = height
         self.filePathsJSON = nil
         self.urlTitle = nil
+        self.fileThumbnailData = nil
     }
 
     /// Initialize with file URLs
@@ -133,6 +136,7 @@ final class ClipboardItem {
             self.filePathsJSON = nil
         }
         self.urlTitle = nil
+        self.fileThumbnailData = nil
     }
 
     static func computeHash(_ content: String) -> String {
