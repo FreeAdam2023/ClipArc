@@ -54,13 +54,17 @@
 "onboarding.signin.sign_in_later" = "Вы можете войти позже в Настройках";
 
 // MARK: - Onboarding Subscription
-"onboarding.subscription.title" = "Обновить до Pro";
-"onboarding.subscription.subtitle" = "Разблокируйте безлимитную историю буфера обмена";
+"onboarding.subscription.title" = "Раскройте весь потенциал";
+"onboarding.subscription.subtitle" = "Больше не теряйте скопированное";
 "onboarding.subscription.subscribe" = "Подписаться";
-"onboarding.subscription.start_free_trial" = "Начать бесплатный период";
+"onboarding.subscription.start_free_trial" = "Продолжить с бесплатной версией";
 "onboarding.subscription.free_vs_pro" = "Бесплатно: 5 элементов · Pro: Безлимитно";
 "onboarding.subscription.you_are_pro" = "Вы Pro!";
-"onboarding.subscription.save_44" = "СКИДКА 44%";
+"onboarding.subscription.save_44" = "ЛУЧШАЯ ЦЕНА";
+"onboarding.subscription.benefit1" = "Безлимитная история буфера обмена";
+"onboarding.subscription.benefit2" = "Сохраняйте текст, изображения и файлы";
+"onboarding.subscription.benefit3" = "Мгновенный поиск по всем клипам";
+"onboarding.subscription.benefit4" = "Приватное и безопасное локальное хранение";
 
 // MARK: - Onboarding Complete
 "onboarding.complete.title" = "Всё готово!";

@@ -57,6 +57,16 @@ struct ClipArcApp: App {
 struct MenuBarContentView: View {
     @Environment(AppState.self) private var appState
 
+    private func menuPreview(for item: ClipboardItem) -> String {
+        let text = item.previewText
+            .replacingOccurrences(of: "\n", with: " ")
+            .trimmingCharacters(in: .whitespaces)
+        if text.count <= 50 {
+            return text
+        }
+        return String(text.prefix(47)) + "..."
+    }
+
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
             // Pro badge if subscribed
@@ -93,8 +103,9 @@ struct MenuBarContentView: View {
                     }) {
                         HStack {
                             Image(systemName: item.type.icon)
-                            Text(item.previewText)
+                            Text(menuPreview(for: item))
                                 .lineLimit(1)
+                                .truncationMode(.tail)
                         }
                     }
                 }

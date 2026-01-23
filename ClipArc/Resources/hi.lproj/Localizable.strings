@@ -54,13 +54,17 @@
 "onboarding.signin.sign_in_later" = "आप बाद में सेटिंग्स में साइन इन कर सकते हैं";
 
 // MARK: - Onboarding Subscription
-"onboarding.subscription.title" = "Pro में अपग्रेड करें";
-"onboarding.subscription.subtitle" = "असीमित क्लिपबोर्ड इतिहास अनलॉक करें";
+"onboarding.subscription.title" = "अपनी पूरी क्षमता को अनलॉक करें";
+"onboarding.subscription.subtitle" = "कॉपी की गई चीज़ें फिर कभी न खोएं";
 "onboarding.subscription.subscribe" = "सब्सक्राइब करें";
-"onboarding.subscription.start_free_trial" = "निःशुल्क परीक्षण शुरू करें";
+"onboarding.subscription.start_free_trial" = "निःशुल्क संस्करण के साथ जारी रखें";
 "onboarding.subscription.free_vs_pro" = "फ्री: 5 आइटम · Pro: असीमित";
 "onboarding.subscription.you_are_pro" = "आप Pro हैं!";
-"onboarding.subscription.save_44" = "44% बचाएं";
+"onboarding.subscription.save_44" = "सर्वोत्तम मूल्य";
+"onboarding.subscription.benefit1" = "असीमित क्लिपबोर्ड इतिहास";
+"onboarding.subscription.benefit2" = "टेक्स्ट, छवियां और फ़ाइलें सहेजें";
+"onboarding.subscription.benefit3" = "सभी क्लिप में तुरंत खोजें";
+"onboarding.subscription.benefit4" = "निजी और सुरक्षित स्थानीय संग्रहण";
 
 // MARK: - Onboarding Complete
 "onboarding.complete.title" = "सब तैयार है!";

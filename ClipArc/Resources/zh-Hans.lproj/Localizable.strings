@@ -54,13 +54,17 @@
 "onboarding.signin.sign_in_later" = "您可以稍后在设置中登录";
 
 // MARK: - Onboarding Subscription
-"onboarding.subscription.title" = "升级到专业版";
-"onboarding.subscription.subtitle" = "解锁无限剪贴板历史记录";
-"onboarding.subscription.subscribe" = "订阅";
-"onboarding.subscription.start_free_trial" = "开始免费试用";
+"onboarding.subscription.title" = "释放全部潜能";
+"onboarding.subscription.subtitle" = "再也不会丢失复制的内容";
+"onboarding.subscription.subscribe" = "立即订阅";
+"onboarding.subscription.start_free_trial" = "继续使用免费版";
 "onboarding.subscription.free_vs_pro" = "免费版: 5 条记录 · 专业版: 无限";
 "onboarding.subscription.you_are_pro" = "您已是专业版用户！";
-"onboarding.subscription.save_44" = "节省 44%";
+"onboarding.subscription.save_44" = "最超值";
+"onboarding.subscription.benefit1" = "无限剪贴板历史记录";
+"onboarding.subscription.benefit2" = "保存文本、图片和文件";
+"onboarding.subscription.benefit3" = "快速搜索所有内容";
+"onboarding.subscription.benefit4" = "隐私安全，本地存储";
 
 // MARK: - Onboarding Complete
 "onboarding.complete.title" = "设置完成！";

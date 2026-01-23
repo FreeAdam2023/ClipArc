@@ -54,13 +54,17 @@
 "onboarding.signin.sign_in_later" = "設定から後でサインインできます";
 
 // MARK: - Onboarding Subscription
-"onboarding.subscription.title" = "Pro にアップグレード";
-"onboarding.subscription.subtitle" = "無制限のクリップボード履歴をアンロック";
+"onboarding.subscription.title" = "すべての可能性を解き放つ";
+"onboarding.subscription.subtitle" = "コピーした内容を二度と失わない";
 "onboarding.subscription.subscribe" = "購読する";
-"onboarding.subscription.start_free_trial" = "無料トライアルを開始";
+"onboarding.subscription.start_free_trial" = "無料版で続ける";
 "onboarding.subscription.free_vs_pro" = "無料: 5 件 · Pro: 無制限";
 "onboarding.subscription.you_are_pro" = "あなたは Pro です！";
-"onboarding.subscription.save_44" = "44% お得";
+"onboarding.subscription.save_44" = "最もお得";
+"onboarding.subscription.benefit1" = "無制限のクリップボード履歴";
+"onboarding.subscription.benefit2" = "テキスト、画像、ファイルを保存";
+"onboarding.subscription.benefit3" = "すべてのクリップを即座に検索";
+"onboarding.subscription.benefit4" = "プライベート＆安全なローカル保存";
 
 // MARK: - Onboarding Complete
 "onboarding.complete.title" = "準備完了！";

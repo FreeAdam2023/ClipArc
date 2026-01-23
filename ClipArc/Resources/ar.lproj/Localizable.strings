@@ -54,13 +54,17 @@
 "onboarding.signin.sign_in_later" = "يمكنك تسجيل الدخول لاحقاً في الإعدادات";
 
 // MARK: - Onboarding Subscription
-"onboarding.subscription.title" = "الترقية إلى Pro";
-"onboarding.subscription.subtitle" = "افتح سجل حافظة غير محدود";
+"onboarding.subscription.title" = "أطلق العنان لإمكانياتك الكاملة";
+"onboarding.subscription.subtitle" = "لن تفقد أي عنصر منسوخ بعد الآن";
 "onboarding.subscription.subscribe" = "اشتراك";
-"onboarding.subscription.start_free_trial" = "ابدأ التجربة المجانية";
+"onboarding.subscription.start_free_trial" = "المتابعة بالنسخة المجانية";
 "onboarding.subscription.free_vs_pro" = "مجاني: 5 عناصر · Pro: غير محدود";
 "onboarding.subscription.you_are_pro" = "أنت Pro!";
-"onboarding.subscription.save_44" = "وفّر 44%";
+"onboarding.subscription.save_44" = "أفضل قيمة";
+"onboarding.subscription.benefit1" = "سجل حافظة غير محدود";
+"onboarding.subscription.benefit2" = "احفظ النصوص والصور والملفات";
+"onboarding.subscription.benefit3" = "بحث فوري في جميع القصاصات";
+"onboarding.subscription.benefit4" = "تخزين محلي خاص وآمن";
 
 // MARK: - Onboarding Complete
 "onboarding.complete.title" = "كل شيء جاهز!";

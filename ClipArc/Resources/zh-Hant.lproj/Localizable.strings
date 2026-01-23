@@ -54,13 +54,17 @@
 "onboarding.signin.sign_in_later" = "您可以稍後在設定中登入";
 
 // MARK: - Onboarding Subscription
-"onboarding.subscription.title" = "升級至專業版";
-"onboarding.subscription.subtitle" = "解鎖無限剪貼簿歷史紀錄";
+"onboarding.subscription.title" = "釋放全部潛能";
+"onboarding.subscription.subtitle" = "再也不會遺失複製的內容";
 "onboarding.subscription.subscribe" = "訂閱";
-"onboarding.subscription.start_free_trial" = "開始免費試用";
+"onboarding.subscription.start_free_trial" = "繼續使用免費版";
 "onboarding.subscription.free_vs_pro" = "免費版: 5 筆紀錄 · 專業版: 無限";
 "onboarding.subscription.you_are_pro" = "您已是專業版用戶！";
-"onboarding.subscription.save_44" = "節省 44%";
+"onboarding.subscription.save_44" = "最超值";
+"onboarding.subscription.benefit1" = "無限剪貼簿歷史紀錄";
+"onboarding.subscription.benefit2" = "儲存文字、圖片和檔案";
+"onboarding.subscription.benefit3" = "快速搜尋所有內容";
+"onboarding.subscription.benefit4" = "隱私安全，本地儲存";
 
 // MARK: - Onboarding Complete
 "onboarding.complete.title" = "設定完成！";

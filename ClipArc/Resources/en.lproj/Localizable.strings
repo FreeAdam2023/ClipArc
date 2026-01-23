@@ -54,13 +54,17 @@
 "onboarding.signin.sign_in_later" = "You can sign in later in Settings";
 
 // MARK: - Onboarding Subscription
-"onboarding.subscription.title" = "Upgrade to Pro";
-"onboarding.subscription.subtitle" = "Unlock unlimited clipboard history";
+"onboarding.subscription.title" = "Unlock Your Full Potential";
+"onboarding.subscription.subtitle" = "Never lose a copied item again";
 "onboarding.subscription.subscribe" = "Subscribe";
-"onboarding.subscription.start_free_trial" = "Start Free Trial";
+"onboarding.subscription.start_free_trial" = "Continue with Free";
 "onboarding.subscription.free_vs_pro" = "Free: 5 items · Pro: Unlimited";
 "onboarding.subscription.you_are_pro" = "You're a Pro!";
-"onboarding.subscription.save_44" = "SAVE 44%";
+"onboarding.subscription.save_44" = "BEST VALUE";
+"onboarding.subscription.benefit1" = "Unlimited clipboard history";
+"onboarding.subscription.benefit2" = "Save text, images & files";
+"onboarding.subscription.benefit3" = "Instant search across all clips";
+"onboarding.subscription.benefit4" = "Private & secure local storage";
 
 // MARK: - Onboarding Complete
 "onboarding.complete.title" = "You're All Set!";

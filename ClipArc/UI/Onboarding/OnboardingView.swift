@@ -309,10 +309,10 @@ struct LoginStepView: View {
                 }, onCompletion: { result in
                     handleSignIn(result)
                 })
-                .signInWithAppleButtonStyle(.white)
+                .signInWithAppleButtonStyle(.black)
                 .frame(height: 50)
                 .frame(maxWidth: 280)
-                .cornerRadius(8)
+                .clipShape(RoundedRectangle(cornerRadius: 10))
 
                 if authManager.isLoading {
                     ProgressView()
@@ -391,24 +391,34 @@ struct SubscriptionStepView: View {
     var onSkip: () -> Void
 
     @State private var selectedProduct: Product?
+    @State private var selectedPlaceholder: SubscriptionProduct = .yearly
 
     var body: some View {
-        VStack(spacing: 24) {
+        VStack(spacing: 20) {
             Spacer()
 
             Image(systemName: "crown.fill")
-                .font(.system(size: 56))
+                .font(.system(size: 48))
                 .foregroundStyle(.yellow)
 
-            VStack(spacing: 12) {
+            VStack(spacing: 8) {
                 Text(L10n.Onboarding.subscriptionTitle)
-                    .font(.largeTitle)
+                    .font(.title)
                     .fontWeight(.bold)
 
                 Text(L10n.Onboarding.subscriptionSubtitle)
-                    .font(.body)
+                    .font(.subheadline)
                     .foregroundStyle(.secondary)
             }
+
+            // Benefits list
+            VStack(alignment: .leading, spacing: 8) {
+                BenefitRow(text: L10n.Onboarding.benefit1)
+                BenefitRow(text: L10n.Onboarding.benefit2)
+                BenefitRow(text: L10n.Onboarding.benefit3)
+                BenefitRow(text: L10n.Onboarding.benefit4)
+            }
+            .padding(.horizontal, 48)
 
             if subscriptionManager.isSubscribed {
                 VStack(spacing: 8) {
@@ -419,8 +429,46 @@ struct SubscriptionStepView: View {
                     Text(L10n.Onboarding.youArePro)
                         .font(.headline)
                 }
+            } else if subscriptionManager.isLoading && subscriptionManager.products.isEmpty {
+                // Loading state
+                ProgressView()
+                    .padding()
+            } else if subscriptionManager.products.isEmpty {
+                // Placeholder pricing when products not loaded
+                VStack(spacing: 10) {
+                    ForEach(SubscriptionProduct.allCases, id: \.rawValue) { product in
+                        Button {
+                            selectedPlaceholder = product
+                        } label: {
+                            PlaceholderPricingCard(
+                                title: product.displayName,
+                                price: placeholderPrice(for: product),
+                                period: placeholderPeriod(for: product),
+                                badge: product == .yearly ? L10n.Onboarding.save44 : nil,
+                                isBestValue: product == .yearly,
+                                isSelected: selectedPlaceholder == product
+                            )
+                        }
+                        .buttonStyle(.plain)
+                    }
+                }
+                .padding(.horizontal, 32)
+
+                Button(action: {
+                    // Try to load products and open settings
+                    Task {
+                        await subscriptionManager.loadProducts()
+                    }
+                }) {
+                    Text(L10n.Onboarding.subscribe)
+                        .fontWeight(.semibold)
+                        .frame(width: 200)
+                }
+                .buttonStyle(.borderedProminent)
+                .controlSize(.large)
             } else {
-                VStack(spacing: 12) {
+                // Real products loaded
+                VStack(spacing: 10) {
                     ForEach(subscriptionManager.products, id: \.id) { product in
                         CompactPricingCard(
                             product: product,
@@ -431,7 +479,7 @@ struct SubscriptionStepView: View {
                         }
                     }
                 }
-                .padding(.horizontal, 40)
+                .padding(.horizontal, 32)
 
                 Button(action: {
                     Task {
@@ -457,17 +505,17 @@ struct SubscriptionStepView: View {
                 .buttonStyle(.borderedProminent)
                 .controlSize(.large)
                 .disabled(selectedProduct == nil || subscriptionManager.isLoading)
+            }
 
-                if let error = subscriptionManager.errorMessage {
-                    Text(error)
-                        .font(.caption)
-                        .foregroundStyle(.red)
-                }
+            if let error = subscriptionManager.errorMessage {
+                Text(error)
+                    .font(.caption)
+                    .foregroundStyle(.red)
             }
 
             Spacer()
 
-            VStack(spacing: 12) {
+            VStack(spacing: 8) {
                 if subscriptionManager.isSubscribed {
                     Button(L10n.continue_) {
                         onNext()
@@ -487,10 +535,31 @@ struct SubscriptionStepView: View {
                 }
             }
 
-            Spacer().frame(height: 40)
+            Spacer().frame(height: 30)
         }
         .onAppear {
             selectedProduct = subscriptionManager.yearlyProduct
+            if subscriptionManager.products.isEmpty {
+                Task {
+                    await subscriptionManager.loadProducts()
+                }
+            }
+        }
+    }
+
+    private func placeholderPrice(for product: SubscriptionProduct) -> String {
+        switch product {
+        case .monthly: return "$2.99"
+        case .yearly: return "$19.99"
+        case .lifetime: return "$59.99"
+        }
+    }
+
+    private func placeholderPeriod(for product: SubscriptionProduct) -> String {
+        switch product {
+        case .monthly: return "per month"
+        case .yearly: return "per year"
+        case .lifetime: return "one-time"
         }
     }
 }
@@ -505,7 +574,7 @@ struct CompactPricingCard: View {
         Button(action: onSelect) {
             HStack {
                 VStack(alignment: .leading, spacing: 2) {
-                    HStack {
+                    HStack(spacing: 8) {
                         Text(product.displayName)
                             .font(.headline)
 
@@ -520,14 +589,19 @@ struct CompactPricingCard: View {
                                 .cornerRadius(4)
                         }
                     }
+
+                    Text(periodDescription)
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
                 }
 
                 Spacer()
 
                 Text(product.displayPrice)
                     .font(.headline)
+                    .foregroundStyle(isSelected ? .primary : .secondary)
             }
-            .padding(16)
+            .padding(14)
             .background(
                 RoundedRectangle(cornerRadius: 10)
                     .fill(isSelected ? Color.accentColor.opacity(0.1) : Color.primary.opacity(0.05))
@@ -538,6 +612,16 @@ struct CompactPricingCard: View {
             )
         }
         .buttonStyle(.plain)
+    }
+
+    private var periodDescription: String {
+        if product.id == SubscriptionProduct.monthly.rawValue {
+            return "per month"
+        } else if product.id == SubscriptionProduct.yearly.rawValue {
+            return "per year"
+        } else {
+            return "one-time purchase"
+        }
     }
 }
 
@@ -566,7 +650,7 @@ struct CompleteStepView: View {
 
             VStack(alignment: .leading, spacing: 16) {
                 TipItem(shortcut: "⇧⌘V", description: L10n.Onboarding.tipOpen)
-                TipItem(shortcut: "↑ ↓", description: L10n.Onboarding.tipNavigate)
+                TipItem(shortcut: "← →", description: L10n.Onboarding.tipNavigate)
                 TipItem(shortcut: "Enter", description: L10n.Onboarding.tipPaste)
                 TipItem(shortcut: "Esc", description: L10n.Onboarding.tipClose)
             }
@@ -598,6 +682,24 @@ struct TipItem: View {
 
             Text(description)
                 .foregroundStyle(.secondary)
+
+            Spacer()
+        }
+    }
+}
+
+struct BenefitRow: View {
+    let text: String
+
+    var body: some View {
+        HStack(spacing: 10) {
+            Image(systemName: "checkmark.circle.fill")
+                .font(.system(size: 16))
+                .foregroundStyle(.green)
+
+            Text(text)
+                .font(.subheadline)
+                .foregroundStyle(.primary)
 
             Spacer()
         }

@@ -54,13 +54,17 @@
 "onboarding.signin.sign_in_later" = "Você pode entrar mais tarde nas Configurações";
 
 // MARK: - Onboarding Subscription
-"onboarding.subscription.title" = "Atualizar para Pro";
-"onboarding.subscription.subtitle" = "Desbloqueie histórico ilimitado da área de transferência";
+"onboarding.subscription.title" = "Libere todo o seu potencial";
+"onboarding.subscription.subtitle" = "Nunca mais perca um item copiado";
 "onboarding.subscription.subscribe" = "Assinar";
-"onboarding.subscription.start_free_trial" = "Iniciar teste gratuito";
+"onboarding.subscription.start_free_trial" = "Continuar com versão gratuita";
 "onboarding.subscription.free_vs_pro" = "Grátis: 5 itens · Pro: Ilimitado";
 "onboarding.subscription.you_are_pro" = "Você é Pro!";
-"onboarding.subscription.save_44" = "ECONOMIZE 44%";
+"onboarding.subscription.save_44" = "MELHOR VALOR";
+"onboarding.subscription.benefit1" = "Histórico ilimitado da área de transferência";
+"onboarding.subscription.benefit2" = "Salve texto, imagens e arquivos";
+"onboarding.subscription.benefit3" = "Busca instantânea em todos os clips";
+"onboarding.subscription.benefit4" = "Armazenamento local privado e seguro";
 
 // MARK: - Onboarding Complete
 "onboarding.complete.title" = "Tudo pronto!";

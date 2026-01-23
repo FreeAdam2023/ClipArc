@@ -54,13 +54,17 @@
 "onboarding.signin.sign_in_later" = "Sie können sich später in den Einstellungen anmelden";
 
 // MARK: - Onboarding Subscription
-"onboarding.subscription.title" = "Auf Pro upgraden";
-"onboarding.subscription.subtitle" = "Unbegrenzten Zwischenablage-Verlauf freischalten";
+"onboarding.subscription.title" = "Entfalten Sie Ihr volles Potenzial";
+"onboarding.subscription.subtitle" = "Verlieren Sie nie wieder Kopiertes";
 "onboarding.subscription.subscribe" = "Abonnieren";
-"onboarding.subscription.start_free_trial" = "Kostenlose Testversion starten";
+"onboarding.subscription.start_free_trial" = "Mit kostenloser Version fortfahren";
 "onboarding.subscription.free_vs_pro" = "Kostenlos: 5 Einträge · Pro: Unbegrenzt";
 "onboarding.subscription.you_are_pro" = "Sie sind Pro!";
-"onboarding.subscription.save_44" = "44% SPAREN";
+"onboarding.subscription.save_44" = "BESTES ANGEBOT";
+"onboarding.subscription.benefit1" = "Unbegrenzter Zwischenablage-Verlauf";
+"onboarding.subscription.benefit2" = "Text, Bilder & Dateien speichern";
+"onboarding.subscription.benefit3" = "Sofortige Suche in allen Clips";
+"onboarding.subscription.benefit4" = "Privat & sicher lokal gespeichert";
 
 // MARK: - Onboarding Complete
 "onboarding.complete.title" = "Alles bereit!";

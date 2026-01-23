@@ -54,13 +54,17 @@
 "onboarding.signin.sign_in_later" = "Puoi accedere più tardi nelle Impostazioni";
 
 // MARK: - Onboarding Subscription
-"onboarding.subscription.title" = "Passa a Pro";
-"onboarding.subscription.subtitle" = "Sblocca cronologia appunti illimitata";
+"onboarding.subscription.title" = "Libera tutto il tuo potenziale";
+"onboarding.subscription.subtitle" = "Non perdere mai più un elemento copiato";
 "onboarding.subscription.subscribe" = "Abbonati";
-"onboarding.subscription.start_free_trial" = "Inizia la prova gratuita";
+"onboarding.subscription.start_free_trial" = "Continua con la versione gratuita";
 "onboarding.subscription.free_vs_pro" = "Gratis: 5 elementi · Pro: Illimitato";
 "onboarding.subscription.you_are_pro" = "Sei Pro!";
-"onboarding.subscription.save_44" = "RISPARMIA 44%";
+"onboarding.subscription.save_44" = "MIGLIOR VALORE";
+"onboarding.subscription.benefit1" = "Cronologia appunti illimitata";
+"onboarding.subscription.benefit2" = "Salva testo, immagini e file";
+"onboarding.subscription.benefit3" = "Ricerca istantanea in tutti i clip";
+"onboarding.subscription.benefit4" = "Archiviazione locale privata e sicura";
 
 // MARK: - Onboarding Complete
 "onboarding.complete.title" = "Tutto pronto!";

@@ -107,7 +107,7 @@
               "locale" : "en_US"
             }
           ],
-          "productID" : "com.versegates.cliparc.monthly",
+          "productID" : "com.versegates.cliparc.pro.monthly",
           "recurringSubscriptionPeriod" : "P1M",
           "referenceName" : "ClipArc Pro Monthly",
           "subscriptionGroupID" : "ClipArcPro",
@@ -138,7 +138,7 @@
               "locale" : "en_US"
             }
           ],
-          "productID" : "com.versegates.cliparc.yearly",
+          "productID" : "com.versegates.cliparc.pro.yearly",
           "recurringSubscriptionPeriod" : "P1Y",
           "referenceName" : "ClipArc Pro Yearly",
           "subscriptionGroupID" : "ClipArcPro",

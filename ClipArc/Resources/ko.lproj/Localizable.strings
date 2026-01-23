@@ -54,13 +54,17 @@
 "onboarding.signin.sign_in_later" = "설정에서 나중에 로그인할 수 있습니다";
 
 // MARK: - Onboarding Subscription
-"onboarding.subscription.title" = "Pro로 업그레이드";
-"onboarding.subscription.subtitle" = "무제한 클립보드 기록 잠금 해제";
+"onboarding.subscription.title" = "모든 잠재력을 발휘하세요";
+"onboarding.subscription.subtitle" = "복사한 내용을 다시는 잃어버리지 마세요";
 "onboarding.subscription.subscribe" = "구독하기";
-"onboarding.subscription.start_free_trial" = "무료 체험 시작";
+"onboarding.subscription.start_free_trial" = "무료 버전으로 계속";
 "onboarding.subscription.free_vs_pro" = "무료: 5개 · Pro: 무제한";
 "onboarding.subscription.you_are_pro" = "Pro 사용자입니다!";
-"onboarding.subscription.save_44" = "44% 절약";
+"onboarding.subscription.save_44" = "최고 가치";
+"onboarding.subscription.benefit1" = "무제한 클립보드 기록";
+"onboarding.subscription.benefit2" = "텍스트, 이미지 및 파일 저장";
+"onboarding.subscription.benefit3" = "모든 클립 즉시 검색";
+"onboarding.subscription.benefit4" = "안전한 로컬 저장소";
 
 // MARK: - Onboarding Complete
 "onboarding.complete.title" = "모든 준비 완료!";

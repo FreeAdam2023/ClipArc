@@ -54,13 +54,17 @@
 "onboarding.signin.sign_in_later" = "Puedes iniciar sesión más tarde en Ajustes";
 
 // MARK: - Onboarding Subscription
-"onboarding.subscription.title" = "Actualizar a Pro";
-"onboarding.subscription.subtitle" = "Desbloquea historial ilimitado del portapapeles";
+"onboarding.subscription.title" = "Libera todo tu potencial";
+"onboarding.subscription.subtitle" = "Nunca más pierdas un elemento copiado";
 "onboarding.subscription.subscribe" = "Suscribirse";
-"onboarding.subscription.start_free_trial" = "Iniciar prueba gratuita";
+"onboarding.subscription.start_free_trial" = "Continuar con versión gratuita";
 "onboarding.subscription.free_vs_pro" = "Gratis: 5 elementos · Pro: Ilimitado";
 "onboarding.subscription.you_are_pro" = "¡Eres Pro!";
-"onboarding.subscription.save_44" = "AHORRA 44%";
+"onboarding.subscription.save_44" = "MEJOR VALOR";
+"onboarding.subscription.benefit1" = "Historial ilimitado del portapapeles";
+"onboarding.subscription.benefit2" = "Guarda texto, imágenes y archivos";
+"onboarding.subscription.benefit3" = "Búsqueda instantánea en todos los clips";
+"onboarding.subscription.benefit4" = "Almacenamiento local privado y seguro";
 
 // MARK: - Onboarding Complete
 "onboarding.complete.title" = "¡Todo listo!";

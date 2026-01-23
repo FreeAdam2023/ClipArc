@@ -177,6 +177,10 @@ enum L10n {
         static var freeVsPro: String { "onboarding.subscription.free_vs_pro".localized }
         static var youArePro: String { "onboarding.subscription.you_are_pro".localized }
         static var save44: String { "onboarding.subscription.save_44".localized }
+        static var benefit1: String { "onboarding.subscription.benefit1".localized }
+        static var benefit2: String { "onboarding.subscription.benefit2".localized }
+        static var benefit3: String { "onboarding.subscription.benefit3".localized }
+        static var benefit4: String { "onboarding.subscription.benefit4".localized }
 
         static var completeTitle: String { "onboarding.complete.title".localized }
         static var completeSubtitle: String { "onboarding.complete.subtitle".localized }
