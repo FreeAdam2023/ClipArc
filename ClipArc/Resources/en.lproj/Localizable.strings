@@ -58,7 +58,7 @@
 "onboarding.subscription.subtitle" = "Unlock unlimited clipboard history";
 "onboarding.subscription.subscribe" = "Subscribe";
 "onboarding.subscription.start_free_trial" = "Start Free Trial";
-"onboarding.subscription.free_vs_pro" = "Free: 9 items · Pro: Unlimited";
+"onboarding.subscription.free_vs_pro" = "Free: 5 items · Pro: Unlimited";
 "onboarding.subscription.you_are_pro" = "You're a Pro!";
 "onboarding.subscription.save_44" = "SAVE 44%";
 
@@ -113,7 +113,7 @@
 
 "settings.version" = "Version";
 "settings.about_description" = "A fast and simple clipboard manager for macOS";
-"settings.website" = "Website";
+"settings.support" = "Support";
 "settings.privacy" = "Privacy";
 "settings.terms" = "Terms";
 

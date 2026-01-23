@@ -691,21 +691,21 @@ struct AboutView: View {
 
             // Links
             HStack(spacing: 24) {
-                Link(destination: URL(string: "https://cliparc.app")!) {
+                Link(destination: URL(string: "https://www.versegates.com/cliparc/support")!) {
                     HStack(spacing: 4) {
-                        Image(systemName: "globe")
-                        Text(L10n.Settings.website)
+                        Image(systemName: "questionmark.circle")
+                        Text(L10n.Settings.support)
                     }
                 }
 
-                Link(destination: URL(string: "https://cliparc.app/privacy")!) {
+                Link(destination: URL(string: "https://www.versegates.com/cliparc/privacy")!) {
                     HStack(spacing: 4) {
                         Image(systemName: "hand.raised")
                         Text(L10n.Settings.privacy)
                     }
                 }
 
-                Link(destination: URL(string: "https://cliparc.app/terms")!) {
+                Link(destination: URL(string: "https://www.versegates.com/cliparc/terms")!) {
                     HStack(spacing: 4) {
                         Image(systemName: "doc.text")
                         Text(L10n.Settings.terms)

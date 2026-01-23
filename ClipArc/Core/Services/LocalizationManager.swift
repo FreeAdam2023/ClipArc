@@ -230,7 +230,7 @@ enum L10n {
 
         static var version: String { "settings.version".localized }
         static var aboutDescription: String { "settings.about_description".localized }
-        static var website: String { "settings.website".localized }
+        static var support: String { "settings.support".localized }
         static var privacy: String { "settings.privacy".localized }
         static var terms: String { "settings.terms".localized }
 

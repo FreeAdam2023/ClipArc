@@ -141,7 +141,7 @@ struct MenuBarContentView: View {
             Divider()
 
             Button(L10n.MenuBar.help) {
-                if let url = URL(string: "https://cliparc.app/help") {
+                if let url = URL(string: "https://www.versegates.com/cliparc/support") {
                     NSWorkspace.shared.open(url)
                 }
             }

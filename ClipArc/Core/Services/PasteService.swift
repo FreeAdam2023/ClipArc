@@ -149,12 +149,18 @@ enum PasteService {
         window.backgroundColor = .clear
         window.isOpaque = false
         window.hasShadow = true
-        window.level = .floating
+        window.level = .screenSaver  // Higher level to ensure visibility
         window.collectionBehavior = [.canJoinAllSpaces, .transient]
         window.center()
+
+        // Ensure the app is activated and window is visible
+        NSApp.activate(ignoringOtherApps: true)
+        window.makeKeyAndOrderFront(nil)
         window.orderFrontRegardless()
 
         alertWindow = window
+
+        print("[PasteService] Alert window displayed at: \(window.frame)")
     }
 
     private static func openAccessibilitySettings() {

@@ -13,7 +13,7 @@ import SwiftData
 final class ClipboardStore: ObservableObject {
     private let modelContext: ModelContext
     private let proHistoryLimit: Int
-    static let freeHistoryLimit = 9
+    static let freeHistoryLimit = 5
 
     // Content size limit for text (in bytes)
     static let maxContentSize = 1 * 1024 * 1024    // 1 MB for text content

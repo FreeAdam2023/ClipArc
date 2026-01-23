@@ -58,7 +58,7 @@
 "onboarding.subscription.subtitle" = "解锁无限剪贴板历史记录";
 "onboarding.subscription.subscribe" = "订阅";
 "onboarding.subscription.start_free_trial" = "开始免费试用";
-"onboarding.subscription.free_vs_pro" = "免费版: 9 条记录 · 专业版: 无限";
+"onboarding.subscription.free_vs_pro" = "免费版: 5 条记录 · 专业版: 无限";
 "onboarding.subscription.you_are_pro" = "您已是专业版用户！";
 "onboarding.subscription.save_44" = "节省 44%";
 
@@ -113,7 +113,7 @@
 
 "settings.version" = "版本";
 "settings.about_description" = "一款快速简洁的 macOS 剪贴板管理器";
-"settings.website" = "官网";
+"settings.support" = "支持";
 "settings.privacy" = "隐私";
 "settings.terms" = "条款";
 
