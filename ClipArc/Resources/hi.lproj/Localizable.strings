@@ -93,6 +93,10 @@
 "settings.granted" = "अनुमति दी गई";
 "settings.language" = "भाषा";
 "settings.restart_required" = "भाषा परिवर्तन लागू करने के लिए ऐप को पुनः आरंभ करें";
+"settings.appearance" = "दिखावट";
+"settings.appearance.system" = "सिस्टम";
+"settings.appearance.light" = "लाइट";
+"settings.appearance.dark" = "डार्क";
 
 "settings.sign_out" = "साइन आउट";
 "settings.sync_description" = "डिवाइसों में अपना डेटा सिंक करने के लिए साइन इन करें";

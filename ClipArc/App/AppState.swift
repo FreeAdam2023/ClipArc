@@ -19,6 +19,7 @@ final class AppState {
     var showFrequentOnly = false  // Show only frequently used items
     var selectedIndex = 0
     var items: [ClipboardItem] = []
+    var scrollToSelectedTrigger = UUID()  // Changes to trigger scroll
 
     // Selection mode for batch operations
     var isSelectionMode = false
@@ -192,6 +193,7 @@ final class AppState {
     func moveSelectionUp() {
         if selectedIndex > 0 {
             selectedIndex -= 1
+            scrollToSelectedTrigger = UUID()  // Trigger scroll
         }
     }
 
@@ -199,6 +201,7 @@ final class AppState {
         let maxIndex = filteredItems.count - 1
         if selectedIndex < maxIndex {
             selectedIndex += 1
+            scrollToSelectedTrigger = UUID()  // Trigger scroll
         }
     }
 

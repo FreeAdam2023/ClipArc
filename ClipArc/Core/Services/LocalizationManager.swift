@@ -211,6 +211,11 @@ enum L10n {
         static var language: String { "settings.language".localized }
         static var restartRequired: String { "settings.restart_required".localized }
 
+        static var appearance: String { "settings.appearance".localized }
+        static var appearanceSystem: String { "settings.appearance.system".localized }
+        static var appearanceLight: String { "settings.appearance.light".localized }
+        static var appearanceDark: String { "settings.appearance.dark".localized }
+
         static var signOut: String { "settings.sign_out".localized }
         static var syncDescription: String { "settings.sync_description".localized }
         static var memberAccount: String { "settings.member_account".localized }

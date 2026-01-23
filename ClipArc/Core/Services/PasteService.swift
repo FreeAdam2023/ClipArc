@@ -87,18 +87,46 @@ enum PasteService {
             showManualPasteAlert()
             return
         }
+
+        // Get the frontmost app to verify focus
+        if let frontApp = NSWorkspace.shared.frontmostApplication {
+            print("[PasteService] Current frontmost app: \(frontApp.localizedName ?? "unknown")")
+        }
+
         print("[PasteService] Simulating Cmd+V...")
 
-        let source = CGEventSource(stateID: .hidSystemState)
+        // Use combinedSessionState for better compatibility with other apps
+        let source = CGEventSource(stateID: .combinedSessionState)
 
-        let keyDownEvent = CGEvent(keyboardEventSource: source, virtualKey: CGKeyCode(kVK_ANSI_V), keyDown: true)
-        keyDownEvent?.flags = .maskCommand
+        // Set the source state to allow events through
+        source?.setLocalEventsFilterDuringSuppressionState([.permitLocalMouseEvents, .permitLocalKeyboardEvents], state: .eventSuppressionStateSuppressionInterval)
 
-        let keyUpEvent = CGEvent(keyboardEventSource: source, virtualKey: CGKeyCode(kVK_ANSI_V), keyDown: false)
-        keyUpEvent?.flags = .maskCommand
+        let vCode = CGKeyCode(kVK_ANSI_V)
 
-        keyDownEvent?.post(tap: .cghidEventTap)
-        keyUpEvent?.post(tap: .cghidEventTap)
+        // Create key down event
+        guard let keyVDown = CGEvent(keyboardEventSource: source, virtualKey: vCode, keyDown: true) else {
+            print("[PasteService] Failed to create key down event")
+            return
+        }
+        keyVDown.flags = .maskCommand
+
+        // Create key up event
+        guard let keyVUp = CGEvent(keyboardEventSource: source, virtualKey: vCode, keyDown: false) else {
+            print("[PasteService] Failed to create key up event")
+            return
+        }
+        keyVUp.flags = .maskCommand
+
+        // Post to HID event tap - this is how most clipboard managers do it
+        // cghidEventTap inserts events at the point where HID events enter the application
+        keyVDown.post(tap: .cghidEventTap)
+
+        // Small delay between key down and key up for reliability
+        usleep(10000)  // 10ms delay
+
+        keyVUp.post(tap: .cghidEventTap)
+
+        print("[PasteService] Paste events posted to HID event tap")
     }
 
     static func canSimulatePaste() -> Bool {

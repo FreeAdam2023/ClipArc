@@ -93,6 +93,10 @@
 "settings.granted" = "ممنوح";
 "settings.language" = "اللغة";
 "settings.restart_required" = "أعد تشغيل التطبيق لتطبيق تغيير اللغة";
+"settings.appearance" = "المظهر";
+"settings.appearance.system" = "النظام";
+"settings.appearance.light" = "فاتح";
+"settings.appearance.dark" = "داكن";
 
 "settings.sign_out" = "تسجيل الخروج";
 "settings.sync_description" = "سجّل الدخول لمزامنة بياناتك عبر الأجهزة";

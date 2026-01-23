@@ -93,6 +93,10 @@
 "settings.granted" = "Accordé";
 "settings.language" = "Langue";
 "settings.restart_required" = "Redémarrez l'app pour appliquer le changement de langue";
+"settings.appearance" = "Apparence";
+"settings.appearance.system" = "Système";
+"settings.appearance.light" = "Clair";
+"settings.appearance.dark" = "Sombre";
 
 "settings.sign_out" = "Se déconnecter";
 "settings.sync_description" = "Connectez-vous pour synchroniser vos données entre appareils";

@@ -93,6 +93,10 @@
 "settings.granted" = "已授權";
 "settings.language" = "語言";
 "settings.restart_required" = "重新啟動應用程式以套用語言變更";
+"settings.appearance" = "外觀";
+"settings.appearance.system" = "跟隨系統";
+"settings.appearance.light" = "淺色";
+"settings.appearance.dark" = "深色";
 
 "settings.sign_out" = "登出";
 "settings.sync_description" = "登入以跨裝置同步資料";

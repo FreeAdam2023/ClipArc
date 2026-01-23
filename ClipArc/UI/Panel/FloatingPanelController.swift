@@ -15,6 +15,8 @@ final class FloatingPanelController {
     private var panel: FloatingPanel?
     private let appState: AppState
     private let modelContainer: ModelContainer
+    private var keyboardMonitor: Any?
+    private var previousApp: NSRunningApplication?  // Remember the app that was active before showing panel
 
     init(appState: AppState, modelContainer: ModelContainer) {
         self.appState = appState
@@ -22,17 +24,53 @@ final class FloatingPanelController {
     }
 
     func show() {
-        if panel == nil {
-            createPanel()
+        // Remember the currently active app before showing panel
+        // Must capture this BEFORE we activate our app
+        let frontApp = NSWorkspace.shared.frontmostApplication
+        if frontApp?.bundleIdentifier != Bundle.main.bundleIdentifier {
+            previousApp = frontApp
+            print("[FloatingPanel] Saved previous app: \(previousApp?.localizedName ?? "none")")
         }
+
+        // Always recreate panel to ensure clean state
+        createPanel()
 
         appState.showPanel()
         panel?.showAtBottom()
+        setupKeyboardMonitor()
     }
 
     func hide(completion: (() -> Void)? = nil) {
+        removeKeyboardMonitor()
         appState.hidePanel()
-        panel?.hideWithAnimation(completion: completion)
+
+        let appToRestore = previousApp
+        print("[FloatingPanel] Will restore focus to: \(appToRestore?.localizedName ?? "none")")
+
+        // Close panel and release focus
+        panel?.close()
+
+        // Step 1: Deactivate our app first
+        NSApp.deactivate()
+
+        // Step 2: Schedule activation of previous app
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
+            if let app = appToRestore, app.bundleIdentifier != Bundle.main.bundleIdentifier {
+                print("[FloatingPanel] Activating app: \(app.localizedName ?? "unknown")")
+                app.activate(options: .activateIgnoringOtherApps)
+            }
+
+            // Step 3: Wait for focus to fully transfer and keys to release, then paste
+            // Use a longer delay (0.35s) to ensure the target app is fully active and ready to receive events
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
+                // Verify the target app is now frontmost
+                let currentApp = NSWorkspace.shared.frontmostApplication
+                print("[FloatingPanel] Current frontmost: \(currentApp?.localizedName ?? "unknown")")
+
+                print("[FloatingPanel] Now pasting...")
+                completion?()
+            }
+        }
     }
 
     func toggle() {
@@ -54,6 +92,49 @@ final class FloatingPanelController {
         .modelContainer(modelContainer)
 
         panel?.setContentView(contentView)
+    }
+
+    private func setupKeyboardMonitor() {
+        removeKeyboardMonitor()
+
+        keyboardMonitor = NSEvent.addLocalMonitorForEvents(matching: .keyDown) { [weak self] event in
+            guard let self = self else { return event }
+
+            switch Int(event.keyCode) {
+            case 123: // Left arrow
+                self.appState.moveSelectionUp()
+                return nil // Consume event
+
+            case 124: // Right arrow
+                self.appState.moveSelectionDown()
+                return nil
+
+            case 53: // Escape
+                self.hide()
+                return nil
+
+            case 36: // Return/Enter
+                if let item = self.appState.selectedItem {
+                    self.appState.touchItem(item)
+                    PasteService.copyItem(item)
+                    self.hide {
+                        // Focus should be restored by hide(), now paste
+                        PasteService.simulatePaste()
+                    }
+                }
+                return nil
+
+            default:
+                return event
+            }
+        }
+    }
+
+    private func removeKeyboardMonitor() {
+        if let monitor = keyboardMonitor {
+            NSEvent.removeMonitor(monitor)
+            keyboardMonitor = nil
+        }
     }
 }
 
@@ -88,14 +169,11 @@ struct PanelContentView: View {
                                 isSelectionMode: appState.isSelectionMode,
                                 isItemSelected: appState.selectedItemIDs.contains(item.id),
                                 onSelect: {
-                                    print("[FloatingPanel] Card clicked - item: \(item.previewText.prefix(30))")
                                     appState.touchItem(item)  // Move to front
                                     PasteService.copyItem(item)  // Copy first
                                     onDismiss {
-                                        // Small delay to let system restore focus, then paste
-                                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
-                                            PasteService.simulatePaste()
-                                        }
+                                        // Focus restored by hide(), now paste
+                                        PasteService.simulatePaste()
                                     }
                                 },
                                 onDelete: {
@@ -160,13 +238,14 @@ struct PanelContentView: View {
                 appState.touchItem(item)  // Move to front
                 PasteService.copyItem(item)  // Copy first
                 onDismiss {
-                    // Small delay to let system restore focus, then paste
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
-                        PasteService.simulatePaste()
-                    }
+                    // Focus restored by hide(), now paste
+                    PasteService.simulatePaste()
                 }
             }
             return .handled
+        }
+        .onChange(of: appState.scrollToSelectedTrigger) {
+            scrollToSelected()
         }
     }
 
@@ -397,6 +476,22 @@ struct ClipboardCardView: View {
     let onToggleSelection: () -> Void
 
     @State private var isHovered = false
+    @Environment(\.colorScheme) private var colorScheme
+
+    private var isDarkMode: Bool { colorScheme == .dark }
+
+    // Dynamic colors based on color scheme
+    private var cardBackground: some ShapeStyle {
+        if isSelected {
+            return AnyShapeStyle(.regularMaterial)
+        } else {
+            return AnyShapeStyle(.ultraThinMaterial)
+        }
+    }
+
+    private var selectedGlow: Color {
+        item.type.accentColor.opacity(isDarkMode ? 0.6 : 0.4)
+    }
 
     var body: some View {
         Button(action: {
@@ -407,110 +502,148 @@ struct ClipboardCardView: View {
             }
         }) {
             VStack(alignment: .leading, spacing: 0) {
-                // Top color bar with type indicator
-                HStack(spacing: 6) {
+                // Top bar with type indicator
+                HStack(spacing: 8) {
                     // Type icon with colored background
                     ZStack {
-                        Circle()
-                            .fill(item.type.accentColor.opacity(0.2))
-                            .frame(width: 24, height: 24)
+                        RoundedRectangle(cornerRadius: 6)
+                            .fill(item.type.accentColor.opacity(isDarkMode ? 0.3 : 0.15))
+                            .frame(width: 28, height: 28)
 
                         Image(systemName: item.type.icon)
-                            .font(.system(size: 10, weight: .semibold))
+                            .font(.system(size: 12, weight: .semibold))
                             .foregroundStyle(item.type.accentColor)
                     }
 
                     Text(item.type.displayName)
-                        .font(.caption2)
-                        .fontWeight(.medium)
+                        .font(.system(size: 11, weight: .semibold))
                         .foregroundStyle(item.type.accentColor)
 
                     Spacer()
 
                     Text(item.createdAt.shortRelativeFormatted)
-                        .font(.caption2)
+                        .font(.system(size: 10))
                         .foregroundStyle(.secondary)
 
-                    if isHovered {
+                    if isHovered || isSelected {
                         Button(action: onDelete) {
                             Image(systemName: "xmark.circle.fill")
-                                .font(.system(size: 14))
-                                .foregroundStyle(.secondary.opacity(0.7))
+                                .font(.system(size: 16))
+                                .foregroundStyle(isDarkMode ? .white.opacity(0.5) : .black.opacity(0.3))
                         }
                         .buttonStyle(.plain)
                         .transition(.scale.combined(with: .opacity))
                     }
                 }
-                .padding(.horizontal, 10)
-                .padding(.top, 10)
-                .padding(.bottom, 8)
+                .padding(.horizontal, 12)
+                .padding(.top, 12)
+                .padding(.bottom, 10)
 
                 // Content area
                 contentPreview
-                    .padding(.horizontal, 10)
+                    .padding(.horizontal, 12)
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
 
                 // Source app footer
                 HStack(spacing: 4) {
                     if let appName = item.sourceAppName {
                         Image(systemName: "app.fill")
-                            .font(.system(size: 8))
+                            .font(.system(size: 9))
                         Text(appName)
                             .lineLimit(1)
                     }
                     Spacer()
+
+                    // Selection indicator when selected via keyboard
+                    if isSelected && !isSelectionMode {
+                        HStack(spacing: 3) {
+                            Image(systemName: "return")
+                                .font(.system(size: 9))
+                            Text("Enter")
+                                .font(.system(size: 9, weight: .medium))
+                        }
+                        .foregroundStyle(item.type.accentColor)
+                        .padding(.horizontal, 6)
+                        .padding(.vertical, 2)
+                        .background(
+                            Capsule()
+                                .fill(item.type.accentColor.opacity(0.15))
+                        )
+                    }
                 }
-                .font(.caption2)
+                .font(.system(size: 10))
                 .foregroundStyle(.tertiary)
-                .padding(.horizontal, 10)
-                .padding(.bottom, 10)
-                .padding(.top, 6)
+                .padding(.horizontal, 12)
+                .padding(.bottom, 12)
+                .padding(.top, 8)
             }
             .frame(width: 260, height: 240)
             .background(
                 ZStack {
-                    // Base background
-                    RoundedRectangle(cornerRadius: 12)
+                    // Base background with material
+                    RoundedRectangle(cornerRadius: 16)
                         .fill(.ultraThinMaterial)
 
-                    // Gradient overlay based on type
-                    RoundedRectangle(cornerRadius: 12)
+                    // Colored gradient overlay
+                    RoundedRectangle(cornerRadius: 16)
                         .fill(
                             LinearGradient(
-                                colors: isSelected ? [item.type.accentColor.opacity(0.15), item.type.accentColor.opacity(0.05)] : item.type.gradientColors.map { $0.opacity(0.5) },
+                                colors: [
+                                    item.type.accentColor.opacity(isSelected ? 0.15 : 0.08),
+                                    item.type.accentColor.opacity(isSelected ? 0.08 : 0.02)
+                                ],
                                 startPoint: .topLeading,
                                 endPoint: .bottomTrailing
                             )
                         )
+
+                    // Selection highlight overlay
+                    if isSelected {
+                        RoundedRectangle(cornerRadius: 16)
+                            .fill(item.type.accentColor.opacity(isDarkMode ? 0.1 : 0.05))
+                    }
                 }
             )
+            // Selection border with glow effect
             .overlay(
-                RoundedRectangle(cornerRadius: 12)
+                RoundedRectangle(cornerRadius: 16)
                     .stroke(
-                        isSelected ? item.type.accentColor : (isHovered ? Color.primary.opacity(0.1) : Color.clear),
-                        lineWidth: isSelected ? 2 : 1
+                        isSelected ? item.type.accentColor : (isHovered ? Color.primary.opacity(0.15) : Color.primary.opacity(0.05)),
+                        lineWidth: isSelected ? 2.5 : 1
                     )
             )
-            .shadow(color: .black.opacity(isHovered ? 0.15 : 0.05), radius: isHovered ? 8 : 4, y: isHovered ? 4 : 2)
+            // Glow effect for selected card
+            .shadow(
+                color: isSelected ? selectedGlow : .clear,
+                radius: isSelected ? 12 : 0,
+                y: 0
+            )
+            // Regular shadow
+            .shadow(
+                color: .black.opacity(isDarkMode ? 0.3 : 0.1),
+                radius: isHovered ? 12 : 6,
+                y: isHovered ? 6 : 3
+            )
+            // Selection mode checkbox
             .overlay(alignment: .topLeading) {
                 if isSelectionMode {
                     ZStack {
                         Circle()
-                            .fill(isItemSelected ? Color.blue : Color.white.opacity(0.9))
-                            .frame(width: 24, height: 24)
-                            .shadow(color: .black.opacity(0.1), radius: 2, y: 1)
+                            .fill(isItemSelected ? Color.blue : (isDarkMode ? Color.black.opacity(0.6) : Color.white.opacity(0.95)))
+                            .frame(width: 26, height: 26)
+                            .shadow(color: .black.opacity(0.15), radius: 3, y: 1)
 
                         if isItemSelected {
                             Image(systemName: "checkmark")
-                                .font(.system(size: 12, weight: .bold))
+                                .font(.system(size: 13, weight: .bold))
                                 .foregroundStyle(.white)
                         } else {
                             Circle()
-                                .stroke(Color.gray.opacity(0.4), lineWidth: 1.5)
+                                .stroke(Color.gray.opacity(0.5), lineWidth: 2)
                                 .frame(width: 22, height: 22)
                         }
                     }
-                    .offset(x: -4, y: -4)
+                    .offset(x: -6, y: -6)
                     .transition(.scale.combined(with: .opacity))
                 }
             }
@@ -521,80 +654,105 @@ struct ClipboardCardView: View {
                 isHovered = hovering
             }
         }
-        .scaleEffect(isHovered ? 1.03 : 1.0)
-        .animation(.spring(response: 0.3, dampingFraction: 0.7), value: isHovered)
-        .animation(.spring(response: 0.3, dampingFraction: 0.7), value: isSelected)
-        .animation(.spring(response: 0.3, dampingFraction: 0.7), value: isItemSelected)
+        .scaleEffect(isSelected ? 1.02 : (isHovered ? 1.02 : 1.0))
+        .animation(.spring(response: 0.35, dampingFraction: 0.7), value: isHovered)
+        .animation(.spring(response: 0.35, dampingFraction: 0.7), value: isSelected)
+        .animation(.spring(response: 0.35, dampingFraction: 0.7), value: isItemSelected)
     }
 
     @ViewBuilder
     private var contentPreview: some View {
         switch item.type {
         case .url:
-            VStack(alignment: .leading, spacing: 4) {
+            VStack(alignment: .leading, spacing: 8) {
                 if let url = URL(string: item.content) {
-                    // Page title (if available) - most prominent
-                    if let title = item.urlTitle {
-                        Text(title)
-                            .font(.system(size: 13, weight: .semibold))
-                            .foregroundStyle(.primary)
-                            .lineLimit(2)
-                    }
-
-                    // Domain with icon
+                    // Domain badge
                     HStack(spacing: 6) {
-                        Image(systemName: "globe")
-                            .font(.system(size: 12))
-                            .foregroundStyle(.blue)
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 6)
+                                .fill(Color.blue.opacity(isDarkMode ? 0.3 : 0.1))
+                                .frame(width: 28, height: 28)
+                            Image(systemName: "link")
+                                .font(.system(size: 12, weight: .medium))
+                                .foregroundStyle(.blue)
+                        }
 
                         Text(url.host ?? "")
-                            .font(.system(size: 11, weight: .medium))
-                            .foregroundStyle(item.urlTitle != nil ? .secondary : .primary)
+                            .font(.system(size: 12, weight: .semibold))
+                            .foregroundStyle(.blue)
                             .lineLimit(1)
                     }
 
-                    // Path (only show if no title, to save space)
-                    if item.urlTitle == nil, let path = url.path.isEmpty ? nil : url.path, path != "/" {
-                        Text(path)
-                            .font(.system(size: 10))
-                            .foregroundStyle(.secondary)
-                            .lineLimit(1)
+                    // Page title (if available)
+                    if let title = item.urlTitle {
+                        Text(title)
+                            .font(.system(size: 13, weight: .medium))
+                            .foregroundStyle(.primary)
+                            .lineLimit(3)
                     }
 
-                    // Full URL (truncated)
+                    Spacer()
+
+                    // Full URL at bottom
                     Text(item.content)
                         .font(.system(size: 9, design: .monospaced))
-                        .foregroundStyle(.tertiary)
-                        .lineLimit(item.urlTitle != nil ? 1 : 2)
-                        .padding(.top, 2)
+                        .foregroundStyle(.secondary)
+                        .lineLimit(2)
+                        .padding(.horizontal, 8)
+                        .padding(.vertical, 6)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .background(
+                            RoundedRectangle(cornerRadius: 6)
+                                .fill(Color.primary.opacity(isDarkMode ? 0.1 : 0.04))
+                        )
                 }
             }
 
         case .code:
-            Text(item.previewText)
-                .font(.system(size: 10, design: .monospaced))
-                .foregroundStyle(.primary)
-                .lineLimit(6)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(8)
-                .background(
-                    RoundedRectangle(cornerRadius: 6)
-                        .fill(Color.primary.opacity(0.05))
-                )
+            VStack(alignment: .leading, spacing: 0) {
+                // Code header
+                HStack(spacing: 6) {
+                    Circle().fill(.red.opacity(0.8)).frame(width: 8, height: 8)
+                    Circle().fill(.yellow.opacity(0.8)).frame(width: 8, height: 8)
+                    Circle().fill(.green.opacity(0.8)).frame(width: 8, height: 8)
+                    Spacer()
+                }
+                .padding(.horizontal, 10)
+                .padding(.vertical, 6)
+
+                // Code content
+                Text(item.previewText)
+                    .font(.system(size: 10, design: .monospaced))
+                    .foregroundStyle(isDarkMode ? .green.opacity(0.9) : .primary)
+                    .lineLimit(7)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.horizontal, 10)
+                    .padding(.bottom, 8)
+            }
+            .background(
+                RoundedRectangle(cornerRadius: 8)
+                    .fill(isDarkMode ? Color.black.opacity(0.4) : Color.black.opacity(0.05))
+            )
+            .overlay(
+                RoundedRectangle(cornerRadius: 8)
+                    .stroke(Color.primary.opacity(0.1), lineWidth: 1)
+            )
 
         case .color:
-            HStack(spacing: 8) {
+            VStack(spacing: 12) {
                 if let color = parseColor(item.content) {
-                    RoundedRectangle(cornerRadius: 6)
+                    RoundedRectangle(cornerRadius: 12)
                         .fill(color)
-                        .frame(width: 40, height: 40)
+                        .frame(height: 80)
                         .overlay(
-                            RoundedRectangle(cornerRadius: 6)
-                                .stroke(Color.primary.opacity(0.2), lineWidth: 1)
+                            RoundedRectangle(cornerRadius: 12)
+                                .stroke(Color.primary.opacity(0.15), lineWidth: 1)
                         )
+                        .shadow(color: color.opacity(0.4), radius: 8, y: 4)
                 }
-                Text(item.content)
-                    .font(.system(size: 11, design: .monospaced))
+
+                Text(item.content.uppercased())
+                    .font(.system(size: 14, weight: .bold, design: .monospaced))
                     .foregroundStyle(.primary)
             }
 
@@ -691,11 +849,24 @@ struct ClipboardCardView: View {
             }
 
         default:
-            Text(item.previewText)
-                .font(.system(size: 12))
-                .foregroundStyle(.primary)
-                .lineLimit(5)
-                .multilineTextAlignment(.leading)
+            // Plain text with nice styling
+            VStack(alignment: .leading, spacing: 8) {
+                Text(item.previewText)
+                    .font(.system(size: 13))
+                    .foregroundStyle(.primary)
+                    .lineLimit(7)
+                    .multilineTextAlignment(.leading)
+
+                Spacer()
+
+                // Character count
+                HStack {
+                    Spacer()
+                    Text("\(item.content.count) chars")
+                        .font(.system(size: 9, weight: .medium))
+                        .foregroundStyle(.tertiary)
+                }
+            }
         }
     }
 

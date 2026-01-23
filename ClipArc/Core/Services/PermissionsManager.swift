@@ -67,8 +67,24 @@ final class PermissionsManager {
     }
 
     func openAccessibilitySettings() {
-        // macOS 13+ uses new System Settings URL scheme
-        if let url = URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_Accessibility") {
+        // macOS 13+ (Ventura) and later use the new System Settings app
+        // Try the new URL scheme first, then fall back to older methods
+        let urls = [
+            "x-apple.systempreferences:com.apple.preference.security?Privacy_Accessibility",
+            "x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension?Privacy_Accessibility"
+        ]
+
+        for urlString in urls {
+            if let url = URL(string: urlString) {
+                let success = NSWorkspace.shared.open(url)
+                if success {
+                    return
+                }
+            }
+        }
+
+        // Fallback: open System Settings Privacy & Security pane
+        if let url = URL(string: "x-apple.systempreferences:com.apple.preference.security") {
             NSWorkspace.shared.open(url)
         }
     }

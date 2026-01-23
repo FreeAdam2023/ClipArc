@@ -14,7 +14,7 @@ final class FloatingPanel: NSPanel {
     init(contentRect: NSRect) {
         super.init(
             contentRect: contentRect,
-            styleMask: [.nonactivatingPanel, .borderless, .fullSizeContentView],
+            styleMask: [.borderless, .fullSizeContentView],
             backing: .buffered,
             defer: false
         )
@@ -50,6 +50,8 @@ final class FloatingPanel: NSPanel {
     }
 
     override var canBecomeKey: Bool { true }
+    override var canBecomeMain: Bool { true }
+    override var acceptsFirstResponder: Bool { true }
 
     override func resignKey() {
         super.resignKey()
@@ -71,6 +73,14 @@ final class FloatingPanel: NSPanel {
         setFrame(NSRect(x: x, y: y - panelHeight, width: panelWidth, height: panelHeight), display: false)
         alphaValue = 0
         makeKeyAndOrderFront(nil)
+
+        // Activate the app to receive keyboard events
+        NSApp.activate(ignoringOtherApps: true)
+
+        // Make the content view first responder for keyboard events
+        if let contentView = contentView {
+            makeFirstResponder(contentView)
+        }
 
         NSAnimationContext.runAnimationGroup { context in
             context.duration = 0.25

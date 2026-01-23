@@ -93,6 +93,10 @@
 "settings.granted" = "許可済み";
 "settings.language" = "言語";
 "settings.restart_required" = "言語を変更するにはアプリを再起動してください";
+"settings.appearance" = "外観";
+"settings.appearance.system" = "システム";
+"settings.appearance.light" = "ライト";
+"settings.appearance.dark" = "ダーク";
 
 "settings.sign_out" = "サインアウト";
 "settings.sync_description" = "サインインしてデバイス間でデータを同期";

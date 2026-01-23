@@ -81,6 +81,14 @@ struct GeneralSettingsView: View {
                 }
             }
 
+            Section(L10n.Settings.appearance) {
+                Picker(L10n.Settings.appearance, selection: $settings.appearance) {
+                    ForEach(AppAppearance.allCases, id: \.self) { appearance in
+                        Text(appearance.displayName).tag(appearance)
+                    }
+                }
+            }
+
             Section(L10n.Settings.hotkey) {
                 HStack {
                     Text(L10n.Settings.globalHotkey)

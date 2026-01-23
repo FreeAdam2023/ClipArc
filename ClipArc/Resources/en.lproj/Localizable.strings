@@ -93,6 +93,10 @@
 "settings.granted" = "Granted";
 "settings.language" = "Language";
 "settings.restart_required" = "Restart app to apply language change";
+"settings.appearance" = "Appearance";
+"settings.appearance.system" = "System";
+"settings.appearance.light" = "Light";
+"settings.appearance.dark" = "Dark";
 
 "settings.sign_out" = "Sign Out";
 "settings.sync_description" = "Sign in to sync your data across devices";

@@ -71,14 +71,13 @@ struct MenuBarContentView: View {
         VStack(alignment: .leading, spacing: 4) {
             // Pro badge if subscribed
             if appState.isProUser {
-                HStack {
-                    Image(systemName: "crown.fill")
-                        .foregroundStyle(.yellow)
+                Label {
                     Text("Pro")
                         .fontWeight(.medium)
+                } icon: {
+                    Image(systemName: "crown.fill")
+                        .foregroundStyle(.yellow)
                 }
-                .padding(.horizontal)
-                .padding(.vertical, 4)
 
                 Divider()
             }

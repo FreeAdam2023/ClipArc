@@ -93,6 +93,10 @@
 "settings.granted" = "Разрешено";
 "settings.language" = "Язык";
 "settings.restart_required" = "Перезапустите приложение для применения языка";
+"settings.appearance" = "Оформление";
+"settings.appearance.system" = "Системное";
+"settings.appearance.light" = "Светлое";
+"settings.appearance.dark" = "Тёмное";
 
 "settings.sign_out" = "Выйти";
 "settings.sync_description" = "Войдите для синхронизации данных между устройствами";

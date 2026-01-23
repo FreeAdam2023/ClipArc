@@ -93,6 +93,10 @@
 "settings.granted" = "허용됨";
 "settings.language" = "언어";
 "settings.restart_required" = "언어 변경을 적용하려면 앱을 재시작하세요";
+"settings.appearance" = "모양";
+"settings.appearance.system" = "시스템";
+"settings.appearance.light" = "라이트";
+"settings.appearance.dark" = "다크";
 
 "settings.sign_out" = "로그아웃";
 "settings.sync_description" = "로그인하여 기기 간 데이터 동기화";

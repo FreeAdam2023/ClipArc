@@ -93,6 +93,10 @@
 "settings.granted" = "Gewährt";
 "settings.language" = "Sprache";
 "settings.restart_required" = "App neu starten, um die Sprachänderung anzuwenden";
+"settings.appearance" = "Erscheinungsbild";
+"settings.appearance.system" = "System";
+"settings.appearance.light" = "Hell";
+"settings.appearance.dark" = "Dunkel";
 
 "settings.sign_out" = "Abmelden";
 "settings.sync_description" = "Anmelden, um Daten geräteübergreifend zu synchronisieren";

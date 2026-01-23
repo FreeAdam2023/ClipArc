@@ -9,43 +9,43 @@ import AppKit
 import Carbon.HIToolbox
 
 final class HotkeyManager {
-    private var globalMonitor: Any?
+    private var hotKeyRef: EventHotKeyRef?
     private var localMonitor: Any?
     private var handler: (() -> Void)?
     private var registeredModifiers: NSEvent.ModifierFlags = []
     private var registeredKeyCode: UInt16 = 0
-    private var hasAccessibilityPermission = false
     private var hasLoggedInitialState = false
+
+    // Signature for our hot key (unique identifier)
+    private let hotKeySignature: OSType = {
+        let chars = "CLIP".utf8
+        var result: OSType = 0
+        for char in chars {
+            result = (result << 8) | OSType(char)
+        }
+        return result
+    }()
+
+    private static var sharedHandler: (() -> Void)?
+    private static var eventHandlerInstalled = false
 
     func register(modifiers: NSEvent.ModifierFlags, keyCode: UInt16, handler: @escaping () -> Void) {
         self.handler = handler
         self.registeredModifiers = modifiers
         self.registeredKeyCode = keyCode
+        HotkeyManager.sharedHandler = handler
 
-        // Check if we have accessibility permission
         let hasAccessibility = AXIsProcessTrusted()
-        hasAccessibilityPermission = hasAccessibility
 
         if !hasLoggedInitialState {
             print("[HotkeyManager] Accessibility permission: \(hasAccessibility)")
             hasLoggedInitialState = true
         }
 
-        // Global monitor for events when other apps are focused
-        // NOTE: This requires Accessibility permission!
-        if hasAccessibility {
-            if globalMonitor == nil {
-                globalMonitor = NSEvent.addGlobalMonitorForEvents(matching: .keyDown) { [weak self] event in
-                    self?.handleKeyEvent(event)
-                }
-                print("[HotkeyManager] Global monitor registered")
-            }
-        } else if !hasLoggedInitialState {
-            print("[HotkeyManager] ⚠️ No accessibility permission - global hotkey won't work!")
-            print("[HotkeyManager] Please enable Accessibility in System Settings > Privacy & Security > Accessibility")
-        }
+        // Register Carbon hot key (this properly intercepts and consumes the event)
+        registerCarbonHotKey(modifiers: modifiers, keyCode: keyCode)
 
-        // Local monitor for events when our app is focused
+        // Local monitor for events when our app is focused (backup)
         if localMonitor == nil {
             localMonitor = NSEvent.addLocalMonitorForEvents(matching: .keyDown) { [weak self] event in
                 if self?.handleKeyEventReturning(event) == true {
@@ -57,20 +57,89 @@ final class HotkeyManager {
         }
     }
 
+    private func registerCarbonHotKey(modifiers: NSEvent.ModifierFlags, keyCode: UInt16) {
+        // Unregister existing hot key first
+        if let existingRef = hotKeyRef {
+            UnregisterEventHotKey(existingRef)
+            hotKeyRef = nil
+        }
+
+        // Convert NSEvent modifiers to Carbon modifiers
+        var carbonModifiers: UInt32 = 0
+        if modifiers.contains(.command) { carbonModifiers |= UInt32(cmdKey) }
+        if modifiers.contains(.shift) { carbonModifiers |= UInt32(shiftKey) }
+        if modifiers.contains(.option) { carbonModifiers |= UInt32(optionKey) }
+        if modifiers.contains(.control) { carbonModifiers |= UInt32(controlKey) }
+
+        // Install event handler (only once per app lifecycle)
+        if !HotkeyManager.eventHandlerInstalled {
+            var eventType = EventTypeSpec(eventClass: OSType(kEventClassKeyboard), eventKind: UInt32(kEventHotKeyPressed))
+
+            let handlerResult = InstallEventHandler(
+                GetApplicationEventTarget(),
+                { (_, event, _) -> OSStatus in
+                    var hotKeyID = EventHotKeyID()
+                    let err = GetEventParameter(
+                        event,
+                        EventParamName(kEventParamDirectObject),
+                        EventParamType(typeEventHotKeyID),
+                        nil,
+                        MemoryLayout<EventHotKeyID>.size,
+                        nil,
+                        &hotKeyID
+                    )
+
+                    if err == noErr {
+                        print("[HotkeyManager] Hotkey triggered!")
+                        DispatchQueue.main.async {
+                            HotkeyManager.sharedHandler?()
+                        }
+                    }
+                    return noErr
+                },
+                1,
+                &eventType,
+                nil,
+                nil
+            )
+
+            if handlerResult == noErr {
+                HotkeyManager.eventHandlerInstalled = true
+            } else {
+                print("[HotkeyManager] Failed to install event handler: \(handlerResult)")
+            }
+        }
+
+        // Register the hot key
+        let hotKeyID = EventHotKeyID(signature: hotKeySignature, id: 1)
+        let status = RegisterEventHotKey(
+            UInt32(keyCode),
+            carbonModifiers,
+            hotKeyID,
+            GetApplicationEventTarget(),
+            0,
+            &hotKeyRef
+        )
+
+        if status == noErr {
+            print("[HotkeyManager] Carbon hot key registered (Cmd+Shift+V)")
+        } else {
+            print("[HotkeyManager] Failed to register hot key: \(status)")
+        }
+    }
+
     func unregister() {
-        if let monitor = globalMonitor {
-            NSEvent.removeMonitor(monitor)
-            globalMonitor = nil
+        if let ref = hotKeyRef {
+            UnregisterEventHotKey(ref)
+            hotKeyRef = nil
+            print("[HotkeyManager] Carbon hot key unregistered")
         }
         if let monitor = localMonitor {
             NSEvent.removeMonitor(monitor)
             localMonitor = nil
         }
         handler = nil
-    }
-
-    private func handleKeyEvent(_ event: NSEvent) {
-        _ = handleKeyEventReturning(event)
+        HotkeyManager.sharedHandler = nil
     }
 
     private func handleKeyEventReturning(_ event: NSEvent) -> Bool {
@@ -82,29 +151,23 @@ final class HotkeyManager {
             return false
         }
 
-        print("[HotkeyManager] Hotkey triggered!")
+        print("[HotkeyManager] Hotkey triggered (local)!")
         handler?()
         return true
     }
 
-    /// Re-register monitors after accessibility permission is granted
+    /// Re-register hot key after accessibility permission is granted
     func refreshAfterPermissionChange() {
         let currentPermission = AXIsProcessTrusted()
+        guard currentPermission else { return }
 
-        // Only refresh if permission state actually changed (from false to true)
-        guard currentPermission && !hasAccessibilityPermission else { return }
+        print("[HotkeyManager] Refreshing hot key registration...")
 
-        print("[HotkeyManager] Accessibility permission granted! Registering global monitor...")
-
-        let currentHandler = handler
-        let currentModifiers = registeredModifiers
-        let currentKeyCode = registeredKeyCode
-
-        unregister()
-        hasLoggedInitialState = false  // Allow logging the new state
-
-        if let handler = currentHandler {
-            register(modifiers: currentModifiers, keyCode: currentKeyCode, handler: handler)
+        if let handler = handler {
+            let mods = registeredModifiers
+            let code = registeredKeyCode
+            unregister()
+            register(modifiers: mods, keyCode: code, handler: handler)
         }
     }
 
