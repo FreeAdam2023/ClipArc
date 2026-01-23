@@ -33,11 +33,21 @@ actor URLMetadataService {
             return cached
         }
 
-        guard let url = URL(string: urlString),
+        guard var url = URL(string: urlString),
               let scheme = url.scheme?.lowercased(),
               scheme == "http" || scheme == "https" else {
             print("[URLMetadataService] Invalid URL or scheme")
             return nil
+        }
+
+        // Upgrade HTTP to HTTPS for App Transport Security compliance
+        if scheme == "http" {
+            var components = URLComponents(url: url, resolvingAgainstBaseURL: false)
+            components?.scheme = "https"
+            if let httpsURL = components?.url {
+                url = httpsURL
+                print("[URLMetadataService] Upgraded to HTTPS: \(url.absoluteString)")
+            }
         }
 
         do {
