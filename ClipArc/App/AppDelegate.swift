@@ -53,7 +53,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
                 appState.setup(modelContext: context)
             }
         } catch {
-            print("Could not create ModelContainer: \(error)")
+            Logger.error("Could not create ModelContainer", error: error)
         }
     }
 

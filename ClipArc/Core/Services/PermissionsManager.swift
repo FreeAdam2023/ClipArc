@@ -39,7 +39,7 @@ final class PermissionsManager {
                 try SMAppService.mainApp.unregister()
             }
         } catch {
-            print("Failed to set launch at login: \(error)")
+            Logger.error("Failed to set launch at login", error: error)
         }
     }
 

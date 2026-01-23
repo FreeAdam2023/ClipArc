@@ -25,18 +25,18 @@ actor URLMetadataService {
     /// Fetch the page title for a given URL
     /// Returns nil if the URL is invalid, not HTTP(S), or if fetching fails
     func fetchTitle(for urlString: String) async -> String? {
-        print("[URLMetadataService] fetchTitle called for: \(urlString)")
+        Logger.debug("fetchTitle called for: \(urlString)")
 
         // Check cache first
         if let cached = cache[urlString] {
-            print("[URLMetadataService] Returning cached title: \(cached)")
+            Logger.debug("Returning cached title: \(cached)")
             return cached
         }
 
         guard var url = URL(string: urlString),
               let scheme = url.scheme?.lowercased(),
               scheme == "http" || scheme == "https" else {
-            print("[URLMetadataService] Invalid URL or scheme")
+            Logger.debug("Invalid URL or scheme")
             return nil
         }
 
@@ -46,7 +46,7 @@ actor URLMetadataService {
             components?.scheme = "https"
             if let httpsURL = components?.url {
                 url = httpsURL
-                print("[URLMetadataService] Upgraded to HTTPS: \(url.absoluteString)")
+                Logger.debug("Upgraded to HTTPS: \(url.absoluteString)")
             }
         }
 
@@ -58,28 +58,28 @@ actor URLMetadataService {
             // Only accept HTML
             request.setValue("text/html", forHTTPHeaderField: "Accept")
 
-            print("[URLMetadataService] Fetching URL...")
+            Logger.debug("Fetching URL...")
             let (data, response) = try await session.data(for: request)
-            print("[URLMetadataService] Got response, data size: \(data.count) bytes")
+            Logger.debug("Got response, data size: \(data.count) bytes")
 
             // Check response is HTML
             guard let httpResponse = response as? HTTPURLResponse else {
-                print("[URLMetadataService] Not an HTTP response")
+                Logger.debug("Not an HTTP response")
                 return nil
             }
 
-            print("[URLMetadataService] Status: \(httpResponse.statusCode)")
+            Logger.debug("Status: \(httpResponse.statusCode)")
 
             guard httpResponse.statusCode == 200 else {
-                print("[URLMetadataService] Non-200 status code")
+                Logger.debug("Non-200 status code")
                 return nil
             }
 
             let contentType = httpResponse.value(forHTTPHeaderField: "Content-Type") ?? ""
-            print("[URLMetadataService] Content-Type: \(contentType)")
+            Logger.debug("Content-Type: \(contentType)")
 
             guard contentType.contains("text/html") else {
-                print("[URLMetadataService] Not HTML content")
+                Logger.debug("Not HTML content")
                 return nil
             }
 
@@ -87,22 +87,22 @@ actor URLMetadataService {
             let limitedData = data.prefix(32768)
 
             guard let html = String(data: limitedData, encoding: .utf8) ?? String(data: limitedData, encoding: .isoLatin1) else {
-                print("[URLMetadataService] Failed to decode HTML")
+                Logger.debug("Failed to decode HTML")
                 return nil
             }
 
             // Extract title using regex
             if let title = extractTitle(from: html) {
                 let cleanedTitle = cleanTitle(title)
-                print("[URLMetadataService] Extracted title: \(cleanedTitle)")
+                Logger.debug("Extracted title: \(cleanedTitle)")
                 cache[urlString] = cleanedTitle
                 return cleanedTitle
             }
 
-            print("[URLMetadataService] No title found in HTML")
+            Logger.debug("No title found in HTML")
             return nil
         } catch {
-            print("[URLMetadataService] Failed to fetch: \(error.localizedDescription)")
+            Logger.error("Failed to fetch", error: error)
             return nil
         }
     }

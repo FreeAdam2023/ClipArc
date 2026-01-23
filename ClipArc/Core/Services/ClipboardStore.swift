@@ -34,7 +34,7 @@ final class ClipboardStore: ObservableObject {
         // Check content size - skip if too large
         let contentSize = content.utf8.count
         guard contentSize <= Self.maxContentSize else {
-            print("[ClipboardStore] Content too large (\(contentSize) bytes), skipping. Limit: \(Self.maxContentSize) bytes")
+            Logger.debug("Content too large (\(contentSize) bytes), skipping. Limit: \(Self.maxContentSize) bytes")
             return nil
         }
 
@@ -108,17 +108,24 @@ final class ClipboardStore: ObservableObject {
 
     func delete(_ item: ClipboardItem) {
         modelContext.delete(item)
-        try? modelContext.save()
+        do {
+            try modelContext.save()
+        } catch {
+            Logger.error("Failed to save after delete", error: error)
+        }
     }
 
     func clear() {
         let fetchDescriptor = FetchDescriptor<ClipboardItem>()
-        if let items = try? modelContext.fetch(fetchDescriptor) {
+        do {
+            let items = try modelContext.fetch(fetchDescriptor)
             for item in items {
                 modelContext.delete(item)
             }
+            try modelContext.save()
+        } catch {
+            Logger.error("Failed to clear clipboard store", error: error)
         }
-        try? modelContext.save()
     }
 
     func fetchAll() -> [ClipboardItem] {
@@ -126,7 +133,12 @@ final class ClipboardStore: ObservableObject {
             sortBy: [SortDescriptor(\.createdAt, order: .reverse)]
         )
         descriptor.fetchLimit = effectiveLimit
-        return (try? modelContext.fetch(descriptor)) ?? []
+        do {
+            return try modelContext.fetch(descriptor)
+        } catch {
+            Logger.error("Failed to fetch clipboard items", error: error)
+            return []
+        }
     }
 
     private func findByHash(_ hash: String) -> ClipboardItem? {
@@ -135,29 +147,38 @@ final class ClipboardStore: ObservableObject {
         }
         var descriptor = FetchDescriptor<ClipboardItem>(predicate: predicate)
         descriptor.fetchLimit = 1
-        return try? modelContext.fetch(descriptor).first
+        do {
+            return try modelContext.fetch(descriptor).first
+        } catch {
+            Logger.error("Failed to find item by hash", error: error)
+            return nil
+        }
     }
 
     private func saveAndEnforceLimit() {
         do {
             try modelContext.save()
         } catch {
-            print("[ClipboardStore] Failed to save: \(error.localizedDescription)")
+            Logger.error("Failed to save", error: error)
             return
         }
 
         let descriptor = FetchDescriptor<ClipboardItem>(
             sortBy: [SortDescriptor(\.createdAt, order: .reverse)]
         )
-        guard let allItems = try? modelContext.fetch(descriptor) else { return }
 
-        let limit = effectiveLimit
-        if allItems.count > limit {
-            let itemsToDelete = allItems.suffix(from: limit)
-            for item in itemsToDelete {
-                modelContext.delete(item)
+        do {
+            let allItems = try modelContext.fetch(descriptor)
+            let limit = effectiveLimit
+            if allItems.count > limit {
+                let itemsToDelete = allItems.suffix(from: limit)
+                for item in itemsToDelete {
+                    modelContext.delete(item)
+                }
+                try modelContext.save()
             }
-            try? modelContext.save()
+        } catch {
+            Logger.error("Failed to enforce history limit", error: error)
         }
     }
 
@@ -166,11 +187,15 @@ final class ClipboardStore: ObservableObject {
     /// Estimates total storage used by clipboard items (in bytes)
     func estimatedStorageSize() -> Int {
         let descriptor = FetchDescriptor<ClipboardItem>()
-        guard let items = try? modelContext.fetch(descriptor) else { return 0 }
-
-        return items.reduce(0) { total, item in
-            let imageSize = item.imageData?.count ?? 0
-            return total + item.content.utf8.count + item.previewText.utf8.count + imageSize + 200 // 200 bytes overhead for metadata
+        do {
+            let items = try modelContext.fetch(descriptor)
+            return items.reduce(0) { total, item in
+                let imageSize = item.imageData?.count ?? 0
+                return total + item.content.utf8.count + item.previewText.utf8.count + imageSize + 200 // 200 bytes overhead for metadata
+            }
+        } catch {
+            Logger.error("Failed to estimate storage size", error: error)
+            return 0
         }
     }
 

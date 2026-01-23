@@ -38,7 +38,7 @@ final class HotkeyManager {
         let hasAccessibility = AXIsProcessTrusted()
 
         if !hasLoggedInitialState {
-            print("[HotkeyManager] Accessibility permission: \(hasAccessibility)")
+            Logger.debug("Accessibility permission: \(hasAccessibility)")
             hasLoggedInitialState = true
         }
 
@@ -53,7 +53,7 @@ final class HotkeyManager {
                 }
                 return event
             }
-            print("[HotkeyManager] Local monitor registered")
+            Logger.debug("Local monitor registered")
         }
     }
 
@@ -90,7 +90,7 @@ final class HotkeyManager {
                     )
 
                     if err == noErr {
-                        print("[HotkeyManager] Hotkey triggered!")
+                        Logger.debug("Hotkey triggered!")
                         DispatchQueue.main.async {
                             HotkeyManager.sharedHandler?()
                         }
@@ -106,7 +106,7 @@ final class HotkeyManager {
             if handlerResult == noErr {
                 HotkeyManager.eventHandlerInstalled = true
             } else {
-                print("[HotkeyManager] Failed to install event handler: \(handlerResult)")
+                Logger.error("Failed to install event handler: \(handlerResult)")
             }
         }
 
@@ -122,9 +122,9 @@ final class HotkeyManager {
         )
 
         if status == noErr {
-            print("[HotkeyManager] Carbon hot key registered (Cmd+Shift+V)")
+            Logger.debug("Carbon hot key registered (Cmd+Shift+V)")
         } else {
-            print("[HotkeyManager] Failed to register hot key: \(status)")
+            Logger.error("Failed to register hot key: \(status)")
         }
     }
 
@@ -132,7 +132,7 @@ final class HotkeyManager {
         if let ref = hotKeyRef {
             UnregisterEventHotKey(ref)
             hotKeyRef = nil
-            print("[HotkeyManager] Carbon hot key unregistered")
+            Logger.debug("Carbon hot key unregistered")
         }
         if let monitor = localMonitor {
             NSEvent.removeMonitor(monitor)
@@ -151,7 +151,7 @@ final class HotkeyManager {
             return false
         }
 
-        print("[HotkeyManager] Hotkey triggered (local)!")
+        Logger.debug("Hotkey triggered (local)!")
         handler?()
         return true
     }
@@ -161,7 +161,7 @@ final class HotkeyManager {
         let currentPermission = AXIsProcessTrusted()
         guard currentPermission else { return }
 
-        print("[HotkeyManager] Refreshing hot key registration...")
+        Logger.debug("Refreshing hot key registration...")
 
         if let handler = handler {
             let mods = registeredModifiers

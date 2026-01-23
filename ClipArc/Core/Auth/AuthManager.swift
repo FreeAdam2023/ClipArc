@@ -59,7 +59,7 @@ final class AuthManager: NSObject {
                 break
             }
         } catch {
-            print("Credential state check failed: \(error)")
+            Logger.error("Credential state check failed", error: error)
         }
     }
 

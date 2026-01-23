@@ -259,24 +259,24 @@ final class AppState {
 
     /// Fetch and update the page title for a URL item
     private func fetchURLTitle(for item: ClipboardItem) async {
-        print("[AppState] fetchURLTitle called for: \(item.content.prefix(50))")
+        Logger.debug("fetchURLTitle called for: \(item.content.prefix(50))")
         guard item.type == .url, item.urlTitle == nil else {
-            print("[AppState] Skipping - type: \(item.type), urlTitle: \(item.urlTitle ?? "nil")")
+            Logger.debug("Skipping - type: \(item.type), urlTitle: \(item.urlTitle ?? "nil")")
             return
         }
 
-        print("[AppState] Fetching title from URLMetadataService...")
+        Logger.debug("Fetching title from URLMetadataService...")
         if let title = await URLMetadataService.shared.fetchTitle(for: item.content) {
-            print("[AppState] Got title: \(title)")
+            Logger.debug("Got title: \(title)")
             // Update on main actor
             await MainActor.run {
                 item.urlTitle = title
-                print("[AppState] Set urlTitle and refreshing items")
+                Logger.debug("Set urlTitle and refreshing items")
                 // Trigger UI refresh
                 self.refreshItems()
             }
         } else {
-            print("[AppState] Failed to fetch title")
+            Logger.debug("Failed to fetch title")
         }
     }
 }

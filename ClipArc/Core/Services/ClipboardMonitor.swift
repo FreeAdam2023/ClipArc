@@ -57,20 +57,20 @@ final class ClipboardMonitor: ObservableObject {
 
         guard currentChangeCount != lastChangeCount else { return }
         lastChangeCount = currentChangeCount
-        print("[ClipboardMonitor] Pasteboard changed, changeCount: \(currentChangeCount)")
+        Logger.debug("Pasteboard changed, changeCount: \(currentChangeCount)")
 
         guard let content = extractContent(from: pasteboard) else {
-            print("[ClipboardMonitor] Could not extract content")
+            Logger.debug("Could not extract content")
             return
         }
 
         switch content {
         case .text(let text, let type):
-            print("[ClipboardMonitor] Detected text (\(type)): \(text.prefix(30))...")
+            Logger.debug("Detected text (\(type)): \(text.prefix(30))...")
         case .image(let data, let width, let height):
-            print("[ClipboardMonitor] Detected image: \(width)x\(height), \(data.count) bytes")
+            Logger.debug("Detected image: \(width)x\(height), \(data.count) bytes")
         case .files(let urls):
-            print("[ClipboardMonitor] Detected \(urls.count) file(s)")
+            Logger.debug("Detected \(urls.count) file(s)")
         }
 
         onNewContent?(content)

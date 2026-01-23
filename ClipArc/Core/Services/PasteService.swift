@@ -15,17 +15,17 @@ enum PasteService {
 
     /// Copy item to clipboard only (without simulating paste)
     static func copyItem(_ item: ClipboardItem, asPlainText: Bool = false) {
-        print("[PasteService] copyItem called - type: \(item.type), content: \(item.content.prefix(50))")
+        Logger.debug("copyItem called - type: \(item.type), content: \(item.content.prefix(50))")
 
         // Check content type
         if item.type == .image, let imageData = item.imageData {
-            print("[PasteService] Copying image data (\(imageData.count) bytes)")
+            Logger.debug("Copying image data (\(imageData.count) bytes)")
             copyImageToClipboard(imageData)
         } else if item.type == .file, !item.fileURLs.isEmpty {
-            print("[PasteService] Copying \(item.fileURLs.count) file(s)")
+            Logger.debug("Copying \(item.fileURLs.count) file(s)")
             copyFilesToClipboard(item.fileURLs)
         } else {
-            print("[PasteService] Copying text content")
+            Logger.debug("Copying text content")
             copyToClipboard(item.content, asPlainText: asPlainText)
         }
     }
@@ -38,7 +38,7 @@ enum PasteService {
         AppRatingManager.shared.trackAction()
 
         DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
-            print("[PasteService] Simulating paste after \(delay)s delay...")
+            Logger.debug("Simulating paste after \(delay)s delay...")
             simulatePaste()
         }
     }
@@ -47,7 +47,7 @@ enum PasteService {
         let pasteboard = NSPasteboard.general
         pasteboard.clearContents()
         let success = pasteboard.setString(content, forType: .string)
-        print("[PasteService] copyToClipboard success: \(success), content length: \(content.count)")
+        Logger.debug("copyToClipboard success: \(success), content length: \(content.count)")
     }
 
     static func copyImageToClipboard(_ imageData: Data) {
@@ -73,27 +73,27 @@ enum PasteService {
 
     static func simulatePaste() {
         let canPaste = canSimulatePaste()
-        print("[PasteService] canSimulatePaste: \(canPaste)")
+        Logger.debug("canSimulatePaste: \(canPaste)")
 
         // Verify clipboard has content
         let pasteboard = NSPasteboard.general
         let hasContent = pasteboard.string(forType: .string) != nil ||
                          pasteboard.data(forType: .png) != nil ||
                          pasteboard.readObjects(forClasses: [NSURL.self], options: nil) != nil
-        print("[PasteService] Clipboard has content: \(hasContent)")
+        Logger.debug("Clipboard has content: \(hasContent)")
 
         guard canPaste else {
-            print("[PasteService] Showing manual paste alert")
+            Logger.debug("Showing manual paste alert")
             showManualPasteAlert()
             return
         }
 
         // Get the frontmost app to verify focus
         if let frontApp = NSWorkspace.shared.frontmostApplication {
-            print("[PasteService] Current frontmost app: \(frontApp.localizedName ?? "unknown")")
+            Logger.debug("Current frontmost app: \(frontApp.localizedName ?? "unknown")")
         }
 
-        print("[PasteService] Simulating Cmd+V...")
+        Logger.debug("Simulating Cmd+V...")
 
         // Use combinedSessionState for better compatibility with other apps
         let source = CGEventSource(stateID: .combinedSessionState)
@@ -105,14 +105,14 @@ enum PasteService {
 
         // Create key down event
         guard let keyVDown = CGEvent(keyboardEventSource: source, virtualKey: vCode, keyDown: true) else {
-            print("[PasteService] Failed to create key down event")
+            Logger.error("Failed to create key down event")
             return
         }
         keyVDown.flags = .maskCommand
 
         // Create key up event
         guard let keyVUp = CGEvent(keyboardEventSource: source, virtualKey: vCode, keyDown: false) else {
-            print("[PasteService] Failed to create key up event")
+            Logger.error("Failed to create key up event")
             return
         }
         keyVUp.flags = .maskCommand
@@ -126,7 +126,7 @@ enum PasteService {
 
         keyVUp.post(tap: .cghidEventTap)
 
-        print("[PasteService] Paste events posted to HID event tap")
+        Logger.debug("Paste events posted to HID event tap")
     }
 
     static func canSimulatePaste() -> Bool {
@@ -191,7 +191,7 @@ enum PasteService {
 
         alertWindow = window
 
-        print("[PasteService] Alert window displayed at: \(window.frame)")
+        Logger.debug("Alert window displayed at: \(window.frame)")
     }
 
     private static func openAccessibilitySettings() {
