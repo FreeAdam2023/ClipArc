@@ -150,6 +150,12 @@
 "menu.help" = "帮助";
 "menu.quit" = "退出 ClipArc";
 
+// MARK: - Rating
+"rating.title" = "喜欢 ClipArc 吗？";
+"rating.subtitle" = "您的反馈帮助我们改进";
+"rating.yes_love_it" = "很喜欢！";
+"rating.not_really" = "还不够好";
+
 // MARK: - Errors
 "error.generic" = "发生错误，请重试。";
 "error.auth_failed" = "认证失败，请重试。";

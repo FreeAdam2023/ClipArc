@@ -150,6 +150,12 @@
 "menu.help" = "Help";
 "menu.quit" = "Quit ClipArc";
 
+// MARK: - Rating
+"rating.title" = "Enjoying ClipArc?";
+"rating.subtitle" = "Your feedback helps us improve";
+"rating.yes_love_it" = "Yes, Love It!";
+"rating.not_really" = "Not Really";
+
 // MARK: - Errors
 "error.generic" = "An error occurred. Please try again.";
 "error.auth_failed" = "Authentication failed. Please try again.";

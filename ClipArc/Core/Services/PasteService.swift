@@ -34,6 +34,9 @@ enum PasteService {
     static func pasteItem(_ item: ClipboardItem, asPlainText: Bool = false, delay: TimeInterval = 0.3) {
         copyItem(item, asPlainText: asPlainText)
 
+        // Track action for rating prompt
+        AppRatingManager.shared.trackAction()
+
         DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
             print("[PasteService] Simulating paste after \(delay)s delay...")
             simulatePaste()

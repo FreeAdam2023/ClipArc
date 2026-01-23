@@ -9,8 +9,8 @@ import Foundation
 import StoreKit
 
 enum SubscriptionProduct: String, CaseIterable {
-    case monthly = "com.versegates.cliparc.monthly"
-    case yearly = "com.versegates.cliparc.yearly"
+    case monthly = "com.versegates.cliparc.pro.monthly"
+    case yearly = "com.versegates.cliparc.pro.yearly"
     case lifetime = "com.versegates.cliparc.lifetime"
 
     var displayName: String {

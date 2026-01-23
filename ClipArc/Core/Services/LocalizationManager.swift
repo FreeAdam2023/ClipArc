@@ -272,6 +272,14 @@ enum L10n {
         static var quit: String { "menu.quit".localized }
     }
 
+    // MARK: - Rating
+    enum Rating {
+        static var title: String { "rating.title".localized }
+        static var subtitle: String { "rating.subtitle".localized }
+        static var yesLoveIt: String { "rating.yes_love_it".localized }
+        static var notReally: String { "rating.not_really".localized }
+    }
+
     // MARK: - Errors
     enum Error {
         static var generic: String { "error.generic".localized }
