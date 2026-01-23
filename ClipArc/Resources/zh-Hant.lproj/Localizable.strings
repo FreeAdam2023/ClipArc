@@ -92,6 +92,16 @@
 
 "settings.sign_out" = "登出";
 "settings.sync_description" = "登入以跨裝置同步資料";
+"settings.member_account" = "會員帳戶";
+"settings.sign_in_description" = "登入以驗證會員身份";
+"settings.account_linked" = "帳戶已連結";
+"settings.benefit_membership" = "驗證專業版會員";
+"settings.benefit_restore" = "輕鬆恢復購買";
+"settings.benefit_multi_device" = "多裝置使用同一帳戶";
+"settings.login_required" = "請先登入";
+"settings.login_required_message" = "請先使用 Apple ID 登入後再訂閱。請前往「帳戶」頁面登入。";
+"settings.go_to_account" = "好的";
+"settings.accessibility_guide" = "系統設定 → 隱私權與安全性 → 輔助使用 → 啟用 ClipArc";
 
 "settings.pro_badge" = "ClipArc 專業版";
 "settings.lifetime_license" = "終身授權";
@@ -103,7 +113,7 @@
 
 "settings.version" = "版本";
 "settings.about_description" = "一款快速簡潔的 macOS 剪貼簿管理器";
-"settings.website" = "官網";
+"settings.support" = "支援";
 "settings.privacy" = "隱私";
 "settings.terms" = "條款";
 
@@ -130,6 +140,12 @@
 "menu.about" = "關於 ClipArc";
 "menu.help" = "幫助";
 "menu.quit" = "結束 ClipArc";
+
+// MARK: - Rating
+"rating.title" = "喜歡 ClipArc 嗎？";
+"rating.subtitle" = "您的回饋幫助我們改進";
+"rating.yes_love_it" = "很喜歡！";
+"rating.not_really" = "還不夠好";
 
 // MARK: - Errors
 "error.generic" = "發生錯誤，請重試。";

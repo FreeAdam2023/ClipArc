@@ -92,6 +92,16 @@
 
 "settings.sign_out" = "Cerrar sesión";
 "settings.sync_description" = "Inicia sesión para sincronizar tus datos entre dispositivos";
+"settings.member_account" = "Cuenta de miembro";
+"settings.sign_in_description" = "Inicia sesión para verificar tu membresía";
+"settings.account_linked" = "Cuenta vinculada";
+"settings.benefit_membership" = "Verificar membresía Pro";
+"settings.benefit_restore" = "Restaurar compras fácilmente";
+"settings.benefit_multi_device" = "Misma cuenta en todos los dispositivos";
+"settings.login_required" = "Inicio de sesión requerido";
+"settings.login_required_message" = "Por favor, inicia sesión con tu Apple ID primero para suscribirte. Ve a la pestaña Cuenta para iniciar sesión.";
+"settings.go_to_account" = "OK";
+"settings.accessibility_guide" = "Ajustes del Sistema → Privacidad y Seguridad → Accesibilidad → Activar ClipArc";
 
 "settings.pro_badge" = "ClipArc Pro";
 "settings.lifetime_license" = "Licencia de por vida";
@@ -103,7 +113,7 @@
 
 "settings.version" = "Versión";
 "settings.about_description" = "Un gestor de portapapeles rápido y sencillo para macOS";
-"settings.website" = "Sitio web";
+"settings.support" = "Soporte";
 "settings.privacy" = "Privacidad";
 "settings.terms" = "Términos";
 
@@ -131,6 +141,12 @@
 "menu.help" = "Ayuda";
 "menu.quit" = "Salir de ClipArc";
 
+// MARK: - Rating
+"rating.title" = "¿Te gusta ClipArc?";
+"rating.subtitle" = "Tu opinión nos ayuda a mejorar";
+"rating.yes_love_it" = "¡Sí, me encanta!";
+"rating.not_really" = "No mucho";
+
 // MARK: - Errors
 "error.generic" = "Ocurrió un error. Por favor, inténtalo de nuevo.";
 "error.auth_failed" = "Falló la autenticación. Por favor, inténtalo de nuevo.";
@@ -147,11 +163,11 @@
 // MARK: - Toast
 "toast.running" = "Ejecutándose en segundo plano";
 
-"settings.storage" = "Storage";
-"settings.cache_size" = "Cache Size";
-"settings.history_items" = "History Items";
-"settings.clear_cache" = "Clear Cache";
-"settings.clear_cache_message" = "This will remove all cached images and thumbnails. Your clipboard history will be preserved.";
-"settings.clear_all_history" = "Clear All History";
-"settings.clear_history_message" = "This will permanently delete all clipboard history. This action cannot be undone.";
-"settings.clear" = "Clear";
+"settings.storage" = "Almacenamiento";
+"settings.cache_size" = "Tamaño de caché";
+"settings.history_items" = "Elementos del historial";
+"settings.clear_cache" = "Limpiar caché";
+"settings.clear_cache_message" = "Esto eliminará todas las imágenes y miniaturas en caché. Tu historial del portapapeles se conservará.";
+"settings.clear_all_history" = "Borrar todo el historial";
+"settings.clear_history_message" = "Esto eliminará permanentemente todo el historial del portapapeles. Esta acción no se puede deshacer.";
+"settings.clear" = "Borrar";

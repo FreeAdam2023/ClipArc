@@ -92,6 +92,16 @@
 
 "settings.sign_out" = "साइन आउट";
 "settings.sync_description" = "डिवाइसों में अपना डेटा सिंक करने के लिए साइन इन करें";
+"settings.member_account" = "सदस्य खाता";
+"settings.sign_in_description" = "अपनी सदस्यता सत्यापित करने के लिए साइन इन करें";
+"settings.account_linked" = "खाता लिंक किया गया";
+"settings.benefit_membership" = "Pro सदस्यता सत्यापित करें";
+"settings.benefit_restore" = "खरीदारी आसानी से पुनर्स्थापित करें";
+"settings.benefit_multi_device" = "सभी डिवाइस पर एक ही खाता";
+"settings.login_required" = "साइन इन आवश्यक";
+"settings.login_required_message" = "सब्सक्राइब करने के लिए कृपया पहले अपने Apple ID से साइन इन करें। साइन इन करने के लिए खाता टैब पर जाएं।";
+"settings.go_to_account" = "ठीक है";
+"settings.accessibility_guide" = "सिस्टम सेटिंग्स → गोपनीयता और सुरक्षा → एक्सेसिबिलिटी → ClipArc सक्षम करें";
 
 "settings.pro_badge" = "ClipArc Pro";
 "settings.lifetime_license" = "आजीवन लाइसेंस";
@@ -103,7 +113,7 @@
 
 "settings.version" = "संस्करण";
 "settings.about_description" = "macOS के लिए एक तेज़ और सरल क्लिपबोर्ड मैनेजर";
-"settings.website" = "वेबसाइट";
+"settings.support" = "सहायता";
 "settings.privacy" = "गोपनीयता";
 "settings.terms" = "शर्तें";
 
@@ -131,6 +141,12 @@
 "menu.help" = "सहायता";
 "menu.quit" = "ClipArc छोड़ें";
 
+// MARK: - Rating
+"rating.title" = "ClipArc पसंद है?";
+"rating.subtitle" = "आपकी प्रतिक्रिया हमें बेहतर बनाने में मदद करती है";
+"rating.yes_love_it" = "हाँ, बहुत पसंद है!";
+"rating.not_really" = "नहीं, वास्तव में नहीं";
+
 // MARK: - Errors
 "error.generic" = "एक त्रुटि हुई। कृपया पुनः प्रयास करें।";
 "error.auth_failed" = "प्रमाणीकरण विफल। कृपया पुनः प्रयास करें।";
@@ -147,11 +163,11 @@
 // MARK: - Toast
 "toast.running" = "बैकग्राउंड में चल रहा है";
 
-"settings.storage" = "Storage";
-"settings.cache_size" = "Cache Size";
-"settings.history_items" = "History Items";
-"settings.clear_cache" = "Clear Cache";
-"settings.clear_cache_message" = "This will remove all cached images and thumbnails. Your clipboard history will be preserved.";
-"settings.clear_all_history" = "Clear All History";
-"settings.clear_history_message" = "This will permanently delete all clipboard history. This action cannot be undone.";
-"settings.clear" = "Clear";
+"settings.storage" = "स्टोरेज";
+"settings.cache_size" = "कैश आकार";
+"settings.history_items" = "इतिहास आइटम";
+"settings.clear_cache" = "कैश साफ़ करें";
+"settings.clear_cache_message" = "यह सभी कैश्ड छवियों और थंबनेल को हटा देगा। आपका क्लिपबोर्ड इतिहास सुरक्षित रहेगा।";
+"settings.clear_all_history" = "सारा इतिहास साफ़ करें";
+"settings.clear_history_message" = "यह सभी क्लिपबोर्ड इतिहास को स्थायी रूप से हटा देगा। इस क्रिया को पूर्ववत नहीं किया जा सकता।";
+"settings.clear" = "साफ़ करें";

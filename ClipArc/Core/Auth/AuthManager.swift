@@ -142,6 +142,16 @@ extension AuthManager: ASAuthorizationControllerDelegate {
                     errorMessage = "An unknown error occurred."
                 case .notInteractive:
                     errorMessage = "Not interactive."
+                case .matchedExcludedCredential:
+                    errorMessage = "Credential was excluded."
+                case .credentialExport:
+                    errorMessage = "Credential export error."
+                case .credentialImport:
+                    errorMessage = "Credential import error."
+                case .preferSignInWithApple:
+                    errorMessage = nil  // User prefers existing Sign in with Apple
+                case .deviceNotConfiguredForPasskeyCreation:
+                    errorMessage = "Device not configured for passkey creation."
                 @unknown default:
                     errorMessage = "An error occurred."
                 }

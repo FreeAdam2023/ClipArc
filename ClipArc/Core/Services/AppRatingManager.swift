@@ -132,6 +132,7 @@ final class AppRatingManager {
     /// User has issues - open email for feedback
     func userHasIssues() {
         UserDefaults.standard.set(Date(), forKey: lastPromptDateKey)
+        UserDefaults.standard.set(true, forKey: hasRatedKey)  // Don't ask again after feedback
         showRatingPrompt = false
 
         // Collect device info for feedback

@@ -92,6 +92,16 @@
 
 "settings.sign_out" = "Se déconnecter";
 "settings.sync_description" = "Connectez-vous pour synchroniser vos données entre appareils";
+"settings.member_account" = "Compte membre";
+"settings.sign_in_description" = "Connectez-vous pour vérifier votre adhésion";
+"settings.account_linked" = "Compte lié";
+"settings.benefit_membership" = "Vérifier l'adhésion Pro";
+"settings.benefit_restore" = "Restaurer facilement les achats";
+"settings.benefit_multi_device" = "Même compte sur tous les appareils";
+"settings.login_required" = "Connexion requise";
+"settings.login_required_message" = "Veuillez d'abord vous connecter avec votre Apple ID pour vous abonner. Allez dans l'onglet Compte pour vous connecter.";
+"settings.go_to_account" = "OK";
+"settings.accessibility_guide" = "Réglages Système → Confidentialité et sécurité → Accessibilité → Activer ClipArc";
 
 "settings.pro_badge" = "ClipArc Pro";
 "settings.lifetime_license" = "Licence à vie";
@@ -103,7 +113,7 @@
 
 "settings.version" = "Version";
 "settings.about_description" = "Un gestionnaire de presse-papiers rapide et simple pour macOS";
-"settings.website" = "Site web";
+"settings.support" = "Assistance";
 "settings.privacy" = "Confidentialité";
 "settings.terms" = "Conditions";
 
@@ -131,6 +141,12 @@
 "menu.help" = "Aide";
 "menu.quit" = "Quitter ClipArc";
 
+// MARK: - Rating
+"rating.title" = "Vous aimez ClipArc ?";
+"rating.subtitle" = "Vos commentaires nous aident à nous améliorer";
+"rating.yes_love_it" = "Oui, j'adore !";
+"rating.not_really" = "Pas vraiment";
+
 // MARK: - Errors
 "error.generic" = "Une erreur s'est produite. Veuillez réessayer.";
 "error.auth_failed" = "L'authentification a échoué. Veuillez réessayer.";
@@ -147,11 +163,11 @@
 // MARK: - Toast
 "toast.running" = "Fonctionne en arrière-plan";
 
-"settings.storage" = "Storage";
-"settings.cache_size" = "Cache Size";
-"settings.history_items" = "History Items";
-"settings.clear_cache" = "Clear Cache";
-"settings.clear_cache_message" = "This will remove all cached images and thumbnails. Your clipboard history will be preserved.";
-"settings.clear_all_history" = "Clear All History";
-"settings.clear_history_message" = "This will permanently delete all clipboard history. This action cannot be undone.";
-"settings.clear" = "Clear";
+"settings.storage" = "Stockage";
+"settings.cache_size" = "Taille du cache";
+"settings.history_items" = "Éléments de l'historique";
+"settings.clear_cache" = "Vider le cache";
+"settings.clear_cache_message" = "Toutes les images et miniatures en cache seront supprimées. Votre historique du presse-papiers sera conservé.";
+"settings.clear_all_history" = "Effacer tout l'historique";
+"settings.clear_history_message" = "Tout l'historique du presse-papiers sera définitivement supprimé. Cette action est irréversible.";
+"settings.clear" = "Effacer";

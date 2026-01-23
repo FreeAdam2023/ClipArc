@@ -92,6 +92,16 @@
 
 "settings.sign_out" = "サインアウト";
 "settings.sync_description" = "サインインしてデバイス間でデータを同期";
+"settings.member_account" = "メンバーアカウント";
+"settings.sign_in_description" = "サインインして会員資格を確認";
+"settings.account_linked" = "アカウント連携済み";
+"settings.benefit_membership" = "Pro会員資格を確認";
+"settings.benefit_restore" = "購入を簡単に復元";
+"settings.benefit_multi_device" = "複数デバイスで同じアカウント";
+"settings.login_required" = "サインインが必要です";
+"settings.login_required_message" = "購読するには、まずApple IDでサインインしてください。アカウントタブでサインインしてください。";
+"settings.go_to_account" = "OK";
+"settings.accessibility_guide" = "システム設定 → プライバシーとセキュリティ → アクセシビリティ → ClipArcを有効化";
 
 "settings.pro_badge" = "ClipArc Pro";
 "settings.lifetime_license" = "永久ライセンス";
@@ -103,7 +113,7 @@
 
 "settings.version" = "バージョン";
 "settings.about_description" = "macOS 用の高速でシンプルなクリップボードマネージャー";
-"settings.website" = "ウェブサイト";
+"settings.support" = "サポート";
 "settings.privacy" = "プライバシー";
 "settings.terms" = "利用規約";
 
@@ -131,6 +141,12 @@
 "menu.help" = "ヘルプ";
 "menu.quit" = "ClipArc を終了";
 
+// MARK: - Rating
+"rating.title" = "ClipArc を気に入っていますか？";
+"rating.subtitle" = "フィードバックは改善に役立ちます";
+"rating.yes_love_it" = "はい、大好きです！";
+"rating.not_really" = "あまり...";
+
 // MARK: - Errors
 "error.generic" = "エラーが発生しました。もう一度お試しください。";
 "error.auth_failed" = "認証に失敗しました。もう一度お試しください。";
@@ -147,11 +163,11 @@
 // MARK: - Toast
 "toast.running" = "バックグラウンドで実行中";
 
-"settings.storage" = "Storage";
-"settings.cache_size" = "Cache Size";
-"settings.history_items" = "History Items";
-"settings.clear_cache" = "Clear Cache";
-"settings.clear_cache_message" = "This will remove all cached images and thumbnails. Your clipboard history will be preserved.";
-"settings.clear_all_history" = "Clear All History";
-"settings.clear_history_message" = "This will permanently delete all clipboard history. This action cannot be undone.";
-"settings.clear" = "Clear";
+"settings.storage" = "ストレージ";
+"settings.cache_size" = "キャッシュサイズ";
+"settings.history_items" = "履歴アイテム";
+"settings.clear_cache" = "キャッシュを消去";
+"settings.clear_cache_message" = "キャッシュされたすべての画像とサムネイルが削除されます。クリップボード履歴は保持されます。";
+"settings.clear_all_history" = "すべての履歴を消去";
+"settings.clear_history_message" = "すべてのクリップボード履歴が完全に削除されます。この操作は元に戻せません。";
+"settings.clear" = "消去";

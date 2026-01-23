@@ -92,6 +92,16 @@
 
 "settings.sign_out" = "Esci";
 "settings.sync_description" = "Accedi per sincronizzare i tuoi dati tra dispositivi";
+"settings.member_account" = "Account membro";
+"settings.sign_in_description" = "Accedi per verificare la tua iscrizione";
+"settings.account_linked" = "Account collegato";
+"settings.benefit_membership" = "Verifica iscrizione Pro";
+"settings.benefit_restore" = "Ripristina acquisti facilmente";
+"settings.benefit_multi_device" = "Stesso account su tutti i dispositivi";
+"settings.login_required" = "Accesso richiesto";
+"settings.login_required_message" = "Accedi prima con il tuo Apple ID per abbonarti. Vai alla scheda Account per accedere.";
+"settings.go_to_account" = "OK";
+"settings.accessibility_guide" = "Impostazioni di Sistema → Privacy e Sicurezza → Accessibilità → Abilita ClipArc";
 
 "settings.pro_badge" = "ClipArc Pro";
 "settings.lifetime_license" = "Licenza a vita";
@@ -103,7 +113,7 @@
 
 "settings.version" = "Versione";
 "settings.about_description" = "Un gestore degli appunti veloce e semplice per macOS";
-"settings.website" = "Sito web";
+"settings.support" = "Supporto";
 "settings.privacy" = "Privacy";
 "settings.terms" = "Termini";
 
@@ -131,6 +141,12 @@
 "menu.help" = "Aiuto";
 "menu.quit" = "Esci da ClipArc";
 
+// MARK: - Rating
+"rating.title" = "Ti piace ClipArc?";
+"rating.subtitle" = "Il tuo feedback ci aiuta a migliorare";
+"rating.yes_love_it" = "Sì, lo adoro!";
+"rating.not_really" = "Non proprio";
+
 // MARK: - Errors
 "error.generic" = "Si è verificato un errore. Riprova.";
 "error.auth_failed" = "Autenticazione fallita. Riprova.";
@@ -147,11 +163,11 @@
 // MARK: - Toast
 "toast.running" = "In esecuzione in background";
 
-"settings.storage" = "Storage";
-"settings.cache_size" = "Cache Size";
-"settings.history_items" = "History Items";
-"settings.clear_cache" = "Clear Cache";
-"settings.clear_cache_message" = "This will remove all cached images and thumbnails. Your clipboard history will be preserved.";
-"settings.clear_all_history" = "Clear All History";
-"settings.clear_history_message" = "This will permanently delete all clipboard history. This action cannot be undone.";
-"settings.clear" = "Clear";
+"settings.storage" = "Archiviazione";
+"settings.cache_size" = "Dimensione cache";
+"settings.history_items" = "Elementi cronologia";
+"settings.clear_cache" = "Svuota cache";
+"settings.clear_cache_message" = "Verranno rimosse tutte le immagini e miniature nella cache. La cronologia degli appunti verrà conservata.";
+"settings.clear_all_history" = "Cancella tutta la cronologia";
+"settings.clear_history_message" = "Tutta la cronologia degli appunti verrà eliminata permanentemente. Questa azione non può essere annullata.";
+"settings.clear" = "Cancella";

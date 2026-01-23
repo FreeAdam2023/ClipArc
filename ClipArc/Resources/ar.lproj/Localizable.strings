@@ -92,6 +92,16 @@
 
 "settings.sign_out" = "تسجيل الخروج";
 "settings.sync_description" = "سجّل الدخول لمزامنة بياناتك عبر الأجهزة";
+"settings.member_account" = "حساب العضو";
+"settings.sign_in_description" = "سجّل الدخول للتحقق من عضويتك";
+"settings.account_linked" = "الحساب مرتبط";
+"settings.benefit_membership" = "التحقق من عضوية Pro";
+"settings.benefit_restore" = "استعادة المشتريات بسهولة";
+"settings.benefit_multi_device" = "نفس الحساب على جميع الأجهزة";
+"settings.login_required" = "تسجيل الدخول مطلوب";
+"settings.login_required_message" = "يرجى تسجيل الدخول باستخدام Apple ID أولاً للاشتراك. انتقل إلى علامة تبويب الحساب لتسجيل الدخول.";
+"settings.go_to_account" = "حسناً";
+"settings.accessibility_guide" = "إعدادات النظام ← الخصوصية والأمان ← إمكانية الوصول ← تفعيل ClipArc";
 
 "settings.pro_badge" = "ClipArc Pro";
 "settings.lifetime_license" = "ترخيص مدى الحياة";
@@ -103,7 +113,7 @@
 
 "settings.version" = "الإصدار";
 "settings.about_description" = "مدير حافظة سريع وبسيط لنظام macOS";
-"settings.website" = "الموقع";
+"settings.support" = "الدعم";
 "settings.privacy" = "الخصوصية";
 "settings.terms" = "الشروط";
 
@@ -131,6 +141,12 @@
 "menu.help" = "مساعدة";
 "menu.quit" = "إنهاء ClipArc";
 
+// MARK: - Rating
+"rating.title" = "هل تستمتع بـ ClipArc؟";
+"rating.subtitle" = "ملاحظاتك تساعدنا على التحسين";
+"rating.yes_love_it" = "نعم، أحبه!";
+"rating.not_really" = "ليس حقاً";
+
 // MARK: - Errors
 "error.generic" = "حدث خطأ. يرجى المحاولة مرة أخرى.";
 "error.auth_failed" = "فشل المصادقة. يرجى المحاولة مرة أخرى.";
@@ -147,11 +163,11 @@
 // MARK: - Toast
 "toast.running" = "يعمل في الخلفية";
 
-"settings.storage" = "Storage";
-"settings.cache_size" = "Cache Size";
-"settings.history_items" = "History Items";
-"settings.clear_cache" = "Clear Cache";
-"settings.clear_cache_message" = "This will remove all cached images and thumbnails. Your clipboard history will be preserved.";
-"settings.clear_all_history" = "Clear All History";
-"settings.clear_history_message" = "This will permanently delete all clipboard history. This action cannot be undone.";
-"settings.clear" = "Clear";
+"settings.storage" = "التخزين";
+"settings.cache_size" = "حجم ذاكرة التخزين المؤقت";
+"settings.history_items" = "عناصر السجل";
+"settings.clear_cache" = "مسح ذاكرة التخزين المؤقت";
+"settings.clear_cache_message" = "سيؤدي هذا إلى إزالة جميع الصور والصور المصغرة المخزنة مؤقتاً. سيتم الاحتفاظ بسجل الحافظة الخاص بك.";
+"settings.clear_all_history" = "مسح كل السجل";
+"settings.clear_history_message" = "سيؤدي هذا إلى حذف سجل الحافظة بالكامل نهائياً. لا يمكن التراجع عن هذا الإجراء.";
+"settings.clear" = "مسح";

@@ -92,6 +92,16 @@
 
 "settings.sign_out" = "Sair";
 "settings.sync_description" = "Entre para sincronizar seus dados entre dispositivos";
+"settings.member_account" = "Conta de membro";
+"settings.sign_in_description" = "Entre para verificar sua assinatura";
+"settings.account_linked" = "Conta vinculada";
+"settings.benefit_membership" = "Verificar assinatura Pro";
+"settings.benefit_restore" = "Restaurar compras facilmente";
+"settings.benefit_multi_device" = "Mesma conta em todos os dispositivos";
+"settings.login_required" = "Login necessário";
+"settings.login_required_message" = "Por favor, entre com seu Apple ID primeiro para assinar. Vá para a aba Conta para entrar.";
+"settings.go_to_account" = "OK";
+"settings.accessibility_guide" = "Configurações do Sistema → Privacidade e Segurança → Acessibilidade → Ativar ClipArc";
 
 "settings.pro_badge" = "ClipArc Pro";
 "settings.lifetime_license" = "Licença vitalícia";
@@ -103,7 +113,7 @@
 
 "settings.version" = "Versão";
 "settings.about_description" = "Um gerenciador de área de transferência rápido e simples para macOS";
-"settings.website" = "Site";
+"settings.support" = "Suporte";
 "settings.privacy" = "Privacidade";
 "settings.terms" = "Termos";
 
@@ -131,6 +141,12 @@
 "menu.help" = "Ajuda";
 "menu.quit" = "Sair do ClipArc";
 
+// MARK: - Rating
+"rating.title" = "Gostando do ClipArc?";
+"rating.subtitle" = "Seu feedback nos ajuda a melhorar";
+"rating.yes_love_it" = "Sim, adoro!";
+"rating.not_really" = "Não muito";
+
 // MARK: - Errors
 "error.generic" = "Ocorreu um erro. Por favor, tente novamente.";
 "error.auth_failed" = "Falha na autenticação. Por favor, tente novamente.";
@@ -147,11 +163,11 @@
 // MARK: - Toast
 "toast.running" = "Executando em segundo plano";
 
-"settings.storage" = "Storage";
-"settings.cache_size" = "Cache Size";
-"settings.history_items" = "History Items";
-"settings.clear_cache" = "Clear Cache";
-"settings.clear_cache_message" = "This will remove all cached images and thumbnails. Your clipboard history will be preserved.";
-"settings.clear_all_history" = "Clear All History";
-"settings.clear_history_message" = "This will permanently delete all clipboard history. This action cannot be undone.";
-"settings.clear" = "Clear";
+"settings.storage" = "Armazenamento";
+"settings.cache_size" = "Tamanho do cache";
+"settings.history_items" = "Itens do histórico";
+"settings.clear_cache" = "Limpar cache";
+"settings.clear_cache_message" = "Isso removerá todas as imagens e miniaturas em cache. Seu histórico da área de transferência será preservado.";
+"settings.clear_all_history" = "Limpar todo o histórico";
+"settings.clear_history_message" = "Isso excluirá permanentemente todo o histórico da área de transferência. Esta ação não pode ser desfeita.";
+"settings.clear" = "Limpar";

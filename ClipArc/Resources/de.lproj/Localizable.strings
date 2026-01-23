@@ -92,6 +92,16 @@
 
 "settings.sign_out" = "Abmelden";
 "settings.sync_description" = "Anmelden, um Daten geräteübergreifend zu synchronisieren";
+"settings.member_account" = "Mitgliedskonto";
+"settings.sign_in_description" = "Anmelden, um die Mitgliedschaft zu bestätigen";
+"settings.account_linked" = "Konto verknüpft";
+"settings.benefit_membership" = "Pro-Mitgliedschaft bestätigen";
+"settings.benefit_restore" = "Käufe einfach wiederherstellen";
+"settings.benefit_multi_device" = "Gleiches Konto auf allen Geräten";
+"settings.login_required" = "Anmeldung erforderlich";
+"settings.login_required_message" = "Bitte melden Sie sich zuerst mit Ihrer Apple ID an, um ein Abonnement abzuschließen. Gehen Sie zum Konto-Tab, um sich anzumelden.";
+"settings.go_to_account" = "OK";
+"settings.accessibility_guide" = "Systemeinstellungen → Datenschutz & Sicherheit → Bedienungshilfen → ClipArc aktivieren";
 
 "settings.pro_badge" = "ClipArc Pro";
 "settings.lifetime_license" = "Lebenslange Lizenz";
@@ -103,7 +113,7 @@
 
 "settings.version" = "Version";
 "settings.about_description" = "Ein schneller und einfacher Zwischenablage-Manager für macOS";
-"settings.website" = "Webseite";
+"settings.support" = "Support";
 "settings.privacy" = "Datenschutz";
 "settings.terms" = "Nutzungsbedingungen";
 
@@ -131,6 +141,12 @@
 "menu.help" = "Hilfe";
 "menu.quit" = "ClipArc beenden";
 
+// MARK: - Rating
+"rating.title" = "Gefällt Ihnen ClipArc?";
+"rating.subtitle" = "Ihr Feedback hilft uns, besser zu werden";
+"rating.yes_love_it" = "Ja, ich liebe es!";
+"rating.not_really" = "Nicht wirklich";
+
 // MARK: - Errors
 "error.generic" = "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.";
 "error.auth_failed" = "Authentifizierung fehlgeschlagen. Bitte versuchen Sie es erneut.";
@@ -147,11 +163,11 @@
 // MARK: - Toast
 "toast.running" = "Läuft im Hintergrund";
 
-"settings.storage" = "Storage";
-"settings.cache_size" = "Cache Size";
-"settings.history_items" = "History Items";
-"settings.clear_cache" = "Clear Cache";
-"settings.clear_cache_message" = "This will remove all cached images and thumbnails. Your clipboard history will be preserved.";
-"settings.clear_all_history" = "Clear All History";
-"settings.clear_history_message" = "This will permanently delete all clipboard history. This action cannot be undone.";
-"settings.clear" = "Clear";
+"settings.storage" = "Speicher";
+"settings.cache_size" = "Cache-Größe";
+"settings.history_items" = "Verlaufseinträge";
+"settings.clear_cache" = "Cache leeren";
+"settings.clear_cache_message" = "Alle zwischengespeicherten Bilder und Miniaturansichten werden entfernt. Ihr Zwischenablage-Verlauf bleibt erhalten.";
+"settings.clear_all_history" = "Gesamten Verlauf löschen";
+"settings.clear_history_message" = "Der gesamte Zwischenablage-Verlauf wird dauerhaft gelöscht. Diese Aktion kann nicht rückgängig gemacht werden.";
+"settings.clear" = "Löschen";

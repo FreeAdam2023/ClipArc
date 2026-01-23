@@ -92,6 +92,16 @@
 
 "settings.sign_out" = "Выйти";
 "settings.sync_description" = "Войдите для синхронизации данных между устройствами";
+"settings.member_account" = "Аккаунт участника";
+"settings.sign_in_description" = "Войдите для подтверждения членства";
+"settings.account_linked" = "Аккаунт привязан";
+"settings.benefit_membership" = "Подтвердить членство Pro";
+"settings.benefit_restore" = "Легко восстановить покупки";
+"settings.benefit_multi_device" = "Один аккаунт на всех устройствах";
+"settings.login_required" = "Требуется вход";
+"settings.login_required_message" = "Пожалуйста, сначала войдите с Apple ID для оформления подписки. Перейдите на вкладку Учётная запись.";
+"settings.go_to_account" = "ОК";
+"settings.accessibility_guide" = "Системные настройки → Конфиденциальность и безопасность → Универсальный доступ → Включить ClipArc";
 
 "settings.pro_badge" = "ClipArc Pro";
 "settings.lifetime_license" = "Пожизненная лицензия";
@@ -103,7 +113,7 @@
 
 "settings.version" = "Версия";
 "settings.about_description" = "Быстрый и простой менеджер буфера обмена для macOS";
-"settings.website" = "Сайт";
+"settings.support" = "Поддержка";
 "settings.privacy" = "Конфиденциальность";
 "settings.terms" = "Условия";
 
@@ -131,6 +141,12 @@
 "menu.help" = "Справка";
 "menu.quit" = "Завершить ClipArc";
 
+// MARK: - Rating
+"rating.title" = "Нравится ClipArc?";
+"rating.subtitle" = "Ваш отзыв помогает нам улучшаться";
+"rating.yes_love_it" = "Да, люблю!";
+"rating.not_really" = "Не очень";
+
 // MARK: - Errors
 "error.generic" = "Произошла ошибка. Пожалуйста, попробуйте снова.";
 "error.auth_failed" = "Ошибка аутентификации. Пожалуйста, попробуйте снова.";
@@ -147,11 +163,11 @@
 // MARK: - Toast
 "toast.running" = "Работает в фоне";
 
-"settings.storage" = "Storage";
-"settings.cache_size" = "Cache Size";
-"settings.history_items" = "History Items";
-"settings.clear_cache" = "Clear Cache";
-"settings.clear_cache_message" = "This will remove all cached images and thumbnails. Your clipboard history will be preserved.";
-"settings.clear_all_history" = "Clear All History";
-"settings.clear_history_message" = "This will permanently delete all clipboard history. This action cannot be undone.";
-"settings.clear" = "Clear";
+"settings.storage" = "Хранилище";
+"settings.cache_size" = "Размер кэша";
+"settings.history_items" = "Элементов в истории";
+"settings.clear_cache" = "Очистить кэш";
+"settings.clear_cache_message" = "Все кэшированные изображения и миниатюры будут удалены. История буфера обмена сохранится.";
+"settings.clear_all_history" = "Очистить всю историю";
+"settings.clear_history_message" = "Вся история буфера обмена будет безвозвратно удалена. Это действие нельзя отменить.";
+"settings.clear" = "Очистить";
