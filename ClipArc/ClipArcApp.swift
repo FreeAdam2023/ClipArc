@@ -61,13 +61,9 @@ struct MenuBarContentView: View {
     /// Opens the Settings window and brings it to front
     private func openSettings() {
         openSettingsAction()
-        // Activate and center after opening
+        // Activate after opening to ensure window comes to front
         DispatchQueue.main.async {
             NSApp.activate(ignoringOtherApps: true)
-            // Center the settings window
-            if let settingsWindow = NSApp.windows.first(where: { $0.title.contains("Settings") || $0.identifier?.rawValue.contains("settings") == true }) {
-                settingsWindow.center()
-            }
         }
     }
 
