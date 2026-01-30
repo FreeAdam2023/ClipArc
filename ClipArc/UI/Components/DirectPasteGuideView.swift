@@ -113,7 +113,6 @@ struct DirectPasteGuideView: View {
 
             // Primary action
             Button(action: {
-                DirectPasteCapabilityManager.shared.enableDirectPasteMode()
                 onOpenSettings()
             }) {
                 Text("Open System Settings")

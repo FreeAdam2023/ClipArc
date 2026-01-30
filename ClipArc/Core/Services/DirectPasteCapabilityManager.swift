@@ -9,7 +9,8 @@ import AppKit
 import SwiftUI
 
 /// Manages Direct Paste capability state
-/// Core principle: Accessibility is a user-initiated enhancement, not a default capability
+/// Simplified: Accessibility permission granted = Direct Paste enabled
+/// User manually grants permission in System Settings = user-initiated
 @MainActor
 @Observable
 final class DirectPasteCapabilityManager {
@@ -23,48 +24,19 @@ final class DirectPasteCapabilityManager {
         testIsAccessibilityGranted ?? AXIsProcessTrusted()
     }
 
-    /// Whether the user has explicitly enabled Direct Paste in the app
-    /// Stored in UserDefaults - this represents user intent
-    private(set) var isUserEnabled: Bool {
-        get {
-            UserDefaults.standard.bool(forKey: "directPasteModeEnabled")
-        }
-        set {
-            UserDefaults.standard.set(newValue, forKey: "directPasteModeEnabled")
-        }
-    }
-
     /// Whether Direct Paste can be performed
-    /// Must satisfy both: user has enabled + system has granted permission
+    /// Simplified: just check if Accessibility permission is granted
+    /// User granting permission in System Settings IS the user intent
     var canDirectPaste: Bool {
-        isUserEnabled && isAccessibilityGranted
+        isAccessibilityGranted
     }
 
     /// Current capability state for UI display
     var capabilityState: CapabilityState {
-        if canDirectPaste {
-            return .enabled
-        } else if isUserEnabled && !isAccessibilityGranted {
-            return .pendingPermission
-        } else {
-            return .disabled
-        }
+        isAccessibilityGranted ? .enabled : .disabled
     }
 
     // MARK: - Actions
-
-    /// User explicitly enables Direct Paste Mode
-    /// Only records user intent, does NOT request system permission
-    func enableDirectPasteMode() {
-        isUserEnabled = true
-        Logger.debug("Direct Paste Mode enabled by user")
-    }
-
-    /// User disables Direct Paste Mode
-    func disableDirectPasteMode() {
-        isUserEnabled = false
-        Logger.debug("Direct Paste Mode disabled by user")
-    }
 
     /// Opens System Settings → Privacy & Security → Accessibility
     /// ❌ Does NOT use AXIsProcessTrustedWithOptions
@@ -78,22 +50,19 @@ final class DirectPasteCapabilityManager {
 
     /// Check and log current permission status (for debugging)
     func logPermissionStatus() {
-        Logger.debug("Accessibility granted: \(isAccessibilityGranted), User enabled: \(isUserEnabled), Can paste: \(canDirectPaste)")
+        Logger.debug("Accessibility granted: \(isAccessibilityGranted), Can Direct Paste: \(canDirectPaste)")
     }
 
     // MARK: - Types
 
     enum CapabilityState {
-        case disabled           // User hasn't enabled, or explicitly disabled
-        case pendingPermission  // User enabled but system permission not granted
-        case enabled            // Fully functional
+        case disabled  // No Accessibility permission
+        case enabled   // Accessibility granted, Direct Paste works
 
         var displayText: String {
             switch self {
             case .disabled:
                 return "Disabled"
-            case .pendingPermission:
-                return "Pending Permission"
             case .enabled:
                 return "Enabled"
             }
@@ -114,7 +83,6 @@ final class DirectPasteCapabilityManager {
 
     /// Reset all state (for testing)
     func resetAllState() {
-        UserDefaults.standard.removeObject(forKey: "directPasteModeEnabled")
         testIsAccessibilityGranted = nil
     }
 }

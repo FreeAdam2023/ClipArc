@@ -719,70 +719,37 @@ struct DirectPasteSettingsRow: View {
     @State private var capabilityManager = DirectPasteCapabilityManager.shared
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            // Main toggle row
-            HStack {
-                Label {
-                    VStack(alignment: .leading, spacing: 2) {
-                        Text("Direct Paste")
-                            .font(.body)
-                        Text("Paste instantly without pressing ⌘V")
-                            .font(.caption)
-                            .foregroundStyle(.secondary)
-                    }
-                } icon: {
-                    Image(systemName: "bolt.fill")
-                        .foregroundStyle(.yellow)
+        HStack {
+            Label {
+                VStack(alignment: .leading, spacing: 2) {
+                    Text("Direct Paste")
+                        .font(.body)
+                    Text("Paste instantly without pressing ⌘V")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
                 }
-
-                Spacer()
-
-                // Status indicator
-                switch capabilityManager.capabilityState {
-                case .enabled:
-                    HStack(spacing: 4) {
-                        Image(systemName: "checkmark.circle.fill")
-                            .foregroundStyle(.green)
-                        Text("Enabled")
-                            .font(.caption)
-                            .foregroundStyle(.secondary)
-                    }
-
-                case .pendingPermission:
-                    Button("Grant Permission") {
-                        capabilityManager.openAccessibilitySettings()
-                    }
-                    .buttonStyle(.bordered)
-                    .controlSize(.small)
-
-                case .disabled:
-                    Button("Enable") {
-                        NotificationCenter.default.post(name: .showDirectPasteGuide, object: nil)
-                    }
-                    .buttonStyle(.bordered)
-                    .controlSize(.small)
-                }
+            } icon: {
+                Image(systemName: "bolt.fill")
+                    .foregroundStyle(.yellow)
             }
 
-            // Info text based on state
-            if capabilityManager.capabilityState == .pendingPermission {
-                HStack(spacing: 6) {
-                    Image(systemName: "info.circle")
-                        .font(.caption)
-                    Text("Add ClipArc in System Settings → Accessibility")
-                        .font(.caption)
-                }
-                .foregroundStyle(.orange)
-            }
+            Spacer()
 
-            // Disable option when enabled
-            if capabilityManager.capabilityState == .enabled {
-                Button("Disable Direct Paste") {
-                    capabilityManager.disableDirectPasteMode()
+            // Status: Enabled or Enable button
+            if capabilityManager.isAccessibilityGranted {
+                HStack(spacing: 4) {
+                    Image(systemName: "checkmark.circle.fill")
+                        .foregroundStyle(.green)
+                    Text("Enabled")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
                 }
-                .buttonStyle(.plain)
-                .font(.caption)
-                .foregroundStyle(.secondary)
+            } else {
+                Button("Enable") {
+                    NotificationCenter.default.post(name: .showDirectPasteGuide, object: nil)
+                }
+                .buttonStyle(.bordered)
+                .controlSize(.small)
             }
         }
     }
