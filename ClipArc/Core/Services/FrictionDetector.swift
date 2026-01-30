@@ -25,7 +25,7 @@ final class FrictionDetector {
     private let multiItemThreshold = 5
 
     /// Time window in seconds for detecting friction patterns
-    private let timeWindowSeconds: TimeInterval = 30
+    private let timeWindowSeconds: TimeInterval = 60
 
     /// Cooldown period after user dismisses guide (in seconds)
     private let cooldownSeconds: TimeInterval = 24 * 3600  // 24 hours
