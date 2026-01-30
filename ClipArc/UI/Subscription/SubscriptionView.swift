@@ -67,56 +67,25 @@ struct SubscriptionView: View {
 
     private var pricingSection: some View {
         VStack(spacing: 12) {
-            if subscriptionManager.isLoading && subscriptionManager.products.isEmpty {
-                ProgressView("Loading plans...")
-                    .frame(height: 100)
-            } else if subscriptionManager.products.isEmpty {
-                // Products failed to load - show placeholder
+            if subscriptionManager.products.isEmpty {
+                // Loading state - wait for real prices
                 VStack(spacing: 16) {
-                    Text("Subscription Plans")
-                        .font(.headline)
-                        .frame(maxWidth: .infinity, alignment: .leading)
+                    ProgressView()
+                        .scaleEffect(1.2)
 
-                    // Monthly placeholder
-                    PlaceholderPricingCard(
-                        title: "Monthly",
-                        price: "$2.99",
-                        period: "per month",
-                        badge: "14-day free trial",
-                        isSelected: false
-                    )
+                    Text("Loading prices from App Store...")
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
 
-                    // Yearly placeholder
-                    PlaceholderPricingCard(
-                        title: "Yearly",
-                        price: "$19.99",
-                        period: "per year",
-                        badge: "Save 44%",
-                        isBestValue: true,
-                        isSelected: true
-                    )
-
-                    Divider()
-                        .padding(.vertical, 4)
-
-                    Text("One-time Purchase")
-                        .font(.headline)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-
-                    // Lifetime placeholder
-                    PlaceholderPricingCard(
-                        title: "Lifetime",
-                        price: "$49.99",
-                        period: "one-time",
-                        badge: "Pay once, own forever",
-                        isSelected: false
-                    )
-
-                    Text("Prices shown are estimates. Actual prices will load from App Store.")
-                        .font(.caption2)
-                        .foregroundStyle(.tertiary)
-                        .multilineTextAlignment(.center)
+                    Button("Retry") {
+                        Task {
+                            await subscriptionManager.loadProducts()
+                        }
+                    }
+                    .buttonStyle(.bordered)
+                    .controlSize(.small)
                 }
+                .frame(height: 150)
             } else {
                 // Subscription options
                 Text("Subscribe")
@@ -254,66 +223,6 @@ struct FeatureRow: View {
 
             Spacer()
         }
-    }
-}
-
-// MARK: - Placeholder Pricing Card (when products not loaded)
-
-struct PlaceholderPricingCard: View {
-    let title: String
-    let price: String
-    let period: String
-    let badge: String?
-    var isBestValue: Bool = false
-    var isSelected: Bool = false
-
-    var body: some View {
-        HStack {
-            VStack(alignment: .leading, spacing: 4) {
-                HStack(spacing: 6) {
-                    Text(title)
-                        .font(.headline)
-
-                    if isBestValue {
-                        Text("BEST VALUE")
-                            .font(.caption2)
-                            .fontWeight(.bold)
-                            .foregroundStyle(.white)
-                            .padding(.horizontal, 6)
-                            .padding(.vertical, 2)
-                            .background(Color.green)
-                            .cornerRadius(4)
-                    }
-                }
-
-                if let badge = badge {
-                    Text(badge)
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                }
-            }
-
-            Spacer()
-
-            VStack(alignment: .trailing, spacing: 2) {
-                Text(price)
-                    .font(.title3)
-                    .fontWeight(.semibold)
-
-                Text(period)
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-            }
-        }
-        .padding(16)
-        .background(
-            RoundedRectangle(cornerRadius: 12)
-                .fill(isSelected ? Color.accentColor.opacity(0.1) : Color.primary.opacity(0.05))
-        )
-        .overlay(
-            RoundedRectangle(cornerRadius: 12)
-                .stroke(isSelected ? Color.accentColor : Color.clear, lineWidth: 2)
-        )
     }
 }
 

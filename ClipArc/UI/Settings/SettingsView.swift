@@ -458,63 +458,24 @@ struct SubscriptionSettingsView: View {
             // Pricing cards
             VStack(spacing: 10) {
                 if subscriptionManager.products.isEmpty {
-                    // Placeholder pricing
-                    SettingsPricingCard(
-                        title: "Monthly",
-                        price: "$2.99",
-                        period: "/month",
-                        badge: nil,
-                        isSelected: selectedPlan == "monthly"
-                    ) {
-                        selectedPlan = "monthly"
-                    }
+                    // Loading state - wait for real prices
+                    VStack(spacing: 12) {
+                        ProgressView()
+                            .scaleEffect(1.0)
 
-                    SettingsPricingCard(
-                        title: "Yearly",
-                        price: "$19.99",
-                        period: "/year",
-                        badge: "Save 44%",
-                        isSelected: selectedPlan == "yearly"
-                    ) {
-                        selectedPlan = "yearly"
-                    }
+                        Text("Loading prices...")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
 
-                    SettingsPricingCard(
-                        title: "Lifetime",
-                        price: "$49.99",
-                        period: "one-time",
-                        badge: "Best Value",
-                        isSelected: selectedPlan == "lifetime"
-                    ) {
-                        selectedPlan = "lifetime"
-                    }
-
-                    // Subscribe button for placeholder mode
-                    Button(action: {
-                        if !authManager.isAuthenticated {
-                            showLoginAlert = true
-                        } else {
-                            // Will connect to StoreKit when products are available
+                        Button("Retry") {
+                            Task {
+                                await subscriptionManager.loadProducts()
+                            }
                         }
-                    }) {
-                        Text(L10n.Onboarding.subscribe)
-                            .fontWeight(.semibold)
-                            .foregroundStyle(.white)
-                            .frame(maxWidth: .infinity)
-                            .padding(.vertical, 12)
-                            .background(Color.accentColor)
-                            .cornerRadius(10)
+                        .buttonStyle(.bordered)
+                        .controlSize(.small)
                     }
-                    .buttonStyle(.plain)
-                    .padding(.top, 8)
-                    .alert(L10n.Settings.loginRequired, isPresented: $showLoginAlert) {
-                        Button(L10n.cancel, role: .cancel) { }
-                        Button(L10n.Settings.goToAccount) {
-                            // User needs to manually switch to Account tab
-                        }
-                    } message: {
-                        Text(L10n.Settings.loginRequiredMessage)
-                    }
+                    .frame(height: 120)
                 } else {
                     ForEach(subscriptionManager.products, id: \.id) { product in
                         SettingsPricingCard(

@@ -382,7 +382,6 @@ struct SubscriptionStepView: View {
     var onSkip: () -> Void
 
     @State private var selectedProduct: Product?
-    @State private var selectedPlaceholder: SubscriptionProduct = .yearly
 
     var body: some View {
         VStack(spacing: 20) {
@@ -420,43 +419,25 @@ struct SubscriptionStepView: View {
                     Text(L10n.Onboarding.youArePro)
                         .font(.headline)
                 }
-            } else if subscriptionManager.isLoading && subscriptionManager.products.isEmpty {
-                // Loading state
-                ProgressView()
-                    .padding()
             } else if subscriptionManager.products.isEmpty {
-                // Placeholder pricing when products not loaded
-                VStack(spacing: 10) {
-                    ForEach(SubscriptionProduct.allCases, id: \.rawValue) { product in
-                        Button {
-                            selectedPlaceholder = product
-                        } label: {
-                            PlaceholderPricingCard(
-                                title: product.displayName,
-                                price: placeholderPrice(for: product),
-                                period: placeholderPeriod(for: product),
-                                badge: product == .yearly ? L10n.Onboarding.save44 : nil,
-                                isBestValue: product == .yearly,
-                                isSelected: selectedPlaceholder == product
-                            )
-                        }
-                        .buttonStyle(.plain)
-                    }
-                }
-                .padding(.horizontal, 32)
+                // Loading state - wait for real prices
+                VStack(spacing: 16) {
+                    ProgressView()
+                        .scaleEffect(1.2)
 
-                Button(action: {
-                    // Try to load products and open settings
-                    Task {
-                        await subscriptionManager.loadProducts()
+                    Text("Loading prices...")
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+
+                    Button("Retry") {
+                        Task {
+                            await subscriptionManager.loadProducts()
+                        }
                     }
-                }) {
-                    Text(L10n.Onboarding.subscribe)
-                        .fontWeight(.semibold)
-                        .frame(width: 200)
+                    .buttonStyle(.bordered)
+                    .controlSize(.small)
                 }
-                .buttonStyle(.borderedProminent)
-                .controlSize(.large)
+                .padding(.vertical, 32)
             } else {
                 // Real products loaded
                 VStack(spacing: 10) {
@@ -558,22 +539,6 @@ struct SubscriptionStepView: View {
                     await subscriptionManager.loadProducts()
                 }
             }
-        }
-    }
-
-    private func placeholderPrice(for product: SubscriptionProduct) -> String {
-        switch product {
-        case .monthly: return "$2.99"
-        case .yearly: return "$19.99"
-        case .lifetime: return "$59.99"
-        }
-    }
-
-    private func placeholderPeriod(for product: SubscriptionProduct) -> String {
-        switch product {
-        case .monthly: return "per month"
-        case .yearly: return "per year"
-        case .lifetime: return "one-time"
         }
     }
 }
