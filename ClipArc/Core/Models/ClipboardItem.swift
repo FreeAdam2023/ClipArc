@@ -188,13 +188,8 @@ final class ClipboardItem {
             return .url
         }
 
-        // Check for file path
-        if trimmed.hasPrefix("/") || trimmed.hasPrefix("~") || trimmed.hasPrefix("file://") {
-            let path = trimmed.replacingOccurrences(of: "file://", with: "")
-            if FileManager.default.fileExists(atPath: path) {
-                return .file
-            }
-        }
+        // Note: File detection is handled by extractFileURLs in ClipboardMonitor
+        // Text that looks like a file path should remain as text type
 
         // Check for hex color
         let hexColorPattern = "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$"
