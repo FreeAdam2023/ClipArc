@@ -12,6 +12,7 @@ import SwiftUI
 extension Notification.Name {
     static let showFrictionGuide = Notification.Name("showFrictionGuide")
     static let showDirectPasteGuide = Notification.Name("showDirectPasteGuide")
+    static let showScreenshotMonitorPrompt = Notification.Name("showScreenshotMonitorPrompt")
 }
 
 /// Coordinates the complete paste flow

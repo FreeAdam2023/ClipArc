@@ -54,6 +54,75 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
         // Start monitoring if enabled
         monitor.startMonitoringIfEnabled()
+
+        // Listen for screenshot monitor prompt notification
+        NotificationCenter.default.addObserver(
+            forName: .showScreenshotMonitorPrompt,
+            object: nil,
+            queue: .main
+        ) { [weak self] _ in
+            Task { @MainActor in
+                self?.showScreenshotMonitorPrompt()
+            }
+        }
+    }
+
+    private var screenshotPromptWindow: NSWindow?
+
+    private func showScreenshotMonitorPrompt() {
+        // Don't show if already showing
+        guard screenshotPromptWindow == nil else { return }
+
+        let promptView = ScreenshotMonitorPromptView(
+            onEnable: { [weak self] in
+                ScreenshotMonitor.shared.selectFolder()
+                self?.dismissScreenshotPrompt()
+            },
+            onDismiss: { [weak self] in
+                UserDefaults.standard.set(true, forKey: "screenshotMonitorPromptDismissed")
+                self?.dismissScreenshotPrompt()
+            },
+            onLater: { [weak self] in
+                self?.dismissScreenshotPrompt()
+            }
+        )
+
+        let hostingView = NSHostingView(rootView: promptView)
+        hostingView.frame = NSRect(x: 0, y: 0, width: 320, height: 140)
+
+        let window = NSWindow(
+            contentRect: NSRect(x: 0, y: 0, width: 320, height: 140),
+            styleMask: [.borderless],
+            backing: .buffered,
+            defer: false
+        )
+
+        window.contentView = hostingView
+        window.backgroundColor = .clear
+        window.isOpaque = false
+        window.hasShadow = true
+        window.level = .floating
+
+        // Position at top right of screen
+        if let screen = NSScreen.main {
+            let screenFrame = screen.visibleFrame
+            let x = screenFrame.maxX - 340
+            let y = screenFrame.maxY - 160
+            window.setFrameOrigin(NSPoint(x: x, y: y))
+        }
+
+        window.orderFrontRegardless()
+        screenshotPromptWindow = window
+
+        // Auto dismiss after 10 seconds
+        DispatchQueue.main.asyncAfter(deadline: .now() + 10) { [weak self] in
+            self?.dismissScreenshotPrompt()
+        }
+    }
+
+    private func dismissScreenshotPrompt() {
+        screenshotPromptWindow?.close()
+        screenshotPromptWindow = nil
     }
 
     private func showStartupToast() {

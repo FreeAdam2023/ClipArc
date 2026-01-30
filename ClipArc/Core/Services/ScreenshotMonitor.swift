@@ -8,6 +8,7 @@
 
 import AppKit
 import Foundation
+import SwiftUI
 
 @MainActor
 @Observable
@@ -272,4 +273,64 @@ final class ScreenshotMonitor {
     // MARK: - Init
 
     private init() {}
+}
+
+// MARK: - Screenshot Monitor Prompt View
+
+struct ScreenshotMonitorPromptView: View {
+    let onEnable: () -> Void
+    let onDismiss: () -> Void
+    let onLater: () -> Void
+
+    var body: some View {
+        HStack(spacing: 12) {
+            Image(systemName: "camera.viewfinder")
+                .font(.system(size: 28))
+                .foregroundStyle(.purple)
+
+            VStack(alignment: .leading, spacing: 4) {
+                Text("Auto-save Screenshots?")
+                    .font(.system(size: 13, weight: .semibold))
+
+                Text("Enable to save ⌘⇧4 screenshots to history automatically")
+                    .font(.system(size: 11))
+                    .foregroundStyle(.secondary)
+                    .lineLimit(2)
+            }
+
+            Spacer()
+
+            VStack(spacing: 6) {
+                Button("Enable") {
+                    onEnable()
+                }
+                .buttonStyle(.borderedProminent)
+                .controlSize(.small)
+
+                Button("Later") {
+                    onLater()
+                }
+                .buttonStyle(.plain)
+                .font(.caption)
+                .foregroundStyle(.secondary)
+            }
+
+            Button(action: onDismiss) {
+                Image(systemName: "xmark")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
+            .buttonStyle(.plain)
+        }
+        .padding(16)
+        .background(
+            RoundedRectangle(cornerRadius: 12)
+                .fill(.regularMaterial)
+                .shadow(color: .black.opacity(0.15), radius: 12, y: 4)
+        )
+        .overlay(
+            RoundedRectangle(cornerRadius: 12)
+                .stroke(Color.purple.opacity(0.3), lineWidth: 1)
+        )
+    }
 }

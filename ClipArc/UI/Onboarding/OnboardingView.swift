@@ -86,6 +86,7 @@ struct WelcomeStepView: View {
                 FeatureItem(icon: "clock.arrow.circlepath", title: L10n.Onboarding.featureHistoryTitle, description: L10n.Onboarding.featureHistoryDesc)
                 FeatureItem(icon: "magnifyingglass", title: L10n.Onboarding.featureSearchTitle, description: L10n.Onboarding.featureSearchDesc)
                 FeatureItem(icon: "keyboard", title: L10n.Onboarding.featureHotkeyTitle, description: L10n.Onboarding.featureHotkeyDesc)
+                FeatureItem(icon: "camera.viewfinder", title: "Auto-capture Screenshots", description: "Save screenshots to history automatically")
             }
             .frame(maxWidth: 320)
 

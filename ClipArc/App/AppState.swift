@@ -90,6 +90,8 @@ final class AppState {
                     sourceAppBundleID: bundleID,
                     sourceAppName: appName
                 )
+                // Check if we should prompt for screenshot monitor
+                self.checkScreenshotMonitorPrompt()
             case .files(let urls):
                 self.clipboardStore?.addFiles(
                     urls: urls,
@@ -106,6 +108,33 @@ final class AppState {
 
     func refreshItems() {
         items = clipboardStore?.fetchAll() ?? []
+    }
+
+    /// Check if we should prompt user to enable screenshot monitoring
+    private func checkScreenshotMonitorPrompt() {
+        // Don't prompt if already enabled
+        guard !ScreenshotMonitor.shared.isEnabled else { return }
+
+        // Don't prompt if already dismissed
+        let dismissedKey = "screenshotMonitorPromptDismissed"
+        guard !UserDefaults.standard.bool(forKey: dismissedKey) else { return }
+
+        // Don't prompt too frequently - max 3 times, with 7 day cooldown
+        let promptCountKey = "screenshotMonitorPromptCount"
+        let lastPromptKey = "screenshotMonitorLastPrompt"
+        let promptCount = UserDefaults.standard.integer(forKey: promptCountKey)
+        let lastPrompt = UserDefaults.standard.double(forKey: lastPromptKey)
+
+        guard promptCount < 3 else { return }
+
+        let daysSinceLastPrompt = (Date().timeIntervalSince1970 - lastPrompt) / 86400
+        guard lastPrompt == 0 || daysSinceLastPrompt >= 7 else { return }
+
+        // Post notification to show prompt
+        UserDefaults.standard.set(promptCount + 1, forKey: promptCountKey)
+        UserDefaults.standard.set(Date().timeIntervalSince1970, forKey: lastPromptKey)
+
+        NotificationCenter.default.post(name: .showScreenshotMonitorPrompt, object: nil)
     }
 
     /// Add a screenshot image to clipboard history

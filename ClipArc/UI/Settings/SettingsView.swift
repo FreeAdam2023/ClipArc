@@ -800,6 +800,25 @@ struct ScreenshotMonitorSettingsRow: View {
                 .disabled(!screenshotMonitor.hasFolderSelected)
             }
 
+            // Feature highlight when not enabled
+            if !screenshotMonitor.isEnabled {
+                HStack(spacing: 12) {
+                    Image(systemName: "lightbulb.fill")
+                        .foregroundStyle(.yellow)
+                        .font(.caption)
+
+                    Text("Tip: Use ⌘⇧4 to screenshot. With this enabled, screenshots auto-save to history!")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
+                .padding(10)
+                .background(
+                    RoundedRectangle(cornerRadius: 8)
+                        .fill(Color.yellow.opacity(0.1))
+                )
+                .padding(.leading, 28)
+            }
+
             // Folder selection
             HStack {
                 if let path = screenshotMonitor.monitoredFolderPath {
