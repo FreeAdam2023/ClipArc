@@ -63,6 +63,7 @@ struct DirectPasteGuideView: View {
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.center)
                 .lineSpacing(4)
+                .fixedSize(horizontal: false, vertical: true)
 
             Spacer().frame(height: 28)
 
@@ -140,7 +141,7 @@ struct DirectPasteGuideView: View {
 
             Spacer().frame(height: 32)
         }
-        .frame(width: 400, height: 540)
+        .frame(width: 420, height: 580)
         .background(Color(nsColor: .windowBackgroundColor))
         .clipShape(RoundedRectangle(cornerRadius: 16))
         .shadow(color: .black.opacity(0.2), radius: 20, y: 10)
@@ -245,10 +246,10 @@ final class DirectPasteGuideController {
         )
 
         let hostingView = NSHostingView(rootView: guideView)
-        hostingView.frame = NSRect(x: 0, y: 0, width: 400, height: 540)
+        hostingView.frame = NSRect(x: 0, y: 0, width: 420, height: 580)
 
         let window = NSPanel(
-            contentRect: NSRect(x: 0, y: 0, width: 400, height: 540),
+            contentRect: NSRect(x: 0, y: 0, width: 420, height: 580),
             styleMask: [.borderless, .nonactivatingPanel],
             backing: .buffered,
             defer: false
