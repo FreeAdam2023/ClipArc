@@ -259,8 +259,8 @@ final class DirectPasteGuideController {
         window.backgroundColor = .clear
         window.isOpaque = false
         window.hasShadow = true
-        window.level = .floating
-        window.collectionBehavior = [.canJoinAllSpaces, .transient]
+        window.level = .normal
+        window.collectionBehavior = [.canJoinAllSpaces]
         window.center()
 
         NSApp.activate(ignoringOtherApps: true)
