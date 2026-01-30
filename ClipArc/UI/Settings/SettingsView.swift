@@ -550,6 +550,24 @@ struct SubscriptionSettingsView: View {
                     .foregroundStyle(.red)
                     .multilineTextAlignment(.center)
             }
+
+            // Legal links and subscription terms
+            VStack(spacing: 4) {
+                Text("Subscriptions auto-renew until canceled.")
+                    .font(.caption2)
+                    .foregroundStyle(.tertiary)
+
+                HStack(spacing: 12) {
+                    Link("Privacy", destination: URL(string: "https://www.versegates.com/cliparc/privacy")!)
+                    Text("·").foregroundStyle(.tertiary)
+                    Link("Terms", destination: URL(string: "https://www.versegates.com/cliparc/terms")!)
+                    Text("·").foregroundStyle(.tertiary)
+                    Link("Support", destination: URL(string: "https://www.versegates.com/cliparc/support")!)
+                }
+                .font(.caption2)
+                .foregroundStyle(.secondary)
+            }
+            .padding(.top, 8)
         }
     }
 }

@@ -514,19 +514,42 @@ struct SubscriptionStepView: View {
                     .buttonStyle(.borderedProminent)
                     .controlSize(.large)
                 } else {
-                    Button(L10n.Onboarding.startFreeTrial) {
+                    Button("Continue Free") {
                         onSkip()
                     }
                     .buttonStyle(.plain)
                     .foregroundStyle(.secondary)
 
-                    Text(L10n.Onboarding.freeVsPro)
-                        .font(.caption)
-                        .foregroundStyle(.tertiary)
+                    // Restore purchases
+                    Button("Restore Purchases") {
+                        Task {
+                            await subscriptionManager.restorePurchases()
+                        }
+                    }
+                    .buttonStyle(.plain)
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
                 }
             }
 
-            Spacer().frame(height: 30)
+            // Legal links and subscription terms
+            VStack(spacing: 6) {
+                Text("Subscriptions auto-renew until canceled. Cancel anytime in App Store settings.")
+                    .font(.caption2)
+                    .foregroundStyle(.tertiary)
+                    .multilineTextAlignment(.center)
+
+                HStack(spacing: 16) {
+                    Link("Privacy Policy", destination: URL(string: "https://www.versegates.com/cliparc/privacy")!)
+                    Text("·").foregroundStyle(.tertiary)
+                    Link("Terms of Use", destination: URL(string: "https://www.versegates.com/cliparc/terms")!)
+                }
+                .font(.caption2)
+                .foregroundStyle(.secondary)
+            }
+            .padding(.horizontal, 32)
+
+            Spacer().frame(height: 20)
         }
         .onAppear {
             selectedProduct = subscriptionManager.yearlyProduct
