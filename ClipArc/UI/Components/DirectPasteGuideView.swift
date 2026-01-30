@@ -28,11 +28,12 @@ struct DirectPasteGuideView: View {
                 Spacer()
                 Button(action: onDismiss) {
                     Image(systemName: "xmark.circle.fill")
-                        .font(.system(size: 22))
+                        .font(.system(size: 20))
                         .foregroundStyle(.secondary.opacity(0.6))
                 }
                 .buttonStyle(.plain)
-                .padding(16)
+                .padding(.top, 20)
+                .padding(.trailing, 20)
             }
 
             Spacer().frame(height: 10)
