@@ -35,14 +35,13 @@ final class HotkeyManager {
         self.registeredKeyCode = keyCode
         HotkeyManager.sharedHandler = handler
 
-        let hasAccessibility = AXIsProcessTrusted()
-
         if !hasLoggedInitialState {
-            Logger.debug("Accessibility permission: \(hasAccessibility)")
+            Logger.debug("Registering global hotkey")
             hasLoggedInitialState = true
         }
 
         // Register Carbon hot key (this properly intercepts and consumes the event)
+        // Note: Carbon hot keys do not require accessibility permission
         registerCarbonHotKey(modifiers: modifiers, keyCode: keyCode)
 
         // Local monitor for events when our app is focused (backup)
@@ -156,11 +155,8 @@ final class HotkeyManager {
         return true
     }
 
-    /// Re-register hot key after accessibility permission is granted
-    func refreshAfterPermissionChange() {
-        let currentPermission = AXIsProcessTrusted()
-        guard currentPermission else { return }
-
+    /// Re-register hot key if needed (e.g., after app becomes active)
+    func refreshHotKeyRegistration() {
         Logger.debug("Refreshing hot key registration...")
 
         if let handler = handler {

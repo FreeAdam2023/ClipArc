@@ -12,7 +12,7 @@ import SwiftUI
 enum OnboardingStep: Int, CaseIterable {
     case welcome = 0
     case permissions
-    case login
+    // case login  // TODO: Re-enable when cloud sync feature is implemented
     case subscription
     case complete
 }
@@ -29,14 +29,16 @@ struct OnboardingView: View {
                 WelcomeStepView(onNext: { currentStep = .permissions })
 
             case .permissions:
-                PermissionsStepView(onNext: { currentStep = .login }, onSkip: { currentStep = .login })
+                // Skip directly to subscription (login removed for now)
+                PermissionsStepView(onNext: { currentStep = .subscription }, onSkip: { currentStep = .subscription })
 
-            case .login:
-                LoginStepView(
-                    authManager: appState.authManager,
-                    onNext: { currentStep = .subscription },
-                    onSkip: { currentStep = .subscription }
-                )
+            // TODO: Re-enable when cloud sync feature is implemented
+            // case .login:
+            //     LoginStepView(
+            //         authManager: appState.authManager,
+            //         onNext: { currentStep = .subscription },
+            //         onSkip: { currentStep = .subscription }
+            //     )
 
             case .subscription:
                 SubscriptionStepView(
@@ -129,7 +131,6 @@ struct FeatureItem: View {
 
 struct PermissionsStepView: View {
     @State private var permissionsManager = PermissionsManager.shared
-    @State private var hasAccessibility = PermissionsManager.shared.hasAccessibilityPermission
     @State private var hasLaunchAtLogin = PermissionsManager.shared.isLaunchAtLoginEnabled
     @State private var refreshTimer: Timer?
     var onNext: () -> Void
@@ -139,7 +140,7 @@ struct PermissionsStepView: View {
         VStack(spacing: 32) {
             Spacer()
 
-            Image(systemName: "lock.shield")
+            Image(systemName: "gearshape.2")
                 .font(.system(size: 64))
                 .foregroundStyle(Color.accentColor)
 
@@ -155,16 +156,6 @@ struct PermissionsStepView: View {
             }
 
             VStack(spacing: 16) {
-                PermissionRow(
-                    icon: "accessibility",
-                    title: L10n.Onboarding.accessibilityTitle,
-                    description: L10n.Onboarding.accessibilityDesc,
-                    isGranted: hasAccessibility,
-                    action: {
-                        permissionsManager.requestAccessibilityPermission()
-                    }
-                )
-
                 PermissionRow(
                     icon: "power",
                     title: L10n.Onboarding.launchAtLoginTitle,
@@ -208,7 +199,6 @@ struct PermissionsStepView: View {
     private func startPermissionPolling() {
         refreshTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
             Task { @MainActor in
-                hasAccessibility = permissionsManager.hasAccessibilityPermission
                 hasLaunchAtLogin = permissionsManager.isLaunchAtLoginEnabled
             }
         }

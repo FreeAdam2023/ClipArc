@@ -179,3 +179,23 @@
 
 // MARK: - Toast
 "toast.running" = "Running in background";
+
+// MARK: - Paste Dialog
+"paste.direct_paste_title" = "Paste directly to %@?";
+"paste.direct_paste_subtitle" = "ClipArc needs accessibility access to paste directly to other apps.";
+"paste.enable_direct_paste" = "Enable Direct Paste";
+"paste.copy_to_clipboard" = "Not Now, Copy to Clipboard";
+"paste.dont_ask_again" = "Don't ask again";
+"paste.press_to_manual_paste" = "Press ⌘V to paste";
+
+// MARK: - Settings Paste Mode
+"settings.paste_mode" = "Paste Mode";
+"settings.paste_mode.ask" = "Ask each time";
+"settings.paste_mode.direct_paste" = "Always direct paste";
+"settings.paste_mode.copy_only" = "Always copy only";
+
+// MARK: - Accessibility Setup
+"accessibility.setup.title" = "Enable Accessibility Access";
+"accessibility.setup.subtitle" = "To paste directly to other applications, allow ClipArc to access the accessibility features of your Mac in System Settings.";
+"accessibility.open_system_settings" = "Open System Settings";
+"accessibility.having_issue" = "I'm Having an Issue";

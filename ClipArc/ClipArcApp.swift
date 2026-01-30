@@ -56,6 +56,16 @@ struct ClipArcApp: App {
 
 struct MenuBarContentView: View {
     @Environment(AppState.self) private var appState
+    @Environment(\.openSettings) private var openSettingsAction
+
+    /// Opens the Settings window and brings it to front
+    private func openSettings() {
+        openSettingsAction()
+        // Activate after opening to ensure window comes to front
+        DispatchQueue.main.async {
+            NSApp.activate(ignoringOtherApps: true)
+        }
+    }
 
     private func menuPreview(for item: ClipboardItem) -> String {
         let text = item.previewText
@@ -98,7 +108,7 @@ struct MenuBarContentView: View {
                 let displayItems = appState.isProUser ? appState.items.prefix(10) : appState.items.prefix(5)
                 ForEach(displayItems) { item in
                     Button(action: {
-                        PasteService.pasteItem(item)
+                        PasteActionCoordinator.shared.performPaste(item: item)
                     }) {
                         HStack {
                             Image(systemName: item.type.icon)
@@ -111,8 +121,8 @@ struct MenuBarContentView: View {
 
                 if !appState.isProUser && appState.items.count > 5 {
                     Divider()
-                    SettingsLink {
-                        Text(L10n.Settings.upgradeToPro)
+                    Button(L10n.Settings.upgradeToPro) {
+                        openSettings()
                     }
                     .foregroundStyle(.secondary)
                 }
@@ -126,25 +136,26 @@ struct MenuBarContentView: View {
 
             Divider()
 
+            // TODO: Re-enable when cloud sync feature is implemented
             // Account section
-            if appState.authManager.isAuthenticated {
-                HStack {
-                    Image(systemName: "person.circle")
-                    Text(appState.authManager.userName ?? appState.authManager.userEmail ?? "Apple User")
-                        .lineLimit(1)
-                }
-                .padding(.horizontal)
-                .foregroundStyle(.secondary)
-            }
+            // if appState.authManager.isAuthenticated {
+            //     HStack {
+            //         Image(systemName: "person.circle")
+            //         Text(appState.authManager.userName ?? appState.authManager.userEmail ?? "Apple User")
+            //             .lineLimit(1)
+            //     }
+            //     .padding(.horizontal)
+            //     .foregroundStyle(.secondary)
+            // }
 
             if !appState.isProUser {
-                SettingsLink {
-                    Text(L10n.Settings.upgradeToPro)
+                Button(L10n.Settings.upgradeToPro) {
+                    openSettings()
                 }
             }
 
-            SettingsLink {
-                Text(L10n.MenuBar.preferences)
+            Button(L10n.MenuBar.preferences) {
+                openSettings()
             }
             .keyboardShortcut(",", modifiers: .command)
 

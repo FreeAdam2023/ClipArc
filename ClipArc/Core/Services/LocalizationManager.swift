@@ -251,6 +251,11 @@ enum L10n {
         static var clearAllHistory: String { "settings.clear_all_history".localized }
         static var clearHistoryMessage: String { "settings.clear_history_message".localized }
         static var clear: String { "settings.clear".localized }
+
+        static var pasteMode: String { "settings.paste_mode".localized }
+        static var pasteModeAsk: String { "settings.paste_mode.ask".localized }
+        static var pasteModeDirectPaste: String { "settings.paste_mode.direct_paste".localized }
+        static var pasteModeCopyOnly: String { "settings.paste_mode.copy_only".localized }
     }
 
     // MARK: - Clipboard
@@ -309,5 +314,25 @@ enum L10n {
     // MARK: - Toast
     enum Toast {
         static var running: String { "toast.running".localized }
+    }
+
+    // MARK: - Paste Dialog
+    enum Paste {
+        static func directPasteTitle(_ appName: String) -> String {
+            "paste.direct_paste_title".localized(with: appName)
+        }
+        static var directPasteSubtitle: String { "paste.direct_paste_subtitle".localized }
+        static var enableDirectPaste: String { "paste.enable_direct_paste".localized }
+        static var copyToClipboard: String { "paste.copy_to_clipboard".localized }
+        static var dontAskAgain: String { "paste.dont_ask_again".localized }
+        static var pressToManualPaste: String { "paste.press_to_manual_paste".localized }
+    }
+
+    // MARK: - Accessibility Setup
+    enum Accessibility {
+        static var setupTitle: String { "accessibility.setup.title".localized }
+        static var setupSubtitle: String { "accessibility.setup.subtitle".localized }
+        static var openSystemSettings: String { "accessibility.open_system_settings".localized }
+        static var havingIssue: String { "accessibility.having_issue".localized }
     }
 }

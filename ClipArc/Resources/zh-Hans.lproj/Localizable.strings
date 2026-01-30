@@ -179,3 +179,23 @@
 
 // MARK: - Toast
 "toast.running" = "正在后台运行";
+
+// MARK: - Paste Dialog
+"paste.direct_paste_title" = "直接粘贴到 %@？";
+"paste.direct_paste_subtitle" = "ClipArc 需要辅助功能权限才能直接粘贴到其他应用。";
+"paste.enable_direct_paste" = "启用直接粘贴";
+"paste.copy_to_clipboard" = "暂不，仅复制到剪贴板";
+"paste.dont_ask_again" = "不再询问";
+"paste.press_to_manual_paste" = "按 ⌘V 粘贴";
+
+// MARK: - Settings Paste Mode
+"settings.paste_mode" = "粘贴模式";
+"settings.paste_mode.ask" = "每次询问";
+"settings.paste_mode.direct_paste" = "始终直接粘贴";
+"settings.paste_mode.copy_only" = "始终仅复制";
+
+// MARK: - Accessibility Setup
+"accessibility.setup.title" = "启用辅助功能权限";
+"accessibility.setup.subtitle" = "若要直接粘贴到其他应用程序，请在系统设置中允许 ClipArc 访问 Mac 的辅助功能。";
+"accessibility.open_system_settings" = "打开系统设置";
+"accessibility.having_issue" = "遇到问题";

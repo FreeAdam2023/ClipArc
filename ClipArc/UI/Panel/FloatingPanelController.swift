@@ -116,11 +116,8 @@ final class FloatingPanelController {
             case 36: // Return/Enter
                 if let item = self.appState.selectedItem {
                     self.appState.touchItem(item)
-                    PasteService.copyItem(item)
-                    self.hide {
-                        // Focus should be restored by hide(), now paste
-                        PasteService.simulatePaste()
-                    }
+                    PasteActionCoordinator.shared.performPaste(item: item)
+                    self.hide(completion: nil)
                 }
                 return nil
 
@@ -170,11 +167,8 @@ struct PanelContentView: View {
                                 isItemSelected: appState.selectedItemIDs.contains(item.id),
                                 onSelect: {
                                     appState.touchItem(item)  // Move to front
-                                    PasteService.copyItem(item)  // Copy first
-                                    onDismiss {
-                                        // Focus restored by hide(), now paste
-                                        PasteService.simulatePaste()
-                                    }
+                                    PasteActionCoordinator.shared.performPaste(item: item)
+                                    onDismiss(nil)
                                 },
                                 onDelete: {
                                     appState.deleteItem(item)
@@ -236,11 +230,8 @@ struct PanelContentView: View {
         .onKeyPress(.return) {
             if let item = appState.selectedItem {
                 appState.touchItem(item)  // Move to front
-                PasteService.copyItem(item)  // Copy first
-                onDismiss {
-                    // Focus restored by hide(), now paste
-                    PasteService.simulatePaste()
-                }
+                PasteActionCoordinator.shared.performPaste(item: item)
+                onDismiss(nil)
             }
             return .handled
         }

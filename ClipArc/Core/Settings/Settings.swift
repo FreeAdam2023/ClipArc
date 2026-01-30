@@ -16,6 +16,24 @@ enum SettingsKey: String {
     case hotkey = "hotkey"
     case soundEnabled = "soundEnabled"
     case appearance = "appearance"
+    case pasteMode = "pasteMode"
+    case pasteActionCount = "pasteActionCount"
+    case neverAskDirectPaste = "neverAskDirectPaste"
+}
+
+/// User's preference for paste behavior when accessibility is not enabled
+enum PasteMode: String, CaseIterable {
+    case ask = "ask"              // Always ask user (default)
+    case directPaste = "direct"   // Always try direct paste (requires accessibility)
+    case copyOnly = "copy"        // Always just copy to clipboard
+
+    var displayName: String {
+        switch self {
+        case .ask: return L10n.Settings.pasteModeAsk
+        case .directPaste: return L10n.Settings.pasteModeDirectPaste
+        case .copyOnly: return L10n.Settings.pasteModeCopyOnly
+        }
+    }
 }
 
 enum AppAppearance: String, CaseIterable {
@@ -76,6 +94,27 @@ final class AppSettings: ObservableObject {
         }
     }
 
+    @Published var pasteMode: PasteMode {
+        didSet {
+            UserDefaults.standard.set(pasteMode.rawValue, forKey: SettingsKey.pasteMode.rawValue)
+        }
+    }
+
+    /// Count of paste actions without accessibility permission (for triggering prompt)
+    var pasteActionCount: Int {
+        get { UserDefaults.standard.integer(forKey: SettingsKey.pasteActionCount.rawValue) }
+        set { UserDefaults.standard.set(newValue, forKey: SettingsKey.pasteActionCount.rawValue) }
+    }
+
+    /// User chose "Don't ask again" for direct paste prompt
+    var neverAskDirectPaste: Bool {
+        get { UserDefaults.standard.bool(forKey: SettingsKey.neverAskDirectPaste.rawValue) }
+        set { UserDefaults.standard.set(newValue, forKey: SettingsKey.neverAskDirectPaste.rawValue) }
+    }
+
+    /// Number of paste actions before showing the direct paste prompt
+    static let pastePromptThreshold = 3
+
     private init() {
         let defaults = UserDefaults.standard
 
@@ -94,6 +133,14 @@ final class AppSettings: ObservableObject {
             appearance = savedAppearance
         } else {
             appearance = .system
+        }
+
+        // Load paste mode setting
+        if let pasteModeRaw = defaults.string(forKey: SettingsKey.pasteMode.rawValue),
+           let savedPasteMode = PasteMode(rawValue: pasteModeRaw) {
+            pasteMode = savedPasteMode
+        } else {
+            pasteMode = .ask
         }
 
         // Apply appearance on init

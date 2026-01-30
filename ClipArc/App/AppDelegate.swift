@@ -82,23 +82,10 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             name: .showClipboardPanel,
             object: nil
         )
-
-        // Re-check hotkey when app becomes active (user might have granted accessibility)
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(applicationDidBecomeActive),
-            name: NSApplication.didBecomeActiveNotification,
-            object: nil
-        )
     }
 
     @objc private func showPanelNotification() {
         showPanel()
-    }
-
-    @objc private func applicationDidBecomeActive() {
-        // Refresh hotkey registration in case accessibility permission was just granted
-        hotkeyManager?.refreshAfterPermissionChange()
     }
 
     private func togglePanel() {

@@ -20,10 +20,11 @@ struct SettingsView: View {
                     Label(L10n.Settings.general, systemImage: "gear")
                 }
 
-            AccountSettingsView()
-                .tabItem {
-                    Label(L10n.Settings.account, systemImage: "person.circle")
-                }
+            // TODO: Re-enable when cloud sync feature is implemented
+            // AccountSettingsView()
+            //     .tabItem {
+            //         Label(L10n.Settings.account, systemImage: "person.circle")
+            //     }
 
             SubscriptionSettingsView()
                 .tabItem {
@@ -104,28 +105,8 @@ struct GeneralSettingsView: View {
                 }
             }
 
-            Section(L10n.Settings.permissions) {
-                HStack {
-                    Label(L10n.Onboarding.accessibilityTitle, systemImage: "hand.point.up.braille")
-                    Spacer()
-                    if permissionsManager.hasAccessibilityPermission {
-                        Image(systemName: "checkmark.circle.fill")
-                            .foregroundStyle(.green)
-                        Text(L10n.Settings.granted)
-                            .foregroundStyle(.secondary)
-                    } else {
-                        Button(L10n.enable) {
-                            permissionsManager.requestAccessibilityPermission()
-                        }
-                        .buttonStyle(.bordered)
-                    }
-                }
-
-                if !permissionsManager.hasAccessibilityPermission {
-                    Text(L10n.Settings.accessibilityGuide)
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                }
+            Section("Direct Paste") {
+                DirectPasteSettingsRow()
             }
 
             Section(L10n.Settings.storage) {
@@ -729,6 +710,81 @@ struct AboutView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .padding(24)
+    }
+}
+
+// MARK: - Direct Paste Settings Row
+
+struct DirectPasteSettingsRow: View {
+    @State private var capabilityManager = DirectPasteCapabilityManager.shared
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            // Main toggle row
+            HStack {
+                Label {
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text("Direct Paste")
+                            .font(.body)
+                        Text("Paste instantly without pressing ⌘V")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                    }
+                } icon: {
+                    Image(systemName: "bolt.fill")
+                        .foregroundStyle(.yellow)
+                }
+
+                Spacer()
+
+                // Status indicator
+                switch capabilityManager.capabilityState {
+                case .enabled:
+                    HStack(spacing: 4) {
+                        Image(systemName: "checkmark.circle.fill")
+                            .foregroundStyle(.green)
+                        Text("Enabled")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                    }
+
+                case .pendingPermission:
+                    Button("Grant Permission") {
+                        capabilityManager.openAccessibilitySettings()
+                    }
+                    .buttonStyle(.bordered)
+                    .controlSize(.small)
+
+                case .disabled:
+                    Button("Enable") {
+                        NotificationCenter.default.post(name: .showDirectPasteGuide, object: nil)
+                    }
+                    .buttonStyle(.bordered)
+                    .controlSize(.small)
+                }
+            }
+
+            // Info text based on state
+            if capabilityManager.capabilityState == .pendingPermission {
+                HStack(spacing: 6) {
+                    Image(systemName: "info.circle")
+                        .font(.caption)
+                    Text("Add ClipArc in System Settings → Accessibility")
+                        .font(.caption)
+                }
+                .foregroundStyle(.orange)
+            }
+
+            // Disable option when enabled
+            if capabilityManager.capabilityState == .enabled {
+                Button("Disable Direct Paste") {
+                    capabilityManager.disableDirectPasteMode()
+                }
+                .buttonStyle(.plain)
+                .font(.caption)
+                .foregroundStyle(.secondary)
+            }
+        }
     }
 }
 
