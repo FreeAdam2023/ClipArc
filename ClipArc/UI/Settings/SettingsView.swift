@@ -716,7 +716,7 @@ struct AboutView: View {
 // MARK: - Direct Paste Settings Row
 
 struct DirectPasteSettingsRow: View {
-    @State private var capabilityManager = DirectPasteCapabilityManager.shared
+    @State private var isAccessibilityGranted = DirectPasteCapabilityManager.shared.isAccessibilityGranted
 
     var body: some View {
         HStack {
@@ -736,7 +736,7 @@ struct DirectPasteSettingsRow: View {
             Spacer()
 
             // Status: Enabled or Enable button
-            if capabilityManager.isAccessibilityGranted {
+            if isAccessibilityGranted {
                 HStack(spacing: 4) {
                     Image(systemName: "checkmark.circle.fill")
                         .foregroundStyle(.green)
@@ -752,6 +752,16 @@ struct DirectPasteSettingsRow: View {
                 .controlSize(.small)
             }
         }
+        .onAppear {
+            refreshPermissionStatus()
+        }
+        .onReceive(NotificationCenter.default.publisher(for: NSApplication.didBecomeActiveNotification)) { _ in
+            refreshPermissionStatus()
+        }
+    }
+
+    private func refreshPermissionStatus() {
+        isAccessibilityGranted = DirectPasteCapabilityManager.shared.isAccessibilityGranted
     }
 }
 
