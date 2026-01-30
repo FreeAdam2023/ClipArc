@@ -248,7 +248,7 @@ final class DirectPasteGuideController {
         let hostingView = NSHostingView(rootView: guideView)
         hostingView.frame = NSRect(x: 0, y: 0, width: 420, height: 580)
 
-        let window = NSWindow(
+        let window = GuideWindow(
             contentRect: NSRect(x: 0, y: 0, width: 420, height: 580),
             styleMask: [.borderless],
             backing: .buffered,
@@ -351,4 +351,11 @@ final class DirectPasteGuideController {
     )
     .padding(20)
     .frame(width: 450)
+}
+
+// MARK: - Guide Window Class
+
+private class GuideWindow: NSWindow {
+    override var canBecomeKey: Bool { true }
+    override var canBecomeMain: Bool { true }
 }
