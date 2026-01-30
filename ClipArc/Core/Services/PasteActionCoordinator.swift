@@ -106,12 +106,12 @@ final class PasteActionCoordinator {
         window.backgroundColor = .clear
         window.isOpaque = false
         window.hasShadow = true
-        window.level = .screenSaver
-        window.collectionBehavior = [.canJoinAllSpaces, .transient]
+        window.level = .floating
+        window.collectionBehavior = [.canJoinAllSpaces, .stationary, .ignoresCycle]
         window.ignoresMouseEvents = false
+        window.hidesOnDeactivate = false  // Keep visible when app loses focus
         window.center()
 
-        window.makeKeyAndOrderFront(nil)
         window.orderFrontRegardless()
 
         toastWindow = window
