@@ -118,14 +118,6 @@ struct MenuBarContentView: View {
                         }
                     }
                 }
-
-                if !appState.isProUser && appState.items.count > 5 {
-                    Divider()
-                    Button(L10n.Settings.upgradeToPro) {
-                        openSettings()
-                    }
-                    .foregroundStyle(.secondary)
-                }
             }
 
             Divider()
@@ -136,18 +128,7 @@ struct MenuBarContentView: View {
 
             Divider()
 
-            // TODO: Re-enable when cloud sync feature is implemented
-            // Account section
-            // if appState.authManager.isAuthenticated {
-            //     HStack {
-            //         Image(systemName: "person.circle")
-            //         Text(appState.authManager.userName ?? appState.authManager.userEmail ?? "Apple User")
-            //             .lineLimit(1)
-            //     }
-            //     .padding(.horizontal)
-            //     .foregroundStyle(.secondary)
-            // }
-
+            // Upgrade prompt for free users (show only once)
             if !appState.isProUser {
                 Button(L10n.Settings.upgradeToPro) {
                     openSettings()
@@ -158,8 +139,6 @@ struct MenuBarContentView: View {
                 openSettings()
             }
             .keyboardShortcut(",", modifiers: .command)
-
-            Divider()
 
             Button(L10n.MenuBar.help) {
                 if let url = URL(string: "https://www.versegates.com/cliparc/support") {
