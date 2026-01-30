@@ -116,8 +116,8 @@ final class PasteActionCoordinator {
 
         toastWindow = window
 
-        // Auto-dismiss after 3 seconds
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) { [weak self] in
+        // Auto-dismiss after 2 seconds
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { [weak self] in
             self?.dismissToast()
         }
 
