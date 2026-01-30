@@ -248,9 +248,9 @@ final class DirectPasteGuideController {
         let hostingView = NSHostingView(rootView: guideView)
         hostingView.frame = NSRect(x: 0, y: 0, width: 420, height: 580)
 
-        let window = NSPanel(
+        let window = NSWindow(
             contentRect: NSRect(x: 0, y: 0, width: 420, height: 580),
-            styleMask: [.borderless, .nonactivatingPanel],
+            styleMask: [.borderless],
             backing: .buffered,
             defer: false
         )
@@ -260,7 +260,7 @@ final class DirectPasteGuideController {
         window.isOpaque = false
         window.hasShadow = true
         window.level = .normal
-        window.collectionBehavior = [.canJoinAllSpaces]
+        window.collectionBehavior = []
         window.center()
 
         NSApp.activate(ignoringOtherApps: true)
