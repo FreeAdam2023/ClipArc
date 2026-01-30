@@ -124,6 +124,12 @@ final class SubscriptionManager {
             if !isSubscribed {
                 errorMessage = "No active subscription found."
             }
+        } catch is CancellationError {
+            // User cancelled - silently ignore
+            isLoading = false
+        } catch StoreKitError.userCancelled {
+            // User cancelled - silently ignore
+            isLoading = false
         } catch {
             errorMessage = "Restore failed: \(error.localizedDescription)"
             isLoading = false
