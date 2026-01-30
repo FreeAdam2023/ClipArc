@@ -773,10 +773,17 @@ struct ScreenshotMonitorSettingsRow: View {
 
                 Toggle("", isOn: Binding(
                     get: { screenshotMonitor.isEnabled },
-                    set: { screenshotMonitor.isEnabled = $0 }
+                    set: { newValue in
+                        if newValue && !screenshotMonitor.hasFolderSelected {
+                            // Turning on without folder: trigger folder selection
+                            screenshotMonitor.selectFolder()
+                        } else {
+                            // Normal toggle behavior
+                            screenshotMonitor.isEnabled = newValue
+                        }
+                    }
                 ))
                 .toggleStyle(.switch)
-                .disabled(!screenshotMonitor.hasFolderSelected)
             }
 
             // Feature highlight when not enabled
@@ -798,9 +805,9 @@ struct ScreenshotMonitorSettingsRow: View {
                 .padding(.leading, 28)
             }
 
-            // Folder selection
-            HStack {
-                if let path = screenshotMonitor.monitoredFolderPath {
+            // Only show folder path when enabled
+            if screenshotMonitor.isEnabled, let path = screenshotMonitor.monitoredFolderPath {
+                HStack {
                     Image(systemName: "folder.fill")
                         .foregroundStyle(.secondary)
                     Text(path)
@@ -816,21 +823,9 @@ struct ScreenshotMonitorSettingsRow: View {
                     }
                     .buttonStyle(.bordered)
                     .controlSize(.small)
-                } else {
-                    Text("Select screenshot folder to enable")
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-
-                    Spacer()
-
-                    Button("Select Folder") {
-                        screenshotMonitor.selectFolder()
-                    }
-                    .buttonStyle(.bordered)
-                    .controlSize(.small)
                 }
+                .padding(.leading, 28)
             }
-            .padding(.leading, 28)
         }
     }
 }
