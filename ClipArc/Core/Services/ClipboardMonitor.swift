@@ -77,6 +77,9 @@ final class ClipboardMonitor: ObservableObject {
     }
 
     private func extractContent(from pasteboard: NSPasteboard) -> ClipboardContent? {
+        // Debug: Log all pasteboard types
+        Logger.debug("Pasteboard types: \(pasteboard.types?.map { $0.rawValue } ?? [])")
+
         // Check for files first (highest priority)
         if let fileURLs = extractFileURLs(from: pasteboard), !fileURLs.isEmpty {
             return .files(fileURLs)

@@ -24,6 +24,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         setupPanelController()
         setupNotifications()
         setupDirectPasteGuide()
+        setupScreenshotMonitor()
 
         NSApp.setActivationPolicy(.accessory)
 
@@ -38,6 +39,21 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     private func setupDirectPasteGuide() {
         // Initialize DirectPasteGuideController to set up notification observers
         _ = DirectPasteGuideController.shared
+    }
+
+    private func setupScreenshotMonitor() {
+        let monitor = ScreenshotMonitor.shared
+
+        // Connect screenshot monitor to clipboard store
+        monitor.onNewScreenshot = { [weak self] imageData, width, height in
+            Task { @MainActor in
+                self?.appState.addScreenshot(imageData: imageData, width: width, height: height)
+                Logger.debug("Screenshot added to clipboard history")
+            }
+        }
+
+        // Start monitoring if enabled
+        monitor.startMonitoringIfEnabled()
     }
 
     private func showStartupToast() {

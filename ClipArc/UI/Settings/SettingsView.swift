@@ -109,6 +109,10 @@ struct GeneralSettingsView: View {
                 DirectPasteSettingsRow()
             }
 
+            Section("Screenshot Monitor") {
+                ScreenshotMonitorSettingsRow()
+            }
+
             Section(L10n.Settings.storage) {
                 // History count
                 HStack {
@@ -762,6 +766,74 @@ struct DirectPasteSettingsRow: View {
 
     private func refreshPermissionStatus() {
         isAccessibilityGranted = DirectPasteCapabilityManager.shared.isAccessibilityGranted
+    }
+}
+
+// MARK: - Screenshot Monitor Settings Row
+
+struct ScreenshotMonitorSettingsRow: View {
+    @State private var screenshotMonitor = ScreenshotMonitor.shared
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            HStack {
+                Label {
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text("Auto-capture Screenshots")
+                            .font(.body)
+                        Text("Automatically save screenshots to history")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                    }
+                } icon: {
+                    Image(systemName: "camera.viewfinder")
+                        .foregroundStyle(.purple)
+                }
+
+                Spacer()
+
+                Toggle("", isOn: Binding(
+                    get: { screenshotMonitor.isEnabled },
+                    set: { screenshotMonitor.isEnabled = $0 }
+                ))
+                .toggleStyle(.switch)
+                .disabled(!screenshotMonitor.hasFolderSelected)
+            }
+
+            // Folder selection
+            HStack {
+                if let path = screenshotMonitor.monitoredFolderPath {
+                    Image(systemName: "folder.fill")
+                        .foregroundStyle(.secondary)
+                    Text(path)
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                        .lineLimit(1)
+                        .truncationMode(.middle)
+
+                    Spacer()
+
+                    Button("Change") {
+                        screenshotMonitor.selectFolder()
+                    }
+                    .buttonStyle(.bordered)
+                    .controlSize(.small)
+                } else {
+                    Text("Select screenshot folder to enable")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+
+                    Spacer()
+
+                    Button("Select Folder") {
+                        screenshotMonitor.selectFolder()
+                    }
+                    .buttonStyle(.bordered)
+                    .controlSize(.small)
+                }
+            }
+            .padding(.leading, 28)
+        }
     }
 }
 

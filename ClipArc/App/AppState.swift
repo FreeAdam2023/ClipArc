@@ -108,6 +108,18 @@ final class AppState {
         items = clipboardStore?.fetchAll() ?? []
     }
 
+    /// Add a screenshot image to clipboard history
+    func addScreenshot(imageData: Data, width: Int, height: Int) {
+        clipboardStore?.addImage(
+            data: imageData,
+            width: width,
+            height: height,
+            sourceAppBundleID: "com.apple.screencaptureui",
+            sourceAppName: "Screenshot"
+        )
+        refreshItems()
+    }
+
     func deleteItem(_ item: ClipboardItem) {
         clipboardStore?.delete(item)
         refreshItems()
