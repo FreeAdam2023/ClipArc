@@ -23,6 +23,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         setupHotkey()
         setupPanelController()
         setupNotifications()
+        setupDirectPasteGuide()
 
         NSApp.setActivationPolicy(.accessory)
 
@@ -32,6 +33,11 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         } else {
             showStartupToast()
         }
+    }
+
+    private func setupDirectPasteGuide() {
+        // Initialize DirectPasteGuideController to set up notification observers
+        _ = DirectPasteGuideController.shared
     }
 
     private func showStartupToast() {

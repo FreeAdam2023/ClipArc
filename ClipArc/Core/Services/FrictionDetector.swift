@@ -74,22 +74,27 @@ final class FrictionDetector {
     var shouldShowFrictionGuide: Bool {
         // Already using Direct Paste - no need to show
         guard !DirectPasteCapabilityManager.shared.canDirectPaste else {
+            Logger.debug("FrictionDetector: shouldShowGuide=false (Direct Paste already enabled)")
             return false
         }
 
         // In cooldown period - don't show
         let now = Date().timeIntervalSince1970
         if now - guideDismissedAt < cooldownSeconds {
+            Logger.debug("FrictionDetector: shouldShowGuide=false (in cooldown)")
             return false
         }
 
         // Limit total number of times guide is shown (max 3 times ever)
         if guideShownCount >= 3 {
+            Logger.debug("FrictionDetector: shouldShowGuide=false (shown \(guideShownCount) times already)")
             return false
         }
 
         // Check if friction signal is detected
-        return currentState == .frictionDetected
+        let result = currentState == .frictionDetected
+        Logger.debug("FrictionDetector: shouldShowGuide=\(result) (state=\(currentState), shownCount=\(guideShownCount))")
+        return result
     }
 
     /// User chose "Maybe Later" - enter cooldown
