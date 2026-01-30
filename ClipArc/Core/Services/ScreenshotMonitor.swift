@@ -74,6 +74,8 @@ final class ScreenshotMonitor {
 
             Task { @MainActor in
                 self?.saveBookmark(for: url)
+                // Enable monitoring after folder is selected
+                UserDefaults.standard.set(true, forKey: "screenshotMonitorEnabled")
                 self?.startMonitoring()
             }
         }
