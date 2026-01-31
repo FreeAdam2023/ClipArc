@@ -9,16 +9,28 @@ import AuthenticationServices
 import StoreKit
 import SwiftUI
 
+enum SettingsTab: Int {
+    case general = 0
+    case subscription = 1
+    case about = 2
+}
+
+extension Notification.Name {
+    static let openSubscriptionTab = Notification.Name("openSubscriptionTab")
+}
+
 struct SettingsView: View {
     @Environment(AppState.self) private var appState: AppState?
     @ObservedObject private var settings = AppSettings.shared
+    @State private var selectedTab: SettingsTab = .general
 
     var body: some View {
-        TabView {
+        TabView(selection: $selectedTab) {
             GeneralSettingsView(settings: settings)
                 .tabItem {
                     Label(L10n.Settings.general, systemImage: "gear")
                 }
+                .tag(SettingsTab.general)
 
             // TODO: Re-enable when cloud sync feature is implemented
             // AccountSettingsView()
@@ -30,13 +42,18 @@ struct SettingsView: View {
                 .tabItem {
                     Label(L10n.Settings.subscription, systemImage: "crown")
                 }
+                .tag(SettingsTab.subscription)
 
             AboutView()
                 .tabItem {
                     Label(L10n.Settings.about, systemImage: "info.circle")
                 }
+                .tag(SettingsTab.about)
         }
         .frame(width: 500, height: 520)
+        .onReceive(NotificationCenter.default.publisher(for: .openSubscriptionTab)) { _ in
+            selectedTab = .subscription
+        }
     }
 }
 

@@ -193,6 +193,10 @@ struct VisualEffectView: NSViewRepresentable {
 
 @MainActor
 func openSubscriptionWindow(appState: AppState) {
+    // Post notification to switch to subscription tab
+    NotificationCenter.default.post(name: .openSubscriptionTab, object: nil)
+
+    // Open settings window
     NSApp.sendAction(Selector(("showSettingsWindow:")), to: nil, from: nil)
     NSApp.activate(ignoringOtherApps: true)
 }
