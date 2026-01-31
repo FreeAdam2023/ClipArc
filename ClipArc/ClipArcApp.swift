@@ -153,10 +153,14 @@ struct MenuBarContentView: View {
             }
             .keyboardShortcut("q", modifiers: .command)
         }
+        .onReceive(NotificationCenter.default.publisher(for: .openSettingsWindow)) { _ in
+            openSettings()
+        }
     }
 
 }
 
 extension Notification.Name {
     static let showClipboardPanel = Notification.Name("showClipboardPanel")
+    static let openSettingsWindow = Notification.Name("openSettingsWindow")
 }
