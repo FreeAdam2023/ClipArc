@@ -27,6 +27,7 @@ final class PasteActionCoordinator {
     // MARK: - Toast Management
 
     private var toastWindow: NSWindow?
+    private var dismissWorkItem: DispatchWorkItem?
 
     // MARK: - Public API
 
@@ -83,7 +84,12 @@ final class PasteActionCoordinator {
     // MARK: - Toast UI
 
     private func showCopiedToast() {
+        // Cancel any pending dismiss
+        dismissWorkItem?.cancel()
+        dismissWorkItem = nil
+
         // Close existing toast if any
+        toastWindow?.orderOut(nil)
         toastWindow?.close()
         toastWindow = nil
 
@@ -117,23 +123,27 @@ final class PasteActionCoordinator {
 
         toastWindow = window
 
-        // Auto-dismiss after 2 seconds
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { [weak self] in
+        // Auto-dismiss after 1.5 seconds (reduced from 2s for snappier UX)
+        let workItem = DispatchWorkItem { [weak self] in
             self?.dismissToast()
         }
+        dismissWorkItem = workItem
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: workItem)
 
         Logger.debug("Copied toast displayed")
     }
 
     private func dismissToast() {
         guard let window = toastWindow else { return }
+        toastWindow = nil  // Clear reference first to prevent multiple dismissals
 
         NSAnimationContext.runAnimationGroup({ context in
             context.duration = 0.2
+            context.allowsImplicitAnimation = true
             window.animator().alphaValue = 0
-        }, completionHandler: { [weak self] in
+        }, completionHandler: {
+            window.orderOut(nil)
             window.close()
-            self?.toastWindow = nil
         })
     }
 
