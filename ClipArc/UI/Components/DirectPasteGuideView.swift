@@ -228,8 +228,11 @@ final class DirectPasteGuideController {
 
     func showGuide() {
         // Close existing if any
-        guideWindow?.close()
-        guideWindow = nil
+        if guideWindow != nil {
+            guideWindow?.contentView = nil
+            guideWindow?.orderOut(nil)
+            guideWindow = nil
+        }
 
         let guideView = DirectPasteGuideView(
             onOpenSettings: { [weak self] in
@@ -263,6 +266,12 @@ final class DirectPasteGuideController {
         window.collectionBehavior = []
         window.center()
 
+        // Set cleanup callback
+        window.onClose = { [weak self] in
+            self?.guideWindow = nil
+            self?.removeReturnObserver()
+        }
+
         NSApp.activate(ignoringOtherApps: true)
         window.makeKeyAndOrderFront(nil)
 
@@ -270,9 +279,13 @@ final class DirectPasteGuideController {
     }
 
     func dismiss() {
-        guideWindow?.close()
+        guard let window = guideWindow else { return }
         guideWindow = nil
         removeReturnObserver()
+        // Clear content first to avoid Core Animation issues
+        window.contentView = nil
+        window.orderOut(nil)
+        window.close()
     }
 
     // MARK: - Return Observer
@@ -358,4 +371,13 @@ final class DirectPasteGuideController {
 private class GuideWindow: NSWindow {
     override var canBecomeKey: Bool { true }
     override var canBecomeMain: Bool { true }
+
+    var onClose: (() -> Void)?
+
+    override func close() {
+        // Clear content view first to avoid Core Animation issues
+        contentView = nil
+        onClose?()
+        super.close()
+    }
 }
