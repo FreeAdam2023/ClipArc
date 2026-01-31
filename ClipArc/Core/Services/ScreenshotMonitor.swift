@@ -31,7 +31,20 @@ final class ScreenshotMonitor {
 
     /// Enable or disable monitoring
     func setEnabled(_ value: Bool) {
+        // If enabling and no folder selected, default to Desktop
+        if value && !hasFolderSelected {
+            setDefaultDesktopFolder()
+        }
         isEnabled = value
+    }
+
+    /// Set Desktop as the default folder
+    private func setDefaultDesktopFolder() {
+        guard let desktopURL = FileManager.default.urls(for: .desktopDirectory, in: .userDomainMask).first else {
+            return
+        }
+        saveBookmark(for: desktopURL)
+        refreshFolderPath()
     }
 
     /// The monitored folder path (for display) - stored for observation
