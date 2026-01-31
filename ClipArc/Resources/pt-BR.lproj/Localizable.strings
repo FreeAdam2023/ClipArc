@@ -179,3 +179,113 @@
 "settings.clear_all_history" = "Limpar todo o histórico";
 "settings.clear_history_message" = "Isso excluirá permanentemente todo o histórico da área de transferência. Esta ação não pode ser desfeita.";
 "settings.clear" = "Limpar";
+
+// MARK: - Paste Dialog
+"paste.direct_paste_title" = "Colar diretamente em %@?";
+"paste.direct_paste_subtitle" = "O ClipArc precisa de acesso de Acessibilidade para colar diretamente em outros apps.";
+"paste.enable_direct_paste" = "Ativar colagem direta";
+"paste.copy_to_clipboard" = "Agora não, copiar para área de transferência";
+"paste.dont_ask_again" = "Não perguntar novamente";
+"paste.press_to_manual_paste" = "Pressione ⌘V para colar";
+
+// MARK: - Settings Paste Mode
+"settings.paste_mode" = "Modo de colagem";
+"settings.paste_mode.ask" = "Perguntar toda vez";
+"settings.paste_mode.direct_paste" = "Sempre colar diretamente";
+"settings.paste_mode.copy_only" = "Sempre apenas copiar";
+
+// MARK: - Accessibility Setup
+"accessibility.setup.title" = "Ativar acesso de Acessibilidade";
+"accessibility.setup.subtitle" = "Para colar diretamente em outros aplicativos, permita que o ClipArc acesse os recursos de acessibilidade do seu Mac em Ajustes do Sistema.";
+"accessibility.open_system_settings" = "Abrir Ajustes do Sistema";
+"accessibility.having_issue" = "Estou com um problema";
+
+// MARK: - Screenshot Monitor
+"screenshot.title" = "Captura automática de telas";
+"screenshot.subtitle" = "Salvar capturas automaticamente no histórico";
+"screenshot.tip" = "Dica: Use ⌘⇧4 para capturar. Com isso ativado, as capturas são salvas automaticamente!";
+"screenshot.change_folder" = "Alterar";
+"screenshot.info" = "Captura apenas as capturas salvas nesta pasta. Arrastar a miniatura não será capturado. Use ⌘⇧⌃4 em vez disso.";
+
+// MARK: - Direct Paste
+"direct_paste.section_title" = "Colagem direta";
+"direct_paste.title" = "Colagem direta";
+"direct_paste.subtitle" = "Colar instantaneamente sem pressionar ⌘V";
+"direct_paste.enabled" = "Ativado";
+"direct_paste.enable" = "Ativar";
+"direct_paste.guide_title" = "Colagem direta";
+"direct_paste.guide_subtitle" = "Cole instantaneamente no seu app ativo\nsem trocar de janela.";
+"direct_paste.what_changes" = "O que muda:";
+"direct_paste.requires_accessibility" = "Este recurso requer permissão de Acessibilidade.";
+"direct_paste.manual_add_note" = "Você precisará adicionar o ClipArc manualmente em Ajustes do Sistema.";
+"direct_paste.skip_for_now" = "Pular por enquanto";
+"direct_paste.mini_prompt_title" = "Reduzir etapas repetitivas?";
+"direct_paste.mini_prompt_subtitle" = "Cole diretamente sem voltar.";
+"direct_paste.maybe_later" = "Talvez depois";
+"direct_paste.learn_how" = "Saiba mais";
+"direct_paste.benefit1" = "Clique em um item → conteúdo é colado imediatamente";
+"direct_paste.benefit2" = "Não precisa pressionar ⌘V manualmente";
+"direct_paste.benefit3" = "Menos etapas, fluxo de trabalho mais rápido";
+
+// MARK: - Subscription
+"subscription.upgrade_to_pro" = "Atualizar para Pro";
+"subscription.unlock_full_power" = "Desbloqueie todo o poder do ClipArc";
+"subscription.loading_prices" = "Carregando preços da App Store...";
+"subscription.subscribe" = "Assinar";
+"subscription.one_time_purchase" = "Compra única";
+"subscription.cancel_anytime" = "Cancele a qualquer momento. Renovação automática.";
+"subscription.auto_renew_note" = "As assinaturas são renovadas automaticamente. Cancele a qualquer momento nos ajustes da App Store.";
+"subscription.best_value" = "MELHOR VALOR";
+"subscription.one_time" = "única";
+"subscription.retry" = "Tentar novamente";
+"subscription.restore_purchases" = "Restaurar compras";
+"subscription.continue_free" = "Continuar grátis";
+"subscription.features_unlocked" = "Recursos desbloqueados";
+"subscription.select_plan" = "Selecionar plano";
+"subscription.purchase_lifetime" = "Comprar vitalício";
+"subscription.start_free_trial" = "Iniciar teste grátis";
+"subscription.free_trial_badge" = "14 dias de teste grátis";
+"subscription.pay_once" = "Pague uma vez, possua para sempre";
+"subscription.terms_of_service" = "Termos de Serviço";
+"subscription.privacy_policy" = "Política de Privacidade";
+"subscription.per_month" = "por mês";
+"subscription.per_year" = "por ano";
+"subscription.per_week" = "por semana";
+"subscription.per_day" = "por dia";
+"subscription.feature.unlimited_history" = "Histórico ilimitado";
+"subscription.feature.unlimited_history_desc" = "Mantenha todos os seus itens para sempre";
+"subscription.feature.advanced_search" = "Busca avançada";
+"subscription.feature.advanced_search_desc" = "Busca fuzzy em todo o histórico";
+"subscription.feature.global_hotkey" = "Atalho global";
+"subscription.feature.global_hotkey_desc" = "Acesso rápido de qualquer lugar";
+"subscription.feature.instant_paste" = "Colagem instantânea";
+"subscription.feature.instant_paste_desc" = "Colar automaticamente no app ativo";
+
+// MARK: - Login
+"login.app_name" = "ClipArc";
+"login.tagline" = "Seu gerenciador de área de transferência inteligente";
+"login.sign_in_description" = "Entre para sincronizar seu histórico e desbloquear todos os recursos";
+"login.subscription_note" = "Alguns recursos requerem assinatura";
+"login.continue_without_signin" = "Continuar sem entrar";
+
+// MARK: - Onboarding Additional
+"onboarding.subscription_note" = "As assinaturas são renovadas automaticamente. Cancele a qualquer momento nos ajustes da App Store.";
+
+// MARK: - Clipboard Card
+"card.enter_key" = "Enter";
+"card.files_count" = "%d arquivos";
+"card.more_files" = "... e mais %d";
+"card.chars_count" = "%d caracteres";
+
+// MARK: - Accessibility Guide
+"accessibility.guide_title" = "Acessibilidade";
+"accessibility.guide_description" = "Permita que os aplicativos abaixo controlem seu computador.";
+
+// MARK: - Copyright
+"about.copyright" = "© 2026 VerseGates. Todos os direitos reservados.";
+
+// MARK: - Pro Features
+"pro.feature.unlimited_history" = "Histórico ilimitado";
+"pro.feature.advanced_search" = "Busca avançada";
+"pro.feature.global_hotkey" = "Atalho global";
+"pro.feature.instant_paste" = "Colagem instantânea";

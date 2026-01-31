@@ -179,3 +179,113 @@
 "settings.clear_all_history" = "सारा इतिहास साफ़ करें";
 "settings.clear_history_message" = "यह सभी क्लिपबोर्ड इतिहास को स्थायी रूप से हटा देगा। इस क्रिया को पूर्ववत नहीं किया जा सकता।";
 "settings.clear" = "साफ़ करें";
+
+// MARK: - Paste Dialog
+"paste.direct_paste_title" = "%@ में सीधे पेस्ट करें?";
+"paste.direct_paste_subtitle" = "ClipArc को अन्य ऐप्स में सीधे पेस्ट करने के लिए एक्सेसिबिलिटी एक्सेस की आवश्यकता है।";
+"paste.enable_direct_paste" = "डायरेक्ट पेस्ट सक्षम करें";
+"paste.copy_to_clipboard" = "अभी नहीं, क्लिपबोर्ड पर कॉपी करें";
+"paste.dont_ask_again" = "फिर से न पूछें";
+"paste.press_to_manual_paste" = "पेस्ट करने के लिए ⌘V दबाएं";
+
+// MARK: - Settings Paste Mode
+"settings.paste_mode" = "पेस्ट मोड";
+"settings.paste_mode.ask" = "हर बार पूछें";
+"settings.paste_mode.direct_paste" = "हमेशा सीधे पेस्ट करें";
+"settings.paste_mode.copy_only" = "हमेशा केवल कॉपी करें";
+
+// MARK: - Accessibility Setup
+"accessibility.setup.title" = "एक्सेसिबिलिटी एक्सेस सक्षम करें";
+"accessibility.setup.subtitle" = "अन्य एप्लिकेशन में सीधे पेस्ट करने के लिए, सिस्टम सेटिंग्स में ClipArc को अपने Mac की एक्सेसिबिलिटी सुविधाओं तक पहुंचने की अनुमति दें।";
+"accessibility.open_system_settings" = "सिस्टम सेटिंग्स खोलें";
+"accessibility.having_issue" = "मुझे समस्या हो रही है";
+
+// MARK: - Screenshot Monitor
+"screenshot.title" = "स्क्रीनशॉट ऑटो-कैप्चर";
+"screenshot.subtitle" = "स्क्रीनशॉट को इतिहास में स्वचालित रूप से सहेजें";
+"screenshot.tip" = "टिप: स्क्रीनशॉट के लिए ⌘⇧4 का उपयोग करें। इसे सक्षम करने पर, स्क्रीनशॉट स्वचालित रूप से सहेजे जाते हैं!";
+"screenshot.change_folder" = "बदलें";
+"screenshot.info" = "केवल इस फ़ोल्डर में सहेजे गए स्क्रीनशॉट कैप्चर करता है। थंबनेल को खींचना कैप्चर नहीं होगा। इसके बजाय ⌘⇧⌃4 का उपयोग करें।";
+
+// MARK: - Direct Paste
+"direct_paste.section_title" = "डायरेक्ट पेस्ट";
+"direct_paste.title" = "डायरेक्ट पेस्ट";
+"direct_paste.subtitle" = "⌘V दबाए बिना तुरंत पेस्ट करें";
+"direct_paste.enabled" = "सक्षम";
+"direct_paste.enable" = "सक्षम करें";
+"direct_paste.guide_title" = "डायरेक्ट पेस्ट";
+"direct_paste.guide_subtitle" = "विंडो स्विच किए बिना\nअपने सक्रिय ऐप में तुरंत पेस्ट करें।";
+"direct_paste.what_changes" = "क्या बदलता है:";
+"direct_paste.requires_accessibility" = "इस सुविधा के लिए एक्सेसिबिलिटी अनुमति आवश्यक है।";
+"direct_paste.manual_add_note" = "आपको सिस्टम सेटिंग्स में ClipArc को मैन्युअल रूप से जोड़ना होगा।";
+"direct_paste.skip_for_now" = "अभी के लिए छोड़ें";
+"direct_paste.mini_prompt_title" = "दोहराए जाने वाले कदम कम करें?";
+"direct_paste.mini_prompt_subtitle" = "वापस जाए बिना सीधे पेस्ट करें।";
+"direct_paste.maybe_later" = "शायद बाद में";
+"direct_paste.learn_how" = "जानें कैसे";
+"direct_paste.benefit1" = "आइटम पर क्लिक करें → सामग्री तुरंत पेस्ट हो जाती है";
+"direct_paste.benefit2" = "मैन्युअल रूप से ⌘V दबाने की जरूरत नहीं";
+"direct_paste.benefit3" = "कम कदम, तेज़ वर्कफ़्लो";
+
+// MARK: - Subscription
+"subscription.upgrade_to_pro" = "Pro में अपग्रेड करें";
+"subscription.unlock_full_power" = "ClipArc की पूरी शक्ति अनलॉक करें";
+"subscription.loading_prices" = "App Store से कीमतें लोड हो रही हैं...";
+"subscription.subscribe" = "सदस्यता लें";
+"subscription.one_time_purchase" = "एक बार की खरीद";
+"subscription.cancel_anytime" = "कभी भी रद्द करें। ऑटो-नवीनीकरण।";
+"subscription.auto_renew_note" = "सदस्यताएं स्वचालित रूप से नवीनीकृत होती हैं। App Store सेटिंग्स में कभी भी रद्द करें।";
+"subscription.best_value" = "सर्वोत्तम मूल्य";
+"subscription.one_time" = "एक बार";
+"subscription.retry" = "पुनः प्रयास करें";
+"subscription.restore_purchases" = "खरीद पुनर्स्थापित करें";
+"subscription.continue_free" = "मुफ़्त जारी रखें";
+"subscription.features_unlocked" = "अनलॉक की गई सुविधाएं";
+"subscription.select_plan" = "प्लान चुनें";
+"subscription.purchase_lifetime" = "लाइफटाइम खरीदें";
+"subscription.start_free_trial" = "नि:शुल्क परीक्षण शुरू करें";
+"subscription.free_trial_badge" = "14 दिन का नि:शुल्क परीक्षण";
+"subscription.pay_once" = "एक बार भुगतान करें, हमेशा के लिए अपना";
+"subscription.terms_of_service" = "सेवा की शर्तें";
+"subscription.privacy_policy" = "गोपनीयता नीति";
+"subscription.per_month" = "प्रति माह";
+"subscription.per_year" = "प्रति वर्ष";
+"subscription.per_week" = "प्रति सप्ताह";
+"subscription.per_day" = "प्रति दिन";
+"subscription.feature.unlimited_history" = "असीमित इतिहास";
+"subscription.feature.unlimited_history_desc" = "सभी क्लिपबोर्ड आइटम हमेशा के लिए रखें";
+"subscription.feature.advanced_search" = "उन्नत खोज";
+"subscription.feature.advanced_search_desc" = "पूरे इतिहास में फ़ज़ी खोज";
+"subscription.feature.global_hotkey" = "ग्लोबल हॉटकी";
+"subscription.feature.global_hotkey_desc" = "कहीं से भी त्वरित पहुंच";
+"subscription.feature.instant_paste" = "तत्काल पेस्ट";
+"subscription.feature.instant_paste_desc" = "सक्रिय ऐप में ऑटो-पेस्ट";
+
+// MARK: - Login
+"login.app_name" = "ClipArc";
+"login.tagline" = "आपका स्मार्ट क्लिपबोर्ड मैनेजर";
+"login.sign_in_description" = "अपने इतिहास को सिंक करने और सभी सुविधाओं को अनलॉक करने के लिए साइन इन करें";
+"login.subscription_note" = "कुछ सुविधाओं के लिए सदस्यता आवश्यक है";
+"login.continue_without_signin" = "साइन इन किए बिना जारी रखें";
+
+// MARK: - Onboarding Additional
+"onboarding.subscription_note" = "सदस्यताएं स्वचालित रूप से नवीनीकृत होती हैं। App Store सेटिंग्स में कभी भी रद्द करें।";
+
+// MARK: - Clipboard Card
+"card.enter_key" = "Enter";
+"card.files_count" = "%d फ़ाइलें";
+"card.more_files" = "... और %d अधिक";
+"card.chars_count" = "%d अक्षर";
+
+// MARK: - Accessibility Guide
+"accessibility.guide_title" = "एक्सेसिबिलिटी";
+"accessibility.guide_description" = "नीचे दिए गए एप्लिकेशन को अपने कंप्यूटर को नियंत्रित करने की अनुमति दें।";
+
+// MARK: - Copyright
+"about.copyright" = "© 2026 VerseGates. सर्वाधिकार सुरक्षित।";
+
+// MARK: - Pro Features
+"pro.feature.unlimited_history" = "असीमित इतिहास";
+"pro.feature.advanced_search" = "उन्नत खोज";
+"pro.feature.global_hotkey" = "ग्लोबल हॉटकी";
+"pro.feature.instant_paste" = "तत्काल पेस्ट";

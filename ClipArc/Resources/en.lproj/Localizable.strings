@@ -199,3 +199,93 @@
 "accessibility.setup.subtitle" = "To paste directly to other applications, allow ClipArc to access the accessibility features of your Mac in System Settings.";
 "accessibility.open_system_settings" = "Open System Settings";
 "accessibility.having_issue" = "I'm Having an Issue";
+
+// MARK: - Screenshot Monitor
+"screenshot.title" = "Auto-capture Screenshots";
+"screenshot.subtitle" = "Automatically save screenshots to history";
+"screenshot.tip" = "Tip: Use ⌘⇧4 to screenshot. With this enabled, screenshots auto-save to history!";
+"screenshot.change_folder" = "Change";
+"screenshot.info" = "Only captures screenshots saved to this folder. Dragging the thumbnail preview won't be captured. Use ⌘⇧⌃4 to copy directly to clipboard instead.";
+
+// MARK: - Direct Paste
+"direct_paste.section_title" = "Direct Paste";
+"direct_paste.title" = "Direct Paste";
+"direct_paste.subtitle" = "Paste instantly without pressing ⌘V";
+"direct_paste.enabled" = "Enabled";
+"direct_paste.enable" = "Enable";
+"direct_paste.guide_title" = "Direct Paste";
+"direct_paste.guide_subtitle" = "Paste instantly to your active app\nwithout switching windows.";
+"direct_paste.what_changes" = "What changes:";
+"direct_paste.requires_accessibility" = "This feature requires Accessibility permission.";
+"direct_paste.manual_add_note" = "You'll need to manually add ClipArc in System Settings.";
+"direct_paste.skip_for_now" = "Skip for Now";
+"direct_paste.mini_prompt_title" = "Reduce repetitive steps?";
+"direct_paste.mini_prompt_subtitle" = "Paste directly without switching back.";
+"direct_paste.maybe_later" = "Maybe Later";
+"direct_paste.learn_how" = "Learn How";
+"direct_paste.benefit1" = "Click an item → content pastes immediately";
+"direct_paste.benefit2" = "No need to press ⌘V manually";
+"direct_paste.benefit3" = "Fewer steps, faster workflow";
+
+// MARK: - Subscription
+"subscription.upgrade_to_pro" = "Upgrade to Pro";
+"subscription.unlock_full_power" = "Unlock the full power of ClipArc";
+"subscription.loading_prices" = "Loading prices from App Store...";
+"subscription.subscribe" = "Subscribe";
+"subscription.one_time_purchase" = "One-time Purchase";
+"subscription.cancel_anytime" = "Cancel anytime. Subscription auto-renews.";
+"subscription.auto_renew_note" = "Subscriptions auto-renew until canceled. Cancel anytime in App Store settings.";
+"subscription.best_value" = "BEST VALUE";
+"subscription.one_time" = "one-time";
+"subscription.retry" = "Retry";
+"subscription.restore_purchases" = "Restore Purchases";
+"subscription.continue_free" = "Continue Free";
+"subscription.features_unlocked" = "Features Unlocked";
+"subscription.select_plan" = "Select a Plan";
+"subscription.purchase_lifetime" = "Purchase Lifetime";
+"subscription.start_free_trial" = "Start Free Trial";
+"subscription.free_trial_badge" = "14-day free trial";
+"subscription.pay_once" = "Pay once, own forever";
+"subscription.terms_of_service" = "Terms of Service";
+"subscription.privacy_policy" = "Privacy Policy";
+"subscription.per_month" = "per month";
+"subscription.per_year" = "per year";
+"subscription.per_week" = "per week";
+"subscription.per_day" = "per day";
+"subscription.feature.unlimited_history" = "Unlimited History";
+"subscription.feature.unlimited_history_desc" = "Keep all your clipboard items forever";
+"subscription.feature.advanced_search" = "Advanced Search";
+"subscription.feature.advanced_search_desc" = "Fuzzy search across all history";
+"subscription.feature.global_hotkey" = "Global Hotkey";
+"subscription.feature.global_hotkey_desc" = "Quick access from anywhere";
+"subscription.feature.instant_paste" = "Instant Paste";
+"subscription.feature.instant_paste_desc" = "Auto-paste to active app";
+
+// MARK: - Login
+"login.app_name" = "ClipArc";
+"login.tagline" = "Your Smart Clipboard Manager";
+"login.sign_in_description" = "Sign in to sync your clipboard history and unlock all features";
+"login.subscription_note" = "Some features require subscription";
+"login.continue_without_signin" = "Continue without signing in";
+
+// MARK: - Onboarding Additional
+"onboarding.subscription_note" = "Subscriptions auto-renew until canceled. Cancel anytime in App Store settings.";
+
+// MARK: - Clipboard Card
+"card.enter_key" = "Enter";
+"card.files_count" = "%d files";
+"card.more_files" = "... and %d more";
+"card.chars_count" = "%d chars";
+
+// MARK: - Accessibility Guide
+"accessibility.guide_title" = "Accessibility";
+"accessibility.guide_description" = "Allow the applications below to control your computer.";
+
+// MARK: - Copyright
+"about.copyright" = "© 2026 VerseGates. All rights reserved.";
+
+// MARK: - Pro Features
+"pro.feature.unlimited_history" = "Unlimited clipboard history";
+"pro.feature.advanced_search" = "Advanced search";
+"pro.feature.global_hotkey" = "Global hotkey";
+"pro.feature.instant_paste" = "Instant paste";

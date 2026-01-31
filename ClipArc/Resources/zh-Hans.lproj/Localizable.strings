@@ -199,3 +199,93 @@
 "accessibility.setup.subtitle" = "若要直接粘贴到其他应用程序，请在系统设置中允许 ClipArc 访问 Mac 的辅助功能。";
 "accessibility.open_system_settings" = "打开系统设置";
 "accessibility.having_issue" = "遇到问题";
+
+// MARK: - Screenshot Monitor
+"screenshot.title" = "自动捕获截图";
+"screenshot.subtitle" = "自动将截图保存到历史记录";
+"screenshot.tip" = "提示：使用 ⌘⇧4 截图。开启后，截图会自动保存到历史记录！";
+"screenshot.change_folder" = "更改";
+"screenshot.info" = "仅捕获保存到此文件夹的截图。直接拖拽缩略图不会被捕获。建议使用 ⌘⇧⌃4 直接复制到剪贴板。";
+
+// MARK: - Direct Paste
+"direct_paste.section_title" = "直接粘贴";
+"direct_paste.title" = "直接粘贴";
+"direct_paste.subtitle" = "无需按 ⌘V 即可粘贴";
+"direct_paste.enabled" = "已启用";
+"direct_paste.enable" = "启用";
+"direct_paste.guide_title" = "直接粘贴";
+"direct_paste.guide_subtitle" = "直接粘贴到当前应用\n无需切换窗口。";
+"direct_paste.what_changes" = "功能变化：";
+"direct_paste.requires_accessibility" = "此功能需要辅助功能权限。";
+"direct_paste.manual_add_note" = "您需要在系统设置中手动添加 ClipArc。";
+"direct_paste.skip_for_now" = "暂时跳过";
+"direct_paste.mini_prompt_title" = "减少重复操作？";
+"direct_paste.mini_prompt_subtitle" = "直接粘贴，无需切换窗口。";
+"direct_paste.maybe_later" = "以后再说";
+"direct_paste.learn_how" = "了解详情";
+"direct_paste.benefit1" = "点击项目 → 内容立即粘贴";
+"direct_paste.benefit2" = "无需手动按 ⌘V";
+"direct_paste.benefit3" = "更少步骤，更快工作流";
+
+// MARK: - Subscription
+"subscription.upgrade_to_pro" = "升级到专业版";
+"subscription.unlock_full_power" = "解锁 ClipArc 全部功能";
+"subscription.loading_prices" = "正在从 App Store 加载价格...";
+"subscription.subscribe" = "订阅";
+"subscription.one_time_purchase" = "一次性购买";
+"subscription.cancel_anytime" = "随时取消。订阅自动续订。";
+"subscription.auto_renew_note" = "订阅自动续订。可随时在 App Store 设置中取消。";
+"subscription.best_value" = "最超值";
+"subscription.one_time" = "一次性";
+"subscription.retry" = "重试";
+"subscription.restore_purchases" = "恢复购买";
+"subscription.continue_free" = "继续使用免费版";
+"subscription.features_unlocked" = "功能已解锁";
+"subscription.select_plan" = "选择方案";
+"subscription.purchase_lifetime" = "购买终身版";
+"subscription.start_free_trial" = "开始免费试用";
+"subscription.free_trial_badge" = "14 天免费试用";
+"subscription.pay_once" = "一次付款，永久使用";
+"subscription.terms_of_service" = "服务条款";
+"subscription.privacy_policy" = "隐私政策";
+"subscription.per_month" = "每月";
+"subscription.per_year" = "每年";
+"subscription.per_week" = "每周";
+"subscription.per_day" = "每天";
+"subscription.feature.unlimited_history" = "无限历史记录";
+"subscription.feature.unlimited_history_desc" = "永久保留所有剪贴板内容";
+"subscription.feature.advanced_search" = "高级搜索";
+"subscription.feature.advanced_search_desc" = "模糊搜索所有历史记录";
+"subscription.feature.global_hotkey" = "全局快捷键";
+"subscription.feature.global_hotkey_desc" = "随时随地快速访问";
+"subscription.feature.instant_paste" = "即时粘贴";
+"subscription.feature.instant_paste_desc" = "自动粘贴到当前应用";
+
+// MARK: - Login
+"login.app_name" = "ClipArc";
+"login.tagline" = "您的智能剪贴板管理器";
+"login.sign_in_description" = "登录以同步剪贴板历史记录并解锁所有功能";
+"login.subscription_note" = "部分功能需要订阅";
+"login.continue_without_signin" = "不登录继续使用";
+
+// MARK: - Onboarding Additional
+"onboarding.subscription_note" = "订阅自动续订。可随时在 App Store 设置中取消。";
+
+// MARK: - Clipboard Card
+"card.enter_key" = "回车";
+"card.files_count" = "%d 个文件";
+"card.more_files" = "... 以及 %d 个更多";
+"card.chars_count" = "%d 个字符";
+
+// MARK: - Accessibility Guide
+"accessibility.guide_title" = "辅助功能";
+"accessibility.guide_description" = "允许以下应用程序控制您的电脑。";
+
+// MARK: - Copyright
+"about.copyright" = "© 2026 VerseGates. 保留所有权利。";
+
+// MARK: - Pro Features
+"pro.feature.unlimited_history" = "无限剪贴板历史记录";
+"pro.feature.advanced_search" = "高级搜索";
+"pro.feature.global_hotkey" = "全局快捷键";
+"pro.feature.instant_paste" = "即时粘贴";

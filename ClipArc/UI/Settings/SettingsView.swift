@@ -105,11 +105,11 @@ struct GeneralSettingsView: View {
                 }
             }
 
-            Section("Direct Paste") {
+            Section(L10n.DirectPaste.sectionTitle) {
                 DirectPasteSettingsRow()
             }
 
-            Section("Screenshot Monitor") {
+            Section(L10n.Screenshot.title) {
                 ScreenshotMonitorSettingsRow()
             }
 
@@ -388,14 +388,14 @@ struct SubscriptionSettingsView: View {
 
             // Features unlocked
             VStack(alignment: .leading, spacing: 10) {
-                Text("Features Unlocked")
+                Text(L10n.Subscription.featuresUnlocked)
                     .font(.headline)
                     .padding(.bottom, 4)
 
-                ProFeatureRow(icon: "infinity", text: "Unlimited clipboard history", isUnlocked: true)
-                ProFeatureRow(icon: "magnifyingglass", text: "Advanced search", isUnlocked: true)
-                ProFeatureRow(icon: "keyboard", text: "Global hotkey", isUnlocked: true)
-                ProFeatureRow(icon: "bolt.fill", text: "Instant paste", isUnlocked: true)
+                ProFeatureRow(icon: "infinity", text: L10n.ProFeature.unlimitedHistory, isUnlocked: true)
+                ProFeatureRow(icon: "magnifyingglass", text: L10n.ProFeature.advancedSearch, isUnlocked: true)
+                ProFeatureRow(icon: "keyboard", text: L10n.ProFeature.globalHotkey, isUnlocked: true)
+                ProFeatureRow(icon: "bolt.fill", text: L10n.ProFeature.instantPaste, isUnlocked: true)
             }
             .padding(16)
             .background(Color.primary.opacity(0.03))
@@ -463,11 +463,11 @@ struct SubscriptionSettingsView: View {
                         ProgressView()
                             .scaleEffect(1.0)
 
-                        Text("Loading prices...")
+                        Text(L10n.Subscription.loadingPrices)
                             .font(.caption)
                             .foregroundStyle(.secondary)
 
-                        Button("Retry") {
+                        Button(L10n.Subscription.retry) {
                             Task {
                                 await subscriptionManager.loadProducts()
                             }
@@ -514,16 +514,16 @@ struct SubscriptionSettingsView: View {
 
             // Legal links and subscription terms
             VStack(spacing: 4) {
-                Text("Subscriptions auto-renew until canceled.")
+                Text(L10n.Subscription.cancelAnytime)
                     .font(.caption2)
                     .foregroundStyle(.tertiary)
 
                 HStack(spacing: 12) {
-                    Link("Privacy", destination: URL(string: "https://www.versegates.com/cliparc/privacy")!)
+                    Link(L10n.Settings.privacy, destination: URL(string: "https://www.versegates.com/cliparc/privacy")!)
                     Text("·").foregroundStyle(.tertiary)
-                    Link("Terms", destination: URL(string: "https://www.versegates.com/cliparc/terms")!)
+                    Link(L10n.Settings.terms, destination: URL(string: "https://www.versegates.com/cliparc/terms")!)
                     Text("·").foregroundStyle(.tertiary)
-                    Link("Support", destination: URL(string: "https://www.versegates.com/cliparc/support")!)
+                    Link(L10n.Settings.support, destination: URL(string: "https://www.versegates.com/cliparc/support")!)
                 }
                 .font(.caption2)
                 .foregroundStyle(.secondary)
@@ -687,7 +687,7 @@ struct AboutView: View {
             .font(.caption)
             .foregroundStyle(.secondary)
 
-            Text("© 2026 VerseGates. All rights reserved.")
+            Text(L10n.About.copyright)
                 .font(.caption2)
                 .foregroundStyle(.quaternary)
         }
@@ -705,9 +705,9 @@ struct DirectPasteSettingsRow: View {
         HStack {
             Label {
                 VStack(alignment: .leading, spacing: 2) {
-                    Text("Direct Paste")
+                    Text(L10n.DirectPaste.title)
                         .font(.body)
-                    Text("Paste instantly without pressing ⌘V")
+                    Text(L10n.DirectPaste.subtitle)
                         .font(.caption)
                         .foregroundStyle(.secondary)
                 }
@@ -723,12 +723,12 @@ struct DirectPasteSettingsRow: View {
                 HStack(spacing: 4) {
                     Image(systemName: "checkmark.circle.fill")
                         .foregroundStyle(.green)
-                    Text("Enabled")
+                    Text(L10n.DirectPaste.enabled)
                         .font(.caption)
                         .foregroundStyle(.secondary)
                 }
             } else {
-                Button("Enable") {
+                Button(L10n.DirectPaste.enable) {
                     NotificationCenter.default.post(name: .showDirectPasteGuide, object: nil)
                 }
                 .buttonStyle(.bordered)
@@ -751,16 +751,16 @@ struct DirectPasteSettingsRow: View {
 // MARK: - Screenshot Monitor Settings Row
 
 struct ScreenshotMonitorSettingsRow: View {
-    @State private var screenshotMonitor = ScreenshotMonitor.shared
+    private var screenshotMonitor = ScreenshotMonitor.shared
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             HStack {
                 Label {
                     VStack(alignment: .leading, spacing: 2) {
-                        Text("Auto-capture Screenshots")
+                        Text(L10n.Screenshot.title)
                             .font(.body)
-                        Text("Automatically save screenshots to history")
+                        Text(L10n.Screenshot.subtitle)
                             .font(.caption)
                             .foregroundStyle(.secondary)
                     }
@@ -779,7 +779,7 @@ struct ScreenshotMonitorSettingsRow: View {
                             screenshotMonitor.selectFolder()
                         } else {
                             // Normal toggle behavior
-                            screenshotMonitor.isEnabled = newValue
+                            screenshotMonitor.setEnabled(newValue)
                         }
                     }
                 ))
@@ -793,7 +793,7 @@ struct ScreenshotMonitorSettingsRow: View {
                         .foregroundStyle(.yellow)
                         .font(.caption)
 
-                    Text("Tip: Use ⌘⇧4 to screenshot. With this enabled, screenshots auto-save to history!")
+                    Text(L10n.Screenshot.tip)
                         .font(.caption)
                         .foregroundStyle(.secondary)
                 }
@@ -807,22 +807,36 @@ struct ScreenshotMonitorSettingsRow: View {
 
             // Only show folder path when enabled
             if screenshotMonitor.isEnabled, let path = screenshotMonitor.monitoredFolderPath {
-                HStack {
-                    Image(systemName: "folder.fill")
-                        .foregroundStyle(.secondary)
-                    Text(path)
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                        .lineLimit(1)
-                        .truncationMode(.middle)
+                VStack(alignment: .leading, spacing: 8) {
+                    HStack {
+                        Image(systemName: "folder.fill")
+                            .foregroundStyle(.secondary)
+                        Text(path)
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                            .lineLimit(1)
+                            .truncationMode(.middle)
 
-                    Spacer()
+                        Spacer()
 
-                    Button("Change") {
-                        screenshotMonitor.selectFolder()
+                        Button(L10n.Screenshot.changeFolder) {
+                            screenshotMonitor.selectFolder()
+                        }
+                        .buttonStyle(.bordered)
+                        .controlSize(.small)
                     }
-                    .buttonStyle(.bordered)
-                    .controlSize(.small)
+
+                    // Info note about limitation
+                    HStack(alignment: .top, spacing: 8) {
+                        Image(systemName: "info.circle")
+                            .foregroundStyle(.blue)
+                            .font(.caption)
+
+                        Text(L10n.Screenshot.info)
+                            .font(.caption2)
+                            .foregroundStyle(.secondary)
+                            .fixedSize(horizontal: false, vertical: true)
+                    }
                 }
                 .padding(.leading, 28)
             }

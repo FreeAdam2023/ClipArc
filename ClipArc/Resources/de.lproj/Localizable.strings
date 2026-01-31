@@ -179,3 +179,113 @@
 "settings.clear_all_history" = "Gesamten Verlauf löschen";
 "settings.clear_history_message" = "Der gesamte Zwischenablage-Verlauf wird dauerhaft gelöscht. Diese Aktion kann nicht rückgängig gemacht werden.";
 "settings.clear" = "Löschen";
+
+// MARK: - Paste Dialog
+"paste.direct_paste_title" = "Direkt in %@ einfügen?";
+"paste.direct_paste_subtitle" = "ClipArc benötigt Bedienungshilfen-Zugriff, um direkt in andere Apps einzufügen.";
+"paste.enable_direct_paste" = "Direktes Einfügen aktivieren";
+"paste.copy_to_clipboard" = "Jetzt nicht, in Zwischenablage kopieren";
+"paste.dont_ask_again" = "Nicht erneut fragen";
+"paste.press_to_manual_paste" = "⌘V zum Einfügen drücken";
+
+// MARK: - Settings Paste Mode
+"settings.paste_mode" = "Einfügemodus";
+"settings.paste_mode.ask" = "Jedes Mal fragen";
+"settings.paste_mode.direct_paste" = "Immer direkt einfügen";
+"settings.paste_mode.copy_only" = "Immer nur kopieren";
+
+// MARK: - Accessibility Setup
+"accessibility.setup.title" = "Bedienungshilfen aktivieren";
+"accessibility.setup.subtitle" = "Um direkt in andere Anwendungen einzufügen, erlauben Sie ClipArc den Zugriff auf die Bedienungshilfen Ihres Mac in den Systemeinstellungen.";
+"accessibility.open_system_settings" = "Systemeinstellungen öffnen";
+"accessibility.having_issue" = "Ich habe ein Problem";
+
+// MARK: - Screenshot Monitor
+"screenshot.title" = "Screenshots automatisch erfassen";
+"screenshot.subtitle" = "Screenshots automatisch im Verlauf speichern";
+"screenshot.tip" = "Tipp: Verwenden Sie ⌘⇧4 für Screenshots. Mit dieser Funktion werden Screenshots automatisch gespeichert!";
+"screenshot.change_folder" = "Ändern";
+"screenshot.info" = "Erfasst nur Screenshots, die in diesem Ordner gespeichert werden. Das Ziehen der Miniaturvorschau wird nicht erfasst. Verwenden Sie stattdessen ⌘⇧⌃4.";
+
+// MARK: - Direct Paste
+"direct_paste.section_title" = "Direktes Einfügen";
+"direct_paste.title" = "Direktes Einfügen";
+"direct_paste.subtitle" = "Sofort einfügen ohne ⌘V zu drücken";
+"direct_paste.enabled" = "Aktiviert";
+"direct_paste.enable" = "Aktivieren";
+"direct_paste.guide_title" = "Direktes Einfügen";
+"direct_paste.guide_subtitle" = "Sofort in Ihre aktive App einfügen\nohne Fenster zu wechseln.";
+"direct_paste.what_changes" = "Was sich ändert:";
+"direct_paste.requires_accessibility" = "Diese Funktion erfordert Bedienungshilfen-Berechtigung.";
+"direct_paste.manual_add_note" = "Sie müssen ClipArc manuell in den Systemeinstellungen hinzufügen.";
+"direct_paste.skip_for_now" = "Jetzt überspringen";
+"direct_paste.mini_prompt_title" = "Wiederholende Schritte reduzieren?";
+"direct_paste.mini_prompt_subtitle" = "Direkt einfügen ohne zurückzuwechseln.";
+"direct_paste.maybe_later" = "Vielleicht später";
+"direct_paste.learn_how" = "Mehr erfahren";
+"direct_paste.benefit1" = "Element anklicken → Inhalt wird sofort eingefügt";
+"direct_paste.benefit2" = "Kein manuelles Drücken von ⌘V nötig";
+"direct_paste.benefit3" = "Weniger Schritte, schnellerer Workflow";
+
+// MARK: - Subscription
+"subscription.upgrade_to_pro" = "Auf Pro upgraden";
+"subscription.unlock_full_power" = "Die volle Leistung von ClipArc freischalten";
+"subscription.loading_prices" = "Preise werden aus dem App Store geladen...";
+"subscription.subscribe" = "Abonnieren";
+"subscription.one_time_purchase" = "Einmalkauf";
+"subscription.cancel_anytime" = "Jederzeit kündbar. Abo verlängert sich automatisch.";
+"subscription.auto_renew_note" = "Abos verlängern sich automatisch. Jederzeit in den App Store-Einstellungen kündbar.";
+"subscription.best_value" = "BESTER WERT";
+"subscription.one_time" = "einmalig";
+"subscription.retry" = "Erneut versuchen";
+"subscription.restore_purchases" = "Käufe wiederherstellen";
+"subscription.continue_free" = "Kostenlos fortfahren";
+"subscription.features_unlocked" = "Freigeschaltete Funktionen";
+"subscription.select_plan" = "Plan auswählen";
+"subscription.purchase_lifetime" = "Lebenslang kaufen";
+"subscription.start_free_trial" = "Kostenlose Testversion starten";
+"subscription.free_trial_badge" = "14 Tage kostenlos testen";
+"subscription.pay_once" = "Einmal zahlen, für immer besitzen";
+"subscription.terms_of_service" = "Nutzungsbedingungen";
+"subscription.privacy_policy" = "Datenschutzrichtlinie";
+"subscription.per_month" = "pro Monat";
+"subscription.per_year" = "pro Jahr";
+"subscription.per_week" = "pro Woche";
+"subscription.per_day" = "pro Tag";
+"subscription.feature.unlimited_history" = "Unbegrenzter Verlauf";
+"subscription.feature.unlimited_history_desc" = "Alle Zwischenablage-Elemente für immer behalten";
+"subscription.feature.advanced_search" = "Erweiterte Suche";
+"subscription.feature.advanced_search_desc" = "Fuzzy-Suche im gesamten Verlauf";
+"subscription.feature.global_hotkey" = "Globale Tastenkombination";
+"subscription.feature.global_hotkey_desc" = "Schneller Zugriff von überall";
+"subscription.feature.instant_paste" = "Sofortiges Einfügen";
+"subscription.feature.instant_paste_desc" = "Automatisch in aktive App einfügen";
+
+// MARK: - Login
+"login.app_name" = "ClipArc";
+"login.tagline" = "Ihr intelligenter Zwischenablage-Manager";
+"login.sign_in_description" = "Anmelden, um Ihren Zwischenablage-Verlauf zu synchronisieren und alle Funktionen freizuschalten";
+"login.subscription_note" = "Einige Funktionen erfordern ein Abonnement";
+"login.continue_without_signin" = "Ohne Anmeldung fortfahren";
+
+// MARK: - Onboarding Additional
+"onboarding.subscription_note" = "Abos verlängern sich automatisch. Jederzeit in den App Store-Einstellungen kündbar.";
+
+// MARK: - Clipboard Card
+"card.enter_key" = "Eingabe";
+"card.files_count" = "%d Dateien";
+"card.more_files" = "... und %d weitere";
+"card.chars_count" = "%d Zeichen";
+
+// MARK: - Accessibility Guide
+"accessibility.guide_title" = "Bedienungshilfen";
+"accessibility.guide_description" = "Erlauben Sie den folgenden Anwendungen, Ihren Computer zu steuern.";
+
+// MARK: - Copyright
+"about.copyright" = "© 2026 VerseGates. Alle Rechte vorbehalten.";
+
+// MARK: - Pro Features
+"pro.feature.unlimited_history" = "Unbegrenzter Verlauf";
+"pro.feature.advanced_search" = "Erweiterte Suche";
+"pro.feature.global_hotkey" = "Globale Tastenkombination";
+"pro.feature.instant_paste" = "Sofortiges Einfügen";

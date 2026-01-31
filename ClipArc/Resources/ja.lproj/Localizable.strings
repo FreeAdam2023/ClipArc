@@ -179,3 +179,113 @@
 "settings.clear_all_history" = "すべての履歴を消去";
 "settings.clear_history_message" = "すべてのクリップボード履歴が完全に削除されます。この操作は元に戻せません。";
 "settings.clear" = "消去";
+
+// MARK: - Paste Dialog
+"paste.direct_paste_title" = "%@に直接ペーストしますか？";
+"paste.direct_paste_subtitle" = "ClipArcが他のアプリに直接ペーストするには、アクセシビリティのアクセス許可が必要です。";
+"paste.enable_direct_paste" = "ダイレクトペーストを有効にする";
+"paste.copy_to_clipboard" = "今はしない、クリップボードにコピー";
+"paste.dont_ask_again" = "今後表示しない";
+"paste.press_to_manual_paste" = "⌘Vを押してペースト";
+
+// MARK: - Settings Paste Mode
+"settings.paste_mode" = "ペーストモード";
+"settings.paste_mode.ask" = "毎回確認";
+"settings.paste_mode.direct_paste" = "常にダイレクトペースト";
+"settings.paste_mode.copy_only" = "常にコピーのみ";
+
+// MARK: - Accessibility Setup
+"accessibility.setup.title" = "アクセシビリティアクセスを有効にする";
+"accessibility.setup.subtitle" = "他のアプリケーションに直接ペーストするには、システム設定でClipArcのアクセシビリティ機能へのアクセスを許可してください。";
+"accessibility.open_system_settings" = "システム設定を開く";
+"accessibility.having_issue" = "問題が発生しています";
+
+// MARK: - Screenshot Monitor
+"screenshot.title" = "スクリーンショット自動キャプチャ";
+"screenshot.subtitle" = "スクリーンショットを自動的に履歴に保存";
+"screenshot.tip" = "ヒント：⌘⇧4でスクリーンショット。有効にすると自動保存されます！";
+"screenshot.change_folder" = "変更";
+"screenshot.info" = "このフォルダに保存されたスクリーンショットのみキャプチャします。サムネイルのドラッグはキャプチャされません。代わりに⌘⇧⌃4を使用してください。";
+
+// MARK: - Direct Paste
+"direct_paste.section_title" = "ダイレクトペースト";
+"direct_paste.title" = "ダイレクトペースト";
+"direct_paste.subtitle" = "⌘Vを押さずに即座にペースト";
+"direct_paste.enabled" = "有効";
+"direct_paste.enable" = "有効にする";
+"direct_paste.guide_title" = "ダイレクトペースト";
+"direct_paste.guide_subtitle" = "ウィンドウを切り替えずに\nアクティブなアプリに即座にペースト。";
+"direct_paste.what_changes" = "変更点：";
+"direct_paste.requires_accessibility" = "この機能にはアクセシビリティ権限が必要です。";
+"direct_paste.manual_add_note" = "システム設定でClipArcを手動で追加する必要があります。";
+"direct_paste.skip_for_now" = "今はスキップ";
+"direct_paste.mini_prompt_title" = "繰り返し作業を減らしますか？";
+"direct_paste.mini_prompt_subtitle" = "戻らずに直接ペースト。";
+"direct_paste.maybe_later" = "後で";
+"direct_paste.learn_how" = "詳しく見る";
+"direct_paste.benefit1" = "アイテムをクリック → 内容が即座にペースト";
+"direct_paste.benefit2" = "手動で⌘Vを押す必要なし";
+"direct_paste.benefit3" = "より少ないステップ、より速いワークフロー";
+
+// MARK: - Subscription
+"subscription.upgrade_to_pro" = "Proにアップグレード";
+"subscription.unlock_full_power" = "ClipArcの全機能を解放";
+"subscription.loading_prices" = "App Storeから価格を読み込み中...";
+"subscription.subscribe" = "購読する";
+"subscription.one_time_purchase" = "一回払い";
+"subscription.cancel_anytime" = "いつでもキャンセル可能。自動更新。";
+"subscription.auto_renew_note" = "購読は自動更新されます。App Store設定でいつでもキャンセルできます。";
+"subscription.best_value" = "お得";
+"subscription.one_time" = "一回";
+"subscription.retry" = "再試行";
+"subscription.restore_purchases" = "購入を復元";
+"subscription.continue_free" = "無料で続ける";
+"subscription.features_unlocked" = "解放された機能";
+"subscription.select_plan" = "プランを選択";
+"subscription.purchase_lifetime" = "永久ライセンスを購入";
+"subscription.start_free_trial" = "無料トライアルを開始";
+"subscription.free_trial_badge" = "14日間無料トライアル";
+"subscription.pay_once" = "一度の支払いで永久に所有";
+"subscription.terms_of_service" = "利用規約";
+"subscription.privacy_policy" = "プライバシーポリシー";
+"subscription.per_month" = "月額";
+"subscription.per_year" = "年額";
+"subscription.per_week" = "週額";
+"subscription.per_day" = "日額";
+"subscription.feature.unlimited_history" = "無制限の履歴";
+"subscription.feature.unlimited_history_desc" = "すべてのクリップボードアイテムを永久に保存";
+"subscription.feature.advanced_search" = "高度な検索";
+"subscription.feature.advanced_search_desc" = "全履歴でのファジー検索";
+"subscription.feature.global_hotkey" = "グローバルホットキー";
+"subscription.feature.global_hotkey_desc" = "どこからでも素早くアクセス";
+"subscription.feature.instant_paste" = "即時ペースト";
+"subscription.feature.instant_paste_desc" = "アクティブなアプリに自動ペースト";
+
+// MARK: - Login
+"login.app_name" = "ClipArc";
+"login.tagline" = "スマートなクリップボードマネージャー";
+"login.sign_in_description" = "サインインして履歴を同期し、すべての機能を解放";
+"login.subscription_note" = "一部の機能には購読が必要です";
+"login.continue_without_signin" = "サインインせずに続ける";
+
+// MARK: - Onboarding Additional
+"onboarding.subscription_note" = "購読は自動更新されます。App Store設定でいつでもキャンセルできます。";
+
+// MARK: - Clipboard Card
+"card.enter_key" = "Enter";
+"card.files_count" = "%d個のファイル";
+"card.more_files" = "... 他%d個";
+"card.chars_count" = "%d文字";
+
+// MARK: - Accessibility Guide
+"accessibility.guide_title" = "アクセシビリティ";
+"accessibility.guide_description" = "以下のアプリケーションがコンピュータを制御することを許可します。";
+
+// MARK: - Copyright
+"about.copyright" = "© 2026 VerseGates. All rights reserved.";
+
+// MARK: - Pro Features
+"pro.feature.unlimited_history" = "無制限の履歴";
+"pro.feature.advanced_search" = "高度な検索";
+"pro.feature.global_hotkey" = "グローバルホットキー";
+"pro.feature.instant_paste" = "即時ペースト";

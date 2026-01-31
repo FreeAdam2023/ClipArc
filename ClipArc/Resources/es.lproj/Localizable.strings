@@ -179,3 +179,113 @@
 "settings.clear_all_history" = "Borrar todo el historial";
 "settings.clear_history_message" = "Esto eliminará permanentemente todo el historial del portapapeles. Esta acción no se puede deshacer.";
 "settings.clear" = "Borrar";
+
+// MARK: - Paste Dialog
+"paste.direct_paste_title" = "¿Pegar directamente en %@?";
+"paste.direct_paste_subtitle" = "ClipArc necesita acceso de Accesibilidad para pegar directamente en otras apps.";
+"paste.enable_direct_paste" = "Activar pegado directo";
+"paste.copy_to_clipboard" = "Ahora no, copiar al portapapeles";
+"paste.dont_ask_again" = "No volver a preguntar";
+"paste.press_to_manual_paste" = "Presiona ⌘V para pegar";
+
+// MARK: - Settings Paste Mode
+"settings.paste_mode" = "Modo de pegado";
+"settings.paste_mode.ask" = "Preguntar cada vez";
+"settings.paste_mode.direct_paste" = "Siempre pegar directo";
+"settings.paste_mode.copy_only" = "Siempre solo copiar";
+
+// MARK: - Accessibility Setup
+"accessibility.setup.title" = "Activar acceso de Accesibilidad";
+"accessibility.setup.subtitle" = "Para pegar directamente en otras aplicaciones, permite que ClipArc acceda a las funciones de accesibilidad de tu Mac en Configuración del Sistema.";
+"accessibility.open_system_settings" = "Abrir Configuración del Sistema";
+"accessibility.having_issue" = "Tengo un problema";
+
+// MARK: - Screenshot Monitor
+"screenshot.title" = "Captura automática de pantallas";
+"screenshot.subtitle" = "Guardar capturas automáticamente en el historial";
+"screenshot.tip" = "Consejo: Usa ⌘⇧4 para capturas. ¡Con esto activado, se guardan automáticamente!";
+"screenshot.change_folder" = "Cambiar";
+"screenshot.info" = "Solo captura las capturas guardadas en esta carpeta. Arrastrar la miniatura no será capturado. Usa ⌘⇧⌃4 en su lugar.";
+
+// MARK: - Direct Paste
+"direct_paste.section_title" = "Pegado directo";
+"direct_paste.title" = "Pegado directo";
+"direct_paste.subtitle" = "Pegar instantáneamente sin presionar ⌘V";
+"direct_paste.enabled" = "Activado";
+"direct_paste.enable" = "Activar";
+"direct_paste.guide_title" = "Pegado directo";
+"direct_paste.guide_subtitle" = "Pegar instantáneamente en tu app activa\nsin cambiar de ventana.";
+"direct_paste.what_changes" = "Qué cambia:";
+"direct_paste.requires_accessibility" = "Esta función requiere permiso de Accesibilidad.";
+"direct_paste.manual_add_note" = "Deberás agregar ClipArc manualmente en Configuración del Sistema.";
+"direct_paste.skip_for_now" = "Omitir por ahora";
+"direct_paste.mini_prompt_title" = "¿Reducir pasos repetitivos?";
+"direct_paste.mini_prompt_subtitle" = "Pegar directamente sin volver atrás.";
+"direct_paste.maybe_later" = "Quizás después";
+"direct_paste.learn_how" = "Saber más";
+"direct_paste.benefit1" = "Haz clic en un elemento → el contenido se pega inmediatamente";
+"direct_paste.benefit2" = "No necesitas presionar ⌘V manualmente";
+"direct_paste.benefit3" = "Menos pasos, flujo de trabajo más rápido";
+
+// MARK: - Subscription
+"subscription.upgrade_to_pro" = "Actualizar a Pro";
+"subscription.unlock_full_power" = "Desbloquea todo el poder de ClipArc";
+"subscription.loading_prices" = "Cargando precios desde App Store...";
+"subscription.subscribe" = "Suscribirse";
+"subscription.one_time_purchase" = "Compra única";
+"subscription.cancel_anytime" = "Cancela cuando quieras. Renovación automática.";
+"subscription.auto_renew_note" = "Las suscripciones se renuevan automáticamente. Cancela cuando quieras en la configuración de App Store.";
+"subscription.best_value" = "MEJOR VALOR";
+"subscription.one_time" = "único";
+"subscription.retry" = "Reintentar";
+"subscription.restore_purchases" = "Restaurar compras";
+"subscription.continue_free" = "Continuar gratis";
+"subscription.features_unlocked" = "Funciones desbloqueadas";
+"subscription.select_plan" = "Seleccionar plan";
+"subscription.purchase_lifetime" = "Comprar de por vida";
+"subscription.start_free_trial" = "Iniciar prueba gratuita";
+"subscription.free_trial_badge" = "14 días de prueba gratis";
+"subscription.pay_once" = "Paga una vez, posee para siempre";
+"subscription.terms_of_service" = "Términos de servicio";
+"subscription.privacy_policy" = "Política de privacidad";
+"subscription.per_month" = "por mes";
+"subscription.per_year" = "por año";
+"subscription.per_week" = "por semana";
+"subscription.per_day" = "por día";
+"subscription.feature.unlimited_history" = "Historial ilimitado";
+"subscription.feature.unlimited_history_desc" = "Guarda todos tus elementos para siempre";
+"subscription.feature.advanced_search" = "Búsqueda avanzada";
+"subscription.feature.advanced_search_desc" = "Búsqueda difusa en todo el historial";
+"subscription.feature.global_hotkey" = "Atajo global";
+"subscription.feature.global_hotkey_desc" = "Acceso rápido desde cualquier lugar";
+"subscription.feature.instant_paste" = "Pegado instantáneo";
+"subscription.feature.instant_paste_desc" = "Pegar automáticamente en la app activa";
+
+// MARK: - Login
+"login.app_name" = "ClipArc";
+"login.tagline" = "Tu gestor de portapapeles inteligente";
+"login.sign_in_description" = "Inicia sesión para sincronizar tu historial y desbloquear todas las funciones";
+"login.subscription_note" = "Algunas funciones requieren suscripción";
+"login.continue_without_signin" = "Continuar sin iniciar sesión";
+
+// MARK: - Onboarding Additional
+"onboarding.subscription_note" = "Las suscripciones se renuevan automáticamente. Cancela cuando quieras en la configuración de App Store.";
+
+// MARK: - Clipboard Card
+"card.enter_key" = "Intro";
+"card.files_count" = "%d archivos";
+"card.more_files" = "... y %d más";
+"card.chars_count" = "%d caracteres";
+
+// MARK: - Accessibility Guide
+"accessibility.guide_title" = "Accesibilidad";
+"accessibility.guide_description" = "Permite que las siguientes aplicaciones controlen tu ordenador.";
+
+// MARK: - Copyright
+"about.copyright" = "© 2026 VerseGates. Todos los derechos reservados.";
+
+// MARK: - Pro Features
+"pro.feature.unlimited_history" = "Historial ilimitado";
+"pro.feature.advanced_search" = "Búsqueda avanzada";
+"pro.feature.global_hotkey" = "Atajo global";
+"pro.feature.instant_paste" = "Pegado instantáneo";

@@ -179,3 +179,113 @@
 "settings.clear_all_history" = "مسح كل السجل";
 "settings.clear_history_message" = "سيؤدي هذا إلى حذف سجل الحافظة بالكامل نهائياً. لا يمكن التراجع عن هذا الإجراء.";
 "settings.clear" = "مسح";
+
+// MARK: - Paste Dialog
+"paste.direct_paste_title" = "لصق مباشرة في %@؟";
+"paste.direct_paste_subtitle" = "يحتاج ClipArc إلى إذن إمكانية الوصول للصق مباشرة في التطبيقات الأخرى.";
+"paste.enable_direct_paste" = "تفعيل اللصق المباشر";
+"paste.copy_to_clipboard" = "ليس الآن، نسخ إلى الحافظة";
+"paste.dont_ask_again" = "لا تسأل مرة أخرى";
+"paste.press_to_manual_paste" = "اضغط ⌘V للصق";
+
+// MARK: - Settings Paste Mode
+"settings.paste_mode" = "وضع اللصق";
+"settings.paste_mode.ask" = "السؤال في كل مرة";
+"settings.paste_mode.direct_paste" = "دائماً لصق مباشر";
+"settings.paste_mode.copy_only" = "دائماً نسخ فقط";
+
+// MARK: - Accessibility Setup
+"accessibility.setup.title" = "تفعيل إذن إمكانية الوصول";
+"accessibility.setup.subtitle" = "للصق مباشرة في التطبيقات الأخرى، اسمح لـ ClipArc بالوصول إلى ميزات إمكانية الوصول في جهاز Mac الخاص بك في إعدادات النظام.";
+"accessibility.open_system_settings" = "فتح إعدادات النظام";
+"accessibility.having_issue" = "لدي مشكلة";
+
+// MARK: - Screenshot Monitor
+"screenshot.title" = "التقاط لقطات الشاشة تلقائياً";
+"screenshot.subtitle" = "حفظ لقطات الشاشة تلقائياً في السجل";
+"screenshot.tip" = "نصيحة: استخدم ⌘⇧4 لالتقاط الشاشة. مع تفعيل هذه الميزة، يتم الحفظ تلقائياً!";
+"screenshot.change_folder" = "تغيير";
+"screenshot.info" = "يلتقط فقط لقطات الشاشة المحفوظة في هذا المجلد. سحب المصغرة لن يتم التقاطه. استخدم ⌘⇧⌃4 بدلاً من ذلك.";
+
+// MARK: - Direct Paste
+"direct_paste.section_title" = "اللصق المباشر";
+"direct_paste.title" = "اللصق المباشر";
+"direct_paste.subtitle" = "لصق فوري بدون الضغط على ⌘V";
+"direct_paste.enabled" = "مفعّل";
+"direct_paste.enable" = "تفعيل";
+"direct_paste.guide_title" = "اللصق المباشر";
+"direct_paste.guide_subtitle" = "لصق فوري في تطبيقك النشط\nبدون تبديل النوافذ.";
+"direct_paste.what_changes" = "ما الذي يتغير:";
+"direct_paste.requires_accessibility" = "تتطلب هذه الميزة إذن إمكانية الوصول.";
+"direct_paste.manual_add_note" = "ستحتاج إلى إضافة ClipArc يدوياً في إعدادات النظام.";
+"direct_paste.skip_for_now" = "تخطي الآن";
+"direct_paste.mini_prompt_title" = "تقليل الخطوات المتكررة؟";
+"direct_paste.mini_prompt_subtitle" = "لصق مباشرة بدون العودة.";
+"direct_paste.maybe_later" = "ربما لاحقاً";
+"direct_paste.learn_how" = "اعرف المزيد";
+"direct_paste.benefit1" = "انقر على عنصر ← يتم لصق المحتوى فوراً";
+"direct_paste.benefit2" = "لا حاجة للضغط يدوياً على ⌘V";
+"direct_paste.benefit3" = "خطوات أقل، سير عمل أسرع";
+
+// MARK: - Subscription
+"subscription.upgrade_to_pro" = "الترقية إلى Pro";
+"subscription.unlock_full_power" = "أطلق العنان لكامل قوة ClipArc";
+"subscription.loading_prices" = "جاري تحميل الأسعار من App Store...";
+"subscription.subscribe" = "اشتراك";
+"subscription.one_time_purchase" = "شراء لمرة واحدة";
+"subscription.cancel_anytime" = "إلغاء في أي وقت. تجديد تلقائي.";
+"subscription.auto_renew_note" = "يتم تجديد الاشتراكات تلقائياً. ألغِ في أي وقت من إعدادات App Store.";
+"subscription.best_value" = "أفضل قيمة";
+"subscription.one_time" = "لمرة واحدة";
+"subscription.retry" = "إعادة المحاولة";
+"subscription.restore_purchases" = "استعادة المشتريات";
+"subscription.continue_free" = "متابعة مجاناً";
+"subscription.features_unlocked" = "الميزات المفتوحة";
+"subscription.select_plan" = "اختر خطة";
+"subscription.purchase_lifetime" = "شراء مدى الحياة";
+"subscription.start_free_trial" = "بدء التجربة المجانية";
+"subscription.free_trial_badge" = "14 يوم تجربة مجانية";
+"subscription.pay_once" = "ادفع مرة واحدة، امتلك للأبد";
+"subscription.terms_of_service" = "شروط الخدمة";
+"subscription.privacy_policy" = "سياسة الخصوصية";
+"subscription.per_month" = "شهرياً";
+"subscription.per_year" = "سنوياً";
+"subscription.per_week" = "أسبوعياً";
+"subscription.per_day" = "يومياً";
+"subscription.feature.unlimited_history" = "سجل غير محدود";
+"subscription.feature.unlimited_history_desc" = "احتفظ بجميع عناصر الحافظة للأبد";
+"subscription.feature.advanced_search" = "بحث متقدم";
+"subscription.feature.advanced_search_desc" = "بحث ضبابي في كل السجل";
+"subscription.feature.global_hotkey" = "اختصار عام";
+"subscription.feature.global_hotkey_desc" = "وصول سريع من أي مكان";
+"subscription.feature.instant_paste" = "لصق فوري";
+"subscription.feature.instant_paste_desc" = "لصق تلقائي في التطبيق النشط";
+
+// MARK: - Login
+"login.app_name" = "ClipArc";
+"login.tagline" = "مدير الحافظة الذكي الخاص بك";
+"login.sign_in_description" = "سجّل الدخول لمزامنة سجلك وفتح جميع الميزات";
+"login.subscription_note" = "بعض الميزات تتطلب اشتراكاً";
+"login.continue_without_signin" = "المتابعة بدون تسجيل الدخول";
+
+// MARK: - Onboarding Additional
+"onboarding.subscription_note" = "يتم تجديد الاشتراكات تلقائياً. ألغِ في أي وقت من إعدادات App Store.";
+
+// MARK: - Clipboard Card
+"card.enter_key" = "Enter";
+"card.files_count" = "%d ملفات";
+"card.more_files" = "... و %d إضافية";
+"card.chars_count" = "%d حرف";
+
+// MARK: - Accessibility Guide
+"accessibility.guide_title" = "إمكانية الوصول";
+"accessibility.guide_description" = "اسمح للتطبيقات أدناه بالتحكم في جهاز الكمبيوتر الخاص بك.";
+
+// MARK: - Copyright
+"about.copyright" = "© 2026 VerseGates. جميع الحقوق محفوظة.";
+
+// MARK: - Pro Features
+"pro.feature.unlimited_history" = "سجل غير محدود";
+"pro.feature.advanced_search" = "بحث متقدم";
+"pro.feature.global_hotkey" = "اختصار عام";
+"pro.feature.instant_paste" = "لصق فوري";

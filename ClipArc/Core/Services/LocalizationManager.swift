@@ -335,4 +335,112 @@ enum L10n {
         static var openSystemSettings: String { "accessibility.open_system_settings".localized }
         static var havingIssue: String { "accessibility.having_issue".localized }
     }
+
+    // MARK: - Screenshot Monitor
+    enum Screenshot {
+        static var title: String { "screenshot.title".localized }
+        static var subtitle: String { "screenshot.subtitle".localized }
+        static var tip: String { "screenshot.tip".localized }
+        static var changeFolder: String { "screenshot.change_folder".localized }
+        static var info: String { "screenshot.info".localized }
+    }
+
+    // MARK: - Direct Paste
+    enum DirectPaste {
+        static var sectionTitle: String { "direct_paste.section_title".localized }
+        static var title: String { "direct_paste.title".localized }
+        static var subtitle: String { "direct_paste.subtitle".localized }
+        static var enabled: String { "direct_paste.enabled".localized }
+        static var enable: String { "direct_paste.enable".localized }
+        static var guideTitle: String { "direct_paste.guide_title".localized }
+        static var guideSubtitle: String { "direct_paste.guide_subtitle".localized }
+        static var whatChanges: String { "direct_paste.what_changes".localized }
+        static var requiresAccessibility: String { "direct_paste.requires_accessibility".localized }
+        static var manualAddNote: String { "direct_paste.manual_add_note".localized }
+        static var skipForNow: String { "direct_paste.skip_for_now".localized }
+        static var miniPromptTitle: String { "direct_paste.mini_prompt_title".localized }
+        static var miniPromptSubtitle: String { "direct_paste.mini_prompt_subtitle".localized }
+        static var maybeLater: String { "direct_paste.maybe_later".localized }
+        static var learnHow: String { "direct_paste.learn_how".localized }
+        static var benefit1: String { "direct_paste.benefit1".localized }
+        static var benefit2: String { "direct_paste.benefit2".localized }
+        static var benefit3: String { "direct_paste.benefit3".localized }
+    }
+
+    // MARK: - Subscription
+    enum Subscription {
+        static var upgradeToPro: String { "subscription.upgrade_to_pro".localized }
+        static var unlockFullPower: String { "subscription.unlock_full_power".localized }
+        static var loadingPrices: String { "subscription.loading_prices".localized }
+        static var subscribe: String { "subscription.subscribe".localized }
+        static var oneTimePurchase: String { "subscription.one_time_purchase".localized }
+        static var cancelAnytime: String { "subscription.cancel_anytime".localized }
+        static var autoRenewNote: String { "subscription.auto_renew_note".localized }
+        static var bestValue: String { "subscription.best_value".localized }
+        static var oneTime: String { "subscription.one_time".localized }
+        static var retry: String { "subscription.retry".localized }
+        static var restorePurchases: String { "subscription.restore_purchases".localized }
+        static var continueFree: String { "subscription.continue_free".localized }
+        static var featuresUnlocked: String { "subscription.features_unlocked".localized }
+        static var selectPlan: String { "subscription.select_plan".localized }
+        static var purchaseLifetime: String { "subscription.purchase_lifetime".localized }
+        static var startFreeTrial: String { "subscription.start_free_trial".localized }
+        static var freeTrialBadge: String { "subscription.free_trial_badge".localized }
+        static var payOnce: String { "subscription.pay_once".localized }
+        static var termsOfService: String { "subscription.terms_of_service".localized }
+        static var privacyPolicy: String { "subscription.privacy_policy".localized }
+        static var perMonth: String { "subscription.per_month".localized }
+        static var perYear: String { "subscription.per_year".localized }
+        static var perWeek: String { "subscription.per_week".localized }
+        static var perDay: String { "subscription.per_day".localized }
+        static var featureUnlimitedHistory: String { "subscription.feature.unlimited_history".localized }
+        static var featureUnlimitedHistoryDesc: String { "subscription.feature.unlimited_history_desc".localized }
+        static var featureAdvancedSearch: String { "subscription.feature.advanced_search".localized }
+        static var featureAdvancedSearchDesc: String { "subscription.feature.advanced_search_desc".localized }
+        static var featureGlobalHotkey: String { "subscription.feature.global_hotkey".localized }
+        static var featureGlobalHotkeyDesc: String { "subscription.feature.global_hotkey_desc".localized }
+        static var featureInstantPaste: String { "subscription.feature.instant_paste".localized }
+        static var featureInstantPasteDesc: String { "subscription.feature.instant_paste_desc".localized }
+    }
+
+    // MARK: - Login
+    enum Login {
+        static var appName: String { "login.app_name".localized }
+        static var tagline: String { "login.tagline".localized }
+        static var signInDescription: String { "login.sign_in_description".localized }
+        static var subscriptionNote: String { "login.subscription_note".localized }
+        static var continueWithoutSignin: String { "login.continue_without_signin".localized }
+    }
+
+    // MARK: - Onboarding Additional
+    enum OnboardingExtra {
+        static var subscriptionNote: String { "onboarding.subscription_note".localized }
+    }
+
+    // MARK: - Clipboard Card
+    enum Card {
+        static var enterKey: String { "card.enter_key".localized }
+        static func filesCount(_ count: Int) -> String { "card.files_count".localized(with: count) }
+        static func moreFiles(_ count: Int) -> String { "card.more_files".localized(with: count) }
+        static func charsCount(_ count: Int) -> String { "card.chars_count".localized(with: count) }
+    }
+
+    // MARK: - Accessibility Guide
+    enum AccessibilityGuide {
+        static var title: String { "accessibility.guide_title".localized }
+        static var description: String { "accessibility.guide_description".localized }
+    }
+
+    // MARK: - About
+    enum About {
+        static var copyright: String { "about.copyright".localized }
+    }
+
+    // MARK: - Pro Features
+    enum ProFeature {
+        static var unlimitedHistory: String { "pro.feature.unlimited_history".localized }
+        static var advancedSearch: String { "pro.feature.advanced_search".localized }
+        static var globalHotkey: String { "pro.feature.global_hotkey".localized }
+        static var instantPaste: String { "pro.feature.instant_paste".localized }
+    }
 }

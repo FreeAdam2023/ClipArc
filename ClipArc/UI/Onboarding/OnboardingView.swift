@@ -425,11 +425,11 @@ struct SubscriptionStepView: View {
                     ProgressView()
                         .scaleEffect(1.2)
 
-                    Text("Loading prices...")
+                    Text(L10n.Subscription.loadingPrices)
                         .font(.subheadline)
                         .foregroundStyle(.secondary)
 
-                    Button("Retry") {
+                    Button(L10n.Subscription.retry) {
                         Task {
                             await subscriptionManager.loadProducts()
                         }
@@ -495,14 +495,14 @@ struct SubscriptionStepView: View {
                     .buttonStyle(.borderedProminent)
                     .controlSize(.large)
                 } else {
-                    Button("Continue Free") {
+                    Button(L10n.Subscription.continueFree) {
                         onSkip()
                     }
                     .buttonStyle(.plain)
                     .foregroundStyle(.secondary)
 
                     // Restore purchases
-                    Button("Restore Purchases") {
+                    Button(L10n.Subscription.restorePurchases) {
                         Task {
                             await subscriptionManager.restorePurchases()
                         }
@@ -515,15 +515,15 @@ struct SubscriptionStepView: View {
 
             // Legal links and subscription terms
             VStack(spacing: 6) {
-                Text("Subscriptions auto-renew until canceled. Cancel anytime in App Store settings.")
+                Text(L10n.OnboardingExtra.subscriptionNote)
                     .font(.caption2)
                     .foregroundStyle(.tertiary)
                     .multilineTextAlignment(.center)
 
                 HStack(spacing: 16) {
-                    Link("Privacy Policy", destination: URL(string: "https://www.versegates.com/cliparc/privacy")!)
+                    Link(L10n.Subscription.privacyPolicy, destination: URL(string: "https://www.versegates.com/cliparc/privacy")!)
                     Text("·").foregroundStyle(.tertiary)
-                    Link("Terms of Use", destination: URL(string: "https://www.versegates.com/cliparc/terms")!)
+                    Link(L10n.Subscription.termsOfService, destination: URL(string: "https://www.versegates.com/cliparc/terms")!)
                 }
                 .font(.caption2)
                 .foregroundStyle(.secondary)

@@ -53,13 +53,13 @@ struct DirectPasteGuideView: View {
             Spacer().frame(height: 20)
 
             // Title - Focus on benefit, not mechanism
-            Text("Direct Paste")
+            Text(L10n.DirectPaste.guideTitle)
                 .font(.system(size: 28, weight: .bold))
 
             Spacer().frame(height: 8)
 
             // Subtitle - Emphasize reducing steps
-            Text("Paste instantly to your active app\nwithout switching windows.")
+            Text(L10n.DirectPaste.guideSubtitle)
                 .font(.system(size: 15))
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.center)
@@ -70,21 +70,21 @@ struct DirectPasteGuideView: View {
 
             // Benefits card
             VStack(alignment: .leading, spacing: 14) {
-                Text("What changes:")
+                Text(L10n.DirectPaste.whatChanges)
                     .font(.system(size: 13, weight: .semibold))
                     .foregroundStyle(.secondary)
 
                 BenefitItem(
                     icon: "cursorarrow.click.2",
-                    text: "Click an item → content pastes immediately"
+                    text: L10n.DirectPaste.benefit1
                 )
                 BenefitItem(
                     icon: "keyboard",
-                    text: "No need to press ⌘V manually"
+                    text: L10n.DirectPaste.benefit2
                 )
                 BenefitItem(
                     icon: "arrow.trianglehead.counterclockwise",
-                    text: "Fewer steps, faster workflow"
+                    text: L10n.DirectPaste.benefit3
                 )
             }
             .padding(20)
@@ -99,11 +99,11 @@ struct DirectPasteGuideView: View {
 
             // Permission notice - Clear about manual process
             VStack(spacing: 6) {
-                Text("This feature requires Accessibility permission.")
+                Text(L10n.DirectPaste.requiresAccessibility)
                     .font(.system(size: 12))
                     .foregroundStyle(.secondary)
 
-                Text("You'll need to manually add ClipArc in System Settings.")
+                Text(L10n.DirectPaste.manualAddNote)
                     .font(.system(size: 12))
                     .foregroundStyle(.tertiary)
             }
@@ -116,7 +116,7 @@ struct DirectPasteGuideView: View {
             Button(action: {
                 onOpenSettings()
             }) {
-                Text("Open System Settings")
+                Text(L10n.Accessibility.openSystemSettings)
                     .font(.system(size: 15, weight: .semibold))
                     .foregroundStyle(.white)
                     .frame(maxWidth: .infinity)
@@ -133,7 +133,7 @@ struct DirectPasteGuideView: View {
 
             // Secondary action
             Button(action: onSkip) {
-                Text("Skip for Now")
+                Text(L10n.DirectPaste.skipForNow)
                     .font(.system(size: 14))
                     .foregroundStyle(.secondary)
             }
@@ -166,16 +166,16 @@ struct FrictionGuideBar: View {
                 .foregroundStyle(.yellow)
 
             VStack(alignment: .leading, spacing: 2) {
-                Text("Reduce repetitive steps?")
+                Text(L10n.DirectPaste.miniPromptTitle)
                     .font(.system(size: 13, weight: .medium))
-                Text("Paste directly without switching back.")
+                Text(L10n.DirectPaste.miniPromptSubtitle)
                     .font(.system(size: 11))
                     .foregroundStyle(.secondary)
             }
 
             Spacer()
 
-            Button("Maybe Later") {
+            Button(L10n.DirectPaste.maybeLater) {
                 FrictionDetector.shared.userDismissedGuide()
                 onDismiss()
             }
@@ -183,7 +183,7 @@ struct FrictionGuideBar: View {
             .font(.system(size: 12))
             .foregroundStyle(.secondary)
 
-            Button("Learn How") {
+            Button(L10n.DirectPaste.learnHow) {
                 FrictionDetector.shared.userAcceptedGuide()
                 onLearnHow()
             }

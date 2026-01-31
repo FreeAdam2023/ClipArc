@@ -179,3 +179,113 @@
 "settings.clear_all_history" = "Очистить всю историю";
 "settings.clear_history_message" = "Вся история буфера обмена будет безвозвратно удалена. Это действие нельзя отменить.";
 "settings.clear" = "Очистить";
+
+// MARK: - Paste Dialog
+"paste.direct_paste_title" = "Вставить напрямую в %@?";
+"paste.direct_paste_subtitle" = "ClipArc требуется доступ к Универсальному доступу для прямой вставки в другие приложения.";
+"paste.enable_direct_paste" = "Включить прямую вставку";
+"paste.copy_to_clipboard" = "Не сейчас, скопировать в буфер обмена";
+"paste.dont_ask_again" = "Больше не спрашивать";
+"paste.press_to_manual_paste" = "Нажмите ⌘V для вставки";
+
+// MARK: - Settings Paste Mode
+"settings.paste_mode" = "Режим вставки";
+"settings.paste_mode.ask" = "Спрашивать каждый раз";
+"settings.paste_mode.direct_paste" = "Всегда вставлять напрямую";
+"settings.paste_mode.copy_only" = "Всегда только копировать";
+
+// MARK: - Accessibility Setup
+"accessibility.setup.title" = "Включить Универсальный доступ";
+"accessibility.setup.subtitle" = "Чтобы вставлять напрямую в другие приложения, разрешите ClipArc доступ к функциям универсального доступа вашего Mac в Системных настройках.";
+"accessibility.open_system_settings" = "Открыть Системные настройки";
+"accessibility.having_issue" = "У меня проблема";
+
+// MARK: - Screenshot Monitor
+"screenshot.title" = "Автозахват скриншотов";
+"screenshot.subtitle" = "Автоматически сохранять скриншоты в истории";
+"screenshot.tip" = "Совет: Используйте ⌘⇧4 для скриншотов. С этой функцией они сохраняются автоматически!";
+"screenshot.change_folder" = "Изменить";
+"screenshot.info" = "Захватывает только скриншоты, сохранённые в этой папке. Перетаскивание миниатюры не будет захвачено. Используйте ⌘⇧⌃4.";
+
+// MARK: - Direct Paste
+"direct_paste.section_title" = "Прямая вставка";
+"direct_paste.title" = "Прямая вставка";
+"direct_paste.subtitle" = "Мгновенная вставка без нажатия ⌘V";
+"direct_paste.enabled" = "Включено";
+"direct_paste.enable" = "Включить";
+"direct_paste.guide_title" = "Прямая вставка";
+"direct_paste.guide_subtitle" = "Мгновенно вставляйте в активное приложение\nбез переключения окон.";
+"direct_paste.what_changes" = "Что меняется:";
+"direct_paste.requires_accessibility" = "Эта функция требует разрешения Универсального доступа.";
+"direct_paste.manual_add_note" = "Вам нужно вручную добавить ClipArc в Системных настройках.";
+"direct_paste.skip_for_now" = "Пропустить";
+"direct_paste.mini_prompt_title" = "Сократить повторяющиеся шаги?";
+"direct_paste.mini_prompt_subtitle" = "Вставляйте напрямую без возврата.";
+"direct_paste.maybe_later" = "Может быть позже";
+"direct_paste.learn_how" = "Узнать больше";
+"direct_paste.benefit1" = "Нажмите на элемент → содержимое вставляется мгновенно";
+"direct_paste.benefit2" = "Не нужно вручную нажимать ⌘V";
+"direct_paste.benefit3" = "Меньше шагов, быстрее рабочий процесс";
+
+// MARK: - Subscription
+"subscription.upgrade_to_pro" = "Перейти на Pro";
+"subscription.unlock_full_power" = "Разблокируйте всю мощь ClipArc";
+"subscription.loading_prices" = "Загрузка цен из App Store...";
+"subscription.subscribe" = "Подписаться";
+"subscription.one_time_purchase" = "Единоразовая покупка";
+"subscription.cancel_anytime" = "Отмена в любое время. Автопродление.";
+"subscription.auto_renew_note" = "Подписки продлеваются автоматически. Отмените в любое время в настройках App Store.";
+"subscription.best_value" = "ЛУЧШЕЕ ПРЕДЛОЖЕНИЕ";
+"subscription.one_time" = "единоразово";
+"subscription.retry" = "Повторить";
+"subscription.restore_purchases" = "Восстановить покупки";
+"subscription.continue_free" = "Продолжить бесплатно";
+"subscription.features_unlocked" = "Разблокированные функции";
+"subscription.select_plan" = "Выбрать план";
+"subscription.purchase_lifetime" = "Купить навсегда";
+"subscription.start_free_trial" = "Начать пробный период";
+"subscription.free_trial_badge" = "14 дней бесплатно";
+"subscription.pay_once" = "Заплатите один раз, владейте навсегда";
+"subscription.terms_of_service" = "Условия использования";
+"subscription.privacy_policy" = "Политика конфиденциальности";
+"subscription.per_month" = "в месяц";
+"subscription.per_year" = "в год";
+"subscription.per_week" = "в неделю";
+"subscription.per_day" = "в день";
+"subscription.feature.unlimited_history" = "Безлимитная история";
+"subscription.feature.unlimited_history_desc" = "Храните все элементы буфера навсегда";
+"subscription.feature.advanced_search" = "Расширенный поиск";
+"subscription.feature.advanced_search_desc" = "Нечёткий поиск по всей истории";
+"subscription.feature.global_hotkey" = "Глобальная горячая клавиша";
+"subscription.feature.global_hotkey_desc" = "Быстрый доступ откуда угодно";
+"subscription.feature.instant_paste" = "Мгновенная вставка";
+"subscription.feature.instant_paste_desc" = "Автовставка в активное приложение";
+
+// MARK: - Login
+"login.app_name" = "ClipArc";
+"login.tagline" = "Ваш умный менеджер буфера обмена";
+"login.sign_in_description" = "Войдите, чтобы синхронизировать историю и разблокировать все функции";
+"login.subscription_note" = "Некоторые функции требуют подписки";
+"login.continue_without_signin" = "Продолжить без входа";
+
+// MARK: - Onboarding Additional
+"onboarding.subscription_note" = "Подписки продлеваются автоматически. Отмените в любое время в настройках App Store.";
+
+// MARK: - Clipboard Card
+"card.enter_key" = "Enter";
+"card.files_count" = "%d файлов";
+"card.more_files" = "... и ещё %d";
+"card.chars_count" = "%d символов";
+
+// MARK: - Accessibility Guide
+"accessibility.guide_title" = "Универсальный доступ";
+"accessibility.guide_description" = "Разрешите следующим приложениям управлять вашим компьютером.";
+
+// MARK: - Copyright
+"about.copyright" = "© 2026 VerseGates. Все права защищены.";
+
+// MARK: - Pro Features
+"pro.feature.unlimited_history" = "Безлимитная история";
+"pro.feature.advanced_search" = "Расширенный поиск";
+"pro.feature.global_hotkey" = "Глобальная горячая клавиша";
+"pro.feature.instant_paste" = "Мгновенная вставка";

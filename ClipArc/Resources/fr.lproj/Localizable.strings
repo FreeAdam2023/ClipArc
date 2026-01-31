@@ -179,3 +179,113 @@
 "settings.clear_all_history" = "Effacer tout l'historique";
 "settings.clear_history_message" = "Tout l'historique du presse-papiers sera définitivement supprimé. Cette action est irréversible.";
 "settings.clear" = "Effacer";
+
+// MARK: - Paste Dialog
+"paste.direct_paste_title" = "Coller directement dans %@ ?";
+"paste.direct_paste_subtitle" = "ClipArc a besoin de l'accès Accessibilité pour coller directement dans d'autres apps.";
+"paste.enable_direct_paste" = "Activer le collage direct";
+"paste.copy_to_clipboard" = "Pas maintenant, copier dans le presse-papiers";
+"paste.dont_ask_again" = "Ne plus demander";
+"paste.press_to_manual_paste" = "Appuyez sur ⌘V pour coller";
+
+// MARK: - Settings Paste Mode
+"settings.paste_mode" = "Mode de collage";
+"settings.paste_mode.ask" = "Demander à chaque fois";
+"settings.paste_mode.direct_paste" = "Toujours coller directement";
+"settings.paste_mode.copy_only" = "Toujours copier uniquement";
+
+// MARK: - Accessibility Setup
+"accessibility.setup.title" = "Activer l'accès Accessibilité";
+"accessibility.setup.subtitle" = "Pour coller directement dans d'autres applications, autorisez ClipArc à accéder aux fonctions d'accessibilité de votre Mac dans les Réglages Système.";
+"accessibility.open_system_settings" = "Ouvrir les Réglages Système";
+"accessibility.having_issue" = "J'ai un problème";
+
+// MARK: - Screenshot Monitor
+"screenshot.title" = "Capture auto des captures d'écran";
+"screenshot.subtitle" = "Enregistrer automatiquement les captures dans l'historique";
+"screenshot.tip" = "Astuce : Utilisez ⌘⇧4 pour les captures. Avec cette fonction, elles sont automatiquement sauvegardées !";
+"screenshot.change_folder" = "Modifier";
+"screenshot.info" = "Capture uniquement les screenshots sauvegardés dans ce dossier. Glisser l'aperçu miniature ne sera pas capturé. Utilisez ⌘⇧⌃4 à la place.";
+
+// MARK: - Direct Paste
+"direct_paste.section_title" = "Collage direct";
+"direct_paste.title" = "Collage direct";
+"direct_paste.subtitle" = "Coller instantanément sans appuyer sur ⌘V";
+"direct_paste.enabled" = "Activé";
+"direct_paste.enable" = "Activer";
+"direct_paste.guide_title" = "Collage direct";
+"direct_paste.guide_subtitle" = "Coller instantanément dans votre app active\nsans changer de fenêtre.";
+"direct_paste.what_changes" = "Ce qui change :";
+"direct_paste.requires_accessibility" = "Cette fonction nécessite l'autorisation Accessibilité.";
+"direct_paste.manual_add_note" = "Vous devrez ajouter manuellement ClipArc dans les Réglages Système.";
+"direct_paste.skip_for_now" = "Ignorer pour l'instant";
+"direct_paste.mini_prompt_title" = "Réduire les étapes répétitives ?";
+"direct_paste.mini_prompt_subtitle" = "Coller directement sans revenir en arrière.";
+"direct_paste.maybe_later" = "Peut-être plus tard";
+"direct_paste.learn_how" = "En savoir plus";
+"direct_paste.benefit1" = "Cliquez sur un élément → le contenu est collé immédiatement";
+"direct_paste.benefit2" = "Pas besoin d'appuyer manuellement sur ⌘V";
+"direct_paste.benefit3" = "Moins d'étapes, flux de travail plus rapide";
+
+// MARK: - Subscription
+"subscription.upgrade_to_pro" = "Passer à Pro";
+"subscription.unlock_full_power" = "Débloquez toute la puissance de ClipArc";
+"subscription.loading_prices" = "Chargement des prix depuis l'App Store...";
+"subscription.subscribe" = "S'abonner";
+"subscription.one_time_purchase" = "Achat unique";
+"subscription.cancel_anytime" = "Annulez à tout moment. Renouvellement automatique.";
+"subscription.auto_renew_note" = "Les abonnements se renouvellent automatiquement. Annulez à tout moment dans les réglages de l'App Store.";
+"subscription.best_value" = "MEILLEURE OFFRE";
+"subscription.one_time" = "unique";
+"subscription.retry" = "Réessayer";
+"subscription.restore_purchases" = "Restaurer les achats";
+"subscription.continue_free" = "Continuer gratuitement";
+"subscription.features_unlocked" = "Fonctionnalités débloquées";
+"subscription.select_plan" = "Choisir un forfait";
+"subscription.purchase_lifetime" = "Acheter à vie";
+"subscription.start_free_trial" = "Démarrer l'essai gratuit";
+"subscription.free_trial_badge" = "14 jours d'essai gratuit";
+"subscription.pay_once" = "Payez une fois, possédez pour toujours";
+"subscription.terms_of_service" = "Conditions d'utilisation";
+"subscription.privacy_policy" = "Politique de confidentialité";
+"subscription.per_month" = "par mois";
+"subscription.per_year" = "par an";
+"subscription.per_week" = "par semaine";
+"subscription.per_day" = "par jour";
+"subscription.feature.unlimited_history" = "Historique illimité";
+"subscription.feature.unlimited_history_desc" = "Conservez tous vos éléments pour toujours";
+"subscription.feature.advanced_search" = "Recherche avancée";
+"subscription.feature.advanced_search_desc" = "Recherche floue dans tout l'historique";
+"subscription.feature.global_hotkey" = "Raccourci global";
+"subscription.feature.global_hotkey_desc" = "Accès rapide depuis n'importe où";
+"subscription.feature.instant_paste" = "Collage instantané";
+"subscription.feature.instant_paste_desc" = "Coller automatiquement dans l'app active";
+
+// MARK: - Login
+"login.app_name" = "ClipArc";
+"login.tagline" = "Votre gestionnaire de presse-papiers intelligent";
+"login.sign_in_description" = "Connectez-vous pour synchroniser votre historique et débloquer toutes les fonctionnalités";
+"login.subscription_note" = "Certaines fonctionnalités nécessitent un abonnement";
+"login.continue_without_signin" = "Continuer sans se connecter";
+
+// MARK: - Onboarding Additional
+"onboarding.subscription_note" = "Les abonnements se renouvellent automatiquement. Annulez à tout moment dans les réglages de l'App Store.";
+
+// MARK: - Clipboard Card
+"card.enter_key" = "Entrée";
+"card.files_count" = "%d fichiers";
+"card.more_files" = "... et %d de plus";
+"card.chars_count" = "%d caractères";
+
+// MARK: - Accessibility Guide
+"accessibility.guide_title" = "Accessibilité";
+"accessibility.guide_description" = "Autorisez les applications ci-dessous à contrôler votre ordinateur.";
+
+// MARK: - Copyright
+"about.copyright" = "© 2026 VerseGates. Tous droits réservés.";
+
+// MARK: - Pro Features
+"pro.feature.unlimited_history" = "Historique illimité";
+"pro.feature.advanced_search" = "Recherche avancée";
+"pro.feature.global_hotkey" = "Raccourci global";
+"pro.feature.instant_paste" = "Collage instantané";

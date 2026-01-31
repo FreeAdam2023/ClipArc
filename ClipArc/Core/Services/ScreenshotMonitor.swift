@@ -17,12 +17,11 @@ final class ScreenshotMonitor {
 
     // MARK: - State
 
-    /// Whether screenshot monitoring is enabled
-    var isEnabled: Bool {
-        get { UserDefaults.standard.bool(forKey: "screenshotMonitorEnabled") }
-        set {
-            UserDefaults.standard.set(newValue, forKey: "screenshotMonitorEnabled")
-            if newValue {
+    /// Whether screenshot monitoring is enabled (stored property for @Observable tracking)
+    private(set) var isEnabled: Bool = UserDefaults.standard.bool(forKey: "screenshotMonitorEnabled") {
+        didSet {
+            UserDefaults.standard.set(isEnabled, forKey: "screenshotMonitorEnabled")
+            if isEnabled {
                 startMonitoring()
             } else {
                 stopMonitoring()
@@ -30,18 +29,27 @@ final class ScreenshotMonitor {
         }
     }
 
-    /// The monitored folder path (for display)
-    var monitoredFolderPath: String? {
-        guard let bookmarkData = UserDefaults.standard.data(forKey: "screenshotFolderBookmark"),
-              let url = resolveBookmark(bookmarkData) else {
-            return nil
-        }
-        return url.path
+    /// Enable or disable monitoring
+    func setEnabled(_ value: Bool) {
+        isEnabled = value
     }
+
+    /// The monitored folder path (for display) - stored for observation
+    private(set) var monitoredFolderPath: String?
 
     /// Whether we have a valid folder selected
     var hasFolderSelected: Bool {
         monitoredFolderPath != nil
+    }
+
+    /// Refresh the folder path from bookmark
+    private func refreshFolderPath() {
+        guard let bookmarkData = UserDefaults.standard.data(forKey: "screenshotFolderBookmark"),
+              let url = resolveBookmark(bookmarkData) else {
+            monitoredFolderPath = nil
+            return
+        }
+        monitoredFolderPath = url.path
     }
 
     // MARK: - Private
@@ -74,9 +82,9 @@ final class ScreenshotMonitor {
 
             Task { @MainActor in
                 self?.saveBookmark(for: url)
+                self?.refreshFolderPath()
                 // Enable monitoring after folder is selected
-                UserDefaults.standard.set(true, forKey: "screenshotMonitorEnabled")
-                self?.startMonitoring()
+                self?.isEnabled = true
             }
         }
     }
@@ -85,11 +93,13 @@ final class ScreenshotMonitor {
     func removeFolder() {
         stopMonitoring()
         UserDefaults.standard.removeObject(forKey: "screenshotFolderBookmark")
+        monitoredFolderPath = nil
         isEnabled = false
     }
 
     /// Start monitoring (called on app launch if enabled)
     func startMonitoringIfEnabled() {
+        refreshFolderPath()
         if isEnabled && hasFolderSelected {
             startMonitoring()
         }
@@ -274,7 +284,10 @@ final class ScreenshotMonitor {
 
     // MARK: - Init
 
-    private init() {}
+    private init() {
+        // Initialize folder path from stored bookmark
+        refreshFolderPath()
+    }
 }
 
 // MARK: - Screenshot Monitor Prompt View

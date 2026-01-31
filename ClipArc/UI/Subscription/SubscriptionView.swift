@@ -45,11 +45,11 @@ struct SubscriptionView: View {
                 .font(.system(size: 48))
                 .foregroundStyle(.yellow)
 
-            Text("Upgrade to Pro")
+            Text(L10n.Subscription.upgradeToPro)
                 .font(.title)
                 .fontWeight(.bold)
 
-            Text("Unlock the full power of ClipArc")
+            Text(L10n.Subscription.unlockFullPower)
                 .font(.body)
                 .foregroundStyle(.secondary)
         }
@@ -57,10 +57,10 @@ struct SubscriptionView: View {
 
     private var featuresSection: some View {
         VStack(alignment: .leading, spacing: 10) {
-            FeatureRow(icon: "infinity", title: "Unlimited History", description: "Keep all your clipboard items forever")
-            FeatureRow(icon: "magnifyingglass", title: "Advanced Search", description: "Fuzzy search across all history")
-            FeatureRow(icon: "keyboard", title: "Global Hotkey", description: "Quick access from anywhere")
-            FeatureRow(icon: "bolt.fill", title: "Instant Paste", description: "Auto-paste to active app")
+            FeatureRow(icon: "infinity", title: L10n.Subscription.featureUnlimitedHistory, description: L10n.Subscription.featureUnlimitedHistoryDesc)
+            FeatureRow(icon: "magnifyingglass", title: L10n.Subscription.featureAdvancedSearch, description: L10n.Subscription.featureAdvancedSearchDesc)
+            FeatureRow(icon: "keyboard", title: L10n.Subscription.featureGlobalHotkey, description: L10n.Subscription.featureGlobalHotkeyDesc)
+            FeatureRow(icon: "bolt.fill", title: L10n.Subscription.featureInstantPaste, description: L10n.Subscription.featureInstantPasteDesc)
         }
         .padding(.horizontal, 8)
     }
@@ -73,11 +73,11 @@ struct SubscriptionView: View {
                     ProgressView()
                         .scaleEffect(1.2)
 
-                    Text("Loading prices from App Store...")
+                    Text(L10n.Subscription.loadingPrices)
                         .font(.subheadline)
                         .foregroundStyle(.secondary)
 
-                    Button("Retry") {
+                    Button(L10n.Subscription.retry) {
                         Task {
                             await subscriptionManager.loadProducts()
                         }
@@ -88,7 +88,7 @@ struct SubscriptionView: View {
                 .frame(height: 150)
             } else {
                 // Subscription options
-                Text("Subscribe")
+                Text(L10n.Subscription.subscribe)
                     .font(.headline)
                     .frame(maxWidth: .infinity, alignment: .leading)
 
@@ -97,7 +97,7 @@ struct SubscriptionView: View {
                         product: product,
                         isSelected: selectedProduct?.id == product.id,
                         isBestValue: product.id == SubscriptionProduct.yearly.rawValue,
-                        badge: "14-day free trial"
+                        badge: L10n.Subscription.freeTrialBadge
                     ) {
                         selectedProduct = product
                     }
@@ -108,7 +108,7 @@ struct SubscriptionView: View {
                     Divider()
                         .padding(.vertical, 4)
 
-                    Text("One-time Purchase")
+                    Text(L10n.Subscription.oneTimePurchase)
                         .font(.headline)
                         .frame(maxWidth: .infinity, alignment: .leading)
 
@@ -116,7 +116,7 @@ struct SubscriptionView: View {
                         product: lifetime,
                         isSelected: selectedProduct?.id == lifetime.id,
                         isBestValue: false,
-                        badge: "Pay once, own forever"
+                        badge: L10n.Subscription.payOnce
                     ) {
                         selectedProduct = lifetime
                     }
@@ -153,7 +153,7 @@ struct SubscriptionView: View {
             .buttonStyle(.borderedProminent)
             .disabled(selectedProduct == nil || subscriptionManager.isLoading)
 
-            Button("Restore Purchases") {
+            Button(L10n.Subscription.restorePurchases) {
                 Task {
                     await subscriptionManager.restorePurchases()
                     if subscriptionManager.isPro {
@@ -176,23 +176,23 @@ struct SubscriptionView: View {
     }
 
     private var buttonTitle: String {
-        guard let product = selectedProduct else { return "Select a Plan" }
+        guard let product = selectedProduct else { return L10n.Subscription.selectPlan }
         if product.id == SubscriptionProduct.lifetime.rawValue {
-            return "Purchase Lifetime"
+            return L10n.Subscription.purchaseLifetime
         } else {
-            return "Start Free Trial"
+            return L10n.Subscription.startFreeTrial
         }
     }
 
     private var footerSection: some View {
         VStack(spacing: 4) {
-            Text("Cancel anytime. Subscription auto-renews.")
+            Text(L10n.Subscription.cancelAnytime)
                 .font(.caption2)
                 .foregroundStyle(.tertiary)
 
             HStack(spacing: 16) {
-                Link("Terms of Service", destination: URL(string: "https://example.com/terms")!)
-                Link("Privacy Policy", destination: URL(string: "https://example.com/privacy")!)
+                Link(L10n.Subscription.termsOfService, destination: URL(string: "https://www.versegates.com/cliparc/terms")!)
+                Link(L10n.Subscription.privacyPolicy, destination: URL(string: "https://www.versegates.com/cliparc/privacy")!)
             }
             .font(.caption2)
             .foregroundStyle(.secondary)
@@ -252,7 +252,7 @@ struct PricingCard: View {
                             .font(.headline)
 
                         if isBestValue {
-                            Text("BEST VALUE")
+                            Text(L10n.Subscription.bestValue)
                                 .font(.caption2)
                                 .fontWeight(.bold)
                                 .foregroundStyle(.white)
@@ -282,7 +282,7 @@ struct PricingCard: View {
                             .font(.caption)
                             .foregroundStyle(.secondary)
                     } else {
-                        Text("one-time")
+                        Text(L10n.Subscription.oneTime)
                             .font(.caption)
                             .foregroundStyle(.secondary)
                     }
@@ -303,10 +303,10 @@ struct PricingCard: View {
 
     private func periodText(_ period: Product.SubscriptionPeriod) -> String {
         switch period.unit {
-        case .month: return "per month"
-        case .year: return "per year"
-        case .week: return "per week"
-        case .day: return "per day"
+        case .month: return L10n.Subscription.perMonth
+        case .year: return L10n.Subscription.perYear
+        case .week: return L10n.Subscription.perWeek
+        case .day: return L10n.Subscription.perDay
         @unknown default: return ""
         }
     }

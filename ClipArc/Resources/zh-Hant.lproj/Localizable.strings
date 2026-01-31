@@ -179,3 +179,113 @@
 "settings.clear_all_history" = "清除所有歷史";
 "settings.clear_history_message" = "這將永久刪除所有剪貼簿歷史記錄。此操作無法撤銷。";
 "settings.clear" = "清除";
+
+// MARK: - Paste Dialog
+"paste.direct_paste_title" = "直接貼上到 %@？";
+"paste.direct_paste_subtitle" = "ClipArc 需要輔助使用權限才能直接貼上到其他應用程式。";
+"paste.enable_direct_paste" = "啟用直接貼上";
+"paste.copy_to_clipboard" = "暫不，僅複製到剪貼簿";
+"paste.dont_ask_again" = "不再詢問";
+"paste.press_to_manual_paste" = "按 ⌘V 貼上";
+
+// MARK: - Settings Paste Mode
+"settings.paste_mode" = "貼上模式";
+"settings.paste_mode.ask" = "每次詢問";
+"settings.paste_mode.direct_paste" = "始終直接貼上";
+"settings.paste_mode.copy_only" = "始終僅複製";
+
+// MARK: - Accessibility Setup
+"accessibility.setup.title" = "啟用輔助使用權限";
+"accessibility.setup.subtitle" = "若要直接貼上到其他應用程式，請在系統設定中允許 ClipArc 存取 Mac 的輔助使用功能。";
+"accessibility.open_system_settings" = "開啟系統設定";
+"accessibility.having_issue" = "遇到問題";
+
+// MARK: - Screenshot Monitor
+"screenshot.title" = "自動擷取螢幕截圖";
+"screenshot.subtitle" = "自動將螢幕截圖儲存到歷史記錄";
+"screenshot.tip" = "提示：使用 ⌘⇧4 截圖。啟用後，截圖會自動儲存到歷史記錄！";
+"screenshot.change_folder" = "更改";
+"screenshot.info" = "僅擷取儲存到此資料夾的螢幕截圖。直接拖曳縮圖不會被擷取。建議使用 ⌘⇧⌃4 直接複製到剪貼簿。";
+
+// MARK: - Direct Paste
+"direct_paste.section_title" = "直接貼上";
+"direct_paste.title" = "直接貼上";
+"direct_paste.subtitle" = "無需按 ⌘V 即可貼上";
+"direct_paste.enabled" = "已啟用";
+"direct_paste.enable" = "啟用";
+"direct_paste.guide_title" = "直接貼上";
+"direct_paste.guide_subtitle" = "直接貼上到目前應用程式\n無需切換視窗。";
+"direct_paste.what_changes" = "功能變化：";
+"direct_paste.requires_accessibility" = "此功能需要輔助使用權限。";
+"direct_paste.manual_add_note" = "您需要在系統設定中手動新增 ClipArc。";
+"direct_paste.skip_for_now" = "暫時跳過";
+"direct_paste.mini_prompt_title" = "減少重複操作？";
+"direct_paste.mini_prompt_subtitle" = "直接貼上，無需切換視窗。";
+"direct_paste.maybe_later" = "以後再說";
+"direct_paste.learn_how" = "瞭解詳情";
+"direct_paste.benefit1" = "點擊項目 → 內容立即貼上";
+"direct_paste.benefit2" = "無需手動按 ⌘V";
+"direct_paste.benefit3" = "更少步驟，更快工作流程";
+
+// MARK: - Subscription
+"subscription.upgrade_to_pro" = "升級到專業版";
+"subscription.unlock_full_power" = "解鎖 ClipArc 全部功能";
+"subscription.loading_prices" = "正在從 App Store 載入價格...";
+"subscription.subscribe" = "訂閱";
+"subscription.one_time_purchase" = "一次性購買";
+"subscription.cancel_anytime" = "隨時取消。訂閱自動續訂。";
+"subscription.auto_renew_note" = "訂閱自動續訂。可隨時在 App Store 設定中取消。";
+"subscription.best_value" = "最超值";
+"subscription.one_time" = "一次性";
+"subscription.retry" = "重試";
+"subscription.restore_purchases" = "恢復購買";
+"subscription.continue_free" = "繼續使用免費版";
+"subscription.features_unlocked" = "功能已解鎖";
+"subscription.select_plan" = "選擇方案";
+"subscription.purchase_lifetime" = "購買終身版";
+"subscription.start_free_trial" = "開始免費試用";
+"subscription.free_trial_badge" = "14 天免費試用";
+"subscription.pay_once" = "一次付款，永久使用";
+"subscription.terms_of_service" = "服務條款";
+"subscription.privacy_policy" = "隱私權政策";
+"subscription.per_month" = "每月";
+"subscription.per_year" = "每年";
+"subscription.per_week" = "每週";
+"subscription.per_day" = "每天";
+"subscription.feature.unlimited_history" = "無限歷史記錄";
+"subscription.feature.unlimited_history_desc" = "永久保留所有剪貼簿內容";
+"subscription.feature.advanced_search" = "進階搜尋";
+"subscription.feature.advanced_search_desc" = "模糊搜尋所有歷史記錄";
+"subscription.feature.global_hotkey" = "全域快速鍵";
+"subscription.feature.global_hotkey_desc" = "隨時隨地快速存取";
+"subscription.feature.instant_paste" = "即時貼上";
+"subscription.feature.instant_paste_desc" = "自動貼上到目前應用程式";
+
+// MARK: - Login
+"login.app_name" = "ClipArc";
+"login.tagline" = "您的智慧剪貼簿管理器";
+"login.sign_in_description" = "登入以同步剪貼簿歷史記錄並解鎖所有功能";
+"login.subscription_note" = "部分功能需要訂閱";
+"login.continue_without_signin" = "不登入繼續使用";
+
+// MARK: - Onboarding Additional
+"onboarding.subscription_note" = "訂閱自動續訂。可隨時在 App Store 設定中取消。";
+
+// MARK: - Clipboard Card
+"card.enter_key" = "Enter";
+"card.files_count" = "%d 個檔案";
+"card.more_files" = "... 以及 %d 個更多";
+"card.chars_count" = "%d 個字元";
+
+// MARK: - Accessibility Guide
+"accessibility.guide_title" = "輔助使用";
+"accessibility.guide_description" = "允許以下應用程式控制您的電腦。";
+
+// MARK: - Copyright
+"about.copyright" = "© 2026 VerseGates. 保留所有權利。";
+
+// MARK: - Pro Features
+"pro.feature.unlimited_history" = "無限歷史記錄";
+"pro.feature.advanced_search" = "進階搜尋";
+"pro.feature.global_hotkey" = "全域快速鍵";
+"pro.feature.instant_paste" = "即時貼上";
