@@ -193,9 +193,11 @@ struct VisualEffectView: NSViewRepresentable {
 
 @MainActor
 func openSubscriptionWindow(appState: AppState) {
-    // Post notification to switch to subscription tab
-    NotificationCenter.default.post(name: .openSubscriptionTab, object: nil)
-
-    // Post notification to open settings window (using proper SwiftUI approach)
+    // Post notification to open settings window first
     NotificationCenter.default.post(name: .openSettingsWindow, object: nil)
+
+    // Delay the tab switch to ensure settings window is created
+    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+        NotificationCenter.default.post(name: .openSubscriptionTab, object: nil)
+    }
 }
