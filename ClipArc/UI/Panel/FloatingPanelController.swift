@@ -86,6 +86,11 @@ final class FloatingPanelController {
         let screenFrame = screen.frame
         panel = FloatingPanel(contentRect: NSRect(x: 0, y: 0, width: screenFrame.width, height: FloatingPanel.panelHeight))
 
+        // Handle click outside to dismiss
+        panel?.onResignKey = { [weak self] in
+            self?.hide()
+        }
+
         let contentView = PanelContentView(appState: appState) { [weak self] completion in
             self?.hide(completion: completion)
         }

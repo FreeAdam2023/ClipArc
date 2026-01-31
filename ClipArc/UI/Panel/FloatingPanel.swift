@@ -11,6 +11,9 @@ import SwiftUI
 final class FloatingPanel: NSPanel {
     static let panelHeight: CGFloat = 360
 
+    /// Called when the panel loses focus (user clicked outside)
+    var onResignKey: (() -> Void)?
+
     init(contentRect: NSRect) {
         super.init(
             contentRect: contentRect,
@@ -55,7 +58,12 @@ final class FloatingPanel: NSPanel {
 
     override func resignKey() {
         super.resignKey()
-        close()
+        // Call the callback if set, otherwise just close
+        if let onResignKey = onResignKey {
+            onResignKey()
+        } else {
+            close()
+        }
     }
 
     func showAtBottom() {
