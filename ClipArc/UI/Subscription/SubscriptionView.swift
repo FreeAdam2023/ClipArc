@@ -99,7 +99,9 @@ struct SubscriptionView: View {
                         isBestValue: product.id == SubscriptionProduct.yearly.rawValue,
                         badge: L10n.Subscription.freeTrialBadge
                     ) {
-                        selectedProduct = product
+                        withAnimation(.easeInOut(duration: 0.15)) {
+                            selectedProduct = product
+                        }
                     }
                 }
 
@@ -118,10 +120,13 @@ struct SubscriptionView: View {
                         isBestValue: false,
                         badge: L10n.Subscription.payOnce
                     ) {
-                        selectedProduct = lifetime
+                        withAnimation(.easeInOut(duration: 0.15)) {
+                            selectedProduct = lifetime
+                        }
                     }
                 }
             }
+            .animation(.easeInOut(duration: 0.15), value: selectedProduct?.id)
         }
     }
 
@@ -244,7 +249,12 @@ struct PricingCard: View {
     }
 
     var body: some View {
-        Button(action: onSelect) {
+        Button(action: {
+            // Dispatch to next run loop to avoid StoreKit view hierarchy issues
+            DispatchQueue.main.async {
+                onSelect()
+            }
+        }) {
             HStack {
                 VStack(alignment: .leading, spacing: 4) {
                     HStack(spacing: 6) {

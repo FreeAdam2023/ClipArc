@@ -447,11 +447,14 @@ struct SubscriptionStepView: View {
                             isSelected: selectedProduct?.id == product.id,
                             isBestValue: product.id == SubscriptionProduct.yearly.rawValue
                         ) {
-                            selectedProduct = product
+                            withAnimation(.easeInOut(duration: 0.15)) {
+                                selectedProduct = product
+                            }
                         }
                     }
                 }
                 .padding(.horizontal, 32)
+                .animation(.easeInOut(duration: 0.15), value: selectedProduct?.id)
 
                 Button(action: {
                     Task {
@@ -550,7 +553,12 @@ struct CompactPricingCard: View {
     let onSelect: () -> Void
 
     var body: some View {
-        Button(action: onSelect) {
+        Button(action: {
+            // Wrap in main actor to avoid StoreKit view hierarchy issues
+            Task { @MainActor in
+                onSelect()
+            }
+        }) {
             HStack {
                 VStack(alignment: .leading, spacing: 2) {
                     HStack(spacing: 8) {
