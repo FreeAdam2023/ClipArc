@@ -126,8 +126,8 @@ struct SubscriptionView: View {
                     }
                 }
             }
-            .animation(.easeInOut(duration: 0.15), value: selectedProduct?.id)
         }
+        .animation(.easeInOut(duration: 0.15), value: selectedProduct?.id)
     }
 
     private var actionButtons: some View {
