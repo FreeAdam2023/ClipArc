@@ -788,7 +788,7 @@ struct ScreenshotMonitorSettingsRow: View {
 
             // Feature highlight when not enabled
             if !screenshotMonitor.isEnabled {
-                HStack(spacing: 12) {
+                HStack(alignment: .top, spacing: 12) {
                     Image(systemName: "lightbulb.fill")
                         .foregroundStyle(.yellow)
                         .font(.caption)
@@ -796,6 +796,7 @@ struct ScreenshotMonitorSettingsRow: View {
                     Text(L10n.Screenshot.tip)
                         .font(.caption)
                         .foregroundStyle(.secondary)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
                 .padding(10)
                 .background(
