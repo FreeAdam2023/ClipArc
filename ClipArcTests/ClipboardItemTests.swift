@@ -136,7 +136,7 @@ final class ClipboardItemTypeTests: XCTestCase {
     func testTextTypeProperties() {
         let type = ClipboardItemType.text
         XCTAssertEqual(type.rawValue, "text")
-        XCTAssertEqual(type.icon, "doc.text")
+        XCTAssertEqual(type.icon, "doc.text.fill")
         XCTAssertEqual(type.displayName, "Text")
     }
 
@@ -144,13 +144,22 @@ final class ClipboardItemTypeTests: XCTestCase {
         let type = ClipboardItemType.url
         XCTAssertEqual(type.rawValue, "url")
         XCTAssertEqual(type.icon, "link")
-        XCTAssertEqual(type.displayName, "URL")
+        XCTAssertEqual(type.displayName, "Link")
     }
 
     func testAllCases() {
         let allCases = ClipboardItemType.allCases
-        XCTAssertEqual(allCases.count, 2)
+        XCTAssertEqual(allCases.count, 11)
         XCTAssertTrue(allCases.contains(.text))
         XCTAssertTrue(allCases.contains(.url))
+        XCTAssertTrue(allCases.contains(.image))
+        XCTAssertTrue(allCases.contains(.file))
+        XCTAssertTrue(allCases.contains(.code))
+        XCTAssertTrue(allCases.contains(.color))
+        XCTAssertTrue(allCases.contains(.email))
+        XCTAssertTrue(allCases.contains(.phone))
+        XCTAssertTrue(allCases.contains(.number))
+        XCTAssertTrue(allCases.contains(.json))
+        XCTAssertTrue(allCases.contains(.other))
     }
 }

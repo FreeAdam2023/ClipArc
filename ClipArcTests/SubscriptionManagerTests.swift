@@ -13,11 +13,11 @@ final class SubscriptionProductTests: XCTestCase {
     // MARK: - Raw Value Tests
 
     func testMonthlyRawValue() {
-        XCTAssertEqual(SubscriptionProduct.monthly.rawValue, "com.versegates.cliparc.monthly")
+        XCTAssertEqual(SubscriptionProduct.monthly.rawValue, "com.versegates.cliparc.pro.monthly")
     }
 
     func testYearlyRawValue() {
-        XCTAssertEqual(SubscriptionProduct.yearly.rawValue, "com.versegates.cliparc.yearly")
+        XCTAssertEqual(SubscriptionProduct.yearly.rawValue, "com.versegates.cliparc.pro.yearly")
     }
 
     func testLifetimeRawValue() {
