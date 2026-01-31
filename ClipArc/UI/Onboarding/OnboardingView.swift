@@ -386,10 +386,12 @@ struct SubscriptionStepView: View {
     var body: some View {
         VStack(spacing: 20) {
             Spacer()
+                .frame(minHeight: 20)
 
             Image(systemName: "crown.fill")
                 .font(.system(size: 48))
                 .foregroundStyle(.yellow)
+                .padding(.top, 10)
 
             VStack(spacing: 8) {
                 Text(L10n.Onboarding.subscriptionTitle)
