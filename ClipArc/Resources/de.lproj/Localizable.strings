@@ -238,6 +238,8 @@
 "subscription.best_value" = "BESTER WERT";
 "subscription.one_time" = "einmalig";
 "subscription.retry" = "Erneut versuchen";
+"subscription.products_unavailable" = "Abo-Optionen konnten nicht geladen werden. Bitte überprüfe deine Verbindung und versuche es erneut.";
+"subscription.load_failed %@" = "Produkte konnten nicht geladen werden: %@";
 "subscription.restore_purchases" = "Käufe wiederherstellen";
 "subscription.continue_free" = "Kostenlos fortfahren";
 "subscription.features_unlocked" = "Freigeschaltete Funktionen";

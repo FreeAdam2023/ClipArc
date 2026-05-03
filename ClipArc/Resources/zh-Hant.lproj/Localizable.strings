@@ -238,6 +238,8 @@
 "subscription.best_value" = "最超值";
 "subscription.one_time" = "一次性";
 "subscription.retry" = "重試";
+"subscription.products_unavailable" = "無法載入訂閱選項，請檢查網路連線後重試。";
+"subscription.load_failed %@" = "載入產品失敗：%@";
 "subscription.restore_purchases" = "恢復購買";
 "subscription.continue_free" = "繼續使用免費版";
 "subscription.features_unlocked" = "功能已解鎖";

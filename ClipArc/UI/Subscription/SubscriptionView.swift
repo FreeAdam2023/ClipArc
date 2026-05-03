@@ -36,6 +36,12 @@ struct SubscriptionView: View {
         .background(Color(nsColor: .windowBackgroundColor))
         .onAppear {
             selectedProduct = subscriptionManager.yearlyProduct
+            if subscriptionManager.products.isEmpty && !subscriptionManager.isLoading {
+                Task {
+                    await subscriptionManager.loadProducts()
+                    selectedProduct = subscriptionManager.yearlyProduct
+                }
+            }
         }
     }
 
@@ -68,22 +74,34 @@ struct SubscriptionView: View {
     private var pricingSection: some View {
         VStack(spacing: 12) {
             if subscriptionManager.products.isEmpty {
-                // Loading state - wait for real prices
                 VStack(spacing: 16) {
-                    ProgressView()
-                        .scaleEffect(1.2)
+                    if subscriptionManager.isLoading {
+                        // Loading state
+                        ProgressView()
+                            .scaleEffect(1.2)
 
-                    Text(L10n.Subscription.loadingPrices)
-                        .font(.subheadline)
-                        .foregroundStyle(.secondary)
+                        Text(L10n.Subscription.loadingPrices)
+                            .font(.subheadline)
+                            .foregroundStyle(.secondary)
+                    } else {
+                        // Failed state
+                        Image(systemName: "wifi.exclamationmark")
+                            .font(.system(size: 32))
+                            .foregroundStyle(.secondary)
 
-                    Button(L10n.Subscription.retry) {
-                        Task {
-                            await subscriptionManager.loadProducts()
+                        Text(subscriptionManager.errorMessage ?? String(localized: "subscription.products_unavailable"))
+                            .font(.subheadline)
+                            .foregroundStyle(.secondary)
+                            .multilineTextAlignment(.center)
+
+                        Button(L10n.Subscription.retry) {
+                            Task {
+                                await subscriptionManager.loadProducts()
+                            }
                         }
+                        .buttonStyle(.bordered)
+                        .controlSize(.small)
                     }
-                    .buttonStyle(.bordered)
-                    .controlSize(.small)
                 }
                 .frame(height: 150)
             } else {

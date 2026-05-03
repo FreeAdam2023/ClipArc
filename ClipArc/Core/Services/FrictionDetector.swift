@@ -8,8 +8,10 @@
 import Foundation
 import SwiftUI
 
+#if !APPSTORE
 /// Detects user friction patterns to determine when to show Direct Paste enhancement guide
 /// Uses behavior-driven detection instead of proactive prompting
+/// Note: Only available in Direct distribution version
 @MainActor
 @Observable
 final class FrictionDetector {
@@ -188,3 +190,4 @@ final class FrictionDetector {
         case cooldown         // User dismissed, in cooldown period
     }
 }
+#endif

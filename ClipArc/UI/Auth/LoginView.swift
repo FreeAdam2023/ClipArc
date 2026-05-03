@@ -77,7 +77,7 @@ struct LoginView: View {
                 .foregroundStyle(.secondary)
                 .font(.footnote)
 
-                Text("Some features require subscription")
+                Text("Sign in to sync across devices")
                     .font(.caption2)
                     .foregroundStyle(.tertiary)
             }

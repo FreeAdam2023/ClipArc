@@ -238,6 +238,8 @@
 "subscription.best_value" = "最超值";
 "subscription.one_time" = "一次性";
 "subscription.retry" = "重试";
+"subscription.products_unavailable" = "无法加载订阅选项，请检查网络连接后重试。";
+"subscription.load_failed %@" = "加载产品失败：%@";
 "subscription.restore_purchases" = "恢复购买";
 "subscription.continue_free" = "继续使用免费版";
 "subscription.features_unlocked" = "功能已解锁";

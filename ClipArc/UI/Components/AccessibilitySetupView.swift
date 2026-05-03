@@ -4,7 +4,9 @@
 //
 //  Created by Adam Lyu on 2026-01-23.
 //
+//  Note: Only available in Direct distribution version
 
+#if !APPSTORE
 import SwiftUI
 
 /// A guided setup view for enabling accessibility access, similar to Paste app
@@ -361,3 +363,4 @@ struct SidebarItem: View {
     .padding(40)
     .background(Color.gray)
 }
+#endif

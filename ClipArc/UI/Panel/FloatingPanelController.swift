@@ -32,11 +32,14 @@ final class FloatingPanelController {
             Logger.debug("Saved previous app: \(previousApp?.localizedName ?? "none")")
         }
 
+        // Capture target screen BEFORE activating panel (important for fullscreen apps)
+        let screen = FloatingPanel.targetScreen()
+
         // Always recreate panel to ensure clean state
         createPanel()
 
         appState.showPanel()
-        panel?.showAtBottom()
+        panel?.showAtBottom(on: screen)
         setupKeyboardMonitor()
     }
 
@@ -190,21 +193,6 @@ struct PanelContentView: View {
                             }
                         }
 
-                        // Upgrade prompt card for free users
-                        if !appState.isProUser {
-                            UpgradePromptCard(
-                                itemCount: appState.items.count,
-                                limit: AppState.freeHistoryLimit,
-                                onUpgrade: {
-                                    openSubscriptionWindow(appState: appState)
-                                }
-                            )
-                            .scrollTransition(.animated(.easeInOut)) { content, phase in
-                                content
-                                    .opacity(phase.isIdentity ? 1 : 0.85)
-                                    .scaleEffect(phase.isIdentity ? 1 : 0.95)
-                            }
-                        }
                     }
                     .scrollTargetLayout()
                     .padding(.vertical, 12)
@@ -282,11 +270,6 @@ struct PanelContentView: View {
 
             Spacer()
 
-            // Usage indicator for free users
-            if !appState.isProUser {
-                usageBadge
-            }
-
             // Selection mode controls
             if appState.isSelectionMode {
                 // Select All button
@@ -339,28 +322,6 @@ struct PanelContentView: View {
             }
             .buttonStyle(.plain)
         }
-    }
-
-    // MARK: - Usage Badge
-
-    private var usageBadge: some View {
-        let count = appState.items.count
-        let limit = AppState.freeHistoryLimit
-        let isAtLimit = count >= limit
-
-        return HStack(spacing: 4) {
-            Image(systemName: isAtLimit ? "exclamationmark.circle.fill" : "doc.on.clipboard")
-                .font(.system(size: 10))
-            Text("\(min(count, limit))/\(limit)")
-                .font(.system(size: 11, weight: .medium))
-        }
-        .foregroundStyle(isAtLimit ? .orange : .secondary)
-        .padding(.horizontal, 8)
-        .padding(.vertical, 4)
-        .background(
-            Capsule()
-                .fill(isAtLimit ? Color.orange.opacity(0.15) : Color.primary.opacity(0.06))
-        )
     }
 
     // MARK: - Category Tabs

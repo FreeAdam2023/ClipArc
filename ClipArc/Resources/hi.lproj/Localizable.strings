@@ -238,6 +238,8 @@
 "subscription.best_value" = "सर्वोत्तम मूल्य";
 "subscription.one_time" = "एक बार";
 "subscription.retry" = "पुनः प्रयास करें";
+"subscription.products_unavailable" = "सदस्यता विकल्प लोड नहीं हो सके। कृपया अपना कनेक्शन जांचें और पुनः प्रयास करें।";
+"subscription.load_failed %@" = "उत्पाद लोड करने में विफल: %@";
 "subscription.restore_purchases" = "खरीद पुनर्स्थापित करें";
 "subscription.continue_free" = "मुफ़्त जारी रखें";
 "subscription.features_unlocked" = "अनलॉक की गई सुविधाएं";

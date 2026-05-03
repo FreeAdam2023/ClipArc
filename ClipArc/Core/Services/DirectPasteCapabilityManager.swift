@@ -9,8 +9,8 @@ import AppKit
 import SwiftUI
 
 /// Manages Direct Paste capability state
-/// Simplified: Accessibility permission granted = Direct Paste enabled
-/// User manually grants permission in System Settings = user-initiated
+/// - App Store version: Direct Paste is disabled (sandbox restrictions)
+/// - Direct version: Accessibility permission granted = Direct Paste enabled
 @MainActor
 @Observable
 final class DirectPasteCapabilityManager {
@@ -21,14 +21,22 @@ final class DirectPasteCapabilityManager {
     /// Whether the system has granted Accessibility permission
     /// Only uses AXIsProcessTrusted(), never uses WithOptions(prompt: true)
     var isAccessibilityGranted: Bool {
-        testIsAccessibilityGranted ?? AXIsProcessTrusted()
+        #if APPSTORE
+        return false  // App Store version cannot use Accessibility API
+        #else
+        return testIsAccessibilityGranted ?? AXIsProcessTrusted()
+        #endif
     }
 
     /// Whether Direct Paste can be performed
-    /// Simplified: just check if Accessibility permission is granted
-    /// User granting permission in System Settings IS the user intent
+    /// - App Store: Always false (feature not available)
+    /// - Direct: Check Accessibility permission + user setting
     var canDirectPaste: Bool {
-        isAccessibilityGranted
+        #if APPSTORE
+        return false
+        #else
+        return isAccessibilityGranted && AppSettings.shared.pasteMode == .directPaste
+        #endif
     }
 
     /// Current capability state for UI display
@@ -41,11 +49,25 @@ final class DirectPasteCapabilityManager {
     /// Opens System Settings → Privacy & Security → Accessibility
     /// ❌ Does NOT use AXIsProcessTrustedWithOptions
     /// User must manually add ClipArc to the list
+    /// Note: Only available in Direct distribution version
     func openAccessibilitySettings() {
+        #if APPSTORE
+        Logger.debug("Accessibility settings not available in App Store version")
+        #else
         if let url = URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_Accessibility") {
             NSWorkspace.shared.open(url)
             Logger.debug("Opened Accessibility settings")
         }
+        #endif
+    }
+
+    /// Whether Direct Paste feature is available in this build
+    static var isDirectPasteAvailable: Bool {
+        #if APPSTORE
+        return false
+        #else
+        return true
+        #endif
     }
 
     /// Check and log current permission status (for debugging)

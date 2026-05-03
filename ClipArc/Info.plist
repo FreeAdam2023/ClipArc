@@ -6,8 +6,6 @@
 	<false/>
 	<key>LSUIElement</key>
 	<true/>
-	<key>NSAppleEventsUsageDescription</key>
-	<string>ClipArc needs permission to paste content into other applications.</string>
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2026 VerseGates. All rights reserved.</string>
 	<key>NSAppTransportSecurity</key>

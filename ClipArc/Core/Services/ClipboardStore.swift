@@ -12,20 +12,14 @@ import SwiftData
 @MainActor
 final class ClipboardStore: ObservableObject {
     private let modelContext: ModelContext
-    private let proHistoryLimit: Int
-    static let freeHistoryLimit = 5
+    private let historyLimit: Int
 
     // Content size limit for text (in bytes)
     static let maxContentSize = 1 * 1024 * 1024    // 1 MB for text content
 
-    /// Returns the effective history limit based on subscription status
-    private var effectiveLimit: Int {
-        SubscriptionManager.shared.isPro ? proHistoryLimit : Self.freeHistoryLimit
-    }
-
     init(modelContext: ModelContext, historyLimit: Int = 100) {
         self.modelContext = modelContext
-        self.proHistoryLimit = historyLimit
+        self.historyLimit = historyLimit
     }
 
     /// Add content to the store and return the item (for URL title fetching)
@@ -132,7 +126,7 @@ final class ClipboardStore: ObservableObject {
         var descriptor = FetchDescriptor<ClipboardItem>(
             sortBy: [SortDescriptor(\.createdAt, order: .reverse)]
         )
-        descriptor.fetchLimit = effectiveLimit
+        descriptor.fetchLimit = historyLimit
         do {
             return try modelContext.fetch(descriptor)
         } catch {
@@ -169,7 +163,7 @@ final class ClipboardStore: ObservableObject {
 
         do {
             let allItems = try modelContext.fetch(descriptor)
-            let limit = effectiveLimit
+            let limit = historyLimit
             if allItems.count > limit {
                 let itemsToDelete = allItems.suffix(from: limit)
                 for item in itemsToDelete {

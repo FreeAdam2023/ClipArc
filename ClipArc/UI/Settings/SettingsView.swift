@@ -38,11 +38,13 @@ struct SettingsView: View {
             //         Label(L10n.Settings.account, systemImage: "person.circle")
             //     }
 
-            SubscriptionSettingsView()
-                .tabItem {
-                    Label(L10n.Settings.subscription, systemImage: "crown")
-                }
-                .tag(SettingsTab.subscription)
+            if SubscriptionManager.subscriptionsEnabled {
+                SubscriptionSettingsView()
+                    .tabItem {
+                        Label(L10n.Settings.subscription, systemImage: "crown")
+                    }
+                    .tag(SettingsTab.subscription)
+            }
 
             AboutView()
                 .tabItem {
@@ -52,7 +54,9 @@ struct SettingsView: View {
         }
         .frame(width: 500, height: 520)
         .onReceive(NotificationCenter.default.publisher(for: .openSubscriptionTab)) { _ in
-            selectedTab = .subscription
+            if SubscriptionManager.subscriptionsEnabled {
+                selectedTab = .subscription
+            }
         }
     }
 }
@@ -122,9 +126,11 @@ struct GeneralSettingsView: View {
                 }
             }
 
+            #if !APPSTORE
             Section(L10n.DirectPaste.sectionTitle) {
                 DirectPasteSettingsRow()
             }
+            #endif
 
             Section(L10n.Screenshot.title) {
                 ScreenshotMonitorSettingsRow()
@@ -361,6 +367,13 @@ struct SubscriptionSettingsView: View {
         }
         .padding(24)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .onAppear {
+            if subscriptionManager.products.isEmpty && !subscriptionManager.isLoading {
+                Task {
+                    await subscriptionManager.loadProducts()
+                }
+            }
+        }
     }
 
     private var proUserView: some View {
@@ -475,14 +488,24 @@ struct SubscriptionSettingsView: View {
             // Pricing cards
             VStack(spacing: 10) {
                 if subscriptionManager.products.isEmpty {
-                    // Loading state - wait for real prices
                     VStack(spacing: 12) {
-                        ProgressView()
-                            .scaleEffect(1.0)
+                        if subscriptionManager.isLoading {
+                            ProgressView()
+                                .scaleEffect(1.0)
 
-                        Text(L10n.Subscription.loadingPrices)
-                            .font(.caption)
-                            .foregroundStyle(.secondary)
+                            Text(L10n.Subscription.loadingPrices)
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                        } else {
+                            Image(systemName: "wifi.exclamationmark")
+                                .font(.system(size: 24))
+                                .foregroundStyle(.secondary)
+
+                            Text(subscriptionManager.errorMessage ?? L10n.Subscription.loadingPrices)
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                                .multilineTextAlignment(.center)
+                        }
 
                         Button(L10n.Subscription.retry) {
                             Task {
@@ -715,6 +738,7 @@ struct AboutView: View {
 
 // MARK: - Direct Paste Settings Row
 
+#if !APPSTORE
 struct DirectPasteSettingsRow: View {
     @State private var isAccessibilityGranted = DirectPasteCapabilityManager.shared.isAccessibilityGranted
 
@@ -764,6 +788,7 @@ struct DirectPasteSettingsRow: View {
         isAccessibilityGranted = DirectPasteCapabilityManager.shared.isAccessibilityGranted
     }
 }
+#endif
 
 // MARK: - Screenshot Monitor Settings Row
 

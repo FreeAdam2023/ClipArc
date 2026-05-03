@@ -25,7 +25,7 @@ final class AppState {
     var isSelectionMode = false
     var selectedItemIDs: Set<UUID> = []
 
-    // Auth & Subscription
+    // Auth
     var hasCompletedOnboarding: Bool {
         get { UserDefaults.standard.bool(forKey: "hasCompletedOnboarding") }
         set { UserDefaults.standard.set(newValue, forKey: "hasCompletedOnboarding") }
@@ -33,25 +33,6 @@ final class AppState {
 
     var authManager: AuthManager { AuthManager.shared }
     var subscriptionManager: SubscriptionManager { SubscriptionManager.shared }
-
-    // Free tier: 5 items limit (referenced from ClipboardStore)
-    static var freeHistoryLimit: Int { ClipboardStore.freeHistoryLimit }
-
-    var canUseApp: Bool {
-        return subscriptionManager.isPro || items.count <= Self.freeHistoryLimit
-    }
-
-    var isProUser: Bool {
-        subscriptionManager.isPro
-    }
-
-    var displayItems: [ClipboardItem] {
-        if isProUser {
-            return items
-        } else {
-            return Array(items.prefix(Self.freeHistoryLimit))
-        }
-    }
 
     private var clipboardMonitor: ClipboardMonitor?
     private var clipboardStore: ClipboardStore?

@@ -238,6 +238,8 @@
 "subscription.best_value" = "ЛУЧШЕЕ ПРЕДЛОЖЕНИЕ";
 "subscription.one_time" = "единоразово";
 "subscription.retry" = "Повторить";
+"subscription.products_unavailable" = "Не удалось загрузить варианты подписки. Проверьте подключение и повторите попытку.";
+"subscription.load_failed %@" = "Не удалось загрузить продукты: %@";
 "subscription.restore_purchases" = "Восстановить покупки";
 "subscription.continue_free" = "Продолжить бесплатно";
 "subscription.features_unlocked" = "Разблокированные функции";

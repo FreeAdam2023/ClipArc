@@ -238,6 +238,8 @@
 "subscription.best_value" = "MEJOR VALOR";
 "subscription.one_time" = "único";
 "subscription.retry" = "Reintentar";
+"subscription.products_unavailable" = "No se pudieron cargar las opciones de suscripción. Verifica tu conexión e inténtalo de nuevo.";
+"subscription.load_failed %@" = "Error al cargar productos: %@";
 "subscription.restore_purchases" = "Restaurar compras";
 "subscription.continue_free" = "Continuar gratis";
 "subscription.features_unlocked" = "Funciones desbloqueadas";

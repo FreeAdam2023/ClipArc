@@ -22,7 +22,9 @@ final class PasteActionCoordinator {
     static let shared = PasteActionCoordinator()
 
     private let capabilityManager = DirectPasteCapabilityManager.shared
+    #if !APPSTORE
     private let frictionDetector = FrictionDetector.shared
+    #endif
 
     // MARK: - Toast Management
 
@@ -37,13 +39,20 @@ final class PasteActionCoordinator {
         // 1. Always copy to clipboard first
         PasteService.copyItem(item, asPlainText: asPlainText)
 
-        // 2. Track behavior for friction detection
+        #if !APPSTORE
+        // 2. Track behavior for friction detection (Direct version only)
         frictionDetector.trackClick(itemID: item.id)
+        #endif
 
         // 3. Track action for app rating
         AppRatingManager.shared.trackAction()
 
         // 4. Decide behavior based on capability state
+        #if APPSTORE
+        // App Store version: Always just copy + show toast
+        showCopiedToast()
+        #else
+        // Direct version: Check if Direct Paste is enabled
         if capabilityManager.canDirectPaste {
             // Enhanced Mode: Auto Cmd+V
             performDirectPaste()
@@ -59,6 +68,7 @@ final class PasteActionCoordinator {
                 }
             }
         }
+        #endif
     }
 
     /// Perform copy only (no paste attempt)
@@ -69,6 +79,7 @@ final class PasteActionCoordinator {
 
     // MARK: - Private Methods
 
+    #if !APPSTORE
     private func performDirectPaste() {
         // Small delay to ensure focus has transferred to target app
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
@@ -80,6 +91,7 @@ final class PasteActionCoordinator {
         frictionDetector.markGuideShown()
         NotificationCenter.default.post(name: .showFrictionGuide, object: nil)
     }
+    #endif
 
     // MARK: - Toast UI
 

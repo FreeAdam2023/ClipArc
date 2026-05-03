@@ -238,6 +238,8 @@
 "subscription.best_value" = "أفضل قيمة";
 "subscription.one_time" = "لمرة واحدة";
 "subscription.retry" = "إعادة المحاولة";
+"subscription.products_unavailable" = "تعذر تحميل خيارات الاشتراك. يرجى التحقق من اتصالك والمحاولة مرة أخرى.";
+"subscription.load_failed %@" = "فشل تحميل المنتجات: %@";
 "subscription.restore_purchases" = "استعادة المشتريات";
 "subscription.continue_free" = "متابعة مجاناً";
 "subscription.features_unlocked" = "الميزات المفتوحة";

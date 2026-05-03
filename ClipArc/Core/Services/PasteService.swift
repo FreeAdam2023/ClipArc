@@ -65,9 +65,11 @@ enum PasteService {
 
     // MARK: - Paste Simulation
 
+    #if !APPSTORE
     /// Simulate Cmd+V keystroke
     /// ⚠️ Caller MUST ensure DirectPasteCapabilityManager.canDirectPaste == true
     /// This method does NOT check permissions
+    /// Note: Only available in Direct distribution version
     static func simulateCmdV() {
         Logger.debug("Simulating Cmd+V...")
 
@@ -94,6 +96,7 @@ enum PasteService {
 
         Logger.debug("Paste events posted")
     }
+    #endif
 
     // MARK: - Deprecated Methods (for migration reference)
     // The following methods have been moved to other components:

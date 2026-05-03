@@ -66,8 +66,8 @@ final class FloatingPanel: NSPanel {
         }
     }
 
-    func showAtBottom() {
-        let screen = Self.targetScreen()
+    func showAtBottom(on screen: NSScreen? = nil) {
+        let screen = screen ?? Self.targetScreen()
 
         let screenFrame = screen.frame
         let panelWidth = screenFrame.width

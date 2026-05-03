@@ -42,17 +42,23 @@ enum SubscriptionProduct: String, CaseIterable {
 final class SubscriptionManager {
     static let shared = SubscriptionManager()
 
+    /// Set to `true` to enable subscription paywall. When `false`, all features are free.
+    static let subscriptionsEnabled = false
+
     var products: [Product] = []
     var purchasedSubscriptions: [Product] = []
     var isSubscribed = false
     var hasLifetimePurchase = false
     var isLoading = false
+    var hasFailedLoading = false
     var errorMessage: String?
     var subscriptionExpirationDate: Date?
 
     private var updateListenerTask: Task<Void, Error>?
+    private static let maxRetryAttempts = 3
 
     private init() {
+        guard Self.subscriptionsEnabled else { return }
         updateListenerTask = listenForTransactions()
         Task {
             await loadProducts()
@@ -66,14 +72,48 @@ final class SubscriptionManager {
 
     func loadProducts() async {
         isLoading = true
-        do {
-            let productIDs = SubscriptionProduct.allCases.map { $0.rawValue }
-            products = try await Product.products(for: productIDs)
-            products.sort { $0.price < $1.price }
-            isLoading = false
-        } catch {
-            errorMessage = "Failed to load products: \(error.localizedDescription)"
-            isLoading = false
+        hasFailedLoading = false
+        errorMessage = nil
+
+        let productIDs = SubscriptionProduct.allCases.map { $0.rawValue }
+        print("[SubscriptionManager] Requesting products: \(productIDs)")
+        print("[SubscriptionManager] Bundle ID: \(Bundle.main.bundleIdentifier ?? "nil")")
+
+        for attempt in 1...Self.maxRetryAttempts {
+            do {
+                print("[SubscriptionManager] Attempt \(attempt)/\(Self.maxRetryAttempts)...")
+                let fetchedProducts = try await Product.products(for: productIDs)
+                print("[SubscriptionManager] Fetched \(fetchedProducts.count) products: \(fetchedProducts.map { "\($0.id) - \($0.displayPrice)" })")
+
+                if fetchedProducts.isEmpty {
+                    // StoreKit returned success but no products — treat as failure
+                    print("[SubscriptionManager] WARNING: StoreKit returned empty products array")
+                    if attempt < Self.maxRetryAttempts {
+                        try? await Task.sleep(for: .seconds(attempt))
+                        continue
+                    } else {
+                        errorMessage = String(localized: "subscription.products_unavailable")
+                        isLoading = false
+                        hasFailedLoading = true
+                        return
+                    }
+                }
+
+                products = fetchedProducts.sorted { $0.price < $1.price }
+                isLoading = false
+                hasFailedLoading = false
+                return
+            } catch {
+                print("[SubscriptionManager] Error on attempt \(attempt): \(error)")
+                if attempt < Self.maxRetryAttempts {
+                    // Wait before retrying: 1s, 2s
+                    try? await Task.sleep(for: .seconds(attempt))
+                } else {
+                    errorMessage = String(localized: "subscription.load_failed \(error.localizedDescription)")
+                    isLoading = false
+                    hasFailedLoading = true
+                }
+            }
         }
     }
 
@@ -165,7 +205,8 @@ final class SubscriptionManager {
     }
 
     var isPro: Bool {
-        isSubscribed || hasLifetimePurchase
+        if !Self.subscriptionsEnabled { return true }
+        return isSubscribed || hasLifetimePurchase
     }
 
     private func listenForTransactions() -> Task<Void, Error> {

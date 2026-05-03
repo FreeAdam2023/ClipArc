@@ -9,7 +9,10 @@
 //  - Focus on "reducing repetitive steps", not "automation"
 //  - User must manually add app in System Settings
 //  - This is an optional enhancement, not a requirement
+//
+//  Note: Only available in Direct distribution version
 
+#if !APPSTORE
 import SwiftUI
 
 /// Main guide view for enabling Direct Paste feature
@@ -391,3 +394,4 @@ private class GuideWindow: NSWindow {
         super.close()
     }
 }
+#endif

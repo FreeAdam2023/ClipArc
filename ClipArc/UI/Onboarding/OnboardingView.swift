@@ -13,7 +13,7 @@ enum OnboardingStep: Int, CaseIterable {
     case welcome = 0
     case permissions
     // case login  // TODO: Re-enable when cloud sync feature is implemented
-    case subscription
+    // case subscription  // TODO: Re-enable when subscriptions are available
     case complete
 }
 
@@ -29,20 +29,7 @@ struct OnboardingView: View {
                 WelcomeStepView(onNext: { currentStep = .permissions })
 
             case .permissions:
-                // Skip directly to subscription (login removed for now)
-                PermissionsStepView(onNext: { currentStep = .subscription }, onSkip: { currentStep = .subscription })
-
-            // TODO: Re-enable when cloud sync feature is implemented
-            // case .login:
-            //     LoginStepView(
-            //         authManager: appState.authManager,
-            //         onNext: { currentStep = .subscription },
-            //         onSkip: { currentStep = .subscription }
-            //     )
-
-            case .subscription:
-                SubscriptionStepView(
-                    subscriptionManager: appState.subscriptionManager,
+                PermissionsStepView(
                     onNext: { currentStep = .complete },
                     onSkip: { currentStep = .complete }
                 )
@@ -422,22 +409,32 @@ struct SubscriptionStepView: View {
                         .font(.headline)
                 }
             } else if subscriptionManager.products.isEmpty {
-                // Loading state - wait for real prices
                 VStack(spacing: 16) {
-                    ProgressView()
-                        .scaleEffect(1.2)
+                    if subscriptionManager.isLoading {
+                        ProgressView()
+                            .scaleEffect(1.2)
 
-                    Text(L10n.Subscription.loadingPrices)
-                        .font(.subheadline)
-                        .foregroundStyle(.secondary)
+                        Text(L10n.Subscription.loadingPrices)
+                            .font(.subheadline)
+                            .foregroundStyle(.secondary)
+                    } else {
+                        Image(systemName: "wifi.exclamationmark")
+                            .font(.system(size: 32))
+                            .foregroundStyle(.secondary)
 
-                    Button(L10n.Subscription.retry) {
-                        Task {
-                            await subscriptionManager.loadProducts()
+                        Text(subscriptionManager.errorMessage ?? String(localized: "subscription.products_unavailable"))
+                            .font(.subheadline)
+                            .foregroundStyle(.secondary)
+                            .multilineTextAlignment(.center)
+
+                        Button(L10n.Subscription.retry) {
+                            Task {
+                                await subscriptionManager.loadProducts()
+                            }
                         }
+                        .buttonStyle(.bordered)
+                        .controlSize(.small)
                     }
-                    .buttonStyle(.bordered)
-                    .controlSize(.small)
                 }
                 .padding(.vertical, 32)
             } else {

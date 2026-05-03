@@ -238,6 +238,8 @@
 "subscription.best_value" = "최고 가치";
 "subscription.one_time" = "일회성";
 "subscription.retry" = "재시도";
+"subscription.products_unavailable" = "구독 옵션을 로드할 수 없습니다. 연결을 확인하고 다시 시도해 주세요.";
+"subscription.load_failed %@" = "제품 로드 실패: %@";
 "subscription.restore_purchases" = "구매 복원";
 "subscription.continue_free" = "무료로 계속";
 "subscription.features_unlocked" = "잠금 해제된 기능";

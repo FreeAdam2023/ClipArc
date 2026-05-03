@@ -238,6 +238,8 @@
 "subscription.best_value" = "お得";
 "subscription.one_time" = "一回";
 "subscription.retry" = "再試行";
+"subscription.products_unavailable" = "サブスクリプションオプションを読み込めません。接続を確認して再試行してください。";
+"subscription.load_failed %@" = "製品の読み込みに失敗しました：%@";
 "subscription.restore_purchases" = "購入を復元";
 "subscription.continue_free" = "無料で続ける";
 "subscription.features_unlocked" = "解放された機能";
