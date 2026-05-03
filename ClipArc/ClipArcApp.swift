@@ -20,9 +20,18 @@ struct ClipArcApp: App {
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
         do {
-            return try ModelContainer(for: schema, configurations: [modelConfiguration])
+            let container = try ModelContainer(for: schema, configurations: [modelConfiguration])
+            Logger.notice("sharedModelContainer created successfully (ClipArcApp)")
+            return container
         } catch {
-            fatalError("Could not create ModelContainer: \(error)")
+            Logger.error("sharedModelContainer persistent init failed; falling back to in-memory", error: error)
+            do {
+                let fallback = ModelConfiguration(schema: schema, isStoredInMemoryOnly: true)
+                return try ModelContainer(for: schema, configurations: [fallback])
+            } catch {
+                Logger.fault("In-memory ModelContainer also failed", error: error)
+                fatalError("Could not create ModelContainer: \(error)")
+            }
         }
     }()
 
@@ -79,19 +88,6 @@ struct MenuBarContentView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
-            // Pro badge if subscribed
-            if appState.isProUser {
-                Label {
-                    Text("Pro")
-                        .fontWeight(.medium)
-                } icon: {
-                    Image(systemName: "crown.fill")
-                        .foregroundStyle(.yellow)
-                }
-
-                Divider()
-            }
-
             Button(L10n.MenuBar.showPanel) {
                 appState.showPanel()
                 NotificationCenter.default.post(name: .showClipboardPanel, object: nil)
@@ -105,7 +101,7 @@ struct MenuBarContentView: View {
                     .foregroundStyle(.secondary)
                     .padding(.horizontal)
             } else {
-                let displayItems = appState.isProUser ? appState.items.prefix(10) : appState.items.prefix(5)
+                let displayItems = appState.items.prefix(10)
                 ForEach(displayItems) { item in
                     Button(action: {
                         PasteActionCoordinator.shared.performPaste(item: item)
@@ -127,13 +123,6 @@ struct MenuBarContentView: View {
             }
 
             Divider()
-
-            // Upgrade prompt for free users (show only once)
-            if !appState.isProUser {
-                Button(L10n.Settings.upgradeToPro) {
-                    openSettings()
-                }
-            }
 
             Button(L10n.MenuBar.preferences) {
                 openSettings()

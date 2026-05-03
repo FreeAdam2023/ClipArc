@@ -19,27 +19,51 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     var modelContainer: ModelContainer?
 
     func applicationDidFinishLaunching(_ notification: Notification) {
+        let pid = ProcessInfo.processInfo.processIdentifier
+        let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "?"
+        let build = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "?"
+        Logger.notice("App launched pid=\(pid) version=\(version) build=\(build)")
+
         setupModelContainer()
         setupHotkey()
         setupPanelController()
         setupNotifications()
+        #if !APPSTORE
         setupDirectPasteGuide()
+        #endif
         setupScreenshotMonitor()
 
         NSApp.setActivationPolicy(.accessory)
 
         // Show onboarding if first launch, otherwise show startup toast
         if !appState.hasCompletedOnboarding {
+            Logger.notice("Showing onboarding (first launch)")
             showOnboarding()
         } else {
             showStartupToast()
         }
+
+        Logger.notice("applicationDidFinishLaunching completed")
     }
 
+    /// Prevent the app from quitting when the last window closes.
+    /// ClipArc is a menu-bar app; closing Onboarding/Settings/Panel windows must NOT terminate it.
+    func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
+        Logger.notice("applicationShouldTerminateAfterLastWindowClosed -> false")
+        return false
+    }
+
+    func applicationShouldTerminate(_ sender: NSApplication) -> NSApplication.TerminateReply {
+        Logger.notice("applicationShouldTerminate called")
+        return .terminateNow
+    }
+
+    #if !APPSTORE
     private func setupDirectPasteGuide() {
         // Initialize DirectPasteGuideController to set up notification observers
         _ = DirectPasteGuideController.shared
     }
+    #endif
 
     private func setupScreenshotMonitor() {
         let monitor = ScreenshotMonitor.shared
@@ -131,6 +155,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     func applicationWillTerminate(_ notification: Notification) {
+        Logger.notice("applicationWillTerminate fired")
         hotkeyManager?.unregister()
     }
 
@@ -143,6 +168,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             if let context = modelContainer?.mainContext {
                 appState.setup(modelContext: context)
             }
+            Logger.notice("ModelContainer created successfully (AppDelegate)")
         } catch {
             Logger.error("Could not create ModelContainer", error: error)
         }
