@@ -42,7 +42,7 @@ find ~/Library/Developer/Xcode/DerivedData -path '*/artifacts/sparkle/Sparkle/bi
 
 ```xml
 <key>SUFeedURL</key>
-<string>https://www.versegates.com/cliparc/appcast.xml</string>
+<string>https://cliparc.net/download/appcast.xml</string>
 ```
 
 如果你要换到别的地址/路径，改这里即可。它必须是 **HTTPS**。
@@ -80,7 +80,7 @@ find ~/Library/Developer/Xcode/DerivedData -path '*/artifacts/sparkle/Sparkle/bi
 
 把这两样放到网站，让它们能通过 HTTPS 访问：
 
-- `appcast.xml` → `https://www.versegates.com/cliparc/appcast.xml`（与 `SUFeedURL` 一致）
+- `appcast.xml` → `https://cliparc.net/download/appcast.xml`（与 `SUFeedURL` 一致）
 - 更新包 zip/dmg → appcast 里 `<enclosure url="...">` 指向的地址
 
 appcast 里每个版本的下载 URL 要指向你实际托管更新包的位置（可以是同一网站，或 GitHub Releases 的直链）。`generate_appcast` 默认用文件名生成相对/占位 URL，检查一下改成真实绝对 URL。

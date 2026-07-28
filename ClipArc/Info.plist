@@ -12,7 +12,7 @@
 	<!-- TODO: point SUFeedURL at your real appcast, and replace SUPublicEDKey with the
 	     public key printed by Sparkle's `generate_keys` tool. See UPDATES_SETUP.md. -->
 	<key>SUFeedURL</key>
-	<string>https://www.versegates.com/cliparc/appcast.xml</string>
+	<string>https://cliparc.net/download/appcast.xml</string>
 	<key>SUPublicEDKey</key>
 	<string>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</string>
 	<key>SUEnableAutomaticChecks</key>
