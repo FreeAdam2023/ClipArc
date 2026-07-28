@@ -83,6 +83,7 @@
 "settings.about" = "حول";
 
 "settings.history_limit" = "حد السجل";
+"settings.history_unlimited" = "غير محدود";
 "settings.items" = "عناصر";
 "settings.startup" = "بدء التشغيل";
 "settings.launch_at_login" = "التشغيل عند تسجيل الدخول";
@@ -291,3 +292,7 @@
 "pro.feature.advanced_search" = "بحث متقدم";
 "pro.feature.global_hotkey" = "اختصار عام";
 "pro.feature.instant_paste" = "لصق فوري";
+
+"updates.check_for_updates" = "التحقق من وجود تحديثات…";
+"updates.section_title" = "التحديثات";
+"updates.auto_check" = "التحقق تلقائيًا من وجود تحديثات";

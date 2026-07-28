@@ -83,6 +83,7 @@
 "settings.about" = "关于";
 
 "settings.history_limit" = "历史记录上限";
+"settings.history_unlimited" = "无限制";
 "settings.items" = "条记录";
 "settings.startup" = "启动";
 "settings.launch_at_login" = "登录时启动";
@@ -291,3 +292,7 @@
 "pro.feature.advanced_search" = "高级搜索";
 "pro.feature.global_hotkey" = "全局快捷键";
 "pro.feature.instant_paste" = "即时粘贴";
+
+"updates.check_for_updates" = "检查更新…";
+"updates.section_title" = "更新";
+"updates.auto_check" = "自动检查更新";

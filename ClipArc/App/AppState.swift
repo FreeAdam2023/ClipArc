@@ -6,6 +6,7 @@
 //
 
 import AppKit
+import Combine
 import Foundation
 import SwiftUI
 import SwiftData
@@ -36,9 +37,14 @@ final class AppState {
 
     private var clipboardMonitor: ClipboardMonitor?
     private var clipboardStore: ClipboardStore?
+    private var cancellables = Set<AnyCancellable>()
 
     func setup(modelContext: ModelContext) {
-        clipboardStore = ClipboardStore(modelContext: modelContext)
+        clipboardStore = ClipboardStore(
+            modelContext: modelContext,
+            historyLimit: AppSettings.shared.historyLimit
+        )
+        observeHistoryLimit()
         clipboardMonitor = ClipboardMonitor()
 
         clipboardMonitor?.onNewContent = { [weak self] clipboardContent in
@@ -89,6 +95,18 @@ final class AppState {
 
     func refreshItems() {
         items = clipboardStore?.fetchAll() ?? []
+    }
+
+    /// Keep the store's history limit in sync with user settings.
+    /// Emits the current value immediately, so the store starts consistent.
+    private func observeHistoryLimit() {
+        AppSettings.shared.$historyLimit
+            .receive(on: RunLoop.main)
+            .sink { [weak self] newLimit in
+                self?.clipboardStore?.updateHistoryLimit(newLimit)
+                self?.refreshItems()
+            }
+            .store(in: &cancellables)
     }
 
     /// Check if we should prompt user to enable screenshot monitoring

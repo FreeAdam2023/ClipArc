@@ -6,8 +6,6 @@
 	<false/>
 	<key>LSUIElement</key>
 	<true/>
-	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © 2026 VerseGates. All rights reserved.</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
@@ -17,5 +15,15 @@
 		<key>NSAllowsArbitraryLoadsInWebContent</key>
 		<false/>
 	</dict>
+	<key>NSHumanReadableCopyright</key>
+	<string>Copyright © 2026 VerseGates. All rights reserved.</string>
+	<key>SUEnableAutomaticChecks</key>
+	<true/>
+	<key>SUFeedURL</key>
+	<string>https://cliparc.net/download/appcast.xml</string>
+	<key>SUPublicEDKey</key>
+	<string>SMsZC2tg/kSlimdel932/3XgHdyim/oDVvfNxJ31+OM=</string>
+	<key>SUScheduledCheckInterval</key>
+	<integer>86400</integer>
 </dict>
 </plist>

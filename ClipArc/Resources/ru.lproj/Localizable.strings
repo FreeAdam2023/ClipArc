@@ -83,6 +83,7 @@
 "settings.about" = "О программе";
 
 "settings.history_limit" = "Лимит истории";
+"settings.history_unlimited" = "Без ограничений";
 "settings.items" = "элементов";
 "settings.startup" = "Запуск";
 "settings.launch_at_login" = "Запуск при входе";
@@ -291,3 +292,7 @@
 "pro.feature.advanced_search" = "Расширенный поиск";
 "pro.feature.global_hotkey" = "Глобальная горячая клавиша";
 "pro.feature.instant_paste" = "Мгновенная вставка";
+
+"updates.check_for_updates" = "Проверить обновления…";
+"updates.section_title" = "Обновления";
+"updates.auto_check" = "Автоматически проверять обновления";

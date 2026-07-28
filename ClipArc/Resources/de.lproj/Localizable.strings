@@ -83,6 +83,7 @@
 "settings.about" = "Über";
 
 "settings.history_limit" = "Verlaufslimit";
+"settings.history_unlimited" = "Unbegrenzt";
 "settings.items" = "Einträge";
 "settings.startup" = "Start";
 "settings.launch_at_login" = "Bei Anmeldung starten";
@@ -291,3 +292,7 @@
 "pro.feature.advanced_search" = "Erweiterte Suche";
 "pro.feature.global_hotkey" = "Globale Tastenkombination";
 "pro.feature.instant_paste" = "Sofortiges Einfügen";
+
+"updates.check_for_updates" = "Nach Updates suchen…";
+"updates.section_title" = "Updates";
+"updates.auto_check" = "Automatisch nach Updates suchen";
