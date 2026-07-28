@@ -83,6 +83,7 @@
 "settings.about" = "के बारे में";
 
 "settings.history_limit" = "इतिहास सीमा";
+"settings.history_unlimited" = "असीमित";
 "settings.items" = "आइटम";
 "settings.startup" = "स्टार्टअप";
 "settings.launch_at_login" = "लॉगिन पर लॉन्च करें";
@@ -291,3 +292,7 @@
 "pro.feature.advanced_search" = "उन्नत खोज";
 "pro.feature.global_hotkey" = "ग्लोबल हॉटकी";
 "pro.feature.instant_paste" = "तत्काल पेस्ट";
+
+"updates.check_for_updates" = "अपडेट जांचें…";
+"updates.section_title" = "अपडेट";
+"updates.auto_check" = "स्वचालित रूप से अपडेट जांचें";

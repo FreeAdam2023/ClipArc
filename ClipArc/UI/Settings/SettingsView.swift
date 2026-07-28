@@ -78,6 +78,11 @@ struct GeneralSettingsView: View {
                     Text("100 \(L10n.Settings.items)").tag(100)
                     Text("200 \(L10n.Settings.items)").tag(200)
                     Text("500 \(L10n.Settings.items)").tag(500)
+                    #if !APPSTORE
+                    Text("1000 \(L10n.Settings.items)").tag(1000)
+                    Text("5000 \(L10n.Settings.items)").tag(5000)
+                    Text(L10n.Settings.historyUnlimited).tag(0)  // 0 = unlimited
+                    #endif
                 }
             }
 
@@ -130,6 +135,10 @@ struct GeneralSettingsView: View {
             Section(L10n.DirectPaste.sectionTitle) {
                 DirectPasteSettingsRow()
             }
+
+            Section(L10n.Updates.sectionTitle) {
+                UpdatesSettingsRow()
+            }
             #endif
 
             Section(L10n.Screenshot.title) {
@@ -169,6 +178,12 @@ struct GeneralSettingsView: View {
         .padding()
         .onAppear {
             historyCount = appState?.items.count ?? 0
+            #if APPSTORE
+            // Direct-only values (unlimited / very large) have no tag here; clamp to a valid option.
+            if settings.historyLimit <= 0 || settings.historyLimit > 500 {
+                settings.historyLimit = 500
+            }
+            #endif
         }
     }
 
@@ -786,6 +801,23 @@ struct DirectPasteSettingsRow: View {
 
     private func refreshPermissionStatus() {
         isAccessibilityGranted = DirectPasteCapabilityManager.shared.isAccessibilityGranted
+    }
+}
+
+// MARK: - Updates Settings Row
+
+struct UpdatesSettingsRow: View {
+    @State private var autoCheck = UpdaterService.shared.automaticallyChecksForUpdates
+
+    var body: some View {
+        Toggle(L10n.Updates.autoCheck, isOn: $autoCheck)
+            .onChange(of: autoCheck) { _, newValue in
+                UpdaterService.shared.automaticallyChecksForUpdates = newValue
+            }
+
+        Button(L10n.Updates.checkForUpdates) {
+            UpdaterService.shared.checkForUpdates()
+        }
     }
 }
 #endif

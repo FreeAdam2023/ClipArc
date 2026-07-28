@@ -8,6 +8,17 @@
 	<true/>
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2026 VerseGates. All rights reserved.</string>
+	<!-- Sparkle auto-update (Direct distribution only; ignored by the App Store build). -->
+	<!-- TODO: point SUFeedURL at your real appcast, and replace SUPublicEDKey with the
+	     public key printed by Sparkle's `generate_keys` tool. See UPDATES_SETUP.md. -->
+	<key>SUFeedURL</key>
+	<string>https://www.versegates.com/cliparc/appcast.xml</string>
+	<key>SUPublicEDKey</key>
+	<string>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</string>
+	<key>SUEnableAutomaticChecks</key>
+	<true/>
+	<key>SUScheduledCheckInterval</key>
+	<integer>86400</integer>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>

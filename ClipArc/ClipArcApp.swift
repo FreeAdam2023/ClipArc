@@ -135,6 +135,12 @@ struct MenuBarContentView: View {
                 }
             }
 
+            #if !APPSTORE
+            Button(L10n.Updates.checkForUpdates) {
+                UpdaterService.shared.checkForUpdates()
+            }
+            #endif
+
             Divider()
 
             Button(L10n.MenuBar.quit) {

@@ -83,6 +83,7 @@
 "settings.about" = "정보";
 
 "settings.history_limit" = "기록 제한";
+"settings.history_unlimited" = "무제한";
 "settings.items" = "개 항목";
 "settings.startup" = "시작";
 "settings.launch_at_login" = "로그인 시 실행";
@@ -291,3 +292,7 @@
 "pro.feature.advanced_search" = "고급 검색";
 "pro.feature.global_hotkey" = "전역 단축키";
 "pro.feature.instant_paste" = "즉시 붙여넣기";
+
+"updates.check_for_updates" = "업데이트 확인…";
+"updates.section_title" = "업데이트";
+"updates.auto_check" = "자동으로 업데이트 확인";

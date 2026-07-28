@@ -192,6 +192,12 @@ enum L10n {
     }
 
     // MARK: - Settings
+    enum Updates {
+        static var checkForUpdates: String { "updates.check_for_updates".localized }
+        static var sectionTitle: String { "updates.section_title".localized }
+        static var autoCheck: String { "updates.auto_check".localized }
+    }
+
     enum Settings {
         static var title: String { "settings.title".localized }
         static var general: String { "settings.general".localized }
@@ -200,6 +206,7 @@ enum L10n {
         static var about: String { "settings.about".localized }
 
         static var historyLimit: String { "settings.history_limit".localized }
+        static var historyUnlimited: String { "settings.history_unlimited".localized }
         static var items: String { "settings.items".localized }
         static var startup: String { "settings.startup".localized }
         static var launchAtLogin: String { "settings.launch_at_login".localized }

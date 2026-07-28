@@ -12,7 +12,9 @@ import SwiftData
 @MainActor
 final class ClipboardStore: ObservableObject {
     private let modelContext: ModelContext
-    private let historyLimit: Int
+    /// Maximum number of items to keep. A value <= 0 means unlimited
+    /// (available in the Direct/non-sandboxed build only).
+    private var historyLimit: Int
 
     // Content size limit for text (in bytes)
     static let maxContentSize = 1 * 1024 * 1024    // 1 MB for text content
@@ -20,6 +22,14 @@ final class ClipboardStore: ObservableObject {
     init(modelContext: ModelContext, historyLimit: Int = 100) {
         self.modelContext = modelContext
         self.historyLimit = historyLimit
+    }
+
+    /// Update the history limit at runtime and enforce it immediately.
+    /// Pass a value <= 0 for unlimited history.
+    func updateHistoryLimit(_ newLimit: Int) {
+        guard newLimit != historyLimit else { return }
+        historyLimit = newLimit
+        saveAndEnforceLimit()
     }
 
     /// Add content to the store and return the item (for URL title fetching)
@@ -126,7 +136,9 @@ final class ClipboardStore: ObservableObject {
         var descriptor = FetchDescriptor<ClipboardItem>(
             sortBy: [SortDescriptor(\.createdAt, order: .reverse)]
         )
-        descriptor.fetchLimit = historyLimit
+        if historyLimit > 0 {
+            descriptor.fetchLimit = historyLimit
+        }
         do {
             return try modelContext.fetch(descriptor)
         } catch {
@@ -156,6 +168,9 @@ final class ClipboardStore: ObservableObject {
             Logger.error("Failed to save", error: error)
             return
         }
+
+        // Unlimited history (Direct build): nothing to trim.
+        guard historyLimit > 0 else { return }
 
         let descriptor = FetchDescriptor<ClipboardItem>(
             sortBy: [SortDescriptor(\.createdAt, order: .reverse)]

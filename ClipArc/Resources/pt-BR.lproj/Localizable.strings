@@ -83,6 +83,7 @@
 "settings.about" = "Sobre";
 
 "settings.history_limit" = "Limite do histórico";
+"settings.history_unlimited" = "Ilimitado";
 "settings.items" = "itens";
 "settings.startup" = "Inicialização";
 "settings.launch_at_login" = "Abrir ao iniciar sessão";
@@ -291,3 +292,7 @@
 "pro.feature.advanced_search" = "Busca avançada";
 "pro.feature.global_hotkey" = "Atalho global";
 "pro.feature.instant_paste" = "Colagem instantânea";
+
+"updates.check_for_updates" = "Verificar atualizações…";
+"updates.section_title" = "Atualizações";
+"updates.auto_check" = "Verificar atualizações automaticamente";

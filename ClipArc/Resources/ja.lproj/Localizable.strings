@@ -83,6 +83,7 @@
 "settings.about" = "情報";
 
 "settings.history_limit" = "履歴の上限";
+"settings.history_unlimited" = "無制限";
 "settings.items" = "件";
 "settings.startup" = "起動";
 "settings.launch_at_login" = "ログイン時に起動";
@@ -291,3 +292,7 @@
 "pro.feature.advanced_search" = "高度な検索";
 "pro.feature.global_hotkey" = "グローバルホットキー";
 "pro.feature.instant_paste" = "即時ペースト";
+
+"updates.check_for_updates" = "アップデートを確認…";
+"updates.section_title" = "アップデート";
+"updates.auto_check" = "自動的にアップデートを確認";
