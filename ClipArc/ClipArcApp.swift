@@ -14,6 +14,11 @@ struct ClipArcApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 
     var sharedModelContainer: ModelContainer = {
+        #if !APPSTORE
+        // Bring over history from the old sandboxed store on first Direct-build launch.
+        DataMigration.migrateFromSandboxIfNeeded()
+        #endif
+
         let schema = Schema([
             ClipboardItem.self,
         ])
