@@ -296,3 +296,23 @@
 "updates.check_for_updates" = "Проверить обновления…";
 "updates.section_title" = "Обновления";
 "updates.auto_check" = "Автоматически проверять обновления";
+
+// MARK: - Privacy & Security
+"privacy.section_title" = "Конфиденциальность и безопасность";
+"privacy.mask.title" = "Скрывать конфиденциальные данные";
+"privacy.mask.subtitle" = "Скрывает пароли, ключи, номера карт и адреса почты в панели. Нажмите на элемент, чтобы показать его; копирование и вставка не меняются.";
+"privacy.skip_concealed.title" = "Не сохранять данные из менеджера паролей";
+"privacy.skip_concealed.subtitle" = "Пропускать содержимое, помеченное приложением как скрытое или временное.";
+"privacy.screen_capture.title" = "Скрывать панель при записи экрана";
+"privacy.screen_capture.subtitle" = "История не попадает в трансляции, записи экрана и снимки экрана.";
+"privacy.encrypt.title" = "Шифровать историю на диске";
+"privacy.encrypt.subtitle" = "Текст из буфера обмена хранится в зашифрованном виде; ключ находится в связке ключей этого Mac и не синхронизируется с iCloud или другим Mac.";
+"privacy.tap_to_reveal" = "Нажмите, чтобы показать";
+"privacy.hide" = "Скрыть снова";
+"privacy.paste_unaffected" = "Нажмите Enter, чтобы вставить полное содержимое";
+"privacy.kind.password" = "Пароль";
+"privacy.kind.secret_key" = "Секретный ключ";
+"privacy.kind.credit_card" = "Номер карты";
+"privacy.kind.id_number" = "Номер документа";
+"privacy.kind.email" = "Эл. почта";
+"privacy.kind.phone" = "Телефон";

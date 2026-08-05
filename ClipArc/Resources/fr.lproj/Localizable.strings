@@ -296,3 +296,23 @@
 "updates.check_for_updates" = "Rechercher les mises à jour…";
 "updates.section_title" = "Mises à jour";
 "updates.auto_check" = "Rechercher automatiquement les mises à jour";
+
+// MARK: - Privacy & Security
+"privacy.section_title" = "Confidentialité et sécurité";
+"privacy.mask.title" = "Masquer le contenu sensible";
+"privacy.mask.subtitle" = "Masque les mots de passe, clés, cartes et e-mails dans le panneau. Cliquez sur un élément pour l'afficher ; le copier-coller reste inchangé.";
+"privacy.skip_concealed.title" = "Ne pas enregistrer les copies du gestionnaire de mots de passe";
+"privacy.skip_concealed.subtitle" = "Ignore le contenu que l'app marque comme masqué ou temporaire.";
+"privacy.screen_capture.title" = "Masquer le panneau lors d'un enregistrement d'écran";
+"privacy.screen_capture.subtitle" = "L'historique n'apparaît pas dans les partages d'écran, enregistrements et captures.";
+"privacy.encrypt.title" = "Chiffrer l'historique sur le disque";
+"privacy.encrypt.subtitle" = "Le texte du presse-papiers est stocké chiffré avec une clé conservée dans le trousseau de ce Mac. La clé n'est jamais synchronisée avec iCloud ni un autre Mac.";
+"privacy.tap_to_reveal" = "Cliquer pour afficher";
+"privacy.hide" = "Masquer à nouveau";
+"privacy.paste_unaffected" = "Appuyez sur Entrée pour coller le contenu complet";
+"privacy.kind.password" = "Mot de passe";
+"privacy.kind.secret_key" = "Clé secrète";
+"privacy.kind.credit_card" = "Numéro de carte";
+"privacy.kind.id_number" = "Numéro d'identité";
+"privacy.kind.email" = "E-mail";
+"privacy.kind.phone" = "Téléphone";

@@ -19,9 +19,17 @@ struct ClipboardCardView: View {
     let onToggleSelection: () -> Void
 
     @State private var isHovered = false
+    @State private var isRevealed = false
+    @ObservedObject private var settings = AppSettings.shared
     @Environment(\.colorScheme) private var colorScheme
 
     private var isDarkMode: Bool { colorScheme == .dark }
+
+    /// Whether this card is subject to privacy masking at all.
+    private var isProtected: Bool { item.isSensitive && settings.maskSensitiveContent }
+
+    /// Whether the content is currently hidden behind the mask.
+    private var isMasked: Bool { isProtected && !isRevealed }
 
     private var selectedGlow: Color {
         item.type.accentColor.opacity(isDarkMode ? 0.6 : 0.4)
@@ -55,6 +63,15 @@ struct ClipboardCardView: View {
                 isHovered = hovering
             }
         }
+        .task(id: isRevealed) {
+            // Revealed content re-hides itself, so it cannot stay on screen unattended.
+            guard isRevealed else { return }
+            try? await Task.sleep(for: .seconds(AppSettings.revealTimeout))
+            guard !Task.isCancelled else { return }
+            withAnimation(.easeInOut(duration: TimingConstants.mediumAnimationDuration)) {
+                isRevealed = false
+            }
+        }
         .scaleEffect(isSelected ? 1.02 : (isHovered ? 1.02 : 1.0))
         .animation(.spring(response: TimingConstants.longAnimationDuration, dampingFraction: 0.7), value: isHovered)
         .animation(.spring(response: TimingConstants.longAnimationDuration, dampingFraction: 0.7), value: isSelected)
@@ -80,6 +97,16 @@ struct ClipboardCardView: View {
                 .foregroundStyle(item.type.accentColor)
 
             Spacer()
+
+            if isProtected {
+                Button(action: toggleReveal) {
+                    Image(systemName: isRevealed ? "eye.slash.fill" : "lock.fill")
+                        .font(.system(size: 11))
+                        .foregroundStyle(.orange)
+                }
+                .buttonStyle(.plain)
+                .help(isRevealed ? L10n.Privacy.hide : L10n.Privacy.tapToReveal)
+            }
 
             Text(item.createdAt.shortRelativeFormatted)
                 .font(.system(size: 10))
@@ -194,8 +221,23 @@ struct ClipboardCardView: View {
 
     // MARK: - Content Preview
 
+    private func toggleReveal() {
+        withAnimation(.easeInOut(duration: TimingConstants.mediumAnimationDuration)) {
+            isRevealed.toggle()
+        }
+    }
+
     @ViewBuilder
     private var contentPreview: some View {
+        if isMasked {
+            MaskedContentPreview(item: item, isDarkMode: isDarkMode, onReveal: toggleReveal)
+        } else {
+            typedContentPreview
+        }
+    }
+
+    @ViewBuilder
+    private var typedContentPreview: some View {
         switch item.type {
         case .url:
             URLContentPreview(item: item, isDarkMode: isDarkMode)
@@ -214,6 +256,62 @@ struct ClipboardCardView: View {
 }
 
 // MARK: - Content Preview Components
+
+/// Shown instead of the real preview for passwords, keys and personal data.
+/// The underlying content is untouched: Enter still pastes the real value.
+private struct MaskedContentPreview: View {
+    let item: ClipboardItem
+    let isDarkMode: Bool
+    let onReveal: () -> Void
+
+    private var kind: SensitiveKind { item.sensitiveKind ?? .password }
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            HStack(spacing: 6) {
+                Image(systemName: kind.icon)
+                    .font(.system(size: 11, weight: .semibold))
+                Text(kind.displayName)
+                    .font(.system(size: 11, weight: .semibold))
+            }
+            .foregroundStyle(.orange)
+
+            Text(item.maskedPreview)
+                .font(.system(size: 15, weight: .medium, design: .monospaced))
+                .foregroundStyle(.primary)
+                .lineLimit(2)
+                .truncationMode(.middle)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.horizontal, 10)
+                .padding(.vertical, 12)
+                .background(
+                    RoundedRectangle(cornerRadius: UIConstants.mediumCornerRadius)
+                        .fill(Color.primary.opacity(isDarkMode ? 0.1 : 0.04))
+                )
+
+            Spacer()
+
+            Button(action: onReveal) {
+                HStack(spacing: 4) {
+                    Image(systemName: "eye")
+                        .font(.system(size: 10))
+                    Text(L10n.Privacy.tapToReveal)
+                        .font(.system(size: 11, weight: .medium))
+                }
+                .foregroundStyle(.orange)
+                .padding(.horizontal, 10)
+                .padding(.vertical, 5)
+                .background(Capsule().fill(Color.orange.opacity(isDarkMode ? 0.2 : 0.12)))
+            }
+            .buttonStyle(.plain)
+
+            Text(L10n.Privacy.pasteUnaffected)
+                .font(.system(size: 9))
+                .foregroundStyle(.tertiary)
+                .lineLimit(2)
+        }
+    }
+}
 
 private struct URLContentPreview: View {
     let item: ClipboardItem

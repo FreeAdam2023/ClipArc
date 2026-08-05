@@ -296,3 +296,23 @@
 "updates.check_for_updates" = "Verificar atualizações…";
 "updates.section_title" = "Atualizações";
 "updates.auto_check" = "Verificar atualizações automaticamente";
+
+// MARK: - Privacy & Security
+"privacy.section_title" = "Privacidade e segurança";
+"privacy.mask.title" = "Ocultar conteúdo sensível";
+"privacy.mask.subtitle" = "Oculta senhas, chaves, cartões e e-mails no painel. Clique em um item para exibi-lo; copiar e colar não são afetados.";
+"privacy.skip_concealed.title" = "Não salvar cópias do gerenciador de senhas";
+"privacy.skip_concealed.subtitle" = "Ignora conteúdo da área de transferência que um app marca como oculto ou temporário.";
+"privacy.screen_capture.title" = "Ocultar painel em gravações de tela";
+"privacy.screen_capture.subtitle" = "O histórico não aparece em compartilhamentos de tela, gravações e capturas.";
+"privacy.encrypt.title" = "Criptografar o histórico no disco";
+"privacy.encrypt.subtitle" = "O texto da área de transferência é guardado criptografado com uma chave nas Chaves deste Mac. A chave nunca é sincronizada com o iCloud nem com outro Mac.";
+"privacy.tap_to_reveal" = "Clique para exibir";
+"privacy.hide" = "Ocultar novamente";
+"privacy.paste_unaffected" = "Pressione Enter para colar o conteúdo completo";
+"privacy.kind.password" = "Senha";
+"privacy.kind.secret_key" = "Chave secreta";
+"privacy.kind.credit_card" = "Número do cartão";
+"privacy.kind.id_number" = "Documento";
+"privacy.kind.email" = "E-mail";
+"privacy.kind.phone" = "Telefone";

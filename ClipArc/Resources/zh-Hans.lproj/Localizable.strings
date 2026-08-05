@@ -296,3 +296,23 @@
 "updates.check_for_updates" = "检查更新…";
 "updates.section_title" = "更新";
 "updates.auto_check" = "自动检查更新";
+
+// MARK: - Privacy & Security
+"privacy.section_title" = "隐私与安全";
+"privacy.mask.title" = "敏感内容打码";
+"privacy.mask.subtitle" = "在面板中隐藏密码、密钥、卡号和邮箱。点击条目即可查看，复制粘贴不受影响。";
+"privacy.skip_concealed.title" = "不记录密码管理器内容";
+"privacy.skip_concealed.subtitle" = "跳过应用标记为「隐藏」或「临时」的剪贴板内容。";
+"privacy.screen_capture.title" = "录屏时隐藏面板";
+"privacy.screen_capture.subtitle" = "直播、投屏、录屏和截图中都不会出现剪贴板历史。";
+"privacy.encrypt.title" = "加密本地历史记录";
+"privacy.encrypt.subtitle" = "剪贴板文本以密文存储，密钥保存在本机钥匙串中，不会同步到 iCloud 或其他 Mac。";
+"privacy.tap_to_reveal" = "点击查看";
+"privacy.hide" = "重新隐藏";
+"privacy.paste_unaffected" = "按回车粘贴完整内容";
+"privacy.kind.password" = "密码";
+"privacy.kind.secret_key" = "密钥";
+"privacy.kind.credit_card" = "卡号";
+"privacy.kind.id_number" = "证件号";
+"privacy.kind.email" = "邮箱";
+"privacy.kind.phone" = "电话";

@@ -59,6 +59,12 @@ final class ClipboardMonitor: ObservableObject {
         lastChangeCount = currentChangeCount
         Logger.debug("Pasteboard changed, changeCount: \(currentChangeCount)")
 
+        // Password managers mark their copies as concealed/transient. Never store those.
+        if AppSettings.shared.skipConcealedContent && pasteboard.isPrivateContent {
+            Logger.debug("Skipping concealed/transient pasteboard content")
+            return
+        }
+
         guard let content = extractContent(from: pasteboard) else {
             Logger.debug("Could not extract content")
             return
@@ -66,7 +72,8 @@ final class ClipboardMonitor: ObservableObject {
 
         switch content {
         case .text(let text, let type):
-            Logger.debug("Detected text (\(type)): \(text.prefix(30))...")
+            // Never log the content itself - the unified log is readable by other tools.
+            Logger.debug("Detected text (\(type)), \(text.count) chars")
         case .image(let data, let width, let height):
             Logger.debug("Detected image: \(width)x\(height), \(data.count) bytes")
         case .files(let urls):
@@ -77,7 +84,7 @@ final class ClipboardMonitor: ObservableObject {
     }
 
     private func extractContent(from pasteboard: NSPasteboard) -> ClipboardContent? {
-        // Debug: Log all pasteboard types
+        // Type identifiers only - never the payload.
         Logger.debug("Pasteboard types: \(pasteboard.types?.map { $0.rawValue } ?? [])")
 
         // Check for files first (highest priority)

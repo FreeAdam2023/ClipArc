@@ -296,3 +296,23 @@
 "updates.check_for_updates" = "अपडेट जांचें…";
 "updates.section_title" = "अपडेट";
 "updates.auto_check" = "स्वचालित रूप से अपडेट जांचें";
+
+// MARK: - Privacy & Security
+"privacy.section_title" = "गोपनीयता और सुरक्षा";
+"privacy.mask.title" = "संवेदनशील सामग्री छिपाएँ";
+"privacy.mask.subtitle" = "पैनल में पासवर्ड, कुंजियाँ, कार्ड नंबर और ईमेल छिपाता है। दिखाने के लिए आइटम पर क्लिक करें — कॉपी और पेस्ट पर कोई असर नहीं पड़ता।";
+"privacy.skip_concealed.title" = "पासवर्ड मैनेजर की कॉपी सहेजें नहीं";
+"privacy.skip_concealed.subtitle" = "ऐप द्वारा छिपा या अस्थायी चिह्नित क्लिपबोर्ड सामग्री छोड़ दें।";
+"privacy.screen_capture.title" = "स्क्रीन रिकॉर्डिंग में पैनल छिपाएँ";
+"privacy.screen_capture.subtitle" = "स्क्रीन शेयर, रिकॉर्डिंग और स्क्रीनशॉट में क्लिपबोर्ड इतिहास नहीं दिखता।";
+"privacy.encrypt.title" = "डिस्क पर इतिहास एन्क्रिप्ट करें";
+"privacy.encrypt.subtitle" = "क्लिपबोर्ड टेक्स्ट एन्क्रिप्टेड रूप में सहेजा जाता है; कुंजी इसी Mac की Keychain में रहती है और iCloud या किसी अन्य Mac से सिंक नहीं होती।";
+"privacy.tap_to_reveal" = "दिखाने के लिए क्लिक करें";
+"privacy.hide" = "फिर से छिपाएँ";
+"privacy.paste_unaffected" = "पूरा कंटेंट पेस्ट करने के लिए Enter दबाएँ";
+"privacy.kind.password" = "पासवर्ड";
+"privacy.kind.secret_key" = "गुप्त कुंजी";
+"privacy.kind.credit_card" = "कार्ड नंबर";
+"privacy.kind.id_number" = "पहचान संख्या";
+"privacy.kind.email" = "ईमेल";
+"privacy.kind.phone" = "फ़ोन";

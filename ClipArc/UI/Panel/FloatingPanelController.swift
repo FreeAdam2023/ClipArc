@@ -89,6 +89,10 @@ final class FloatingPanelController {
         let screenFrame = screen.frame
         panel = FloatingPanel(contentRect: NSRect(x: 0, y: 0, width: screenFrame.width, height: FloatingPanel.panelHeight))
 
+        // Keep the panel out of screen recordings, screen sharing and screenshots,
+        // so clipboard history is not exposed while streaming or presenting.
+        panel?.sharingType = AppSettings.shared.hideFromScreenCapture ? .none : .readOnly
+
         // Handle click outside to dismiss
         panel?.onResignKey = { [weak self] in
             self?.hide()

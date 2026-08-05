@@ -296,3 +296,23 @@
 "updates.check_for_updates" = "Controlla aggiornamenti…";
 "updates.section_title" = "Aggiornamenti";
 "updates.auto_check" = "Controlla automaticamente gli aggiornamenti";
+
+// MARK: - Privacy & Security
+"privacy.section_title" = "Privacy e sicurezza";
+"privacy.mask.title" = "Maschera i contenuti sensibili";
+"privacy.mask.subtitle" = "Nasconde password, chiavi, carte ed e-mail nel pannello. Fai clic su un elemento per mostrarlo; copia e incolla non cambiano.";
+"privacy.skip_concealed.title" = "Non salvare le copie dal gestore password";
+"privacy.skip_concealed.subtitle" = "Ignora i contenuti degli appunti che un'app segna come nascosti o temporanei.";
+"privacy.screen_capture.title" = "Nascondi il pannello nelle registrazioni schermo";
+"privacy.screen_capture.subtitle" = "La cronologia non appare nelle condivisioni schermo, registrazioni e screenshot.";
+"privacy.encrypt.title" = "Cifra la cronologia su disco";
+"privacy.encrypt.subtitle" = "Il testo degli appunti viene salvato cifrato con una chiave nel portachiavi di questo Mac. La chiave non si sincronizza mai con iCloud o altri Mac.";
+"privacy.tap_to_reveal" = "Fai clic per mostrare";
+"privacy.hide" = "Nascondi di nuovo";
+"privacy.paste_unaffected" = "Premi Invio per incollare il contenuto completo";
+"privacy.kind.password" = "Password";
+"privacy.kind.secret_key" = "Chiave segreta";
+"privacy.kind.credit_card" = "Numero di carta";
+"privacy.kind.id_number" = "Numero documento";
+"privacy.kind.email" = "E-mail";
+"privacy.kind.phone" = "Telefono";

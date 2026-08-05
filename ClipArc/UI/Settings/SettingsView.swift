@@ -141,6 +141,37 @@ struct GeneralSettingsView: View {
             }
             #endif
 
+            Section(L10n.Privacy.sectionTitle) {
+                PrivacySettingsToggle(
+                    icon: "eye.slash.fill",
+                    tint: .orange,
+                    title: L10n.Privacy.maskTitle,
+                    subtitle: L10n.Privacy.maskSubtitle,
+                    isOn: $settings.maskSensitiveContent
+                )
+                PrivacySettingsToggle(
+                    icon: "key.fill",
+                    tint: .blue,
+                    title: L10n.Privacy.skipConcealedTitle,
+                    subtitle: L10n.Privacy.skipConcealedSubtitle,
+                    isOn: $settings.skipConcealedContent
+                )
+                PrivacySettingsToggle(
+                    icon: "rectangle.on.rectangle.slash.fill",
+                    tint: .purple,
+                    title: L10n.Privacy.screenCaptureTitle,
+                    subtitle: L10n.Privacy.screenCaptureSubtitle,
+                    isOn: $settings.hideFromScreenCapture
+                )
+                PrivacySettingsToggle(
+                    icon: "lock.doc.fill",
+                    tint: .green,
+                    title: L10n.Privacy.encryptTitle,
+                    subtitle: L10n.Privacy.encryptSubtitle,
+                    isOn: $settings.encryptHistory
+                )
+            }
+
             Section(L10n.Screenshot.title) {
                 ScreenshotMonitorSettingsRow()
             }
@@ -190,6 +221,36 @@ struct GeneralSettingsView: View {
     private func clearAllHistory() {
         appState?.clearAll()
         historyCount = 0
+    }
+}
+
+// MARK: - Privacy Settings Toggle
+
+/// A labelled switch with an explanatory subtitle, used by the Privacy & Security section.
+struct PrivacySettingsToggle: View {
+    let icon: String
+    let tint: Color
+    let title: String
+    let subtitle: String
+    @Binding var isOn: Bool
+
+    var body: some View {
+        Toggle(isOn: $isOn) {
+            Label {
+                VStack(alignment: .leading, spacing: 2) {
+                    Text(title)
+                        .font(.body)
+                    Text(subtitle)
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
+            } icon: {
+                Image(systemName: icon)
+                    .foregroundStyle(tint)
+            }
+        }
+        .toggleStyle(.switch)
     }
 }
 

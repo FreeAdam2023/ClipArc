@@ -265,6 +265,29 @@ enum L10n {
         static var pasteModeCopyOnly: String { "settings.paste_mode.copy_only".localized }
     }
 
+    // MARK: - Privacy & Security
+    enum Privacy {
+        static var sectionTitle: String { "privacy.section_title".localized }
+        static var maskTitle: String { "privacy.mask.title".localized }
+        static var maskSubtitle: String { "privacy.mask.subtitle".localized }
+        static var skipConcealedTitle: String { "privacy.skip_concealed.title".localized }
+        static var skipConcealedSubtitle: String { "privacy.skip_concealed.subtitle".localized }
+        static var screenCaptureTitle: String { "privacy.screen_capture.title".localized }
+        static var screenCaptureSubtitle: String { "privacy.screen_capture.subtitle".localized }
+        static var encryptTitle: String { "privacy.encrypt.title".localized }
+        static var encryptSubtitle: String { "privacy.encrypt.subtitle".localized }
+        static var tapToReveal: String { "privacy.tap_to_reveal".localized }
+        static var hide: String { "privacy.hide".localized }
+        static var pasteUnaffected: String { "privacy.paste_unaffected".localized }
+
+        static var kindPassword: String { "privacy.kind.password".localized }
+        static var kindSecretKey: String { "privacy.kind.secret_key".localized }
+        static var kindCreditCard: String { "privacy.kind.credit_card".localized }
+        static var kindIdNumber: String { "privacy.kind.id_number".localized }
+        static var kindEmail: String { "privacy.kind.email".localized }
+        static var kindPhone: String { "privacy.kind.phone".localized }
+    }
+
     // MARK: - Clipboard
     enum Clipboard {
         static var emptyTitle: String { "clipboard.empty.title".localized }

@@ -24,7 +24,8 @@ enum PasteService {
 
     /// Copy item to clipboard only (without any paste action)
     static func copyItem(_ item: ClipboardItem, asPlainText: Bool = false) {
-        Logger.debug("copyItem called - type: \(item.type), content: \(item.content.prefix(50))")
+        // Log shape only - clipboard payloads must not reach the unified log.
+        Logger.debug("copyItem called - type: \(item.type), \(item.content.count) chars")
 
         if item.type == .image, let imageData = item.imageData {
             Logger.debug("Copying image data (\(imageData.count) bytes)")

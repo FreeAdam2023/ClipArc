@@ -296,3 +296,23 @@
 "updates.check_for_updates" = "업데이트 확인…";
 "updates.section_title" = "업데이트";
 "updates.auto_check" = "자동으로 업데이트 확인";
+
+// MARK: - Privacy & Security
+"privacy.section_title" = "개인정보 및 보안";
+"privacy.mask.title" = "민감한 내용 가리기";
+"privacy.mask.subtitle" = "패널에서 비밀번호, 키, 카드 번호, 이메일을 숨깁니다. 항목을 클릭하면 표시되며 복사와 붙여넣기에는 영향이 없습니다.";
+"privacy.skip_concealed.title" = "비밀번호 관리자 내용 저장 안 함";
+"privacy.skip_concealed.subtitle" = "앱이 숨김 또는 임시로 표시한 클립보드 내용을 건너뜁니다.";
+"privacy.screen_capture.title" = "화면 녹화에서 패널 숨기기";
+"privacy.screen_capture.subtitle" = "화면 공유, 녹화, 스크린샷에 클립보드 기록이 나타나지 않습니다.";
+"privacy.encrypt.title" = "디스크의 기록 암호화";
+"privacy.encrypt.subtitle" = "클립보드 텍스트는 암호화되어 저장됩니다. 키는 이 Mac의 키체인에 보관되며 iCloud나 다른 Mac으로 동기화되지 않습니다.";
+"privacy.tap_to_reveal" = "클릭하여 표시";
+"privacy.hide" = "다시 숨기기";
+"privacy.paste_unaffected" = "Enter를 눌러 전체 내용 붙여넣기";
+"privacy.kind.password" = "비밀번호";
+"privacy.kind.secret_key" = "비밀 키";
+"privacy.kind.credit_card" = "카드 번호";
+"privacy.kind.id_number" = "신분증 번호";
+"privacy.kind.email" = "이메일";
+"privacy.kind.phone" = "전화번호";

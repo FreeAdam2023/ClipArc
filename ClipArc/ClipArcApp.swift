@@ -19,6 +19,10 @@ struct ClipArcApp: App {
         DataMigration.migrateFromSandboxIfNeeded()
         #endif
 
+        // Drop SQLite pages that still hold pre-encryption cleartext. Runs before
+        // the container opens the store, while nothing else has it locked.
+        StoreCompaction.vacuumIfPending()
+
         let schema = Schema([
             ClipboardItem.self,
         ])

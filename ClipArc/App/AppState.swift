@@ -44,6 +44,7 @@ final class AppState {
             modelContext: modelContext,
             historyLimit: AppSettings.shared.historyLimit
         )
+        clipboardStore?.encryptLegacyContentIfNeeded()
         observeHistoryLimit()
         clipboardMonitor = ClipboardMonitor()
 
@@ -104,6 +105,15 @@ final class AppState {
             .receive(on: RunLoop.main)
             .sink { [weak self] newLimit in
                 self?.clipboardStore?.updateHistoryLimit(newLimit)
+                self?.refreshItems()
+            }
+            .store(in: &cancellables)
+
+        // Switching encryption on converts whatever is already in the store.
+        NotificationCenter.default.publisher(for: .encryptExistingHistory)
+            .receive(on: RunLoop.main)
+            .sink { [weak self] _ in
+                self?.clipboardStore?.encryptLegacyContentIfNeeded()
                 self?.refreshItems()
             }
             .store(in: &cancellables)
@@ -299,7 +309,7 @@ final class AppState {
 
     /// Fetch and update the page title for a URL item
     private func fetchURLTitle(for item: ClipboardItem) async {
-        Logger.debug("fetchURLTitle called for: \(item.content.prefix(50))")
+        Logger.debug("fetchURLTitle called for host: \(URL(string: item.content)?.host ?? "unknown")")
         guard item.type == .url, item.urlTitle == nil else {
             Logger.debug("Skipping - type: \(item.type), urlTitle: \(item.urlTitle ?? "nil")")
             return
@@ -307,7 +317,7 @@ final class AppState {
 
         Logger.debug("Fetching title from URLMetadataService...")
         if let title = await URLMetadataService.shared.fetchTitle(for: item.content) {
-            Logger.debug("Got title: \(title)")
+            Logger.debug("Got title (\(title.count) chars)")
             // Update on main actor
             await MainActor.run {
                 item.urlTitle = title

@@ -12,20 +12,57 @@ import CryptoKit
 @Model
 final class ClipboardItem {
     @Attribute(.unique) var id: UUID
-    var content: String
     var typeRaw: String
     var createdAt: Date
     var sourceAppBundleID: String?
     var sourceAppName: String?
     var contentHash: String
-    var previewText: String
     var useCount: Int = 0  // Track how many times this item has been pasted
     @Attribute(.externalStorage) var imageData: Data?  // Store image data externally for better performance
     var imageWidth: Int = 0
     var imageHeight: Int = 0
-    var filePathsJSON: String?  // Store file paths as JSON array
-    var urlTitle: String?  // Page title for URL items (fetched asynchronously)
     @Attribute(.externalStorage) var fileThumbnailData: Data?  // Cached thumbnail for file items
+    var sensitiveKindRaw: String?  // Set when the content looks like a credential / personal data
+
+    // MARK: - Encrypted-at-rest storage
+    //
+    // These hold ciphertext (or legacy plaintext written by older versions).
+    // `originalName` keeps SwiftData's lightweight migration pointed at the old
+    // columns, so existing histories are read back without a custom migration plan.
+    // Always go through the plaintext accessors below - never read these directly.
+
+    @Attribute(originalName: "content") var contentStorage: String
+    @Attribute(originalName: "previewText") var previewTextStorage: String
+    @Attribute(originalName: "filePathsJSON") var filePathsJSONStorage: String?
+    @Attribute(originalName: "urlTitle") var urlTitleStorage: String?
+
+    /// The clipboard payload, decrypted. This is what gets displayed, searched and pasted.
+    var content: String {
+        get { ClipboardCrypto.decrypt(contentStorage) }
+        set { contentStorage = ClipboardCrypto.encrypt(newValue) }
+    }
+
+    var previewText: String {
+        get { ClipboardCrypto.decrypt(previewTextStorage) }
+        set { previewTextStorage = ClipboardCrypto.encrypt(newValue) }
+    }
+
+    /// Page title for URL items (fetched asynchronously)
+    var urlTitle: String? {
+        get { ClipboardCrypto.decryptOptional(urlTitleStorage) }
+        set { urlTitleStorage = ClipboardCrypto.encryptOptional(newValue) }
+    }
+
+    /// File paths as a JSON array
+    var filePathsJSON: String? {
+        get { ClipboardCrypto.decryptOptional(filePathsJSONStorage) }
+        set { filePathsJSONStorage = ClipboardCrypto.encryptOptional(newValue) }
+    }
+
+    /// True once the stored columns hold ciphertext rather than legacy plaintext.
+    var isStoredEncrypted: Bool {
+        ClipboardCrypto.isEncrypted(contentStorage)
+    }
 
     /// Get file URLs from stored JSON
     var fileURLs: [URL] {
@@ -42,6 +79,21 @@ final class ClipboardItem {
         set { typeRaw = newValue.rawValue }
     }
 
+    /// Kind of sensitive content this item holds, if any.
+    var sensitiveKind: SensitiveKind? {
+        get { sensitiveKindRaw.flatMap { SensitiveKind(rawValue: $0) } }
+        set { sensitiveKindRaw = newValue?.rawValue }
+    }
+
+    var isSensitive: Bool { sensitiveKindRaw != nil }
+
+    /// Redacted stand-in for `previewText`. Display only — `content` stays intact,
+    /// so copying and pasting are never affected.
+    var maskedPreview: String {
+        guard let kind = sensitiveKind else { return previewText }
+        return SensitiveMask.mask(content, kind: kind)
+    }
+
     /// Whether this item is considered "frequent" (used 3+ times)
     var isFrequent: Bool {
         useCount >= 3
@@ -54,20 +106,23 @@ final class ClipboardItem {
         sourceAppName: String? = nil
     ) {
         self.id = UUID()
-        self.content = content
+        // Stored columns are written through the crypto layer directly: computed
+        // accessors are not usable until every stored property is initialised.
+        self.contentStorage = ClipboardCrypto.encrypt(content)
         self.typeRaw = type.rawValue
         self.createdAt = Date()
         self.sourceAppBundleID = sourceAppBundleID
         self.sourceAppName = sourceAppName
         self.contentHash = ClipboardItem.computeHash(content)
-        self.previewText = ClipboardItem.generatePreview(content)
+        self.previewTextStorage = ClipboardCrypto.encrypt(ClipboardItem.generatePreview(content))
         self.useCount = 0
         self.imageData = nil
         self.imageWidth = 0
         self.imageHeight = 0
-        self.filePathsJSON = nil
-        self.urlTitle = nil
+        self.filePathsJSONStorage = nil
+        self.urlTitleStorage = nil
         self.fileThumbnailData = nil
+        self.sensitiveKindRaw = nil
     }
 
     /// Initialize with image data
@@ -79,20 +134,22 @@ final class ClipboardItem {
         sourceAppName: String? = nil
     ) {
         self.id = UUID()
-        self.content = "Image (\(width)×\(height))"
+        let label = "Image (\(width)×\(height))"
+        self.contentStorage = ClipboardCrypto.encrypt(label)
         self.typeRaw = ClipboardItemType.image.rawValue
         self.createdAt = Date()
         self.sourceAppBundleID = sourceAppBundleID
         self.sourceAppName = sourceAppName
         self.contentHash = ClipboardItem.computeHashFromData(imageData)
-        self.previewText = "Image (\(width)×\(height))"
+        self.previewTextStorage = ClipboardCrypto.encrypt(label)
         self.useCount = 0
         self.imageData = imageData
         self.imageWidth = width
         self.imageHeight = height
-        self.filePathsJSON = nil
-        self.urlTitle = nil
+        self.filePathsJSONStorage = nil
+        self.urlTitleStorage = nil
         self.fileThumbnailData = nil
+        self.sensitiveKindRaw = nil
     }
 
     /// Initialize with file URLs
@@ -116,8 +173,8 @@ final class ClipboardItem {
             previewValue = "\(fileURLs.count) files: " + fileNames.prefix(3).joined(separator: ", ") + (fileURLs.count > 3 ? "..." : "")
         }
 
-        self.content = contentValue
-        self.previewText = previewValue
+        self.contentStorage = ClipboardCrypto.encrypt(contentValue)
+        self.previewTextStorage = ClipboardCrypto.encrypt(previewValue)
         self.typeRaw = ClipboardItemType.file.rawValue
         self.createdAt = Date()
         self.sourceAppBundleID = sourceAppBundleID
@@ -130,23 +187,25 @@ final class ClipboardItem {
 
         // Store file paths as JSON
         let paths = fileURLs.map { $0.path }
-        if let jsonData = try? JSONEncoder().encode(paths) {
-            self.filePathsJSON = String(data: jsonData, encoding: .utf8)
+        if let jsonData = try? JSONEncoder().encode(paths),
+           let json = String(data: jsonData, encoding: .utf8) {
+            self.filePathsJSONStorage = ClipboardCrypto.encrypt(json)
         } else {
-            self.filePathsJSON = nil
+            self.filePathsJSONStorage = nil
         }
-        self.urlTitle = nil
+        self.urlTitleStorage = nil
         self.fileThumbnailData = nil
+        self.sensitiveKindRaw = nil
     }
 
+    /// De-duplication digest. Keyed by the Keychain key when encryption is on, so
+    /// the stored value is not a crackable fingerprint of what was copied.
     static func computeHash(_ content: String) -> String {
-        let data = Data(content.utf8)
-        return computeHashFromData(data)
+        ClipboardCrypto.digest(content)
     }
 
     static func computeHashFromData(_ data: Data) -> String {
-        let hash = SHA256.hash(data: data)
-        return hash.compactMap { String(format: "%02x", $0) }.joined()
+        ClipboardCrypto.digest(data)
     }
 
     static func generatePreview(_ content: String, maxLength: Int = 200) -> String {
