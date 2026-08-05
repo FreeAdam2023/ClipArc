@@ -8,6 +8,22 @@
 import AppKit
 
 extension NSPasteboard {
+    /// Markers apps use to say "this copy is a secret / not meant to be kept".
+    /// Password managers set these when they put a credential on the pasteboard.
+    private static let privateContentTypes: Set<String> = [
+        "org.nspasteboard.ConcealedType",
+        "org.nspasteboard.TransientType",
+        "de.petermaurer.TransientPasteboardType",
+        "com.agilebits.onepassword",
+    ]
+
+    /// True when the source app flagged this content as concealed or transient,
+    /// meaning it should not be stored in clipboard history.
+    var isPrivateContent: Bool {
+        guard let types = types else { return false }
+        return types.contains { Self.privateContentTypes.contains($0.rawValue) }
+    }
+
     var availableTypeDescriptions: [String] {
         return types?.map { $0.rawValue } ?? []
     }

@@ -296,3 +296,23 @@
 "updates.check_for_updates" = "Buscar actualizaciones…";
 "updates.section_title" = "Actualizaciones";
 "updates.auto_check" = "Buscar actualizaciones automáticamente";
+
+// MARK: - Privacy & Security
+"privacy.section_title" = "Privacidad y seguridad";
+"privacy.mask.title" = "Ocultar contenido sensible";
+"privacy.mask.subtitle" = "Oculta contraseñas, claves, tarjetas y correos en el panel. Haz clic en un elemento para mostrarlo; copiar y pegar no se ven afectados.";
+"privacy.skip_concealed.title" = "No guardar copias del gestor de contraseñas";
+"privacy.skip_concealed.subtitle" = "Omite el contenido del portapapeles que una app marca como oculto o temporal.";
+"privacy.screen_capture.title" = "Ocultar el panel en grabaciones de pantalla";
+"privacy.screen_capture.subtitle" = "Mantiene el historial fuera de las pantallas compartidas, grabaciones y capturas.";
+"privacy.encrypt.title" = "Cifrar el historial en el disco";
+"privacy.encrypt.subtitle" = "El texto del portapapeles se guarda cifrado con una clave del llavero de este Mac. La clave nunca se sincroniza con iCloud ni con otro Mac.";
+"privacy.tap_to_reveal" = "Haz clic para mostrar";
+"privacy.hide" = "Ocultar de nuevo";
+"privacy.paste_unaffected" = "Pulsa Intro para pegar el contenido completo";
+"privacy.kind.password" = "Contraseña";
+"privacy.kind.secret_key" = "Clave secreta";
+"privacy.kind.credit_card" = "Número de tarjeta";
+"privacy.kind.id_number" = "Documento de identidad";
+"privacy.kind.email" = "Correo";
+"privacy.kind.phone" = "Teléfono";

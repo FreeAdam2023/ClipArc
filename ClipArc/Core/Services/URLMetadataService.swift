@@ -25,11 +25,11 @@ actor URLMetadataService {
     /// Fetch the page title for a given URL
     /// Returns nil if the URL is invalid, not HTTP(S), or if fetching fails
     func fetchTitle(for urlString: String) async -> String? {
-        Logger.debug("fetchTitle called for: \(urlString)")
+        Logger.debug("fetchTitle called for host: \(URL(string: urlString)?.host ?? "unknown")")
 
         // Check cache first
         if let cached = cache[urlString] {
-            Logger.debug("Returning cached title: \(cached)")
+            Logger.debug("Returning cached title (\(cached.count) chars)")
             return cached
         }
 
@@ -46,7 +46,7 @@ actor URLMetadataService {
             components?.scheme = "https"
             if let httpsURL = components?.url {
                 url = httpsURL
-                Logger.debug("Upgraded to HTTPS: \(url.absoluteString)")
+                Logger.debug("Upgraded to HTTPS")
             }
         }
 

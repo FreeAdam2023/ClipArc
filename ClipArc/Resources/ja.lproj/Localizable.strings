@@ -296,3 +296,23 @@
 "updates.check_for_updates" = "アップデートを確認…";
 "updates.section_title" = "アップデート";
 "updates.auto_check" = "自動的にアップデートを確認";
+
+// MARK: - Privacy & Security
+"privacy.section_title" = "プライバシーとセキュリティ";
+"privacy.mask.title" = "機密情報をマスク";
+"privacy.mask.subtitle" = "パネル上でパスワード・キー・カード番号・メールを隠します。項目をクリックすると表示され、コピーと貼り付けには影響しません。";
+"privacy.skip_concealed.title" = "パスワードマネージャーの内容を保存しない";
+"privacy.skip_concealed.subtitle" = "アプリが「非表示」または「一時的」と指定したクリップボード内容をスキップします。";
+"privacy.screen_capture.title" = "画面収録中はパネルを隠す";
+"privacy.screen_capture.subtitle" = "画面共有・画面収録・スクリーンショットに履歴が写りません。";
+"privacy.encrypt.title" = "履歴をディスク上で暗号化";
+"privacy.encrypt.subtitle" = "クリップボードのテキストは暗号化して保存されます。鍵はこの Mac のキーチェーンに保管され、iCloud や他の Mac には同期されません。";
+"privacy.tap_to_reveal" = "クリックして表示";
+"privacy.hide" = "再び隠す";
+"privacy.paste_unaffected" = "Enter キーで完全な内容を貼り付け";
+"privacy.kind.password" = "パスワード";
+"privacy.kind.secret_key" = "シークレットキー";
+"privacy.kind.credit_card" = "カード番号";
+"privacy.kind.id_number" = "個人番号";
+"privacy.kind.email" = "メール";
+"privacy.kind.phone" = "電話番号";

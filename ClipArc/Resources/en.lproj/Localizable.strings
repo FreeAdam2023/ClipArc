@@ -296,3 +296,23 @@
 "updates.check_for_updates" = "Check for Updates…";
 "updates.section_title" = "Updates";
 "updates.auto_check" = "Automatically check for updates";
+
+// MARK: - Privacy & Security
+"privacy.section_title" = "Privacy & Security";
+"privacy.mask.title" = "Mask sensitive content";
+"privacy.mask.subtitle" = "Hides passwords, keys, card numbers and emails in the panel. Click an item to reveal it — copying and pasting are unaffected.";
+"privacy.skip_concealed.title" = "Never save password manager copies";
+"privacy.skip_concealed.subtitle" = "Skips clipboard content that an app marks as concealed or temporary.";
+"privacy.screen_capture.title" = "Hide panel from screen recording";
+"privacy.screen_capture.subtitle" = "Keeps clipboard history out of screen sharing, recordings and screenshots.";
+"privacy.encrypt.title" = "Encrypt history on disk";
+"privacy.encrypt.subtitle" = "Clipboard text is stored encrypted with a key kept in this Mac's Keychain. The key never syncs to iCloud or another Mac.";
+"privacy.tap_to_reveal" = "Click to reveal";
+"privacy.hide" = "Hide again";
+"privacy.paste_unaffected" = "Press Enter to paste the full content";
+"privacy.kind.password" = "Password";
+"privacy.kind.secret_key" = "Secret Key";
+"privacy.kind.credit_card" = "Card Number";
+"privacy.kind.id_number" = "ID Number";
+"privacy.kind.email" = "Email";
+"privacy.kind.phone" = "Phone";

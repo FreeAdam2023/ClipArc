@@ -296,3 +296,23 @@
 "updates.check_for_updates" = "التحقق من وجود تحديثات…";
 "updates.section_title" = "التحديثات";
 "updates.auto_check" = "التحقق تلقائيًا من وجود تحديثات";
+
+// MARK: - Privacy & Security
+"privacy.section_title" = "الخصوصية والأمان";
+"privacy.mask.title" = "إخفاء المحتوى الحساس";
+"privacy.mask.subtitle" = "يخفي كلمات المرور والمفاتيح وأرقام البطاقات والبريد في اللوحة. انقر على عنصر لإظهاره؛ النسخ واللصق لا يتأثران.";
+"privacy.skip_concealed.title" = "عدم حفظ نسخ مدير كلمات المرور";
+"privacy.skip_concealed.subtitle" = "تخطّي محتوى الحافظة الذي يضعه التطبيق كمخفي أو مؤقت.";
+"privacy.screen_capture.title" = "إخفاء اللوحة أثناء تسجيل الشاشة";
+"privacy.screen_capture.subtitle" = "لا يظهر سجل الحافظة في مشاركة الشاشة والتسجيلات ولقطات الشاشة.";
+"privacy.encrypt.title" = "تشفير السجل على القرص";
+"privacy.encrypt.subtitle" = "يُخزَّن نص الحافظة مشفَّرًا بمفتاح محفوظ في سلسلة مفاتيح هذا الـ Mac. لا يُزامَن المفتاح مع iCloud أو أي جهاز آخر.";
+"privacy.tap_to_reveal" = "انقر للإظهار";
+"privacy.hide" = "إخفاء مرة أخرى";
+"privacy.paste_unaffected" = "اضغط Enter للصق المحتوى الكامل";
+"privacy.kind.password" = "كلمة المرور";
+"privacy.kind.secret_key" = "مفتاح سري";
+"privacy.kind.credit_card" = "رقم البطاقة";
+"privacy.kind.id_number" = "رقم الهوية";
+"privacy.kind.email" = "البريد الإلكتروني";
+"privacy.kind.phone" = "الهاتف";

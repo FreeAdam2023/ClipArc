@@ -296,3 +296,23 @@
 "updates.check_for_updates" = "Nach Updates suchen…";
 "updates.section_title" = "Updates";
 "updates.auto_check" = "Automatisch nach Updates suchen";
+
+// MARK: - Privacy & Security
+"privacy.section_title" = "Datenschutz & Sicherheit";
+"privacy.mask.title" = "Sensible Inhalte maskieren";
+"privacy.mask.subtitle" = "Verbirgt Passwörter, Schlüssel, Kartennummern und E-Mails im Panel. Zum Anzeigen auf ein Objekt klicken – Kopieren und Einfügen bleiben unverändert.";
+"privacy.skip_concealed.title" = "Kopien aus Passwortmanagern nicht speichern";
+"privacy.skip_concealed.subtitle" = "Überspringt Inhalte, die eine App als verborgen oder temporär markiert.";
+"privacy.screen_capture.title" = "Panel bei Bildschirmaufnahmen ausblenden";
+"privacy.screen_capture.subtitle" = "Der Verlauf erscheint nicht in Bildschirmfreigaben, Aufnahmen und Screenshots.";
+"privacy.encrypt.title" = "Verlauf auf der Festplatte verschlüsseln";
+"privacy.encrypt.subtitle" = "Zwischenablagetext wird verschlüsselt gespeichert; der Schlüssel liegt im Schlüsselbund dieses Mac und wird nie mit iCloud oder einem anderen Mac synchronisiert.";
+"privacy.tap_to_reveal" = "Zum Anzeigen klicken";
+"privacy.hide" = "Wieder ausblenden";
+"privacy.paste_unaffected" = "Mit Enter den vollständigen Inhalt einfügen";
+"privacy.kind.password" = "Passwort";
+"privacy.kind.secret_key" = "Geheimer Schlüssel";
+"privacy.kind.credit_card" = "Kartennummer";
+"privacy.kind.id_number" = "Ausweisnummer";
+"privacy.kind.email" = "E-Mail";
+"privacy.kind.phone" = "Telefon";

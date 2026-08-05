@@ -43,12 +43,18 @@ final class ClipboardStore: ObservableObject {
         }
 
         let hash = ClipboardItem.computeHash(content)
+        let sensitiveKind = SensitiveContentDetector.detect(
+            content: content,
+            type: type,
+            sourceAppBundleID: sourceAppBundleID
+        )
         let resultItem: ClipboardItem
 
         if let existing = findByHash(hash) {
             existing.createdAt = Date()
             existing.sourceAppBundleID = sourceAppBundleID
             existing.sourceAppName = sourceAppName
+            existing.sensitiveKind = sensitiveKind
             resultItem = existing
         } else {
             let item = ClipboardItem(
@@ -57,6 +63,7 @@ final class ClipboardStore: ObservableObject {
                 sourceAppBundleID: sourceAppBundleID,
                 sourceAppName: sourceAppName
             )
+            item.sensitiveKind = sensitiveKind
             modelContext.insert(item)
             resultItem = item
         }
@@ -108,6 +115,44 @@ final class ClipboardStore: ObservableObject {
         }
 
         saveAndEnforceLimit()
+    }
+
+    /// Rewrites any rows still holding legacy plaintext, so a history written by an
+    /// older version ends up encrypted on disk too. A cheap no-op once converted.
+    func encryptLegacyContentIfNeeded() {
+        guard ClipboardCrypto.isEnabled, ClipboardCrypto.isAvailable else { return }
+
+        let descriptor = FetchDescriptor<ClipboardItem>()
+        guard let items = try? modelContext.fetch(descriptor) else { return }
+        let legacy = items.filter { !$0.isStoredEncrypted }
+        guard !legacy.isEmpty else { return }
+
+        for item in legacy {
+            let plainContent = item.contentStorage
+            item.contentStorage = ClipboardCrypto.encrypt(plainContent)
+            item.previewTextStorage = ClipboardCrypto.encrypt(item.previewTextStorage)
+            item.filePathsJSONStorage = ClipboardCrypto.encryptOptional(item.filePathsJSONStorage)
+            item.urlTitleStorage = ClipboardCrypto.encryptOptional(item.urlTitleStorage)
+
+            // Old rows carry a plain SHA-256; recompute with the keyed digest so
+            // de-duplication keeps matching newly copied content.
+            if item.type == .image, let imageData = item.imageData {
+                item.contentHash = ClipboardCrypto.digest(imageData)
+            } else {
+                item.contentHash = ClipboardCrypto.digest(plainContent)
+            }
+        }
+
+        do {
+            try modelContext.save()
+            // The rows are encrypted now, but SQLite still holds the old cleartext
+            // pages. Schedule a rebuild for the next launch, when nothing has the
+            // store open.
+            StoreCompaction.markPending()
+            Logger.notice("Encrypted \(legacy.count) clipboard entries at rest")
+        } catch {
+            Logger.error("Failed to encrypt existing clipboard entries", error: error)
+        }
     }
 
     func delete(_ item: ClipboardItem) {

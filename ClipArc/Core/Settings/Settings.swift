@@ -19,6 +19,9 @@ enum SettingsKey: String {
     case pasteMode = "pasteMode"
     case pasteActionCount = "pasteActionCount"
     case neverAskDirectPaste = "neverAskDirectPaste"
+    case maskSensitiveContent = "maskSensitiveContent"
+    case skipConcealedContent = "skipConcealedContent"
+    case hideFromScreenCapture = "hideFromScreenCapture"
 }
 
 /// User's preference for paste behavior when accessibility is not enabled
@@ -100,6 +103,46 @@ final class AppSettings: ObservableObject {
         }
     }
 
+    // MARK: - Privacy & Security (all default to on)
+
+    /// Hide passwords, keys, card numbers and other personal data behind a mask
+    /// until the user taps to reveal. Never affects copy/paste.
+    @Published var maskSensitiveContent: Bool {
+        didSet {
+            UserDefaults.standard.set(maskSensitiveContent, forKey: SettingsKey.maskSensitiveContent.rawValue)
+        }
+    }
+
+    /// Do not record clipboard content that the source app marked as concealed or
+    /// transient (what password managers set when they copy a credential).
+    @Published var skipConcealedContent: Bool {
+        didSet {
+            UserDefaults.standard.set(skipConcealedContent, forKey: SettingsKey.skipConcealedContent.rawValue)
+        }
+    }
+
+    /// Exclude the clipboard panel from screen recordings, screen sharing and screenshots.
+    @Published var hideFromScreenCapture: Bool {
+        didSet {
+            UserDefaults.standard.set(hideFromScreenCapture, forKey: SettingsKey.hideFromScreenCapture.rawValue)
+        }
+    }
+
+    /// Encrypt clipboard text on disk with a key held in this Mac's Keychain.
+    /// The key is read through `ClipboardCrypto.settingsKey`, so the model layer
+    /// does not have to reach the main actor.
+    @Published var encryptHistory: Bool {
+        didSet {
+            UserDefaults.standard.set(encryptHistory, forKey: ClipboardCrypto.settingsKey)
+            if encryptHistory {
+                NotificationCenter.default.post(name: .encryptExistingHistory, object: nil)
+            }
+        }
+    }
+
+    /// How long a revealed item stays visible before it masks itself again.
+    static let revealTimeout: TimeInterval = 10
+
     /// Count of paste actions without accessibility permission (for triggering prompt)
     var pasteActionCount: Int {
         get { UserDefaults.standard.integer(forKey: SettingsKey.pasteActionCount.rawValue) }
@@ -122,7 +165,17 @@ final class AppSettings: ObservableObject {
             defaults.set(100, forKey: SettingsKey.historyLimit.rawValue)
         }
 
+        // Privacy protections are opt-out: enable them unless the user turned them off.
+        for key in [SettingsKey.maskSensitiveContent, .skipConcealedContent, .hideFromScreenCapture]
+        where defaults.object(forKey: key.rawValue) == nil {
+            defaults.set(true, forKey: key.rawValue)
+        }
+
         historyLimit = defaults.integer(forKey: SettingsKey.historyLimit.rawValue)
+        maskSensitiveContent = defaults.bool(forKey: SettingsKey.maskSensitiveContent.rawValue)
+        skipConcealedContent = defaults.bool(forKey: SettingsKey.skipConcealedContent.rawValue)
+        hideFromScreenCapture = defaults.bool(forKey: SettingsKey.hideFromScreenCapture.rawValue)
+        encryptHistory = ClipboardCrypto.isEnabled
         launchAtLogin = defaults.bool(forKey: SettingsKey.launchAtLogin.rawValue)
         showInDock = defaults.bool(forKey: SettingsKey.showInDock.rawValue)
         soundEnabled = defaults.bool(forKey: SettingsKey.soundEnabled.rawValue)
@@ -165,5 +218,9 @@ final class AppSettings: ObservableObject {
         showInDock = false
         soundEnabled = false
         appearance = .system
+        maskSensitiveContent = true
+        skipConcealedContent = true
+        hideFromScreenCapture = true
+        encryptHistory = true
     }
 }
